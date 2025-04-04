@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
+  /* Dark theme (default) */
   --primary-color: #ff5e3a;
   --primary-color-dark: #e04a2a;
   --secondary-color: #1e2a3a;
@@ -10,6 +11,27 @@
   --bg-dark: #121a24;
   --bg-section: #1a2432;
   --gradient-primary: linear-gradient(to right, #ff5e3a, #ff8c66);
+  --border-color: rgba(255, 255, 255, 0.05);
+  --shadow-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Light theme variables */
+body.light-theme {
+  --primary-color: #ff5e3a;
+  --primary-color-dark: #e04a2a;
+  --secondary-color: #f0f2f5;
+  --text-color: #333333;
+  --text-light: #666666;
+  --bg-dark: #f5f5f5;
+  --bg-section: #ffffff;
+  --gradient-primary: linear-gradient(to right, #ff5e3a, #ff8c66);
+  --border-color: rgba(0, 0, 0, 0.05);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Add smooth transitions for all elements */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 * {

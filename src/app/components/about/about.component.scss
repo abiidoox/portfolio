@@ -42,110 +42,18 @@
   gap: 4rem;
   margin-bottom: 6rem;
   align-items: center;
+  direction: rtl; /* This reverses the order of the grid items */
   
   @media (max-width: 992px) {
     grid-template-columns: 1fr;
     text-align: center;
     gap: 3rem;
-  }
-}
-
-.profile-image {
-  position: relative;
-  
-  img {
-    width: 100%;
-    max-width: 400px;
-    height: auto;
-    border-radius: 50%;
-    position: relative;
-    z-index: 2;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    border: 4px solid var(--primary-color);
-    
-    @media (max-width: 992px) {
-      margin: 0 auto;
-    }
-  }
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: -20px;
-    left: -20px;
-    width: 100px;
-    height: 100px;
-    border: 4px solid var(--primary-color);
-    border-right: none;
-    border-bottom: none;
-    z-index: 1;
-    
-    @media (max-width: 992px) {
-      left: calc(50% - 200px - 20px);
-    }
-    
-    @media (max-width: 480px) {
-      width: 60px;
-      height: 60px;
-      left: calc(50% - 150px - 20px);
-    }
-  }
-  
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -20px;
-    right: -20px;
-    width: 100px;
-    height: 100px;
-    border: 4px solid var(--primary-color);
-    border-left: none;
-    border-top: none;
-    z-index: 1;
-    
-    @media (max-width: 992px) {
-      right: calc(50% - 200px - 20px);
-    }
-    
-    @media (max-width: 480px) {
-      width: 60px;
-      height: 60px;
-      right: calc(50% - 150px - 20px);
-    }
-  }
-}
-
-.social-links {
-  margin-top: 20px;
-  display: flex;
-  gap: 15px;
-  
-  @media (max-width: 992px) {
-    justify-content: center;
-  }
-  
-  a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background: var(--bg-section);
-    border-radius: 50%;
-    color: var(--text-light);
-    font-size: 18px;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    
-    &:hover {
-      background: var(--primary-color);
-      color: var(--text-color);
-      transform: translateY(-5px);
-    }
+    direction: ltr; /* Reset direction for mobile view */
   }
 }
 
 .bio-section {
+  direction: ltr; /* Reset text direction inside the bio section */
   h3 {
     font-size: 35px;
     margin-bottom: 1.5rem;
@@ -171,34 +79,137 @@
   }
 }
 
+.profile-image {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  margin: 0 auto 2rem;
+  direction: ltr; /* Reset text direction inside the profile image */
+  
+  .profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .profile-border {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, var(--primary-color), #ff8a50);
+    z-index: 1;
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: var(--bg-dark);
+    border-radius: 50%;
+    z-index: 1;
+  }
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  position: relative;
+  z-index: 3;
+  
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--bg-section);
+    border-radius: 50%;
+    color: var(--text-light);
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: translateY(-3px);
+    }
+  }
+}
+
+// Remove the duplicate bio-section class and merge its styles
+.bio-section {
+  direction: ltr; /* Reset text direction inside the bio section */
+  h3 {
+    font-size: 35px;
+    margin-bottom: 1.5rem;
+    
+    @media (max-width: 768px) {
+      font-size: 28px;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 24px;
+    }
+    
+    span {
+      color: var(--primary-color);
+    }
+  }
+
+  p {
+    font-size: 16px;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    line-height: 1.8;
+  }
+}
+
+// Fix the contact info and items
 .contact-info {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 1.5rem;
   margin-top: 2rem;
+  direction: ltr;
   
   @media (max-width: 992px) {
     justify-content: center;
   }
 }
 
+// Add hover effects to contact items
 .contact-item {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.8rem;
+  flex-direction: row;
+  background-color: var(--bg-section);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 94, 58, 0.1);
+  }
   
   @media (max-width: 992px) {
     justify-content: center;
+    margin-bottom: 1rem;
   }
   
   i {
-    width: 40px;
-    height: 40px;
-    background: rgba(255, 94, 58, 0.1);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     color: var(--primary-color);
     font-size: 16px;
   }
@@ -206,6 +217,7 @@
   span {
     color: var(--text-light);
     font-size: 14px;
+    text-align: left;
   }
 }
 
@@ -354,6 +366,36 @@
     &:hover {
       color: var(--primary-color);
       transform: translateY(-5px);
+    }
+  }
+}
+
+// Add this at the end of your existing SCSS file
+
+.language-switcher {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  gap: 1rem;
+  
+  button {
+    background: var(--bg-section);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--text-light);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background: rgba(255, 94, 58, 0.1);
+      color: var(--primary-color);
+    }
+    
+    &.active {
+      background: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
     }
   }
 }

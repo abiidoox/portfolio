@@ -1,0 +1,205 @@
+{
+  "HEADER": {
+    "ABOUT": "À Propos",
+    "PROJECTS": "Projets",
+    "RESUME": "CV",
+    "CONTACT": "Contact"
+  },
+  "ABOUT": {
+    "TITLE": "À Propos de Moi",
+    "SUBTITLE": "Apprenez à Me Connaître",
+    "PROFILE_ALT": "Photo de Profil",
+    "INTRO": "Bonjour! Je suis Abderrazzaq El Abdouni, un Ingénieur Full Stack passionné avec une expertise en développement web, IoT et machine learning.",
+    "DESCRIPTION": "Avec une solide expérience dans les technologies frontend et backend, j'aime créer des applications efficaces, évolutives et conviviales. Je suis constamment en train d'apprendre et d'explorer de nouvelles technologies pour rester à la pointe du paysage technologique en rapide évolution.",
+    "NAME_LABEL": "Nom",
+    "NAME": "Abderrazzaq El Abdouni",
+    "EMAIL_LABEL": "Email",
+    "EMAIL": "elabdouni.abderrazzaq@gmail.com",
+    "LOCATION_LABEL": "Localisation",
+    "LOCATION": "Rabat, Maroc",
+    "AVAILABILITY_LABEL": "Disponibilité",
+    "AVAILABILITY": "Disponible pour des missions freelance ou des postes à temps plein",
+    "CONTACT_BTN": "Me Contacter",
+    "RESUME_BTN": "Voir CV",
+    
+    "TITLE_SMALL": "À Propos de Moi",
+    "TITLE_LARGE": "Création d'Expériences Numériques",
+    "GREETING": "Bonjour, je suis",
+    "BIO": "Je suis un Ingénieur Full Stack passionné basé à Rabat, spécialisé dans le développement web, l'IoT et le Machine Learning. Je combine expertise technique et innovation pour créer des solutions logicielles performantes et évolutives.",
+    "SKILLS_TITLE": "Expertise Technique",
+    "SKILLS": {
+      "LANGUAGES": {
+        "TITLE": "Langages",
+        "ITEM1": "C, C#, Java",
+        "ITEM2": "Python, R",
+        "ITEM3": "JavaScript",
+        "ITEM4": "HTML, CSS"
+      },
+      "FRAMEWORKS": {
+        "TITLE": "Frameworks",
+        "ITEM1": ".NET core, JEE",
+        "ITEM2": "Spring Boot",
+        "ITEM3": "React, Angular",
+        "ITEM4": "React Native, FastAPI"
+      },
+      "DATABASES": {
+        "TITLE": "Base de données",
+        "ITEM1": "SQL Server",
+        "ITEM2": "MySQL, PostgreSQL",
+        "ITEM3": "T-SQL",
+        "ITEM4": "MongoDB"
+      },
+      "TOOLS": {
+        "TITLE": "Outils & DevOps",
+        "ITEM1": "Git, GitHub, GitLab",
+        "ITEM2": "Docker, Docker Compose",
+        "ITEM3": "Bootstrap",
+        "ITEM4": "Scrum"
+      }
+    }
+  },
+  "PROJECTS": {
+    "TITLE": "Mes Projets",
+    "SUBTITLE": "Une vitrine de mon meilleur travail et de mes solutions créatives",
+    "VIEW_DEMO": "Voir la Démo",
+    "VIEW_CODE": "Voir le Code",
+    "PROJECT1": {
+      "TITLE": "Plateforme E-Commerce",
+      "DESCRIPTION": "Une plateforme e-commerce full-stack construite avec Angular et Node.js"
+    },
+    "PROJECT2": {
+      "TITLE": "Application de Gestion de Tâches",
+      "DESCRIPTION": "Une application de gestion de tâches responsive avec mises à jour en temps réel"
+    }
+  },
+  "RESUME": {
+    "TITLE": "Mon CV",
+    "SUBTITLE": "Expérience Professionnelle",
+    "DESCRIPTION": "Un résumé de mon expérience professionnelle, de ma formation et de mes compétences",
+    "DOWNLOAD": "Télécharger PDF",
+    "EXPERIENCE": "EXPÉRIENCE PROFESSIONNELLE",
+    "EDUCATION": "FORMATION",
+    "SKILLS": "COMPÉTENCES",
+    "TECHNOLOGIES_USED": "Technologies utilisées",
+    "PERSONAL_INFO": {
+      "NAME": "ABDERRAZZAQ EL ABDOUNI",
+      "TITLE": "Ingénieur Full Stack",
+      "EMAIL": "elabdouni.abderrazzaq@gmail.com",
+      "PHONE": "0653539113",
+      "LOCATION": "Rabat"
+    },
+    "EXPERIENCE_ITEMS": {
+      "ITEM1": {
+        "TITLE": "Développeur Full Stack, Freelance",
+        "PERIOD": "11/2024 – 01/2025",
+        "SUBTITLE": "Responsabilités et Réalisations:",
+        "POINTS": {
+          "POINT1": "Développement d'une API REST avec FastAPI et intégration du modèle TinyLlama.",
+          "POINT2": "Création d'une interface utilisateur React.js pour l'interaction avec l'IA.",
+          "POINT3": "Conteneurisation et déploiement avec Docker."
+        },
+        "TECHNOLOGIES": "FastAPI, TinyLlama, Docker, React.js, Docker, GitHub"
+      },
+      "ITEM2": {
+        "TITLE": "Ingénieur Full Stack, IoT et Machine Learning, Automize Technology — Stage Projet de Fin d'Études",
+        "PERIOD": "02/2024 – 07/2024",
+        "SUBTITLE": "Responsabilités et Réalisations:",
+        "POINTS": {
+          "POINT1": "Développement d'un système de reconnaissance faciale combinant IoT, machine learning, web et mobile.",
+          "POINT2": "Configuration d'ESP32-S3 pour le streaming RTSP/WebSocket et conception d'une API REST avec Django.",
+          "POINT3": "Conversion des flux RTSP en HLS via FFmpeg, et implémentation de la reconnaissance faciale avec ResNet/SCRFD.",
+          "POINT4": "Création d'une application mobile pour le streaming et l'authentification."
+        },
+        "TECHNOLOGIES": "ESP32-S3, Django, React Native, FFmpeg, ResNet, SCRFD, PostgreSQL, Redis, Ubuntu 22.04"
+      },
+      "ITEM3": {
+        "TITLE": "Développeur Full Stack Java / Angular, Freelance",
+        "PERIOD": "06/2023 – 08/2023",
+        "SUBTITLE": "Responsabilités et Réalisations:",
+        "POINTS": {
+          "POINT1": "Développement d'une plateforme de recherche d'emploi avec web scraping.",
+          "POINT2": "Création du backend avec Spring Boot et gestion de la sécurité avec Spring Security.",
+          "POINT3": "Développement du frontend en Angular pour une interface interactive."
+        },
+        "TECHNOLOGIES": "Java, Spring Boot, Spring Data, Spring Security, Thymeleaf, Bootstrap, Selenium, MySQL"
+      },
+      "ITEM4": {
+        "TITLE": "Développeur C#/.Net, ISMA salé — Stage",
+        "PERIOD": "05/2022 – 07/2022",
+        "SUBTITLE": "Responsabilités et Réalisations:",
+        "POINTS": {
+          "POINT1": "Développement d'un module pour l'automatisation de la génération des emplois du temps.",
+          "POINT2": "Test, validation et formation des utilisateurs pour assurer une utilisation optimale."
+        },
+        "TECHNOLOGIES": "C#, ASP.NET, HTML, CSS, JavaScript, Bootstrap, SQL Server / T-sql"
+      },
+      "ITEM5": {
+        "TITLE": "Développeur C#/.Net, ISMA salé — Stage",
+        "PERIOD": "07/2021 – 11/2021",
+        "SUBTITLE": "Responsabilités et Réalisations:",
+        "POINTS": {
+          "POINT1": "Maintenance et amélioration du système de gestion des absences et des emplois du temps.",
+          "POINT2": "Optimisation et automatisation des processus dans la base de données."
+        },
+        "TECHNOLOGIES": "C#, ASP.NET, HTML, CSS, JavaScript, Bootstrap, SQL Server / T-sql"
+      }
+    },
+    "EDUCATION_ITEMS": {
+      "ITEM1": {
+        "TITLE": "MASTER EN BIG DATA ET INTERNET DES OBJETS",
+        "PERIOD": "11/2022 – 07/2024",
+        "INSTITUTION": "École Nationale des Arts et Métiers | CASABLANCA, Maroc"
+      },
+      "ITEM2": {
+        "TITLE": "Licence Professionnelle en Développement Logiciel et Web",
+        "PERIOD": "11/2021 – 07/2022",
+        "INSTITUTION": "École Normale de Tétouan | Tétouan, Maroc"
+      },
+      "ITEM3": {
+        "TITLE": "Technicien Spécialisé en Développement Informatique",
+        "PERIOD": "09/2019 – 07/2021",
+        "INSTITUTION": "Institut Spécialisé de Technologie Appliquée | RABAT, Maroc"
+      }
+    },
+    "SKILLS_CATEGORIES": {
+      "LANGUAGES": "Langages",
+      "FRAMEWORKS": "Frameworks",
+      "DATABASES": "Bases de données",
+      "TOOLS": "Outils & DevOps",
+      "SOFT_SKILLS": "Compétences personnelles"
+    },
+    "SOFT_SKILLS": {
+      "TEAMWORK": "Travail d'équipe",
+      "STRESS_MANAGEMENT": "Gestion du stress",
+      "ADAPTABILITY": "Adaptabilité"
+    },
+    "LANGUAGES": {
+      "TITLE": "LANGUES",
+      "ARABIC": "Arabe",
+      "FRENCH": "Français",
+      "ENGLISH": "Anglais"
+    },
+    "CERTIFICATIONS": {
+      "TITLE": "CERTIFICATIONS",
+      "SCRUM": "Fondamentaux Scrum"
+    }
+  },
+  "CONTACT": {
+    "TITLE": "Contactez-Moi",
+    "SUBTITLE": "Me Contacter",
+    "DESCRIPTION": "N'hésitez pas à me contacter pour des collaborations, des opportunités ou simplement pour dire bonjour!",
+    "NAME": "Nom",
+    "NAME_PLACEHOLDER": "Votre Nom",
+    "NAME_REQUIRED": "Le nom est requis",
+    "EMAIL": "Email",
+    "EMAIL_PLACEHOLDER": "Votre Email",
+    "EMAIL_REQUIRED": "L'email est requis",
+    "EMAIL_INVALID": "Veuillez entrer une adresse email valide",
+    "MESSAGE": "Message",
+    "MESSAGE_PLACEHOLDER": "Votre Message",
+    "MESSAGE_REQUIRED": "Le message est requis",
+    "SEND": "Envoyer",
+    "SUCCESS": "Votre message a été envoyé avec succès!",
+    "ERROR": "Une erreur s'est produite. Veuillez réessayer."
+  }
+}

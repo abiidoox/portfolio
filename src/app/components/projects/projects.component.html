@@ -1,9 +1,9 @@
 <div class="projects-container section-padding">
   <div class="container">
     <div class="projects-header fade-in-up">
-      <h6 class="text-gradient">Portfolio</h6>
-      <h2>Featured Projects</h2>
-      <p>A showcase of my best work and creative solutions</p>
+      <h6 class="text-gradient">{{ 'PROJECTS.TITLE' | translate }}</h6>
+      <h2>{{ 'PROJECTS.TITLE' | translate }}</h2>
+      <p>{{ 'PROJECTS.SUBTITLE' | translate }}</p>
     </div>
     
     <div class="projects-grid">
@@ -13,10 +13,10 @@
           <div class="project-overlay">
             <div class="project-links">
               <a [href]="project.demoUrl" target="_blank" class="btn" *ngIf="project.demoUrl">
-                <i class="fas fa-external-link-alt"></i> Live Demo
+                <i class="fas fa-external-link-alt"></i> {{ 'PROJECTS.VIEW_DEMO' | translate }}
               </a>
               <a [href]="project.githubUrl" target="_blank" class="btn" *ngIf="project.githubUrl">
-                <i class="fab fa-github"></i> GitHub
+                <i class="fab fa-github"></i> {{ 'PROJECTS.VIEW_CODE' | translate }}
               </a>
             </div>
           </div>

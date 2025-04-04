@@ -1,0 +1,205 @@
+{
+  "HEADER": {
+    "ABOUT": "About",
+    "PROJECTS": "Projects",
+    "RESUME": "Resume",
+    "CONTACT": "Contact"
+  },
+  "ABOUT": {
+    "TITLE": "About Me",
+    "SUBTITLE": "Get to Know Me",
+    "PROFILE_ALT": "Profile Picture",
+    "INTRO": "Hello! I'm Abderrazzaq El Abdouni, a passionate Full Stack Engineer with expertise in web development, IoT, and machine learning.",
+    "DESCRIPTION": "With a strong background in both frontend and backend technologies, I enjoy creating efficient, scalable, and user-friendly applications. I'm constantly learning and exploring new technologies to stay at the forefront of the rapidly evolving tech landscape.",
+    "NAME_LABEL": "Name",
+    "NAME": "Abderrazzaq El Abdouni",
+    "EMAIL_LABEL": "Email",
+    "EMAIL": "elabdouni.abderrazzaq@gmail.com",
+    "LOCATION_LABEL": "Location",
+    "LOCATION": "Rabat, Morocco",
+    "AVAILABILITY_LABEL": "Availability",
+    "AVAILABILITY": "Available for freelance or full-time positions",
+    "CONTACT_BTN": "Contact Me",
+    "RESUME_BTN": "View Resume",
+    
+    "TITLE_SMALL": "About Me",
+    "TITLE_LARGE": "Crafting Digital Experiences",
+    "GREETING": "Hello, I'm",
+    "BIO": "I am a passionate Full Stack Engineer based in Rabat, specializing in web development, IoT, and Machine Learning. I combine technical expertise and innovation to create high-performance, scalable software solutions.",
+    "SKILLS_TITLE": "Technical Expertise",
+    "SKILLS": {
+      "LANGUAGES": {
+        "TITLE": "Languages",
+        "ITEM1": "C, C#, Java",
+        "ITEM2": "Python, R",
+        "ITEM3": "JavaScript",
+        "ITEM4": "HTML, CSS"
+      },
+      "FRAMEWORKS": {
+        "TITLE": "Frameworks",
+        "ITEM1": ".NET core, JEE",
+        "ITEM2": "Spring Boot",
+        "ITEM3": "React, Angular",
+        "ITEM4": "React Native, FastAPI"
+      },
+      "DATABASES": {
+        "TITLE": "Databases",
+        "ITEM1": "SQL Server",
+        "ITEM2": "MySQL, PostgreSQL",
+        "ITEM3": "T-SQL",
+        "ITEM4": "MongoDB"
+      },
+      "TOOLS": {
+        "TITLE": "Tools & DevOps",
+        "ITEM1": "Git, GitHub, GitLab",
+        "ITEM2": "Docker, Docker Compose",
+        "ITEM3": "Bootstrap",
+        "ITEM4": "Scrum"
+      }
+    }
+  },
+  "PROJECTS": {
+    "TITLE": "My Projects",
+    "SUBTITLE": "A showcase of my best work and creative solutions",
+    "VIEW_DEMO": "View Demo",
+    "VIEW_CODE": "View Code",
+    "PROJECT1": {
+      "TITLE": "E-Commerce Platform",
+      "DESCRIPTION": "A full-stack e-commerce platform built with Angular and Node.js"
+    },
+    "PROJECT2": {
+      "TITLE": "Task Management App",
+      "DESCRIPTION": "A responsive task management application with real-time updates"
+    }
+  },
+  "RESUME": {
+    "TITLE": "My Resume",
+    "SUBTITLE": "Professional Experience",
+    "DESCRIPTION": "A summary of my professional experience, education, and skills",
+    "DOWNLOAD": "Download PDF",
+    "EXPERIENCE": "PROFESSIONAL EXPERIENCE",
+    "EDUCATION": "EDUCATION",
+    "SKILLS": "SKILLS",
+    "TECHNOLOGIES_USED": "Technologies used",
+    "PERSONAL_INFO": {
+      "NAME": "ABDERRAZZAQ EL ABDOUNI",
+      "TITLE": "Full Stack Engineer",
+      "EMAIL": "elabdouni.abderrazzaq@gmail.com",
+      "PHONE": "0653539113",
+      "LOCATION": "Rabat"
+    },
+    "EXPERIENCE_ITEMS": {
+      "ITEM1": {
+        "TITLE": "Full Stack Developer, Freelance",
+        "PERIOD": "11/2024 – 01/2025",
+        "SUBTITLE": "Responsibilities and Achievements:",
+        "POINTS": {
+          "POINT1": "Developed a REST API with FastAPI and integrated the TinyLlama model.",
+          "POINT2": "Created a React.js user interface for AI interaction.",
+          "POINT3": "Containerized and deployed with Docker."
+        },
+        "TECHNOLOGIES": "FastAPI, TinyLlama, Docker, React.js, Docker, GitHub"
+      },
+      "ITEM2": {
+        "TITLE": "Full Stack, IoT and Machine Learning Engineer, Automize Technology — Final Project Internship",
+        "PERIOD": "02/2024 – 07/2024",
+        "SUBTITLE": "Responsibilities and Achievements:",
+        "POINTS": {
+          "POINT1": "Developed a facial recognition system combining IoT, machine learning, web, and mobile.",
+          "POINT2": "Configured ESP32-S3 for RTSP/WebSocket streaming and designed a REST API with Django.",
+          "POINT3": "Converted RTSP streams to HLS via FFmpeg, and implemented facial recognition with ResNet/SCRFD.",
+          "POINT4": "Created a mobile application for streaming and authentication."
+        },
+        "TECHNOLOGIES": "ESP32-S3, Django, React Native, FFmpeg, ResNet, SCRFD, PostgreSQL, Redis, Ubuntu 22.04"
+      },
+      "ITEM3": {
+        "TITLE": "Full Stack Java / Angular Developer, Freelance",
+        "PERIOD": "06/2023 – 08/2023",
+        "SUBTITLE": "Responsibilities and Achievements:",
+        "POINTS": {
+          "POINT1": "Developed a job search platform with web scraping.",
+          "POINT2": "Created the backend with Spring Boot and managed security with Spring Security.",
+          "POINT3": "Developed the frontend in Angular for an interactive interface."
+        },
+        "TECHNOLOGIES": "Java, Spring Boot, Spring Data, Spring Security, Thymeleaf, Bootstrap, Selenium, MySQL"
+      },
+      "ITEM4": {
+        "TITLE": "C#/.Net Developer, ISMA salé — Internship",
+        "PERIOD": "05/2022 – 07/2022",
+        "SUBTITLE": "Responsibilities and Achievements:",
+        "POINTS": {
+          "POINT1": "Developed a module for automating the generation of schedules.",
+          "POINT2": "Tested, validated, and trained users to ensure optimal use."
+        },
+        "TECHNOLOGIES": "C#, ASP.NET, HTML, CSS, JavaScript, Bootstrap, SQL Server / T-sql"
+      },
+      "ITEM5": {
+        "TITLE": "C#/.Net Developer, ISMA salé — Internship",
+        "PERIOD": "07/2021 – 11/2021",
+        "SUBTITLE": "Responsibilities and Achievements:",
+        "POINTS": {
+          "POINT1": "Maintained and improved the absence and schedule management system.",
+          "POINT2": "Optimized and automated processes in the database."
+        },
+        "TECHNOLOGIES": "C#, ASP.NET, HTML, CSS, JavaScript, Bootstrap, SQL Server / T-sql"
+      }
+    },
+    "EDUCATION_ITEMS": {
+      "ITEM1": {
+        "TITLE": "MASTER IN BIG DATA AND INTERNET OF THINGS",
+        "PERIOD": "11/2022 – 07/2024",
+        "INSTITUTION": "National School of Arts and Crafts | CASABLANCA, Morocco"
+      },
+      "ITEM2": {
+        "TITLE": "Professional Bachelor's in Software and Web Development",
+        "PERIOD": "11/2021 – 07/2022",
+        "INSTITUTION": "Tetouan Normal School | Tetouan, Morocco"
+      },
+      "ITEM3": {
+        "TITLE": "Specialized Technician in Computer Development",
+        "PERIOD": "09/2019 – 07/2021",
+        "INSTITUTION": "Specialized Institute of Applied Technology | RABAT, Morocco"
+      }
+    },
+    "SKILLS_CATEGORIES": {
+      "LANGUAGES": "Languages",
+      "FRAMEWORKS": "Frameworks",
+      "DATABASES": "Databases",
+      "TOOLS": "Tools & DevOps",
+      "SOFT_SKILLS": "Soft skills"
+    },
+    "SOFT_SKILLS": {
+      "TEAMWORK": "Teamwork",
+      "STRESS_MANAGEMENT": "Stress Management",
+      "ADAPTABILITY": "Adaptability"
+    },
+    "LANGUAGES": {
+      "TITLE": "LANGUAGES",
+      "ARABIC": "Arabic",
+      "FRENCH": "French",
+      "ENGLISH": "English"
+    },
+    "CERTIFICATIONS": {
+      "TITLE": "CERTIFICATIONS",
+      "SCRUM": "Scrum Foundations"
+    }
+  },
+  "CONTACT": {
+    "TITLE": "Get In Touch",
+    "SUBTITLE": "Contact Me",
+    "DESCRIPTION": "Feel free to reach out for collaborations, opportunities, or just to say hello!",
+    "NAME": "Name",
+    "NAME_PLACEHOLDER": "Your Name",
+    "NAME_REQUIRED": "Name is required",
+    "EMAIL": "Email",
+    "EMAIL_PLACEHOLDER": "Your Email",
+    "EMAIL_REQUIRED": "Email is required",
+    "EMAIL_INVALID": "Please enter a valid email address",
+    "MESSAGE": "Message",
+    "MESSAGE_PLACEHOLDER": "Your Message",
+    "MESSAGE_REQUIRED": "Message is required",
+    "SEND": "Send Message",
+    "SUCCESS": "Your message has been sent successfully!",
+    "ERROR": "An error occurred. Please try again."
+  }
+}

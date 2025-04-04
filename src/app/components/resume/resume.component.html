@@ -1,89 +1,237 @@
 <div class="resume-container section-padding">
   <div class="container">
     <div class="resume-header fade-in-up">
-      <h6 class="text-gradient">Expérience Professionnelle</h6>
-      <h2>Mon Parcours</h2>
+      <h6 class="text-gradient">{{ 'RESUME.SUBTITLE' | translate }}</h6>
+      <h2>{{ 'RESUME.TITLE' | translate }}</h2>
+      <p>{{ 'RESUME.DESCRIPTION' | translate }}</p>
+    </div>
+
+    <div class="resume-content">
+      <!-- Personal Info Section -->
+      <div class="resume-section fade-in-up">
+        <div class="personal-info">
+          <h1>{{ 'RESUME.PERSONAL_INFO.NAME' | translate }}</h1>
+          <p>{{ 'RESUME.PERSONAL_INFO.TITLE' | translate }}</p>
+          <div class="contact-details">
+            <p><i class="fas fa-envelope"></i> {{ 'RESUME.PERSONAL_INFO.EMAIL' | translate }}</p>
+            <p><i class="fas fa-phone"></i> {{ 'RESUME.PERSONAL_INFO.PHONE' | translate }}</p>
+            <p><i class="fas fa-map-marker-alt"></i> {{ 'RESUME.PERSONAL_INFO.LOCATION' | translate }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Experience Section -->
+      <div class="resume-section fade-in-up">
+        <h3 class="section-title">{{ 'RESUME.EXPERIENCE' | translate }}</h3>
+        
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h4>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM1.TITLE' | translate }}</h4>
+              <p class="timeline-date">{{ 'RESUME.EXPERIENCE_ITEMS.ITEM1.PERIOD' | translate }}</p>
+              <p class="timeline-subtitle">{{ 'RESUME.EXPERIENCE_ITEMS.ITEM1.SUBTITLE' | translate }}</p>
+              <ul>
+                <li>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM1.POINTS.POINT1' | translate }}</li>
+                <li>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM1.POINTS.POINT2' | translate }}</li>
+                <li>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM1.POINTS.POINT3' | translate }}</li>
+              </ul>
+              <p class="technologies">{{ 'RESUME.TECHNOLOGIES_USED' | translate }}: {{ 'RESUME.EXPERIENCE_ITEMS.ITEM1.TECHNOLOGIES' | translate }}</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h4>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM2.TITLE' | translate }}</h4>
+              <p class="timeline-date">{{ 'RESUME.EXPERIENCE_ITEMS.ITEM2.PERIOD' | translate }}</p>
+              <p class="timeline-subtitle">{{ 'RESUME.EXPERIENCE_ITEMS.ITEM2.SUBTITLE' | translate }}</p>
+              <ul>
+                <li>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM2.POINTS.POINT1' | translate }}</li>
+                <li>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM2.POINTS.POINT2' | translate }}</li>
+                <li>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM2.POINTS.POINT3' | translate }}</li>
+                <li>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM2.POINTS.POINT4' | translate }}</li>
+              </ul>
+              <p class="technologies">{{ 'RESUME.TECHNOLOGIES_USED' | translate }}: {{ 'RESUME.EXPERIENCE_ITEMS.ITEM2.TECHNOLOGIES' | translate }}</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h4>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM3.TITLE' | translate }}</h4>
+              <p class="timeline-date">{{ 'RESUME.EXPERIENCE_ITEMS.ITEM3.PERIOD' | translate }}</p>
+              <p class="timeline-subtitle">{{ 'RESUME.EXPERIENCE_ITEMS.ITEM3.SUBTITLE' | translate }}</p>
+              <ul>
+                <li>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM3.POINTS.POINT1' | translate }}</li>
+                <li>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM3.POINTS.POINT2' | translate }}</li>
+                <li>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM3.POINTS.POINT3' | translate }}</li>
+              </ul>
+              <p class="technologies">{{ 'RESUME.TECHNOLOGIES_USED' | translate }}: {{ 'RESUME.EXPERIENCE_ITEMS.ITEM3.TECHNOLOGIES' | translate }}</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h4>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM4.TITLE' | translate }}</h4>
+              <p class="timeline-date">{{ 'RESUME.EXPERIENCE_ITEMS.ITEM4.PERIOD' | translate }}</p>
+              <p class="timeline-subtitle">{{ 'RESUME.EXPERIENCE_ITEMS.ITEM4.SUBTITLE' | translate }}</p>
+              <ul>
+                <li>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM4.POINTS.POINT1' | translate }}</li>
+                <li>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM4.POINTS.POINT2' | translate }}</li>
+              </ul>
+              <p class="technologies">{{ 'RESUME.TECHNOLOGIES_USED' | translate }}: {{ 'RESUME.EXPERIENCE_ITEMS.ITEM4.TECHNOLOGIES' | translate }}</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h4>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM5.TITLE' | translate }}</h4>
+              <p class="timeline-date">{{ 'RESUME.EXPERIENCE_ITEMS.ITEM5.PERIOD' | translate }}</p>
+              <p class="timeline-subtitle">{{ 'RESUME.EXPERIENCE_ITEMS.ITEM5.SUBTITLE' | translate }}</p>
+              <ul>
+                <li>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM5.POINTS.POINT1' | translate }}</li>
+                <li>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM5.POINTS.POINT2' | translate }}</li>
+              </ul>
+              <p class="technologies">{{ 'RESUME.TECHNOLOGIES_USED' | translate }}: {{ 'RESUME.EXPERIENCE_ITEMS.ITEM5.TECHNOLOGIES' | translate }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Education Section -->
+      <div class="resume-section fade-in-up">
+        <h3 class="section-title">{{ 'RESUME.EDUCATION' | translate }}</h3>
+        
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h4>{{ 'RESUME.EDUCATION_ITEMS.ITEM1.TITLE' | translate }}</h4>
+              <p class="timeline-date">{{ 'RESUME.EDUCATION_ITEMS.ITEM1.PERIOD' | translate }}</p>
+              <p class="timeline-subtitle">{{ 'RESUME.EDUCATION_ITEMS.ITEM1.INSTITUTION' | translate }}</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h4>{{ 'RESUME.EDUCATION_ITEMS.ITEM2.TITLE' | translate }}</h4>
+              <p class="timeline-date">{{ 'RESUME.EDUCATION_ITEMS.ITEM2.PERIOD' | translate }}</p>
+              <p class="timeline-subtitle">{{ 'RESUME.EDUCATION_ITEMS.ITEM2.INSTITUTION' | translate }}</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h4>{{ 'RESUME.EDUCATION_ITEMS.ITEM3.TITLE' | translate }}</h4>
+              <p class="timeline-date">{{ 'RESUME.EDUCATION_ITEMS.ITEM3.PERIOD' | translate }}</p>
+              <p class="timeline-subtitle">{{ 'RESUME.EDUCATION_ITEMS.ITEM3.INSTITUTION' | translate }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Skills Section -->
+      <div class="resume-section fade-in-up">
+        <h3 class="section-title">{{ 'RESUME.SKILLS' | translate }}</h3>
+        
+        <div class="skills-container">
+          <div class="skill-category">
+            <h4>{{ 'RESUME.SKILLS_CATEGORIES.LANGUAGES' | translate }}</h4>
+            <div class="skills-list">
+              <span class="skill-tag">C</span>
+              <span class="skill-tag">C#</span>
+              <span class="skill-tag">Java</span>
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">R</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">HTML</span>
+              <span class="skill-tag">CSS</span>
+            </div>
+          </div>
+          
+          <div class="skill-category">
+            <h4>{{ 'RESUME.SKILLS_CATEGORIES.FRAMEWORKS' | translate }}</h4>
+            <div class="skills-list">
+              <span class="skill-tag">.NET Core</span>
+              <span class="skill-tag">JEE</span>
+              <span class="skill-tag">Spring Boot</span>
+              <span class="skill-tag">Bootstrap</span>
+              <span class="skill-tag">React</span>
+              <span class="skill-tag">Angular</span>
+              <span class="skill-tag">React Native</span>
+              <span class="skill-tag">FastAPI</span>
+            </div>
+          </div>
+          
+          <div class="skill-category">
+            <h4>{{ 'RESUME.SKILLS_CATEGORIES.DATABASES' | translate }}</h4>
+            <div class="skills-list">
+              <span class="skill-tag">SQL Server</span>
+              <span class="skill-tag">MySQL</span>
+              <span class="skill-tag">T-SQL</span>
+              <span class="skill-tag">PostgreSQL</span>
+              <span class="skill-tag">MongoDB</span>
+            </div>
+          </div>
+          
+          <div class="skill-category">
+            <h4>{{ 'RESUME.SKILLS_CATEGORIES.TOOLS' | translate }}</h4>
+            <div class="skills-list">
+              <span class="skill-tag">Git</span>
+              <span class="skill-tag">GitHub</span>
+              <span class="skill-tag">GitLab</span>
+              <span class="skill-tag">Docker</span>
+              <span class="skill-tag">Docker Compose</span>
+            </div>
+          </div>
+          
+          <div class="skill-category">
+            <h4>{{ 'RESUME.SKILLS_CATEGORIES.SOFT_SKILLS' | translate }}</h4>
+            <div class="skills-list">
+              <span class="skill-tag">{{ 'RESUME.SOFT_SKILLS.TEAMWORK' | translate }}</span>
+              <span class="skill-tag">{{ 'RESUME.SOFT_SKILLS.STRESS_MANAGEMENT' | translate }}</span>
+              <span class="skill-tag">{{ 'RESUME.SOFT_SKILLS.ADAPTABILITY' | translate }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Languages Section -->
+      <div class="resume-section fade-in-up">
+        <h3 class="section-title">{{ 'RESUME.LANGUAGES.TITLE' | translate }}</h3>
+        <div class="languages-list">
+          <div class="language-item">
+            <span class="language-name">{{ 'RESUME.LANGUAGES.ARABIC' | translate }}</span>
+          </div>
+          <div class="language-item">
+            <span class="language-name">{{ 'RESUME.LANGUAGES.FRENCH' | translate }}</span>
+          </div>
+          <div class="language-item">
+            <span class="language-name">{{ 'RESUME.LANGUAGES.ENGLISH' | translate }}</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Certifications Section -->
+      <div class="resume-section fade-in-up">
+        <h3 class="section-title">{{ 'RESUME.CERTIFICATIONS.TITLE' | translate }}</h3>
+        <div class="certifications-list">
+          <div class="certification-item">
+            <span class="certification-name">{{ 'RESUME.CERTIFICATIONS.SCRUM' | translate }}</span>
+          </div>
+        </div>
+      </div>
     </div>
     
-    <div class="resume-section fade-in-up">
-      <div class="timeline">
-        <div class="timeline-item" *ngFor="let exp of experiences; let i = index">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="timeline-header">
-              <h4>{{exp.title}}</h4>
-              <span class="company">{{exp.company}}</span>
-              <span class="date">{{exp.period}}</span>
-            </div>
-            <ul class="responsibilities">
-              <li *ngFor="let resp of exp.responsibilities">{{resp}}</li>
-            </ul>
-            <div class="technologies">
-              <span class="tech-label">Technologies :</span>
-              <span class="tech-list">{{exp.technologies}}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="resume-section fade-in-up">
-      <h3>Formation</h3>
-      <div class="timeline">
-        <div class="timeline-item" *ngFor="let edu of education">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="timeline-header">
-              <h4>{{edu.degree}}</h4>
-              <span class="company">{{edu.institution}}</span>
-              <span class="date">{{edu.period}}</span>
-            </div>
-            <p class="location">{{edu.location}}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="skills-section fade-in-up">
-      <h3>Compétences</h3>
-      <div class="skills-grid">
-        <div class="skill-category">
-          <div class="skill-icon">
-            <i class="fas fa-code"></i>
-          </div>
-          <h4>Langages</h4>
-          <ul>
-            <li *ngFor="let lang of skills.languages">{{lang}}</li>
-          </ul>
-        </div>
-        <div class="skill-category">
-          <div class="skill-icon">
-            <i class="fas fa-server"></i>
-          </div>
-          <h4>Frameworks</h4>
-          <ul>
-            <li *ngFor="let framework of skills.frameworks">{{framework}}</li>
-          </ul>
-        </div>
-        <div class="skill-category">
-          <div class="skill-icon">
-            <i class="fas fa-database"></i>
-          </div>
-          <h4>Bases de données</h4>
-          <ul>
-            <li *ngFor="let db of skills.databases">{{db}}</li>
-          </ul>
-        </div>
-        <div class="skill-category">
-          <div class="skill-icon">
-            <i class="fas fa-tools"></i>
-          </div>
-          <h4>Outils & DevOps</h4>
-          <ul>
-            <li *ngFor="let tool of skills.tools">{{tool}}</li>
-          </ul>
-        </div>
-      </div>
+    <div class="download-section fade-in-up">
+      <button (click)="downloadResume()" class="btn download-btn">
+        <i class="fas fa-download"></i> {{ 'RESUME.DOWNLOAD' | translate }}
+      </button>
     </div>
   </div>
 </div>

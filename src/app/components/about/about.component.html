@@ -1,14 +1,15 @@
 <div class="about-container section-padding">
   <div class="container">
     <div class="about-header fade-in-up">
-      <h6 class="text-gradient">About Me</h6>
-      <h2>Crafting Digital Experiences</h2>
+      <h6 class="text-gradient">{{ 'ABOUT.TITLE_SMALL' | translate }}</h6>
+      <h2>{{ 'ABOUT.TITLE_LARGE' | translate }}</h2>
     </div>
     
     <div class="about-content">
       <div class="profile-section fade-in-up">
         <div class="profile-image">
-          <img src="assets/profile-placeholder.jpg" alt="Profile Picture" class="profile-img">
+          <img src="assets/me.jpg" alt="{{ 'ABOUT.PROFILE_ALT' | translate }}" class="profile-img">
+          <div class="profile-border"></div>
           <div class="social-links">
             <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
             <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i></a>
@@ -16,77 +17,83 @@
           </div>
         </div>
         <div class="bio-section">
-          <h3>Hello, I'm <span class="text-gradient">ABDERRAZZAQ EL ABDOUNI</span></h3>
-          <p class="bio-text">Je suis un Ingénieur Full Stack passionné basé à Rabat, spécialisé dans le développement web, l'IoT et le Machine Learning. Je combine expertise technique et innovation pour créer des solutions logicielles performantes et évolutives.</p>
+          <h3>{{ 'ABOUT.GREETING' | translate }} <span class="text-gradient">{{ profile.name }}</span></h3>
+          <p class="bio-text">{{ 'ABOUT.BIO' | translate }}</p>
           <div class="contact-info">
             <div class="contact-item">
               <i class="fas fa-envelope"></i>
-              <span>elabdouni.abderrazzaq@gmail.com</span>
+              <span>{{ profile.email }}</span>
             </div>
             <div class="contact-item">
               <i class="fas fa-phone"></i>
-              <span>0653539113</span>
+              <span>{{ profile.phone }}</span>
             </div>
             <div class="contact-item">
               <i class="fas fa-map-marker-alt"></i>
-              <span>Rabat, Maroc</span>
+              <span>{{ profile.location }}</span>
             </div>
           </div>
         </div>
       </div>
       
       <div class="skills-section fade-in-up">
-        <h3>Technical Expertise</h3>
+        <h3>{{ 'ABOUT.SKILLS_TITLE' | translate }}</h3>
         <div class="skills-grid">
           <div class="skill-category">
             <div class="skill-icon">
               <i class="fas fa-code"></i>
             </div>
-            <h4>Langages</h4>
+            <h4>{{ 'ABOUT.SKILLS.LANGUAGES.TITLE' | translate }}</h4>
             <ul>
-              <li>C, C#, Java</li>
-              <li>Python, R</li>
-              <li>JavaScript</li>
-              <li>HTML, CSS</li>
+              <li>{{ 'ABOUT.SKILLS.LANGUAGES.ITEM1' | translate }}</li>
+              <li>{{ 'ABOUT.SKILLS.LANGUAGES.ITEM2' | translate }}</li>
+              <li>{{ 'ABOUT.SKILLS.LANGUAGES.ITEM3' | translate }}</li>
+              <li>{{ 'ABOUT.SKILLS.LANGUAGES.ITEM4' | translate }}</li>
             </ul>
           </div>
           <div class="skill-category">
             <div class="skill-icon">
               <i class="fas fa-server"></i>
             </div>
-            <h4>Frameworks</h4>
+            <h4>{{ 'ABOUT.SKILLS.FRAMEWORKS.TITLE' | translate }}</h4>
             <ul>
-              <li>.NET core, JEE</li>
-              <li>Spring Boot</li>
-              <li>React, Angular</li>
-              <li>React Native, FastAPI</li>
+              <li>{{ 'ABOUT.SKILLS.FRAMEWORKS.ITEM1' | translate }}</li>
+              <li>{{ 'ABOUT.SKILLS.FRAMEWORKS.ITEM2' | translate }}</li>
+              <li>{{ 'ABOUT.SKILLS.FRAMEWORKS.ITEM3' | translate }}</li>
+              <li>{{ 'ABOUT.SKILLS.FRAMEWORKS.ITEM4' | translate }}</li>
             </ul>
           </div>
           <div class="skill-category">
             <div class="skill-icon">
               <i class="fas fa-database"></i>
             </div>
-            <h4>Base de données</h4>
+            <h4>{{ 'ABOUT.SKILLS.DATABASES.TITLE' | translate }}</h4>
             <ul>
-              <li>SQL Server</li>
-              <li>MySQL, PostgreSQL</li>
-              <li>T-SQL</li>
-              <li>MongoDB</li>
+              <li>{{ 'ABOUT.SKILLS.DATABASES.ITEM1' | translate }}</li>
+              <li>{{ 'ABOUT.SKILLS.DATABASES.ITEM2' | translate }}</li>
+              <li>{{ 'ABOUT.SKILLS.DATABASES.ITEM3' | translate }}</li>
+              <li>{{ 'ABOUT.SKILLS.DATABASES.ITEM4' | translate }}</li>
             </ul>
           </div>
           <div class="skill-category">
             <div class="skill-icon">
               <i class="fas fa-tools"></i>
             </div>
-            <h4>Outils & DevOps</h4>
+            <h4>{{ 'ABOUT.SKILLS.TOOLS.TITLE' | translate }}</h4>
             <ul>
-              <li>Git, GitHub, GitLab</li>
-              <li>Docker, Docker Compose</li>
-              <li>Bootstrap</li>
-              <li>Scrum</li>
+              <li>{{ 'ABOUT.SKILLS.TOOLS.ITEM1' | translate }}</li>
+              <li>{{ 'ABOUT.SKILLS.TOOLS.ITEM2' | translate }}</li>
+              <li>{{ 'ABOUT.SKILLS.TOOLS.ITEM3' | translate }}</li>
+              <li>{{ 'ABOUT.SKILLS.TOOLS.ITEM4' | translate }}</li>
             </ul>
           </div>
         </div>
+      </div>
+      
+      <!-- Language switcher -->
+      <div class="language-switcher">
+        <button (click)="changeLanguage('en')" [class.active]="currentLang === 'en'">EN</button>
+        <button (click)="changeLanguage('fr')" [class.active]="currentLang === 'fr'">FR</button>
       </div>
     </div>
   </div>

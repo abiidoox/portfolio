@@ -1,20 +1,15 @@
-<header class="header">
-  <nav class="nav-container">
-    <div class="logo">
-      <a href="/">Portfolio</a>
-    </div>
-    <button class="menu-toggle" (click)="toggleMenu()">
-      <i class="fas" [ngClass]="isMenuOpen ? 'fa-times' : 'fa-bars'"></i>
-    </button>
-    <ul class="nav-links" [ngClass]="{'active': isMenuOpen}">
-      <li *ngFor="let item of navItems">
-        <a [routerLink]="item.path"
-           [class.active]="isActive(item.path)"
-           class="nav-link"
-           (click)="closeMenu()">
-          {{ item.label }}
-        </a>
-      </li>
+<header>
+  <nav>
+    <div class="logo">Portfolio</div>
+    <ul class="nav-links">
+      <li><a routerLink="/about" routerLinkActive="active">{{ 'HEADER.ABOUT' | translate }}</a></li>
+      <li><a routerLink="/projects" routerLinkActive="active">{{ 'HEADER.PROJECTS' | translate }}</a></li>
+      <li><a routerLink="/resume" routerLinkActive="active">{{ 'HEADER.RESUME' | translate }}</a></li>
+      <li><a routerLink="/contact" routerLinkActive="active">{{ 'HEADER.CONTACT' | translate }}</a></li>
     </ul>
+    <div class="language-switcher">
+      <button [class.active]="currentLanguage === 'en'" (click)="switchLanguage('en')">EN</button>
+      <button [class.active]="currentLanguage === 'fr'" (click)="switchLanguage('fr')">FR</button>
+    </div>
   </nav>
 </header>

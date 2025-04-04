@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { ProjectsComponent } from './projects.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 const routes: Routes = [
   { path: '', component: ProjectsComponent }
@@ -11,7 +12,8 @@ const routes: Routes = [
   declarations: [ProjectsComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    TranslateModule
   ]
 })
 export class ProjectsModule { }

@@ -1,34 +1,44 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  navItems = [
-    { path: '/about', label: 'About' },
-    { path: '/projects', label: 'Projects' },
-    { path: '/resume', label: 'Resume' },
-    { path: '/contact', label: 'Contact' }
-  ];
+  currentLanguage: string;
+  isDarkTheme = true;
   
-  isMenuOpen = false;
+  constructor(private translateService: TranslateService) {
+    this.currentLanguage = this.translateService.currentLang || 'en';
+  }
 
-  constructor(private router: Router) { }
-
-  ngOnInit(): void { }
-
-  isActive(path: string): boolean {
-    return this.router.url === path;
+  ngOnInit(): void {
+    this.translateService.onLangChange.subscribe(event => {
+      this.currentLanguage = event.lang;
+    });
+    
+    // Check for theme changes
+    this.checkTheme();
+    // Listen for theme changes
+    window.addEventListener('storage', () => {
+      this.checkTheme();
+    });
+    
+    // Also check when body class changes
+    const observer = new MutationObserver(() => {
+      this.checkTheme();
+    });
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
   }
   
-  toggleMenu(): void {
-    this.isMenuOpen = !this.isMenuOpen;
+  private checkTheme(): void {
+    this.isDarkTheme = !document.body.classList.contains('light-theme');
   }
-  
-  closeMenu(): void {
-    this.isMenuOpen = false;
+
+  switchLanguage(lang: string): void {
+    this.translateService.use(lang);
+    this.currentLanguage = lang;
   }
 }

@@ -129,5 +129,8 @@
       }
     }
   },
-  "defaultProject": "portfolio-website"
+  "defaultProject": "portfolio-website",
+  "cli": {
+    "analytics": false
+  }
 }
