@@ -1,0 +1,20 @@
+<header class="header">
+  <nav class="nav-container">
+    <div class="logo">
+      <a href="/">Portfolio</a>
+    </div>
+    <button class="menu-toggle" (click)="toggleMenu()">
+      <i class="fas" [ngClass]="isMenuOpen ? 'fa-times' : 'fa-bars'"></i>
+    </button>
+    <ul class="nav-links" [ngClass]="{'active': isMenuOpen}">
+      <li *ngFor="let item of navItems">
+        <a [routerLink]="item.path"
+           [class.active]="isActive(item.path)"
+           class="nav-link"
+           (click)="closeMenu()">
+          {{ item.label }}
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>

@@ -1,0 +1,34 @@
+<div class="projects-container section-padding">
+  <div class="container">
+    <div class="projects-header fade-in-up">
+      <h6 class="text-gradient">Portfolio</h6>
+      <h2>Featured Projects</h2>
+      <p>A showcase of my best work and creative solutions</p>
+    </div>
+    
+    <div class="projects-grid">
+      <div class="project-card fade-in-up" *ngFor="let project of projects">
+        <div class="project-image">
+          <img [src]="project.image" [alt]="project.title">
+          <div class="project-overlay">
+            <div class="project-links">
+              <a [href]="project.demoUrl" target="_blank" class="btn" *ngIf="project.demoUrl">
+                <i class="fas fa-external-link-alt"></i> Live Demo
+              </a>
+              <a [href]="project.githubUrl" target="_blank" class="btn" *ngIf="project.githubUrl">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="project-content">
+          <h3>{{project.title}}</h3>
+          <p class="project-description">{{project.description}}</p>
+          <div class="project-tech">
+            <span class="tech-tag" *ngFor="let tech of project.technologies">{{tech}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

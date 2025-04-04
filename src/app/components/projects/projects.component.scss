@@ -1,0 +1,207 @@
+.projects-container {
+  background-color: var(--bg-dark);
+  position: relative;
+  overflow: hidden;
+}
+
+.projects-header {
+  text-align: center;
+  margin-bottom: 4rem;
+
+  h6 {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--primary-color);
+  }
+
+  h2 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    
+    @media (max-width: 768px) {
+      font-size: 36px;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 28px;
+    }
+  }
+
+  p {
+    color: var(--text-light);
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto;
+    
+    @media (max-width: 768px) {
+      font-size: 16px;
+    }
+  }
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+  
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.project-card {
+  background: var(--bg-section);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.4s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    border-color: var(--primary-color);
+
+    .project-image img {
+      transform: scale(1.1);
+    }
+
+    .project-overlay {
+      opacity: 1;
+    }
+
+    .project-links {
+      transform: translateY(0);
+    }
+  }
+}
+
+.project-image {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  
+  @media (max-width: 768px) {
+    height: 220px;
+  }
+}
+
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(26, 36, 50, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+  transform: translateY(20px);
+  transition: transform 0.4s ease;
+  
+  .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    
+    @media (max-width: 480px) {
+      padding: 8px 16px;
+      font-size: 12px;
+    }
+  }
+}
+
+.project-content {
+  padding: 2rem;
+
+  h3 {
+    font-size: 24px;
+    margin: 0 0 1rem;
+    color: var(--text-color);
+    
+    @media (max-width: 768px) {
+      font-size: 20px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+}
+
+.project-description {
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+  
+  @media (max-width: 768px) {
+    font-size: 14px;
+    margin-bottom: 1rem;
+  }
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.tech-tag {
+  background: rgba(255, 94, 58, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba(255, 94, 58, 0.2);
+    transform: translateY(-2px);
+  }
+  
+  @media (max-width: 768px) {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Add vertical timeline line like in the image */
+.project-timeline {
+  position: absolute;
+  left: 50px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--primary-color);
+  
+  @media (max-width: 992px) {
+    left: 30px;
+  }
+  
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
