@@ -1,0 +1,35 @@
+.theme-switcher {
+  background: transparent;
+  border: 2px solid var(--primary-color);
+  border-radius: 25px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  color: var(--text-color);
+
+  &:hover {
+    background: var(--primary-color);
+    color: white;
+  }
+
+  .theme-icon {
+    font-size: 1.2rem;
+    line-height: 1;
+  }
+
+  // Light theme styles
+  :host-context(body.light-theme) & {
+    border-color: var(--primary-color);
+    color: var(--text-color);
+
+    &:hover {
+      background: var(--primary-color);
+      color: white;
+    }
+  }
+} 

@@ -1,0 +1,108 @@
+.language-switcher {
+  position: relative;
+  display: inline-block;
+}
+
+.current-language {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: 2px solid var(--primary-color);
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--text-color);
+
+  &:hover {
+    background: var(--primary-color);
+    color: white;
+  }
+
+  .flag {
+    font-size: 1.2rem;
+  }
+
+  .name {
+    font-weight: 500;
+  }
+
+  .arrow {
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+
+    &.open {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.language-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 0.5rem;
+  background: var(--header-bg);
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  // Light theme styles
+  :host-context(body.light-theme) & {
+    background: var(--header-bg-light);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .language-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--text-color);
+
+    &:hover,
+    &.focused {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    &.active {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    .flag {
+      font-size: 1.2rem;
+    }
+
+    .name {
+      font-weight: 500;
+    }
+  }
+}
+
+// Animation
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.language-dropdown {
+  animation: slideDown 0.2s ease-out;
+} 

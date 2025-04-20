@@ -1,0 +1,524 @@
+{
+  "HEADER": {
+    "ABOUT": "Sobre Mí",
+    "PROJECTS": "Proyectos",
+    "RESUME": "Currículum",
+    "CONTACT": "Contacto"
+  },
+  "ABOUT": {
+    "TITLE": "Sobre Mí",
+    "SUBTITLE": "Conóceme",
+    "PROFILE_ALT": "Foto de Perfil",
+    "INTRO": "¡Hola! Soy Abderrazzaq El Abdouni, un Ingeniero Full Stack apasionado con experiencia en desarrollo web, IoT y machine learning.",
+    "DESCRIPTION": "Con una sólida experiencia en tecnologías frontend y backend, disfruto creando aplicaciones eficientes, escalables y fáciles de usar. Estoy constantemente aprendiendo y explorando nuevas tecnologías para mantenerme a la vanguardia del panorama tecnológico en rápida evolución.",
+    "NAME_LABEL": "Nombre",
+    "NAME": "Abderrazzaq El Abdouni",
+    "EMAIL_LABEL": "Email",
+    "EMAIL": "elabdouni.abderrazzaq@gmail.com",
+    "LOCATION_LABEL": "Ubicación",
+    "LOCATION": "Rabat, Marruecos",
+    "AVAILABILITY_LABEL": "Disponibilidad",
+    "AVAILABILITY": "Disponible para proyectos freelance o posiciones a tiempo completo",
+    "CONTACT_BTN": "Contáctame",
+    "RESUME_BTN": "Ver Currículum",
+    
+    "TITLE_SMALL": "Sobre Mí",
+    "TITLE_LARGE": "Creando Experiencias Digitales",
+    "GREETING": "Hola, soy",
+    "BIO": "Soy un Ingeniero Full Stack apasionado con sede en Rabat, especializado en desarrollo web, IoT y Machine Learning. Combino experiencia técnica e innovación para crear soluciones de software escalables y de alto rendimiento.",
+    "SKILLS_TITLE": "Experiencia Técnica",
+    "SKILLS": {
+      "TITLE": "Habilidades Técnicas",
+      "SUBTITLE": "Una visión completa de mi experiencia y capacidades técnicas",
+      "VIEW_MORE": "Ver Habilidades Detalladas",
+      "LANGUAGES": {
+        "TITLE": "Lenguajes de Programación",
+        "ITEM1": "C#, Java (Avanzado)",
+        "ITEM2": "Python, JavaScript",
+        "ITEM3": "TypeScript, HTML5",
+        "ITEM4": "CSS3, SCSS"
+      },
+      "FRAMEWORKS": {
+        "TITLE": "Frameworks y Bibliotecas",
+        "ITEM1": ".NET Core, Spring Boot",
+        "ITEM2": "Angular, React",
+        "ITEM3": "FastAPI, Django",
+        "ITEM4": "Node.js, Express"
+      },
+      "DATABASES": {
+        "TITLE": "Bases de Datos",
+        "ITEM1": "SQL Server, MySQL",
+        "ITEM2": "PostgreSQL, MongoDB",
+        "ITEM3": "Redis, SQLite",
+        "ITEM4": "Entity Framework"
+      },
+      "TOOLS": {
+        "TITLE": "Herramientas y DevOps",
+        "ITEM1": "Git, GitHub, GitLab",
+        "ITEM2": "Docker, Kubernetes",
+        "ITEM3": "Jenkins, Azure DevOps",
+        "ITEM4": "AWS, Azure Cloud"
+      }
+    },
+    "DOWNLOAD_CV": "Descargar CV",
+    "CONTACT_ME": "Contáctame",
+    "CURRENT_FOCUS": {
+      "TITLE": "Áreas de Enfoque Actual",
+      "AI": {
+        "TITLE": "Inteligencia Artificial",
+        "DESCRIPTION": "Explorando los últimos avances en IA y aprendizaje automático"
+      },
+      "MOBILE": {
+        "TITLE": "Desarrollo Móvil",
+        "DESCRIPTION": "Creando aplicaciones móviles nativas y multiplataforma"
+      },
+      "CLOUD": {
+        "TITLE": "Tecnologías en la Nube",
+        "DESCRIPTION": "Arquitectura en la nube y soluciones serverless"
+      }
+    },
+    "STATS": {
+      "YEARS_EXPERIENCE": "Años de Experiencia",
+      "PROJECTS": "Proyectos Completados",
+      "TECHNOLOGIES": "Tecnologías Dominadas"
+    },
+    "CONNECT": {
+      "TITLE": "Mantengamos el Contacto",
+      "DESCRIPTION": "No dudes en contactarme para proyectos u oportunidades"
+    }
+  },
+  "header": {
+    "home": "Inicio",
+    "about": "Sobre Mí",
+    "skills": "Habilidades",
+    "projects": "Proyectos",
+    "resume": "Currículum",
+    "achievements": "Logros",
+    "blog": "Blog",
+    "testimonials": "Testimonios",
+    "contact": "Contacto",
+    "more": "Más"
+  },
+  "skills": {
+    "title": "Mis Habilidades",
+    "categories": {
+      "all": "Todo",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "tools": "Herramientas",
+      "cloud": "Cloud"
+    }
+  },
+  "about": {
+    "title": "Sobre Mí",
+    "description": "Soy un desarrollador apasionado con experiencia en desarrollo web"
+  },
+  "contact": {
+    "title": "Contáctame",
+    "name": "Nombre",
+    "email": "Email",
+    "message": "Mensaje",
+    "send": "Enviar Mensaje"
+  },
+  "theme": {
+    "light": "Cambiar a Modo Claro",
+    "dark": "Cambiar a Modo Oscuro"
+  },
+  "PROJECTS": {
+    "TITLE": "Mis Proyectos",
+    "SUBTITLE": "Una muestra de mi mejor trabajo y soluciones creativas",
+    "VIEW_DEMO": "Ver Demo",
+    "VIEW_CODE": "Ver Código",
+    "CATEGORIES": {
+      "ALL": "Todos los Proyectos",
+      "WEB": "Desarrollo Web",
+      "MOBILE": "Aplicaciones Móviles",
+      "AI": "IA & ML",
+      "IOT": "Soluciones IoT"
+    },
+    "AI_CHAT": {
+      "TITLE": "Asistente de Chat con IA",
+      "DESCRIPTION": "Un asistente conversacional de IA construido con FastAPI y TinyLlama, con una interfaz moderna en React.js y despliegue con Docker."
+    },
+    "FACE_RECOGNITION": {
+      "TITLE": "Sistema Inteligente de Reconocimiento Facial",
+      "DESCRIPTION": "Un sistema de reconocimiento facial basado en IoT que utiliza ESP32-S3, Django y React Native, con transmisión en tiempo real y autenticación."
+    },
+    "JOB_PLATFORM": {
+      "TITLE": "Plataforma de Búsqueda de Empleo",
+      "DESCRIPTION": "Una plataforma full-stack de búsqueda de empleo con capacidades de web scraping, construida con Spring Boot y Angular."
+    },
+    "SCHEDULE_SYSTEM": {
+      "TITLE": "Sistema de Gestión de Horarios",
+      "DESCRIPTION": "Un sistema completo de gestión de horarios desarrollado con ASP.NET y SQL Server."
+    }
+  },
+  "SKILLS": {
+    "TITLE_SMALL": "Lo que hago",
+    "TITLE_LARGE": "Mis Habilidades y Experiencia",
+    "SUBTITLE": "Me especializo en una variedad de tecnologías y frameworks modernos, expandiendo continuamente mis habilidades para ofrecer soluciones innovadoras.",
+    "CATEGORIES": {
+      "ALL": "Todas las Habilidades",
+      "LANGUAGES": "Lenguajes de Programación",
+      "FRAMEWORKS": "Frameworks y Bibliotecas",
+      "DATABASES": "Bases de Datos",
+      "TOOLS": "Herramientas y DevOps"
+    },
+    "LEVEL": {
+      "EXPERT": "Experto",
+      "ADVANCED": "Avanzado",
+      "INTERMEDIATE": "Intermedio",
+      "BEGINNER": "Principiante"
+    },
+    "EXPERIENCE": {
+      "YEARS": "años",
+      "YEAR": "año"
+    },
+    "PROJECTS": "proyectos",
+    "DETAILS": {
+      "LANGUAGES": {
+        "CSHARP": {
+          "NAME": "C#",
+          "DESCRIPTION": "Desarrollo backend con .NET Core"
+        },
+        "JAVA": {
+          "NAME": "Java",
+          "DESCRIPTION": "Aplicaciones empresariales y Spring Boot"
+        },
+        "PYTHON": {
+          "NAME": "Python",
+          "DESCRIPTION": "Procesamiento de datos y desarrollo de APIs"
+        },
+        "JAVASCRIPT": {
+          "NAME": "JavaScript",
+          "DESCRIPTION": "Desarrollo frontend y Node.js"
+        },
+        "TYPESCRIPT": {
+          "NAME": "TypeScript",
+          "DESCRIPTION": "Desarrollo JavaScript tipado"
+        },
+        "HTML_CSS": {
+          "NAME": "HTML/CSS",
+          "DESCRIPTION": "Desarrollo web y estilos"
+        }
+      },
+      "FRAMEWORKS": {
+        "DOTNET": {
+          "NAME": ".NET Core",
+          "DESCRIPTION": "Desarrollo de aplicaciones multiplataforma"
+        },
+        "SPRING": {
+          "NAME": "Spring Boot",
+          "DESCRIPTION": "Aplicaciones empresariales Java"
+        },
+        "ANGULAR": {
+          "NAME": "Angular",
+          "DESCRIPTION": "Aplicaciones web frontend"
+        },
+        "REACT": {
+          "NAME": "React",
+          "DESCRIPTION": "Desarrollo de componentes UI"
+        },
+        "FASTAPI": {
+          "NAME": "FastAPI",
+          "DESCRIPTION": "APIs web modernas en Python"
+        },
+        "DJANGO": {
+          "NAME": "Django",
+          "DESCRIPTION": "Desarrollo web full-stack Python"
+        }
+      },
+      "DATABASES": {
+        "SQLSERVER": {
+          "NAME": "SQL Server",
+          "DESCRIPTION": "Gestión de bases de datos empresariales"
+        },
+        "MYSQL": {
+          "NAME": "MySQL",
+          "DESCRIPTION": "Sistemas de bases de datos relacionales"
+        },
+        "POSTGRESQL": {
+          "NAME": "PostgreSQL",
+          "DESCRIPTION": "Bases de datos relacionales avanzadas"
+        },
+        "MONGODB": {
+          "NAME": "MongoDB",
+          "DESCRIPTION": "Bases de datos NoSQL documentales"
+        }
+      },
+      "TOOLS": {
+        "GIT": {
+          "NAME": "Git",
+          "DESCRIPTION": "Control de versiones y colaboración"
+        },
+        "DOCKER": {
+          "NAME": "Docker",
+          "DESCRIPTION": "Desarrollo y despliegue de contenedores"
+        },
+        "JENKINS": {
+          "NAME": "Jenkins",
+          "DESCRIPTION": "Integración/Despliegue continuo"
+        },
+        "AZURE": {
+          "NAME": "Azure DevOps",
+          "DESCRIPTION": "Desarrollo cloud y DevOps"
+        }
+      }
+    }
+  },
+  "RESUME": {
+    "TITLE": "Mi Currículum",
+    "SUBTITLE": "Experiencia Profesional",
+    "DESCRIPTION": "Un resumen de mi experiencia profesional, educación y habilidades",
+    "DOWNLOAD": "Descargar PDF",
+    "EXPERIENCE": "EXPERIENCIA PROFESIONAL",
+    "EDUCATION": "EDUCACIÓN",
+    "SKILLS": "HABILIDADES",
+    "TECHNOLOGIES_USED": "Tecnologías utilizadas",
+    "PERSONAL_INFO": {
+      "NAME": "ABDERRAZZAQ EL ABDOUNI",
+      "TITLE": "Ingeniero Full Stack",
+      "EMAIL": "elabdouni.abderrazzaq@gmail.com",
+      "PHONE": "0653539113",
+      "LOCATION": "Rabat"
+    },
+    "EXPERIENCE_ITEMS": {
+      "ITEM1": {
+        "TITLE": "Desarrollador Full Stack, Freelance",
+        "PERIOD": "11/2024 – 01/2025",
+        "SUBTITLE": "Responsabilidades y Logros:",
+        "POINTS": {
+          "POINT1": "Desarrollo de una API REST con FastAPI e integración del modelo TinyLlama.",
+          "POINT2": "Creación de una interfaz de usuario React.js para interacción con IA.",
+          "POINT3": "Containerización y despliegue con Docker."
+        },
+        "TECHNOLOGIES": "FastAPI, TinyLlama, Docker, React.js, Docker, GitHub"
+      },
+      "ITEM2": {
+        "TITLE": "Ingeniero Full Stack, IoT y Machine Learning, Automize Technology — Proyecto Final",
+        "PERIOD": "02/2024 – 07/2024",
+        "SUBTITLE": "Responsabilidades y Logros:",
+        "POINTS": {
+          "POINT1": "Desarrollo de un sistema de reconocimiento facial combinando IoT, machine learning, web y móvil.",
+          "POINT2": "Configuración de ESP32-S3 para streaming RTSP/WebSocket y diseño de API REST con Django.",
+          "POINT3": "Conversión de flujos RTSP a HLS vía FFmpeg, e implementación de reconocimiento facial con ResNet/SCRFD.",
+          "POINT4": "Creación de una aplicación móvil para streaming y autenticación."
+        },
+        "TECHNOLOGIES": "ESP32-S3, Django, React Native, FFmpeg, ResNet, SCRFD, PostgreSQL, Redis, Ubuntu 22.04"
+      },
+      "ITEM3": {
+        "TITLE": "Desarrollador Full Stack Java / Angular, Freelance",
+        "PERIOD": "06/2023 – 08/2023",
+        "SUBTITLE": "Responsabilidades y Logros:",
+        "POINTS": {
+          "POINT1": "Desarrollo de una plataforma de búsqueda de empleo con web scraping.",
+          "POINT2": "Creación del backend con Spring Boot y gestión de seguridad con Spring Security.",
+          "POINT3": "Desarrollo del frontend en Angular para una interfaz interactiva."
+        },
+        "TECHNOLOGIES": "Java, Spring Boot, Spring Data, Spring Security, Thymeleaf, Bootstrap, Selenium, MySQL"
+      },
+      "ITEM4": {
+        "TITLE": "Desarrollador C#/.Net, ISMA salé — Prácticas",
+        "PERIOD": "05/2022 – 07/2022",
+        "SUBTITLE": "Responsabilidades y Logros:",
+        "POINTS": {
+          "POINT1": "Desarrollo de un módulo para la automatización de la generación de horarios.",
+          "POINT2": "Pruebas, validación y formación de usuarios para asegurar un uso óptimo."
+        },
+        "TECHNOLOGIES": "C#, ASP.NET, HTML, CSS, JavaScript, Bootstrap, SQL Server / T-sql"
+      },
+      "ITEM5": {
+        "TITLE": "Desarrollador C#/.Net, ISMA salé — Prácticas",
+        "PERIOD": "07/2021 – 11/2021",
+        "SUBTITLE": "Responsabilidades y Logros:",
+        "POINTS": {
+          "POINT1": "Mantenimiento y mejora del sistema de gestión de ausencias y horarios.",
+          "POINT2": "Optimización y automatización de procesos en la base de datos."
+        },
+        "TECHNOLOGIES": "C#, ASP.NET, HTML, CSS, JavaScript, Bootstrap, SQL Server / T-sql"
+      }
+    },
+    "EDUCATION_ITEMS": {
+      "ITEM1": {
+        "TITLE": "MÁSTER EN BIG DATA E INTERNET DE LAS COSAS",
+        "PERIOD": "11/2022 – 07/2024",
+        "INSTITUTION": "Escuela Nacional de Artes y Oficios | CASABLANCA, Marruecos"
+      },
+      "ITEM2": {
+        "TITLE": "Licenciatura Profesional en Desarrollo de Software y Web",
+        "PERIOD": "11/2021 – 07/2022",
+        "INSTITUTION": "Escuela Normal de Tetuán | Tetuán, Marruecos"
+      },
+      "ITEM3": {
+        "TITLE": "Técnico Especializado en Desarrollo Informático",
+        "PERIOD": "09/2019 – 07/2021",
+        "INSTITUTION": "Instituto Especializado de Tecnología Aplicada | RABAT, Marruecos"
+      }
+    },
+    "SKILLS_CATEGORIES": {
+      "LANGUAGES": "Lenguajes",
+      "FRAMEWORKS": "Frameworks",
+      "DATABASES": "Bases de datos",
+      "TOOLS": "Herramientas y DevOps",
+      "SOFT_SKILLS": "Habilidades blandas"
+    },
+    "SOFT_SKILLS": {
+      "TEAMWORK": "Trabajo en equipo",
+      "STRESS_MANAGEMENT": "Gestión del estrés",
+      "ADAPTABILITY": "Adaptabilidad"
+    },
+    "LANGUAGES": {
+      "TITLE": "IDIOMAS",
+      "ARABIC": "Árabe",
+      "FRENCH": "Francés",
+      "ENGLISH": "Inglés"
+    },
+    "CERTIFICATIONS": {
+      "TITLE": "CERTIFICACIONES",
+      "SCRUM": "Fundamentos de Scrum"
+    }
+  },
+  "ACHIEVEMENTS": {
+    "SUBTITLE": "Mis Logros",
+    "TITLE": "Hitos Profesionales",
+    "DESCRIPTION": "Una muestra de mis certificaciones, premios y proyectos destacados que demuestran mi experiencia y dedicación.",
+    "FILTER": {
+      "TYPE": "Filtrar por Tipo",
+      "CATEGORY": "Filtrar por Categoría"
+    },
+    "TYPES": {
+      "ALL": "Todos",
+      "CERTIFICATION": "Certificaciones",
+      "AWARD": "Premios",
+      "PROJECT": "Proyectos",
+      "PUBLICATION": "Publicaciones"
+    },
+    "CATEGORIES": {
+      "ALL": "Todas las Categorías",
+      "WEB": "Desarrollo Web",
+      "AI": "Inteligencia Artificial",
+      "METHODOLOGY": "Metodología",
+      "CLOUD": "Computación en la Nube"
+    },
+    "TECHNOLOGIES": "Tecnologías Utilizadas",
+    "VIEW_DETAILS": "Ver Detalles",
+    "NO_RESULTS": "No se encontraron logros que coincidan con los filtros seleccionados.",
+    "ITEMS": {
+      "SCRUM": {
+        "TITLE": "Professional Scrum Master I",
+        "DESCRIPTION": "Scrum Master certificado con experiencia en metodologías Ágiles y liderazgo de equipos.",
+        "ISSUER": "Scrum.org"
+      },
+      "FACE_RECOGNITION": {
+        "TITLE": "Sistema de Reconocimiento Facial con IA",
+        "DESCRIPTION": "Desarrollo de un sistema de reconocimiento facial en tiempo real utilizando Python y OpenCV.",
+        "ISSUER": "Proyecto Personal"
+      },
+      "BEST_PROJECT": {
+        "TITLE": "Premio al Mejor Proyecto 2023",
+        "DESCRIPTION": "Reconocido por una contribución excepcional a un proyecto de desarrollo web.",
+        "ISSUER": "Premios a la Innovación Tecnológica"
+      }
+    }
+  },
+  "BLOG": {
+    "SUBTITLE": "Últimos Artículos",
+    "TITLE": "Mi Blog",
+    "DESCRIPTION": "Explora mis pensamientos, experiencias e ideas sobre desarrollo de software, IA y tecnología.",
+    "SEARCH_PLACEHOLDER": "Buscar artículos...",
+    "FILTER": {
+      "CATEGORY": "Categorías",
+      "TAGS": "Etiquetas"
+    },
+    "MIN_READ": "min de lectura",
+    "READ_MORE": "Leer más",
+    "NO_RESULTS": "No se encontraron artículos que coincidan con tus criterios.",
+    "CATEGORIES": {
+      "ALL": "Todas las categorías",
+      "DEVELOPMENT": "Desarrollo",
+      "AI": "Inteligencia Artificial",
+      "IOT": "Internet de las Cosas",
+      "CLOUD": "Computación en la Nube"
+    },
+    "TAGS": {
+      "ALL": "Todas las etiquetas",
+      "ANGULAR": "Angular",
+      "PYTHON": "Python",
+      "MACHINE-LEARNING": "Machine Learning",
+      "WEB-DEVELOPMENT": "Desarrollo Web",
+      "CLOUD-COMPUTING": "Computación en la Nube"
+    },
+    "POSTS": {
+      "AI_CHAT": {
+        "TITLE": "Creando una Aplicación de Chat con IA usando Python",
+        "EXCERPT": "Aprende a crear una aplicación de chat moderna impulsada por inteligencia artificial usando Python y procesamiento de lenguaje natural.",
+        "CONTENT": "En esta guía completa, exploraremos el proceso de crear una aplicación de chat impulsada por IA desde cero. Cubriremos todo, desde la configuración del entorno de desarrollo hasta la implementación del procesamiento de lenguaje natural y la creación de una interfaz de usuario intuitiva. El artículo incluye ejemplos de código, mejores prácticas y consejos para optimizar tu aplicación de chat con IA."
+      },
+      "FACE_RECOGNITION": {
+        "TITLE": "Implementando Reconocimiento Facial en Dispositivos IoT",
+        "EXCERPT": "Una guía práctica para implementar tecnología de reconocimiento facial en dispositivos IoT usando Python y OpenCV.",
+        "CONTENT": "Este artículo profundiza en el mundo de la tecnología de reconocimiento facial y su implementación en dispositivos IoT. Discutiremos los desafíos de ejecutar reconocimiento facial en dispositivos con recursos limitados, técnicas de optimización y consideraciones de seguridad. La guía incluye ejemplos prácticos y fragmentos de código para ayudarte a implementar reconocimiento facial en tus propios proyectos IoT."
+      },
+      "CLOUD_ARCHITECTURE": {
+        "TITLE": "Patrones Modernos de Arquitectura en la Nube",
+        "EXCERPT": "Explora los últimos patrones de arquitectura en la nube y las mejores prácticas para construir aplicaciones escalables.",
+        "CONTENT": "En este artículo, examinaremos los patrones modernos de arquitectura en la nube y cómo pueden aplicarse para construir aplicaciones escalables y resilientes. Cubriremos microservicios, arquitectura serverless, contenedores y más. La guía incluye ejemplos del mundo real y consejos prácticos para implementar estos patrones en tus proyectos."
+      }
+    }
+  },
+  "TESTIMONIALS": {
+    "TITLE": "Lo que Dicen las Personas",
+    "SUBTITLE": "Testimonios de Clientes y Colegas",
+    "DESCRIPTION": "Escucha lo que otros tienen que decir sobre trabajar conmigo y mis contribuciones a varios proyectos.",
+    "ITEMS": {
+      "JOHN": {
+        "NAME": "John Doe",
+        "POSITION": "Desarrollador Senior",
+        "COMPANY": "Tech Corp",
+        "TEXT": "Trabajar con este desarrollador fue un placer. Su atención al detalle y sus habilidades para resolver problemas son excepcionales.",
+        "RATING": 5
+      },
+      "JANE": {
+        "NAME": "Jane Smith",
+        "POSITION": "Gerente de Proyecto",
+        "COMPANY": "Innovate Solutions",
+        "TEXT": "Un profesional altamente cualificado que entrega constantemente trabajos de calidad a tiempo. ¡Excelente compañero de equipo!",
+        "RATING": 5
+      },
+      "MIKE": {
+        "NAME": "Mike Johnson",
+        "POSITION": "CTO",
+        "COMPANY": "StartupX",
+        "TEXT": "Un pensador innovador con una sólida formación técnica. Sus contribuciones fueron invaluables para el éxito de nuestro proyecto.",
+        "RATING": 5
+      }
+    }
+  },
+  "CONTACT": {
+    "TITLE": "Ponte en Contacto",
+    "SUBTITLE": "Contáctame",
+    "DESCRIPTION": "¡No dudes en contactarme para colaboraciones, oportunidades o simplemente para saludar!",
+    "INFO_TITLE": "Información de Contacto",
+    "INFO_DESCRIPTION": "Puedes contactarme a través de cualquiera de los siguientes canales:",
+    "ADDRESS_TITLE": "Ubicación",
+    "ADDRESS": "Rabat, Marruecos",
+    "EMAIL_TITLE": "Email",
+    "EMAIL": "elabdouni.abderrazzaq@gmail.com",
+    "PHONE_TITLE": "Teléfono",
+    "PHONE": "+212 653539113",
+    "NAME": "Nombre",
+    "NAME_PLACEHOLDER": "Tu Nombre",
+    "NAME_REQUIRED": "El nombre es obligatorio",
+    "EMAIL": "Email",
+    "EMAIL_PLACEHOLDER": "Tu Email",
+    "EMAIL_REQUIRED": "El email es obligatorio",
+    "EMAIL_INVALID": "Por favor, introduce una dirección de email válida",
+    "MESSAGE": "Mensaje",
+    "MESSAGE_PLACEHOLDER": "Tu Mensaje",
+    "MESSAGE_REQUIRED": "El mensaje es obligatorio",
+    "SEND": "Enviar Mensaje",
+    "SENDING": "Enviando...",
+    "SUCCESS": "¡Tu mensaje ha sido enviado con éxito!",
+    "ERROR": "Ha ocurrido un error al enviar tu mensaje. Por favor, inténtalo de nuevo."
+  }
+} 

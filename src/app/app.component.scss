@@ -2,16 +2,37 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: var(--bg-primary);
+  color: var(--text-primary);
 }
 
-main {
+.main-content {
+  margin-top: 4rem; // Height of the header
   flex: 1;
-  background: var(--bg-dark);
-  padding-top: 70px; /* Space for fixed header */
 }
 
-.content-wrapper {
-  min-height: calc(100vh - 70px - 60px); /* Viewport height minus header and footer */
+// Custom variables and theme-specific styles only
+:root {
+  --bg-primary: #ffffff;
+  --text-primary: #333333;
+  --bg-section: #f8f9fa;
+  --text-light: #6c757d;
+  --primary-color: #007bff;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #1a1a1a;
+  --text-primary: #ffffff;
+  --bg-section: #2d2d2d;
+  --text-light: #adb5bd;
+  --primary-color: #0d6efd;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-top: 6rem; // Adjusted for mobile header height
+    padding: 1rem;
+  }
 }
 
 footer {

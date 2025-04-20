@@ -28,34 +28,63 @@
     "BIO": "I am a passionate Full Stack Engineer based in Rabat, specializing in web development, IoT, and Machine Learning. I combine technical expertise and innovation to create high-performance, scalable software solutions.",
     "SKILLS_TITLE": "Technical Expertise",
     "SKILLS": {
+      "TITLE": "Technical Skills",
+      "SUBTITLE": "A comprehensive overview of my technical expertise and capabilities",
+      "VIEW_MORE": "View Detailed Skills",
       "LANGUAGES": {
-        "TITLE": "Languages",
-        "ITEM1": "C, C#, Java",
-        "ITEM2": "Python, R",
-        "ITEM3": "JavaScript",
-        "ITEM4": "HTML, CSS"
+        "TITLE": "Programming Languages",
+        "ITEM1": "C#, Java (Advanced)",
+        "ITEM2": "Python, JavaScript",
+        "ITEM3": "TypeScript, HTML5",
+        "ITEM4": "CSS3, SCSS"
       },
       "FRAMEWORKS": {
-        "TITLE": "Frameworks",
-        "ITEM1": ".NET core, JEE",
-        "ITEM2": "Spring Boot",
-        "ITEM3": "React, Angular",
-        "ITEM4": "React Native, FastAPI"
+        "TITLE": "Frameworks & Libraries",
+        "ITEM1": ".NET Core, Spring Boot",
+        "ITEM2": "Angular, React",
+        "ITEM3": "FastAPI, Django",
+        "ITEM4": "Node.js, Express"
       },
       "DATABASES": {
         "TITLE": "Databases",
-        "ITEM1": "SQL Server",
-        "ITEM2": "MySQL, PostgreSQL",
-        "ITEM3": "T-SQL",
-        "ITEM4": "MongoDB"
+        "ITEM1": "SQL Server, MySQL",
+        "ITEM2": "PostgreSQL, MongoDB",
+        "ITEM3": "Redis, SQLite",
+        "ITEM4": "Entity Framework"
       },
       "TOOLS": {
         "TITLE": "Tools & DevOps",
         "ITEM1": "Git, GitHub, GitLab",
-        "ITEM2": "Docker, Docker Compose",
-        "ITEM3": "Bootstrap",
-        "ITEM4": "Scrum"
+        "ITEM2": "Docker, Kubernetes",
+        "ITEM3": "Jenkins, Azure DevOps",
+        "ITEM4": "AWS, Azure Cloud"
       }
+    },
+    "DOWNLOAD_CV": "Download CV",
+    "CONTACT_ME": "Contact Me",
+    "CURRENT_FOCUS": {
+      "TITLE": "Current Focus Areas",
+      "AI": {
+        "TITLE": "Artificial Intelligence",
+        "DESCRIPTION": "Exploring latest AI and machine learning advancements"
+      },
+      "MOBILE": {
+        "TITLE": "Mobile Development",
+        "DESCRIPTION": "Building native and cross-platform mobile applications"
+      },
+      "CLOUD": {
+        "TITLE": "Cloud Technologies",
+        "DESCRIPTION": "Cloud architecture and serverless solutions"
+      }
+    },
+    "STATS": {
+      "YEARS_EXPERIENCE": "Years of Experience",
+      "PROJECTS": "Projects Completed",
+      "TECHNOLOGIES": "Technologies Mastered"
+    },
+    "CONNECT": {
+      "TITLE": "Let's Connect",
+      "DESCRIPTION": "Feel free to reach out for projects or opportunities"
     }
   },
   "PROJECTS": {
@@ -63,6 +92,29 @@
     "SUBTITLE": "A showcase of my best work and creative solutions",
     "VIEW_DEMO": "View Demo",
     "VIEW_CODE": "View Code",
+    "CATEGORIES": {
+      "ALL": "All Projects",
+      "WEB": "Web Development",
+      "MOBILE": "Mobile Apps",
+      "AI": "AI & ML",
+      "IOT": "IoT Solutions"
+    },
+    "AI_CHAT": {
+      "TITLE": "AI Chat Assistant",
+      "DESCRIPTION": "A conversational AI assistant built with FastAPI and TinyLlama, featuring a modern React.js interface and Docker deployment."
+    },
+    "FACE_RECOGNITION": {
+      "TITLE": "Smart Face Recognition System",
+      "DESCRIPTION": "An IoT-based facial recognition system using ESP32-S3, Django, and React Native, with real-time streaming and authentication."
+    },
+    "JOB_PLATFORM": {
+      "TITLE": "Job Search Platform",
+      "DESCRIPTION": "A full-stack job search platform with web scraping capabilities, built with Spring Boot and Angular."
+    },
+    "SCHEDULE_SYSTEM": {
+      "TITLE": "Schedule Management System",
+      "DESCRIPTION": "A comprehensive schedule management system developed with ASP.NET and SQL Server."
+    },
     "PROJECT1": {
       "TITLE": "E-Commerce Platform",
       "DESCRIPTION": "A full-stack e-commerce platform built with Angular and Node.js"
@@ -117,7 +169,7 @@
         "PERIOD": "06/2023 – 08/2023",
         "SUBTITLE": "Responsibilities and Achievements:",
         "POINTS": {
-          "POINT1": "Developed a job search platform with web scraping.",
+          "POINT1": "Developed a job search platform with web scraping capabilities.",
           "POINT2": "Created the backend with Spring Boot and managed security with Spring Security.",
           "POINT3": "Developed the frontend in Angular for an interactive interface."
         },
@@ -188,6 +240,14 @@
     "TITLE": "Get In Touch",
     "SUBTITLE": "Contact Me",
     "DESCRIPTION": "Feel free to reach out for collaborations, opportunities, or just to say hello!",
+    "INFO_TITLE": "Contact Information",
+    "INFO_DESCRIPTION": "You can reach me through any of the following channels:",
+    "ADDRESS_TITLE": "Location",
+    "ADDRESS": "Rabat, Morocco",
+    "EMAIL_TITLE": "Email",
+    "EMAIL": "elabdouni.abderrazzaq@gmail.com",
+    "PHONE_TITLE": "Phone",
+    "PHONE": "+212 653539113",
     "NAME": "Name",
     "NAME_PLACEHOLDER": "Your Name",
     "NAME_REQUIRED": "Name is required",
@@ -199,7 +259,274 @@
     "MESSAGE_PLACEHOLDER": "Your Message",
     "MESSAGE_REQUIRED": "Message is required",
     "SEND": "Send Message",
+    "SENDING": "Sending...",
     "SUCCESS": "Your message has been sent successfully!",
-    "ERROR": "An error occurred. Please try again."
+    "ERROR": "An error occurred while sending your message. Please try again."
+  },
+  "header": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "resume": "Resume",
+    "achievements": "Achievements",
+    "blog": "Blog",
+    "testimonials": "Testimonials",
+    "contact": "Contact",
+    "more": "More"
+  },
+  "skills": {
+    "title": "My Skills",
+    "categories": {
+      "all": "All",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "tools": "Tools",
+      "cloud": "Cloud"
+    }
+  },
+  "about": {
+    "title": "About Me",
+    "description": "I am a passionate developer with experience in web development"
+  },
+  "contact": {
+    "title": "Contact Me",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send Message"
+  },
+  "theme": {
+    "light": "Switch to Light Mode",
+    "dark": "Switch to Dark Mode"
+  },
+  "SKILLS": {
+    "TITLE_SMALL": "What I do",
+    "TITLE_LARGE": "My Skills & Expertise",
+    "SUBTITLE": "I specialize in a range of modern technologies and frameworks, continuously expanding my skillset to deliver innovative solutions.",
+    "CATEGORIES": {
+      "ALL": "All Skills",
+      "LANGUAGES": "Programming Languages",
+      "FRAMEWORKS": "Frameworks & Libraries",
+      "DATABASES": "Databases",
+      "TOOLS": "Tools & DevOps"
+    },
+    "LEVEL": {
+      "EXPERT": "Expert",
+      "ADVANCED": "Advanced",
+      "INTERMEDIATE": "Intermediate",
+      "BEGINNER": "Beginner"
+    },
+    "EXPERIENCE": {
+      "YEARS": "years",
+      "YEAR": "year"
+    },
+    "PROJECTS": "projects",
+    "DETAILS": {
+      "LANGUAGES": {
+        "CSHARP": {
+          "NAME": "C#",
+          "DESCRIPTION": "Backend development with .NET Core"
+        },
+        "JAVA": {
+          "NAME": "Java",
+          "DESCRIPTION": "Enterprise applications and Spring Boot"
+        },
+        "PYTHON": {
+          "NAME": "Python",
+          "DESCRIPTION": "Data processing and API development"
+        },
+        "JAVASCRIPT": {
+          "NAME": "JavaScript",
+          "DESCRIPTION": "Frontend and Node.js development"
+        },
+        "TYPESCRIPT": {
+          "NAME": "TypeScript",
+          "DESCRIPTION": "Type-safe JavaScript development"
+        },
+        "HTML_CSS": {
+          "NAME": "HTML/CSS",
+          "DESCRIPTION": "Web development and styling"
+        }
+      },
+      "FRAMEWORKS": {
+        "DOTNET": {
+          "NAME": ".NET Core",
+          "DESCRIPTION": "Cross-platform application development"
+        },
+        "SPRING": {
+          "NAME": "Spring Boot",
+          "DESCRIPTION": "Java-based enterprise applications"
+        },
+        "ANGULAR": {
+          "NAME": "Angular",
+          "DESCRIPTION": "Frontend web applications"
+        },
+        "REACT": {
+          "NAME": "React",
+          "DESCRIPTION": "UI component development"
+        },
+        "FASTAPI": {
+          "NAME": "FastAPI",
+          "DESCRIPTION": "Modern Python web APIs"
+        },
+        "DJANGO": {
+          "NAME": "Django",
+          "DESCRIPTION": "Full-stack Python web development"
+        }
+      },
+      "DATABASES": {
+        "SQLSERVER": {
+          "NAME": "SQL Server",
+          "DESCRIPTION": "Enterprise database management"
+        },
+        "MYSQL": {
+          "NAME": "MySQL",
+          "DESCRIPTION": "Relational database systems"
+        },
+        "POSTGRESQL": {
+          "NAME": "PostgreSQL",
+          "DESCRIPTION": "Advanced relational databases"
+        },
+        "MONGODB": {
+          "NAME": "MongoDB",
+          "DESCRIPTION": "NoSQL document databases"
+        }
+      },
+      "TOOLS": {
+        "GIT": {
+          "NAME": "Git",
+          "DESCRIPTION": "Version control and collaboration"
+        },
+        "DOCKER": {
+          "NAME": "Docker",
+          "DESCRIPTION": "Container development and deployment"
+        },
+        "JENKINS": {
+          "NAME": "Jenkins",
+          "DESCRIPTION": "Continuous Integration/Deployment"
+        },
+        "AZURE": {
+          "NAME": "Azure DevOps",
+          "DESCRIPTION": "Cloud development and DevOps"
+        }
+      }
+    }
+  },
+  "ACHIEVEMENTS": {
+    "SUBTITLE": "My Achievements",
+    "TITLE": "Professional Milestones",
+    "DESCRIPTION": "A showcase of my certifications, awards, and notable projects that demonstrate my expertise and dedication.",
+    "FILTER": {
+      "TYPE": "Filter by Type",
+      "CATEGORY": "Filter by Category"
+    },
+    "TYPES": {
+      "ALL": "All",
+      "CERTIFICATION": "Certifications",
+      "AWARD": "Awards",
+      "PROJECT": "Projects",
+      "PUBLICATION": "Publications"
+    },
+    "CATEGORIES": {
+      "ALL": "All Categories",
+      "WEB": "Web Development",
+      "AI": "Artificial Intelligence",
+      "METHODOLOGY": "Methodology",
+      "CLOUD": "Cloud Computing"
+    },
+    "TECHNOLOGIES": "Technologies Used",
+    "VIEW_DETAILS": "View Details",
+    "NO_RESULTS": "No achievements found matching the selected filters.",
+    "ITEMS": {
+      "SCRUM": {
+        "TITLE": "Professional Scrum Master I",
+        "DESCRIPTION": "Certified Scrum Master with expertise in Agile methodologies and team leadership.",
+        "ISSUER": "Scrum.org"
+      },
+      "FACE_RECOGNITION": {
+        "TITLE": "AI-Powered Face Recognition System",
+        "DESCRIPTION": "Developed a real-time face recognition system using Python and OpenCV.",
+        "ISSUER": "Personal Project"
+      },
+      "BEST_PROJECT": {
+        "TITLE": "Best Project Award 2023",
+        "DESCRIPTION": "Recognized for outstanding contribution to web development project.",
+        "ISSUER": "Tech Innovation Awards"
+      }
+    }
+  },
+  "BLOG": {
+    "SUBTITLE": "Latest Articles",
+    "TITLE": "My Blog",
+    "DESCRIPTION": "Explore my thoughts, experiences, and insights on software development, AI, and technology.",
+    "SEARCH_PLACEHOLDER": "Search articles...",
+    "FILTER": {
+      "CATEGORY": "Categories",
+      "TAGS": "Tags"
+    },
+    "MIN_READ": "min read",
+    "READ_MORE": "Read More",
+    "NO_RESULTS": "No articles found matching your criteria.",
+    "CATEGORIES": {
+      "ALL": "All Categories",
+      "DEVELOPMENT": "Development",
+      "AI": "Artificial Intelligence",
+      "IOT": "Internet of Things",
+      "CLOUD": "Cloud Computing"
+    },
+    "TAGS": {
+      "ALL": "All Tags",
+      "ANGULAR": "Angular",
+      "PYTHON": "Python",
+      "MACHINE-LEARNING": "Machine Learning",
+      "WEB-DEVELOPMENT": "Web Development",
+      "CLOUD-COMPUTING": "Cloud Computing"
+    },
+    "POSTS": {
+      "AI_CHAT": {
+        "TITLE": "Building an AI Chat Application with Python",
+        "EXCERPT": "Learn how to create a modern chat application powered by artificial intelligence using Python and natural language processing.",
+        "CONTENT": "In this comprehensive guide, we'll explore the process of building an AI-powered chat application from scratch. We'll cover everything from setting up the development environment to implementing natural language processing and creating an intuitive user interface. The article includes code examples, best practices, and tips for optimizing your AI chat application."
+      },
+      "FACE_RECOGNITION": {
+        "TITLE": "Implementing Face Recognition in IoT Devices",
+        "EXCERPT": "A practical guide to implementing face recognition technology in IoT devices using Python and OpenCV.",
+        "CONTENT": "This article dives deep into the world of face recognition technology and its implementation in IoT devices. We'll discuss the challenges of running face recognition on resource-constrained devices, optimization techniques, and security considerations. The guide includes practical examples and code snippets to help you implement face recognition in your own IoT projects."
+      },
+      "CLOUD_ARCHITECTURE": {
+        "TITLE": "Modern Cloud Architecture Patterns",
+        "EXCERPT": "Explore the latest cloud architecture patterns and best practices for building scalable applications.",
+        "CONTENT": "In this article, we'll examine modern cloud architecture patterns and how they can be applied to build scalable, resilient applications. We'll cover microservices, serverless architecture, containerization, and more. The guide includes real-world examples and practical advice for implementing these patterns in your projects."
+      }
+    }
+  },
+  "TESTIMONIALS": {
+    "TITLE": "What People Say",
+    "SUBTITLE": "Client and Colleague Testimonials",
+    "DESCRIPTION": "Hear what others have to say about working with me and my contributions to various projects.",
+    "ITEMS": {
+      "JOHN": {
+        "NAME": "John Doe",
+        "POSITION": "Senior Developer",
+        "COMPANY": "Tech Corp",
+        "TEXT": "Working with this developer was a pleasure. Their attention to detail and problem-solving skills are exceptional.",
+        "RATING": 5
+      },
+      "JANE": {
+        "NAME": "Jane Smith",
+        "POSITION": "Project Manager",
+        "COMPANY": "Innovate Solutions",
+        "TEXT": "A highly skilled professional who consistently delivers quality work on time. Great team player!",
+        "RATING": 5
+      },
+      "MIKE": {
+        "NAME": "Mike Johnson",
+        "POSITION": "CTO",
+        "COMPANY": "StartupX",
+        "TEXT": "An innovative thinker with a strong technical background. Their contributions were invaluable to our project's success.",
+        "RATING": 5
+      }
+    }
   }
 }

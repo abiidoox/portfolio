@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LanguageService } from './services/language.service';
 import { TranslateService } from '@ngx-translate/core';
+import { LanguageService } from './services/language.service';
 
 @Component({
   selector: 'app-root',
@@ -8,20 +8,22 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'portfolio-website';
-
   constructor(
-    private languageService: LanguageService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private languageService: LanguageService
   ) {
-    // Define the languages we support
-    translate.addLangs(['en', 'fr']);
-    
-    // Set the default language
-    translate.setDefaultLang('fr');
+    // Initialize translations
+    translate.addLangs(['en', 'es', 'fr']);
+    translate.setDefaultLang('en');
+
+    // Language will be initialized by the LanguageService
+    // which handles saved preferences and browser language
   }
 
   ngOnInit(): void {
-    // The language service will handle setting the initial language
+    // Subscribe to language changes
+    this.languageService.currentLanguage$.subscribe(lang => {
+      document.documentElement.lang = lang;
+    });
   }
 }

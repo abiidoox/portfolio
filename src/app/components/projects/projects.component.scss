@@ -2,103 +2,108 @@
   background-color: var(--bg-dark);
   position: relative;
   overflow: hidden;
+  padding: 4rem 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .projects-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 
   h6 {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 500;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     text-transform: uppercase;
     letter-spacing: 2px;
     color: var(--primary-color);
   }
 
   h2 {
-    font-size: 48px;
-    margin-bottom: 20px;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
     
     @media (max-width: 768px) {
-      font-size: 36px;
-    }
-    
-    @media (max-width: 480px) {
-      font-size: 28px;
+      font-size: 2rem;
     }
   }
 
   p {
     color: var(--text-light);
-    font-size: 18px;
+    font-size: 1rem;
     max-width: 600px;
     margin: 0 auto;
-    
-    @media (max-width: 768px) {
-      font-size: 16px;
+    line-height: 1.6;
+  }
+}
+
+.project-filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+
+  .filter-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    background: transparent;
+    border: none;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: var(--primary-color);
+    }
+
+    &.active {
+      background: var(--primary-color);
+      color: white;
     }
   }
 }
 
 .projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2.5rem;
-  
-  @media (max-width: 992px) {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  }
-  
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .project-card {
   background: var(--bg-section);
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: all 0.4s ease;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 
   &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
     border-color: var(--primary-color);
-
-    .project-image img {
-      transform: scale(1.1);
-    }
-
-    .project-overlay {
-      opacity: 1;
-    }
-
-    .project-links {
-      transform: translateY(0);
-    }
   }
 }
 
 .project-image {
   position: relative;
   width: 100%;
-  height: 250px;
+  height: 300px;
   overflow: hidden;
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.4s ease;
   }
   
   @media (max-width: 768px) {
-    height: 220px;
+    height: 200px;
   }
 }
 
@@ -108,100 +113,115 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(26, 36, 50, 0.85);
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .project-links {
   display: flex;
   gap: 1rem;
-  transform: translateY(20px);
-  transition: transform 0.4s ease;
   
   .btn {
-    padding: 10px 20px;
-    font-size: 14px;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
     
-    @media (max-width: 480px) {
-      padding: 8px 16px;
-      font-size: 12px;
+    i {
+      font-size: 1rem;
+    }
+
+    &:hover {
+      background: lighten(#ff5e3a, 10%);
     }
   }
 }
 
 .project-content {
-  padding: 2rem;
+  padding: 1.5rem;
 
-  h3 {
-    font-size: 24px;
-    margin: 0 0 1rem;
-    color: var(--text-color);
-    
-    @media (max-width: 768px) {
-      font-size: 20px;
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+
+    h3 {
+      font-size: 1.5rem;
+      margin: 0;
+      color: var(--text-color);
     }
-  }
-  
-  @media (max-width: 768px) {
-    padding: 1.5rem;
+
+    .project-date {
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
   }
 }
 
 .project-description {
   color: var(--text-light);
-  margin-bottom: 1.5rem;
-  line-height: 1.8;
-  
-  @media (max-width: 768px) {
-    font-size: 14px;
-    margin-bottom: 1rem;
-  }
+  margin-bottom: 1.2rem;
+  line-height: 1.6;
+  font-size: 0.95rem;
 }
 
 .project-tech {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.8rem;
+  gap: 0.5rem;
 }
 
 .tech-tag {
-  background: rgba(255, 94, 58, 0.1);
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  color: var(--primary-color);
-  border: 1px solid var(--primary-color);
+  background: transparent;
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: var(--text-light);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
   
   &:hover {
-    background: rgba(255, 94, 58, 0.2);
-    transform: translateY(-2px);
-  }
-  
-  @media (max-width: 768px) {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.8rem;
+    border-color: var(--primary-color);
+    color: var(--primary-color);
   }
 }
 
-/* Add vertical timeline line like in the image */
-.project-timeline {
-  position: absolute;
-  left: 50px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: var(--primary-color);
-  
-  @media (max-width: 992px) {
-    left: 30px;
+// Animations
+.fade-in-up {
+  animation: fadeInUp 0.6s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  @media (max-width: 768px) {
-    display: none;
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Add animation delay for cards
+.project-card {
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.1}s;
+    }
   }
 }

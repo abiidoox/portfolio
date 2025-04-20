@@ -1,0 +1,6 @@
+<button class="theme-switcher" 
+        (click)="toggleTheme()"
+        [attr.aria-label]="getThemeLabel()"
+        [title]="getThemeLabel()">
+  <span class="theme-icon">{{getThemeIcon()}}</span>
+</button> 

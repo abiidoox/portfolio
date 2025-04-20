@@ -28,34 +28,63 @@
     "BIO": "Je suis un Ingénieur Full Stack passionné basé à Rabat, spécialisé dans le développement web, l'IoT et le Machine Learning. Je combine expertise technique et innovation pour créer des solutions logicielles performantes et évolutives.",
     "SKILLS_TITLE": "Expertise Technique",
     "SKILLS": {
+      "TITLE": "Compétences Techniques",
+      "SUBTITLE": "Un aperçu complet de mon expertise et de mes capacités techniques",
+      "VIEW_MORE": "Voir les Compétences Détaillées",
       "LANGUAGES": {
-        "TITLE": "Langages",
-        "ITEM1": "C, C#, Java",
-        "ITEM2": "Python, R",
-        "ITEM3": "JavaScript",
-        "ITEM4": "HTML, CSS"
+        "TITLE": "Langages de Programmation",
+        "ITEM1": "C#, Java (Avancé)",
+        "ITEM2": "Python, JavaScript",
+        "ITEM3": "TypeScript, HTML5",
+        "ITEM4": "CSS3, SCSS"
       },
       "FRAMEWORKS": {
-        "TITLE": "Frameworks",
-        "ITEM1": ".NET core, JEE",
-        "ITEM2": "Spring Boot",
-        "ITEM3": "React, Angular",
-        "ITEM4": "React Native, FastAPI"
+        "TITLE": "Frameworks & Bibliothèques",
+        "ITEM1": ".NET Core, Spring Boot",
+        "ITEM2": "Angular, React",
+        "ITEM3": "FastAPI, Django",
+        "ITEM4": "Node.js, Express"
       },
       "DATABASES": {
-        "TITLE": "Base de données",
-        "ITEM1": "SQL Server",
-        "ITEM2": "MySQL, PostgreSQL",
-        "ITEM3": "T-SQL",
-        "ITEM4": "MongoDB"
+        "TITLE": "Bases de Données",
+        "ITEM1": "SQL Server, MySQL",
+        "ITEM2": "PostgreSQL, MongoDB",
+        "ITEM3": "Redis, SQLite",
+        "ITEM4": "Entity Framework"
       },
       "TOOLS": {
         "TITLE": "Outils & DevOps",
         "ITEM1": "Git, GitHub, GitLab",
-        "ITEM2": "Docker, Docker Compose",
-        "ITEM3": "Bootstrap",
-        "ITEM4": "Scrum"
+        "ITEM2": "Docker, Kubernetes",
+        "ITEM3": "Jenkins, Azure DevOps",
+        "ITEM4": "AWS, Azure Cloud"
       }
+    },
+    "DOWNLOAD_CV": "Télécharger CV",
+    "CONTACT_ME": "Me Contacter",
+    "CURRENT_FOCUS": {
+      "TITLE": "Mes Centres d'Intérêt Actuels",
+      "AI": {
+        "TITLE": "Intelligence Artificielle",
+        "DESCRIPTION": "Exploration des dernières avancées en IA et apprentissage automatique"
+      },
+      "MOBILE": {
+        "TITLE": "Développement Mobile",
+        "DESCRIPTION": "Création d'applications mobiles natives et cross-platform"
+      },
+      "CLOUD": {
+        "TITLE": "Technologies Cloud",
+        "DESCRIPTION": "Architecture cloud et solutions serverless"
+      }
+    },
+    "STATS": {
+      "YEARS_EXPERIENCE": "Années d'Expérience",
+      "PROJECTS": "Projets Réalisés",
+      "TECHNOLOGIES": "Technologies Maîtrisées"
+    },
+    "CONNECT": {
+      "TITLE": "Restons en Contact",
+      "DESCRIPTION": "N'hésitez pas à me contacter pour discuter de projets ou opportunités"
     }
   },
   "PROJECTS": {
@@ -63,6 +92,29 @@
     "SUBTITLE": "Une vitrine de mon meilleur travail et de mes solutions créatives",
     "VIEW_DEMO": "Voir la Démo",
     "VIEW_CODE": "Voir le Code",
+    "CATEGORIES": {
+      "ALL": "Tous les Projets",
+      "WEB": "Développement Web",
+      "MOBILE": "Applications Mobiles",
+      "AI": "IA & ML",
+      "IOT": "Solutions IoT"
+    },
+    "AI_CHAT": {
+      "TITLE": "Assistant IA Conversationnel",
+      "DESCRIPTION": "Un assistant conversationnel IA construit avec FastAPI et TinyLlama, doté d'une interface moderne React.js et déployé avec Docker."
+    },
+    "FACE_RECOGNITION": {
+      "TITLE": "Système Intelligent de Reconnaissance Faciale",
+      "DESCRIPTION": "Un système de reconnaissance faciale basé sur l'IoT utilisant ESP32-S3, Django et React Native, avec streaming en temps réel et authentification."
+    },
+    "JOB_PLATFORM": {
+      "TITLE": "Plateforme de Recherche d'Emploi",
+      "DESCRIPTION": "Une plateforme full-stack de recherche d'emploi avec capacités de web scraping, construite avec Spring Boot et Angular."
+    },
+    "SCHEDULE_SYSTEM": {
+      "TITLE": "Système de Gestion des Emplois du Temps",
+      "DESCRIPTION": "Un système complet de gestion des emplois du temps développé avec ASP.NET et SQL Server."
+    },
     "PROJECT1": {
       "TITLE": "Plateforme E-Commerce",
       "DESCRIPTION": "Une plateforme e-commerce full-stack construite avec Angular et Node.js"
@@ -92,7 +144,7 @@
       "ITEM1": {
         "TITLE": "Développeur Full Stack, Freelance",
         "PERIOD": "11/2024 – 01/2025",
-        "SUBTITLE": "Responsabilités et Réalisations:",
+        "SUBTITLE": "Responsabilités et Réalisations :",
         "POINTS": {
           "POINT1": "Développement d'une API REST avec FastAPI et intégration du modèle TinyLlama.",
           "POINT2": "Création d'une interface utilisateur React.js pour l'interaction avec l'IA.",
@@ -103,7 +155,7 @@
       "ITEM2": {
         "TITLE": "Ingénieur Full Stack, IoT et Machine Learning, Automize Technology — Stage Projet de Fin d'Études",
         "PERIOD": "02/2024 – 07/2024",
-        "SUBTITLE": "Responsabilités et Réalisations:",
+        "SUBTITLE": "Responsabilités et Réalisations :",
         "POINTS": {
           "POINT1": "Développement d'un système de reconnaissance faciale combinant IoT, machine learning, web et mobile.",
           "POINT2": "Configuration d'ESP32-S3 pour le streaming RTSP/WebSocket et conception d'une API REST avec Django.",
@@ -115,7 +167,7 @@
       "ITEM3": {
         "TITLE": "Développeur Full Stack Java / Angular, Freelance",
         "PERIOD": "06/2023 – 08/2023",
-        "SUBTITLE": "Responsabilités et Réalisations:",
+        "SUBTITLE": "Responsabilités et Réalisations :",
         "POINTS": {
           "POINT1": "Développement d'une plateforme de recherche d'emploi avec web scraping.",
           "POINT2": "Création du backend avec Spring Boot et gestion de la sécurité avec Spring Security.",
@@ -126,7 +178,7 @@
       "ITEM4": {
         "TITLE": "Développeur C#/.Net, ISMA salé — Stage",
         "PERIOD": "05/2022 – 07/2022",
-        "SUBTITLE": "Responsabilités et Réalisations:",
+        "SUBTITLE": "Responsabilités et Réalisations :",
         "POINTS": {
           "POINT1": "Développement d'un module pour l'automatisation de la génération des emplois du temps.",
           "POINT2": "Test, validation et formation des utilisateurs pour assurer une utilisation optimale."
@@ -136,7 +188,7 @@
       "ITEM5": {
         "TITLE": "Développeur C#/.Net, ISMA salé — Stage",
         "PERIOD": "07/2021 – 11/2021",
-        "SUBTITLE": "Responsabilités et Réalisations:",
+        "SUBTITLE": "Responsabilités et Réalisations :",
         "POINTS": {
           "POINT1": "Maintenance et amélioration du système de gestion des absences et des emplois du temps.",
           "POINT2": "Optimisation et automatisation des processus dans la base de données."
@@ -165,7 +217,7 @@
       "LANGUAGES": "Langages",
       "FRAMEWORKS": "Frameworks",
       "DATABASES": "Bases de données",
-      "TOOLS": "Outils & DevOps",
+      "TOOLS": "Outils et DevOps",
       "SOFT_SKILLS": "Compétences personnelles"
     },
     "SOFT_SKILLS": {
@@ -188,6 +240,14 @@
     "TITLE": "Contactez-Moi",
     "SUBTITLE": "Me Contacter",
     "DESCRIPTION": "N'hésitez pas à me contacter pour des collaborations, des opportunités ou simplement pour dire bonjour!",
+    "INFO_TITLE": "Informations de Contact",
+    "INFO_DESCRIPTION": "Vous pouvez me joindre par l'un des canaux suivants :",
+    "ADDRESS_TITLE": "Localisation",
+    "ADDRESS": "Rabat, Maroc",
+    "EMAIL_TITLE": "Email",
+    "EMAIL": "elabdouni.abderrazzaq@gmail.com",
+    "PHONE_TITLE": "Téléphone",
+    "PHONE": "+212 653539113",
     "NAME": "Nom",
     "NAME_PLACEHOLDER": "Votre Nom",
     "NAME_REQUIRED": "Le nom est requis",
@@ -198,8 +258,276 @@
     "MESSAGE": "Message",
     "MESSAGE_PLACEHOLDER": "Votre Message",
     "MESSAGE_REQUIRED": "Le message est requis",
-    "SEND": "Envoyer",
-    "SUCCESS": "Votre message a été envoyé avec succès!",
-    "ERROR": "Une erreur s'est produite. Veuillez réessayer."
+    "SEND": "Envoyer le Message",
+    "SENDING": "Envoi en cours...",
+    "SUCCESS": "Votre message a été envoyé avec succès !",
+    "ERROR": "Une erreur s'est produite lors de l'envoi de votre message. Veuillez réessayer."
+  },
+  "header": {
+    "logo": "Portfolio",
+    "home": "Accueil",
+    "about": "À propos",
+    "skills": "Compétences",
+    "projects": "Projets",
+    "resume": "CV",
+    "achievements": "Réalisations",
+    "blog": "Blog",
+    "testimonials": "Témoignages",
+    "contact": "Contact",
+    "more": "Plus"
+  },
+  "skills": {
+    "title": "Mes Compétences",
+    "categories": {
+      "all": "Toutes",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "tools": "Outils",
+      "cloud": "Cloud"
+    }
+  },
+  "about": {
+    "title": "À Propos de Moi",
+    "description": "Je suis un développeur passionné avec de l'expérience en développement web"
+  },
+  "contact": {
+    "title": "Me Contacter",
+    "name": "Nom",
+    "email": "Email",
+    "message": "Message",
+    "send": "Envoyer le Message"
+  },
+  "theme": {
+    "light": "Passer en Mode Clair",
+    "dark": "Passer en Mode Sombre"
+  },
+  "SKILLS": {
+    "TITLE_SMALL": "Ce que je fais",
+    "TITLE_LARGE": "Mes Compétences & Expertise",
+    "SUBTITLE": "Je me spécialise dans une gamme de technologies et frameworks modernes, élargissant continuellement mes compétences pour offrir des solutions innovantes.",
+    "CATEGORIES": {
+      "ALL": "Toutes les Compétences",
+      "LANGUAGES": "Langages de Programmation",
+      "FRAMEWORKS": "Frameworks & Bibliothèques",
+      "DATABASES": "Bases de Données",
+      "TOOLS": "Outils & DevOps"
+    },
+    "LEVEL": {
+      "EXPERT": "Expert",
+      "ADVANCED": "Avancé",
+      "INTERMEDIATE": "Intermédiaire",
+      "BEGINNER": "Débutant"
+    },
+    "EXPERIENCE": {
+      "YEARS": "ans",
+      "YEAR": "an"
+    },
+    "PROJECTS": "projets",
+    "DETAILS": {
+      "LANGUAGES": {
+        "CSHARP": {
+          "NAME": "C#",
+          "DESCRIPTION": "Développement backend avec .NET Core"
+        },
+        "JAVA": {
+          "NAME": "Java",
+          "DESCRIPTION": "Applications d'entreprise et Spring Boot"
+        },
+        "PYTHON": {
+          "NAME": "Python",
+          "DESCRIPTION": "Traitement de données et développement d'API"
+        },
+        "JAVASCRIPT": {
+          "NAME": "JavaScript",
+          "DESCRIPTION": "Développement frontend et Node.js"
+        },
+        "TYPESCRIPT": {
+          "NAME": "TypeScript",
+          "DESCRIPTION": "Développement JavaScript typé"
+        },
+        "HTML_CSS": {
+          "NAME": "HTML/CSS",
+          "DESCRIPTION": "Développement web et style"
+        }
+      },
+      "FRAMEWORKS": {
+        "DOTNET": {
+          "NAME": ".NET Core",
+          "DESCRIPTION": "Développement d'applications multiplateforme"
+        },
+        "SPRING": {
+          "NAME": "Spring Boot",
+          "DESCRIPTION": "Applications d'entreprise Java"
+        },
+        "ANGULAR": {
+          "NAME": "Angular",
+          "DESCRIPTION": "Applications web frontend"
+        },
+        "REACT": {
+          "NAME": "React",
+          "DESCRIPTION": "Développement de composants UI"
+        },
+        "FASTAPI": {
+          "NAME": "FastAPI",
+          "DESCRIPTION": "APIs web Python modernes"
+        },
+        "DJANGO": {
+          "NAME": "Django",
+          "DESCRIPTION": "Développement web full-stack Python"
+        }
+      },
+      "DATABASES": {
+        "SQLSERVER": {
+          "NAME": "SQL Server",
+          "DESCRIPTION": "Gestion de bases de données d'entreprise"
+        },
+        "MYSQL": {
+          "NAME": "MySQL",
+          "DESCRIPTION": "Systèmes de bases de données relationnelles"
+        },
+        "POSTGRESQL": {
+          "NAME": "PostgreSQL",
+          "DESCRIPTION": "Bases de données relationnelles avancées"
+        },
+        "MONGODB": {
+          "NAME": "MongoDB",
+          "DESCRIPTION": "Bases de données NoSQL documentaires"
+        }
+      },
+      "TOOLS": {
+        "GIT": {
+          "NAME": "Git",
+          "DESCRIPTION": "Contrôle de version et collaboration"
+        },
+        "DOCKER": {
+          "NAME": "Docker",
+          "DESCRIPTION": "Développement et déploiement de conteneurs"
+        },
+        "JENKINS": {
+          "NAME": "Jenkins",
+          "DESCRIPTION": "Intégration/Déploiement continu"
+        },
+        "AZURE": {
+          "NAME": "Azure DevOps",
+          "DESCRIPTION": "Développement cloud et DevOps"
+        }
+      }
+    }
+  },
+  "ACHIEVEMENTS": {
+    "SUBTITLE": "Mes Réalisations",
+    "TITLE": "Jalons Professionnels",
+    "DESCRIPTION": "Une vitrine de mes certifications, récompenses et projets notables qui démontrent mon expertise et mon dévouement.",
+    "FILTER": {
+      "TYPE": "Filtrer par Type",
+      "CATEGORY": "Filtrer par Catégorie"
+    },
+    "TYPES": {
+      "ALL": "Tout",
+      "CERTIFICATION": "Certifications",
+      "AWARD": "Récompenses",
+      "PROJECT": "Projets",
+      "PUBLICATION": "Publications"
+    },
+    "CATEGORIES": {
+      "ALL": "Toutes Catégories",
+      "WEB": "Développement Web",
+      "AI": "Intelligence Artificielle",
+      "METHODOLOGY": "Méthodologie",
+      "CLOUD": "Cloud Computing"
+    },
+    "TECHNOLOGIES": "Technologies Utilisées",
+    "VIEW_DETAILS": "Voir les Détails",
+    "NO_RESULTS": "Aucune réalisation trouvée correspondant aux filtres sélectionnés.",
+    "ITEMS": {
+      "SCRUM": {
+        "TITLE": "Professional Scrum Master I",
+        "DESCRIPTION": "Scrum Master certifié avec expertise en méthodologies Agile et leadership d'équipe.",
+        "ISSUER": "Scrum.org"
+      },
+      "FACE_RECOGNITION": {
+        "TITLE": "Système de Reconnaissance Faciale par IA",
+        "DESCRIPTION": "Développement d'un système de reconnaissance faciale en temps réel utilisant Python et OpenCV.",
+        "ISSUER": "Projet Personnel"
+      },
+      "BEST_PROJECT": {
+        "TITLE": "Prix du Meilleur Projet 2023",
+        "DESCRIPTION": "Reconnu pour une contribution exceptionnelle à un projet de développement web.",
+        "ISSUER": "Prix de l'Innovation Technologique"
+      }
+    }
+  },
+  "BLOG": {
+    "SUBTITLE": "Derniers Articles",
+    "TITLE": "Mon Blog",
+    "DESCRIPTION": "Découvrez mes réflexions, expériences et idées sur le développement logiciel, l'IA et la technologie.",
+    "SEARCH_PLACEHOLDER": "Rechercher des articles...",
+    "FILTER": {
+      "CATEGORY": "Catégories",
+      "TAGS": "Tags"
+    },
+    "MIN_READ": "min de lecture",
+    "READ_MORE": "Lire la suite",
+    "NO_RESULTS": "Aucun article ne correspond à vos critères.",
+    "CATEGORIES": {
+      "ALL": "Toutes les catégories",
+      "DEVELOPMENT": "Développement",
+      "AI": "Intelligence Artificielle",
+      "IOT": "Internet des Objets",
+      "CLOUD": "Cloud Computing"
+    },
+    "TAGS": {
+      "ALL": "Tous les tags",
+      "ANGULAR": "Angular",
+      "PYTHON": "Python",
+      "MACHINE-LEARNING": "Machine Learning",
+      "WEB-DEVELOPMENT": "Développement Web",
+      "CLOUD-COMPUTING": "Cloud Computing"
+    },
+    "POSTS": {
+      "AI_CHAT": {
+        "TITLE": "Création d'une Application de Chat IA avec Python",
+        "EXCERPT": "Apprenez à créer une application de chat moderne alimentée par l'intelligence artificielle en utilisant Python et le traitement du langage naturel.",
+        "CONTENT": "Dans ce guide complet, nous explorerons le processus de création d'une application de chat alimentée par l'IA à partir de zéro. Nous couvrirons tout, de la configuration de l'environnement de développement à l'implémentation du traitement du langage naturel et la création d'une interface utilisateur intuitive. L'article comprend des exemples de code, des bonnes pratiques et des conseils pour optimiser votre application de chat IA."
+      },
+      "FACE_RECOGNITION": {
+        "TITLE": "Implémentation de la Reconnaissance Faciale dans les Appareils IoT",
+        "EXCERPT": "Un guide pratique pour implémenter la technologie de reconnaissance faciale dans les appareils IoT en utilisant Python et OpenCV.",
+        "CONTENT": "Cet article plonge profondément dans le monde de la technologie de reconnaissance faciale et son implémentation dans les appareils IoT. Nous discuterons des défis liés à l'exécution de la reconnaissance faciale sur des appareils à ressources limitées, des techniques d'optimisation et des considérations de sécurité. Le guide comprend des exemples pratiques et des extraits de code pour vous aider à implémenter la reconnaissance faciale dans vos propres projets IoT."
+      },
+      "CLOUD_ARCHITECTURE": {
+        "TITLE": "Modèles d'Architecture Cloud Modernes",
+        "EXCERPT": "Explorez les derniers modèles d'architecture cloud et les meilleures pratiques pour créer des applications évolutives.",
+        "CONTENT": "Dans cet article, nous examinerons les modèles d'architecture cloud modernes et comment ils peuvent être appliqués pour créer des applications évolutives et résilientes. Nous couvrirons les microservices, l'architecture serverless, la conteneurisation et plus encore. Le guide comprend des exemples concrets et des conseils pratiques pour implémenter ces modèles dans vos projets."
+      }
+    }
+  },
+  "TESTIMONIALS": {
+    "TITLE": "Ce que les Gens Disent",
+    "SUBTITLE": "Témoignages de Clients et Collègues",
+    "DESCRIPTION": "Découvrez ce que les autres disent de leur collaboration avec moi et de mes contributions à divers projets.",
+    "ITEMS": {
+      "JOHN": {
+        "NAME": "John Doe",
+        "POSITION": "Développeur Senior",
+        "COMPANY": "Tech Corp",
+        "TEXT": "Travailler avec ce développeur a été un plaisir. Son attention aux détails et ses compétences en résolution de problèmes sont exceptionnelles.",
+        "RATING": 5
+      },
+      "JANE": {
+        "NAME": "Jane Smith",
+        "POSITION": "Chef de Projet",
+        "COMPANY": "Innovate Solutions",
+        "TEXT": "Un professionnel hautement qualifié qui livre constamment un travail de qualité dans les délais. Excellent esprit d'équipe !",
+        "RATING": 5
+      },
+      "MIKE": {
+        "NAME": "Mike Johnson",
+        "POSITION": "CTO",
+        "COMPANY": "StartupX",
+        "TEXT": "Un penseur innovant avec une solide formation technique. Ses contributions ont été inestimables pour le succès de notre projet.",
+        "RATING": 5
+      }
+    }
   }
 }

@@ -11,27 +11,79 @@
           <img src="assets/me.jpg" alt="{{ 'ABOUT.PROFILE_ALT' | translate }}" class="profile-img">
           <div class="profile-border"></div>
           <div class="social-links">
-            <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="mailto:elabdouni.abderrazzaq@gmail.com"><i class="fas fa-envelope"></i></a>
+            <a href="https://github.com/yourusername" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/yourusername" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:{{ 'ABOUT.EMAIL' | translate }}" aria-label="Email"><i class="fas fa-envelope"></i></a>
           </div>
         </div>
         <div class="bio-section">
-          <h3>{{ 'ABOUT.GREETING' | translate }} <span class="text-gradient">{{ profile.name }}</span></h3>
+          <h3>{{ 'ABOUT.GREETING' | translate }} <span class="text-gradient">{{ 'ABOUT.NAME' | translate }}</span></h3>
           <p class="bio-text">{{ 'ABOUT.BIO' | translate }}</p>
           <div class="contact-info">
             <div class="contact-item">
               <i class="fas fa-envelope"></i>
-              <span>{{ profile.email }}</span>
+              <span>{{ 'ABOUT.EMAIL' | translate }}</span>
             </div>
             <div class="contact-item">
               <i class="fas fa-phone"></i>
-              <span>{{ profile.phone }}</span>
+              <span>0653539113</span>
             </div>
             <div class="contact-item">
               <i class="fas fa-map-marker-alt"></i>
-              <span>{{ profile.location }}</span>
+              <span>{{ 'ABOUT.LOCATION' | translate }}</span>
             </div>
+          </div>
+          
+          <!-- New: Download CV Button -->
+          <div class="cta-buttons">
+            <a href="/assets/cv.pdf" download class="download-cv">
+              <i class="fas fa-download"></i>
+              {{ 'ABOUT.DOWNLOAD_CV' | translate }}
+            </a>
+            <a routerLink="/contact" class="contact-me">
+              <i class="fas fa-paper-plane"></i>
+              {{ 'ABOUT.CONTACT_ME' | translate }}
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- New: Current Focus Section -->
+      <div class="current-focus-section fade-in-up">
+        <h3>{{ 'ABOUT.CURRENT_FOCUS.TITLE' | translate }}</h3>
+        <div class="focus-grid">
+          <div class="focus-item">
+            <i class="fas fa-brain"></i>
+            <h4>{{ 'ABOUT.CURRENT_FOCUS.AI.TITLE' | translate }}</h4>
+            <p>{{ 'ABOUT.CURRENT_FOCUS.AI.DESCRIPTION' | translate }}</p>
+          </div>
+          <div class="focus-item">
+            <i class="fas fa-mobile-alt"></i>
+            <h4>{{ 'ABOUT.CURRENT_FOCUS.MOBILE.TITLE' | translate }}</h4>
+            <p>{{ 'ABOUT.CURRENT_FOCUS.MOBILE.DESCRIPTION' | translate }}</p>
+          </div>
+          <div class="focus-item">
+            <i class="fas fa-cloud"></i>
+            <h4>{{ 'ABOUT.CURRENT_FOCUS.CLOUD.TITLE' | translate }}</h4>
+            <p>{{ 'ABOUT.CURRENT_FOCUS.CLOUD.DESCRIPTION' | translate }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- New: Key Statistics Section -->
+      <div class="statistics-section fade-in-up">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number">3+</div>
+            <div class="stat-label">{{ 'ABOUT.STATS.YEARS_EXPERIENCE' | translate }}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">20+</div>
+            <div class="stat-label">{{ 'ABOUT.STATS.PROJECTS' | translate }}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">10+</div>
+            <div class="stat-label">{{ 'ABOUT.STATS.TECHNOLOGIES' | translate }}</div>
           </div>
         </div>
       </div>
@@ -89,12 +141,31 @@
           </div>
         </div>
       </div>
-      
-      <!-- Language switcher -->
-      <div class="language-switcher">
-        <button (click)="changeLanguage('en')" [class.active]="currentLang === 'en'">EN</button>
-        <button (click)="changeLanguage('fr')" [class.active]="currentLang === 'fr'">FR</button>
+
+      <!-- New: Connect Section -->
+      <div class="connect-section fade-in-up">
+        <h3>{{ 'ABOUT.CONNECT.TITLE' | translate }}</h3>
+        <p>{{ 'ABOUT.CONNECT.DESCRIPTION' | translate }}</p>
+        <div class="social-grid">
+          <a href="https://github.com/yourusername" target="_blank" class="social-item github">
+            <i class="fab fa-github"></i>
+            <span>GitHub</span>
+          </a>
+          <a href="https://linkedin.com/in/yourusername" target="_blank" class="social-item linkedin">
+            <i class="fab fa-linkedin"></i>
+            <span>LinkedIn</span>
+          </a>
+          <a href="https://twitter.com/yourusername" target="_blank" class="social-item twitter">
+            <i class="fab fa-twitter"></i>
+            <span>Twitter</span>
+          </a>
+          <a href="mailto:{{ 'ABOUT.EMAIL' | translate }}" class="social-item email">
+            <i class="fas fa-envelope"></i>
+            <span>Email</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </div>
+

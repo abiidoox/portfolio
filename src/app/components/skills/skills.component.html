@@ -1,0 +1,58 @@
+<div class="skills-container section-padding">
+  <div class="container">
+    <div class="skills-header fade-in-up">
+      <h6 class="text-gradient">{{ 'SKILLS.TITLE_SMALL' | translate }}</h6>
+      <h2>{{ 'SKILLS.TITLE_LARGE' | translate }}</h2>
+      <p>{{ 'SKILLS.SUBTITLE' | translate }}</p>
+    </div>
+
+    <!-- Skills Categories -->
+    <div class="skills-categories fade-in-up">
+      <button 
+        *ngFor="let category of categories" 
+        [class.active]="selectedCategory === category"
+        (click)="selectedCategory = category"
+        class="category-btn"
+      >
+        <i [class]="'fas ' + getCategoryIcon(category)"></i>
+        {{ 'SKILLS.CATEGORIES.' + category.toUpperCase() | translate }}
+      </button>
+    </div>
+
+    <!-- Skills Grid -->
+    <div class="skills-grid">
+      <div class="skill-card fade-in-up" *ngFor="let skill of filteredSkills">
+        <div class="skill-icon">
+          <i [class]="getSkillIconClass(skill.icon)"></i>
+        </div>
+        
+        <div class="skill-content">
+          <div class="skill-header">
+            <h3>{{skill.name}}</h3>
+            <span class="skill-level" [class]="getSkillLevel(skill.level).toLowerCase()">
+              {{ 'SKILLS.LEVEL.' + getSkillLevel(skill.level).toUpperCase() | translate }}
+            </span>
+          </div>
+
+          <div class="skill-details">
+            <div class="detail-item" *ngIf="skill.experience">
+              <i class="fas fa-clock"></i>
+              <span>{{skill.experience}} {{ formatExperience(skill.experience) }}</span>
+            </div>
+            <div class="detail-item" *ngIf="skill.projects">
+              <i class="fas fa-code-branch"></i>
+              <span>{{skill.projects}} {{ 'SKILLS.PROJECTS' | translate }}</span>
+            </div>
+          </div>
+
+          <div class="skill-progress">
+            <div class="progress-bar">
+              <div class="progress-fill" [style.width.%]="skill.level"></div>
+            </div>
+            <span class="progress-label">{{skill.level}}%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

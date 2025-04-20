@@ -5,9 +5,21 @@
       <h2>{{ 'PROJECTS.TITLE' | translate }}</h2>
       <p>{{ 'PROJECTS.SUBTITLE' | translate }}</p>
     </div>
+
+    <!-- Project Filters -->
+    <div class="project-filters fade-in-up">
+      <button 
+        *ngFor="let category of categories" 
+        [class.active]="selectedCategory === category"
+        (click)="filterProjects(category)"
+        class="filter-btn"
+      >
+        {{ 'PROJECTS.CATEGORIES.' + category.toUpperCase() | translate }}
+      </button>
+    </div>
     
     <div class="projects-grid">
-      <div class="project-card fade-in-up" *ngFor="let project of projects">
+      <div class="project-card fade-in-up" *ngFor="let project of filteredProjects" [class.featured]="project.featured">
         <div class="project-image">
           <img [src]="project.image" [alt]="project.title">
           <div class="project-overlay">
@@ -22,7 +34,10 @@
           </div>
         </div>
         <div class="project-content">
-          <h3>{{project.title}}</h3>
+          <div class="project-header">
+            <h3>{{project.title}}</h3>
+            <span class="project-date">{{project.date}}</span>
+          </div>
           <p class="project-description">{{project.description}}</p>
           <div class="project-tech">
             <span class="tech-tag" *ngFor="let tech of project.technologies">{{tech}}</span>

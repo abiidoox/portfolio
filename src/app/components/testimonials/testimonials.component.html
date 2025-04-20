@@ -1,0 +1,51 @@
+<div class="testimonials-container section-padding">
+  <div class="container">
+    <div class="section-header fade-in-up">
+      <h6 class="text-gradient">{{ 'TESTIMONIALS.SUBTITLE' | translate }}</h6>
+      <h2>{{ 'TESTIMONIALS.TITLE' | translate }}</h2>
+      <p>{{ 'TESTIMONIALS.DESCRIPTION' | translate }}</p>
+    </div>
+
+    <div class="testimonials-carousel fade-in-up">
+      <div class="testimonial-wrapper">
+        <div class="testimonial-card" 
+             *ngFor="let testimonial of testimonials; let i = index" 
+             [class.active]="i === currentIndex"
+             [@fadeInOut]="i === currentIndex ? 'in' : 'out'">
+          <div class="testimonial-content">
+            <div class="testimonial-image">
+              <img [src]="testimonial.image" [alt]="testimonial.name">
+            </div>
+            <div class="testimonial-text">
+              <p class="quote">"{{testimonial.text}}"</p>
+              <div class="rating">
+                <span *ngFor="let star of getStars(testimonial.rating)" class="star">★</span>
+              </div>
+              <div class="author-info">
+                <h3 class="author-name">{{testimonial.name}}</h3>
+                <p class="author-position">{{testimonial.position}}</p>
+                <p class="author-company">{{testimonial.company}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-controls fade-in-up">
+      <button class="control-btn" (click)="previousTestimonial()" aria-label="Previous testimonial">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <div class="indicators">
+        <span *ngFor="let testimonial of testimonials; let i = index" 
+              [class.active]="i === currentIndex"
+              (click)="goToTestimonial(i)"
+              [attr.aria-label]="'Go to testimonial ' + (i + 1)">
+        </span>
+      </div>
+      <button class="control-btn" (click)="nextTestimonial()" aria-label="Next testimonial">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+</div> 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -7,6 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  isMobileMenuOpen = false;
   currentLanguage: string;
   isDarkTheme = true;
   
@@ -32,9 +33,24 @@ export class HeaderComponent implements OnInit {
     });
     observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
   }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    if (window.innerWidth > 768) {
+      this.closeMobileMenu();
+    }
+  }
   
   private checkTheme(): void {
     this.isDarkTheme = !document.body.classList.contains('light-theme');
+  }
+
+  toggleMobileMenu(): void {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+
+  closeMobileMenu(): void {
+    this.isMobileMenuOpen = false;
   }
 
   switchLanguage(lang: string): void {

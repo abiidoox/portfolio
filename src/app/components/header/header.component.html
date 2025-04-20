@@ -1,15 +1,38 @@
-<header>
-  <nav>
-    <div class="logo">Portfolio</div>
+<header class="header">
+  <nav class="nav-container">
     <ul class="nav-links">
-      <li><a routerLink="/about" routerLinkActive="active">{{ 'HEADER.ABOUT' | translate }}</a></li>
-      <li><a routerLink="/projects" routerLinkActive="active">{{ 'HEADER.PROJECTS' | translate }}</a></li>
-      <li><a routerLink="/resume" routerLinkActive="active">{{ 'HEADER.RESUME' | translate }}</a></li>
-      <li><a routerLink="/contact" routerLinkActive="active">{{ 'HEADER.CONTACT' | translate }}</a></li>
+      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{ 'header.home' | translate }}</a></li>
+      <li><a routerLink="/projects" routerLinkActive="active">{{ 'header.projects' | translate }}</a></li>
+      <li class="dropdown">
+        <a href="javascript:void(0)" class="dropdown-toggle">{{ 'header.more' | translate }}</a>
+        <ul class="dropdown-menu">
+          <li><a routerLink="/skills" routerLinkActive="active">{{ 'header.skills' | translate }}</a></li>
+          <li><a routerLink="/resume" routerLinkActive="active">{{ 'header.resume' | translate }}</a></li>
+          <li><a routerLink="/achievements" routerLinkActive="active">{{ 'header.achievements' | translate }}</a></li>
+          <li><a routerLink="/blog" routerLinkActive="active">{{ 'header.blog' | translate }}</a></li>
+          <li><a routerLink="/testimonials" routerLinkActive="active">{{ 'header.testimonials' | translate }}</a></li>
+        </ul>
+      </li>
+      <li><a routerLink="/contact" routerLinkActive="active">{{ 'header.contact' | translate }}</a></li>
     </ul>
-    <div class="language-switcher">
-      <button [class.active]="currentLanguage === 'en'" (click)="switchLanguage('en')">EN</button>
-      <button [class.active]="currentLanguage === 'fr'" (click)="switchLanguage('fr')">FR</button>
+    <div class="header-controls">
+      <app-theme-switcher></app-theme-switcher>
+      <app-language-switcher></app-language-switcher>
+      <button class="mobile-menu-button" (click)="toggleMobileMenu()">
+        <i class="fas" [ngClass]="{'fa-bars': !isMobileMenuOpen, 'fa-times': isMobileMenuOpen}"></i>
+      </button>
     </div>
   </nav>
+  <div class="mobile-menu" [class.open]="isMobileMenuOpen">
+    <ul class="nav-links">
+      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMobileMenu()">{{ 'header.home' | translate }}</a></li>
+      <li><a routerLink="/projects" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'header.projects' | translate }}</a></li>
+      <li><a routerLink="/skills" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'header.skills' | translate }}</a></li>
+      <li><a routerLink="/resume" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'header.resume' | translate }}</a></li>
+      <li><a routerLink="/achievements" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'header.achievements' | translate }}</a></li>
+      <li><a routerLink="/blog" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'header.blog' | translate }}</a></li>
+      <li><a routerLink="/testimonials" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'header.testimonials' | translate }}</a></li>
+      <li><a routerLink="/contact" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'header.contact' | translate }}</a></li>
+    </ul>
+  </div>
 </header>

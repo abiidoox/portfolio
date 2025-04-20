@@ -1,0 +1,91 @@
+<div class="achievements-container section-padding">
+  <div class="section-header fade-in-up">
+    <h6 class="text-gradient">{{ 'ACHIEVEMENTS.SUBTITLE' | translate }}</h6>
+    <h2>{{ 'ACHIEVEMENTS.TITLE' | translate }}</h2>
+    <p>{{ 'ACHIEVEMENTS.DESCRIPTION' | translate }}</p>
+  </div>
+
+  <div class="achievements-filter fade-in-up">
+    <div class="filter-section">
+      <h3>{{ 'ACHIEVEMENTS.FILTER.TYPE' | translate }}</h3>
+      <div class="filter-buttons">
+        <button class="filter-btn" 
+                [class.active]="selectedType === 'all'"
+                (click)="selectedType = 'all'">
+          {{ 'ACHIEVEMENTS.TYPES.ALL' | translate }}
+        </button>
+        <button class="filter-btn" 
+                [class.active]="selectedType === 'certification'"
+                (click)="selectedType = 'certification'">
+          {{ 'ACHIEVEMENTS.TYPES.CERTIFICATION' | translate }}
+        </button>
+        <button class="filter-btn" 
+                [class.active]="selectedType === 'award'"
+                (click)="selectedType = 'award'">
+          {{ 'ACHIEVEMENTS.TYPES.AWARD' | translate }}
+        </button>
+        <button class="filter-btn" 
+                [class.active]="selectedType === 'project'"
+                (click)="selectedType = 'project'">
+          {{ 'ACHIEVEMENTS.TYPES.PROJECT' | translate }}
+        </button>
+        <button class="filter-btn" 
+                [class.active]="selectedType === 'publication'"
+                (click)="selectedType = 'publication'">
+          {{ 'ACHIEVEMENTS.TYPES.PUBLICATION' | translate }}
+        </button>
+      </div>
+    </div>
+
+    <div class="filter-section" *ngIf="categories.length > 1">
+      <h3>{{ 'ACHIEVEMENTS.FILTER.CATEGORY' | translate }}</h3>
+      <div class="filter-buttons">
+        <button class="filter-btn" 
+                *ngFor="let category of categories"
+                [class.active]="selectedCategory === category"
+                (click)="selectedCategory = category">
+          {{ getCategoryLabel(category) }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="achievements-grid">
+    <div class="achievement-card fade-in-up" *ngFor="let achievement of filteredAchievements">
+      <div class="achievement-icon" [title]="getTypeLabel(achievement.type)">
+        {{getTypeIcon(achievement.type)}}
+      </div>
+      <div class="achievement-image">
+        <img [src]="achievement.image" [alt]="achievement.titleKey | translate">
+      </div>
+      <div class="achievement-content">
+        <h3 class="achievement-title">{{achievement.titleKey | translate}}</h3>
+        <p class="achievement-description">{{achievement.descriptionKey | translate}}</p>
+        
+        <div class="achievement-technologies" *ngIf="achievement.technologies?.length">
+          <h4>{{ 'ACHIEVEMENTS.TECHNOLOGIES' | translate }}</h4>
+          <div class="tech-tags">
+            <span class="tech-tag" *ngFor="let tech of achievement.technologies">{{tech}}</span>
+          </div>
+        </div>
+
+        <div class="achievement-meta">
+          <span class="issuer">{{achievement.issuerKey | translate}}</span>
+          <span class="date">{{formatDate(achievement.date)}}</span>
+        </div>
+        
+        <a *ngIf="achievement.link" 
+           [href]="achievement.link" 
+           target="_blank" 
+           class="view-link">
+          {{ 'ACHIEVEMENTS.VIEW_DETAILS' | translate }}
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="no-results" *ngIf="filteredAchievements.length === 0">
+    <p>{{ 'ACHIEVEMENTS.NO_RESULTS' | translate }}</p>
+  </div>
+</div> 

@@ -1,0 +1,357 @@
+.blog-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  animation: fadeIn 0.5s ease-in-out;
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 2rem;
+
+    h2 {
+      font-size: 2rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+  }
+
+  .blog-filters {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+
+    .search-box {
+      position: relative;
+      max-width: 400px;
+      margin: 0 auto;
+
+      input {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        padding-left: 2.5rem;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        background-color: var(--background-secondary);
+        color: var(--text-primary);
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+
+        &:focus {
+          outline: none;
+          border-color: var(--primary-color);
+          box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.1);
+        }
+      }
+
+      .search-icon {
+        position: absolute;
+        left: 0.75rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-secondary);
+        font-size: 1rem;
+      }
+    }
+
+    .filter-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+
+      .filter-label {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        margin-right: 0.5rem;
+      }
+
+      .filter-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+
+        button {
+          padding: 0.5rem 1rem;
+          border: 1px solid var(--border-color);
+          border-radius: 6px;
+          background-color: var(--background-secondary);
+          color: var(--text-primary);
+          font-size: 0.85rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background-color: var(--background-hover);
+          }
+
+          &.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+          }
+        }
+      }
+    }
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+
+    .blog-card {
+      background-color: var(--background-secondary);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        border-color: var(--primary-color);
+      }
+
+      .blog-image {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .blog-content {
+        padding: 1.25rem;
+        border-top: 1px solid var(--border-color);
+
+        .blog-meta {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 0.75rem;
+          font-size: 0.8rem;
+          color: var(--text-secondary);
+
+          .blog-date {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+          }
+
+          .read-time {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+          }
+        }
+
+        h3 {
+          font-size: 1.25rem;
+          color: var(--text-primary);
+          margin-bottom: 0.75rem;
+          line-height: 1.4;
+        }
+
+        p {
+          font-size: 0.9rem;
+          color: var(--text-secondary);
+          margin-bottom: 1rem;
+          line-height: 1.6;
+        }
+
+        .blog-tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+          margin-bottom: 1rem;
+
+          .tag {
+            padding: 0.25rem 0.75rem;
+            background-color: var(--background-hover);
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+          }
+        }
+
+        .blog-author {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          padding-top: 0.75rem;
+          border-top: 1px solid var(--border-color);
+
+          .author-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+
+          .author-info {
+            .author-name {
+              font-size: 0.9rem;
+              color: var(--text-primary);
+              margin-bottom: 0.25rem;
+            }
+
+            .author-title {
+              font-size: 0.75rem;
+              color: var(--text-secondary);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .no-results {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+  }
+}
+
+// Modal styles
+.blog-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+
+  .modal-content {
+    background-color: var(--background-primary);
+    border-radius: 12px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    padding: 2rem;
+
+    .close-button {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text-secondary);
+      cursor: pointer;
+      padding: 0.5rem;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: var(--text-primary);
+      }
+    }
+
+    .modal-header {
+      margin-bottom: 1.5rem;
+
+      h2 {
+        font-size: 1.75rem;
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .modal-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+      }
+    }
+
+    .modal-body {
+      color: var(--text-primary);
+      line-height: 1.8;
+      font-size: 1rem;
+
+      p {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
+
+// Responsive styles
+@media (max-width: 1200px) {
+  .blog-container {
+    padding: 2.5rem 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .blog-container {
+    padding: 2rem 1rem;
+
+    .section-header {
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+
+    .blog-grid {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-container {
+    padding: 1.5rem 0.75rem;
+
+    .section-header {
+      h1 {
+        font-size: 1.75rem;
+      }
+
+      h2 {
+        font-size: 1.25rem;
+      }
+    }
+
+    .blog-filters {
+      .filter-section {
+        flex-direction: column;
+        align-items: center;
+
+        .filter-label {
+          margin-right: 0;
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
+  }
+} 

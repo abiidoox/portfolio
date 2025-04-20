@@ -13,6 +13,7 @@ export class ContactComponent implements OnInit {
   submitted = false;
   success = false;
   error = false;
+  isLoading = false;
 
   constructor(
     private fb: FormBuilder,
@@ -20,31 +21,49 @@ export class ContactComponent implements OnInit {
     private languageService: LanguageService
   ) {
     this.contactForm = this.fb.group({
-      name: ['', Validators.required],
+      name: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
-      message: ['', Validators.required]
+      message: ['', [Validators.required, Validators.minLength(10)]]
     });
   }
 
   ngOnInit(): void {
-    // Subscribe to language changes to update form placeholders if needed
     this.languageService.currentLanguage$.subscribe(() => {
-      // You could update dynamic content here if needed
+      // Reset form messages when language changes
+      this.success = false;
+      this.error = false;
     });
   }
 
   onSubmit() {
     this.submitted = true;
+    this.success = false;
+    this.error = false;
 
     if (this.contactForm.valid) {
-      // Here you would normally send the form data to your backend
-      console.log(this.contactForm.value);
+      this.isLoading = true;
       
-      // Simulate successful submission
-      this.success = true;
-      this.error = false;
-      this.contactForm.reset();
-      this.submitted = false;
+      // Simulate API call
+      setTimeout(() => {
+        try {
+          // Here you would normally send the form data to your backend
+          console.log(this.contactForm.value);
+          
+          this.success = true;
+          this.contactForm.reset();
+          this.submitted = false;
+        } catch (err) {
+          this.error = true;
+        } finally {
+          this.isLoading = false;
+        }
+      }, 1500);
     }
+  }
+
+  // Helper method to check if a field has errors
+  hasError(controlName: string, errorType: string): boolean {
+    const control = this.contactForm.get(controlName);
+    return control ? control.hasError(errorType) && (control.touched || this.submitted) : false;
   }
 }

@@ -1,0 +1,115 @@
+<div class="blog-container">
+  <div class="section-header fade-in-up">
+    <h6 class="text-gradient">{{ 'BLOG.SUBTITLE' | translate }}</h6>
+    <h2>{{ 'BLOG.TITLE' | translate }}</h2>
+    <p>{{ 'BLOG.DESCRIPTION' | translate }}</p>
+  </div>
+
+  <div class="blog-filters fade-in-up">
+    <div class="search-box">
+      <input type="text" 
+             [(ngModel)]="searchQuery" 
+             [placeholder]="'BLOG.SEARCH_PLACEHOLDER' | translate"
+             class="search-input">
+      <i class="fas fa-search"></i>
+    </div>
+
+    <div class="filter-section">
+      <h3>{{ 'BLOG.FILTER.CATEGORY' | translate }}</h3>
+      <div class="filter-buttons">
+        <button class="filter-btn" 
+                *ngFor="let category of categories"
+                [class.active]="selectedCategory === category"
+                (click)="selectedCategory = category">
+          {{ getCategoryLabel(category) }}
+        </button>
+      </div>
+    </div>
+
+    <div class="filter-section">
+      <h3>{{ 'BLOG.FILTER.TAGS' | translate }}</h3>
+      <div class="filter-buttons">
+        <button class="filter-btn" 
+                *ngFor="let tag of tags"
+                [class.active]="selectedTag === tag"
+                (click)="selectedTag = tag">
+          {{ getTagLabel(tag) }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="blog-grid">
+    <div class="blog-card fade-in-up" *ngFor="let post of filteredPosts" (click)="openPost(post)">
+      <div class="blog-image">
+        <img [src]="post.image" [alt]="post.titleKey | translate">
+        <div class="blog-category">{{ getCategoryLabel(post.category) }}</div>
+      </div>
+      
+      <div class="blog-content">
+        <div class="blog-meta">
+          <span class="date">
+            <i class="far fa-calendar"></i>
+            {{ formatDate(post.date) }}
+          </span>
+          <span class="read-time">
+            <i class="far fa-clock"></i>
+            {{ post.readTime }} {{ 'BLOG.MIN_READ' | translate }}
+          </span>
+        </div>
+
+        <h3 class="blog-title">{{ post.titleKey | translate }}</h3>
+        <p class="blog-excerpt">{{ post.excerptKey | translate }}</p>
+
+        <div class="blog-tags">
+          <span class="tag" *ngFor="let tag of post.tags">
+            {{ getTagLabel(tag) }}
+          </span>
+        </div>
+
+        <div class="blog-footer">
+          <div class="author">
+            <img src="assets/images/profile.jpg" alt="Author" class="author-image">
+            <span class="author-name">{{ post.author }}</span>
+          </div>
+          <a [routerLink]="['/blog', post.id]" class="read-more">
+            {{ 'BLOG.READ_MORE' | translate }}
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="no-results" *ngIf="filteredPosts.length === 0">
+    <p>{{ 'BLOG.NO_RESULTS' | translate }}</p>
+  </div>
+
+  <!-- Blog Post Modal -->
+  <div class="blog-modal" *ngIf="selectedPost" (click)="closePost()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <button class="close-btn" (click)="closePost()">×</button>
+      <div class="modal-header">
+        <h2>{{ selectedPost.titleKey | translate }}</h2>
+        <div class="modal-meta">
+          <span class="author">By {{ selectedPost.author }}</span>
+          <span class="date">{{ formatDate(selectedPost.date) }}</span>
+          <span class="read-time">{{ selectedPost.readTime }} {{ 'BLOG.MIN_READ' | translate }}</span>
+        </div>
+      </div>
+      <div class="modal-body">
+        <img [src]="selectedPost.image" [alt]="selectedPost.titleKey | translate">
+        <div class="post-content">
+          {{ selectedPost.contentKey | translate }}
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="modal-tags">
+          <span class="tag" *ngFor="let tag of selectedPost.tags">
+            {{ getTagLabel(tag) }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

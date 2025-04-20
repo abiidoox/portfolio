@@ -2,11 +2,21 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ThemeToggleComponent } from './components/shared/theme-toggle/theme-toggle.component';
 import { HeaderModule } from './components/header/header.module';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { FormsModule } from '@angular/forms';
+import { ThemeSwitcherModule } from './components/theme-switcher/theme-switcher.module';
+import { LanguageSwitcherModule } from './components/language-switcher/language-switcher.module';
+
+// Import all new components
+import { SkillsComponent } from './components/skills/skills.component';
+import { TestimonialsComponent } from './components/testimonials/testimonials.component';
+import { BlogComponent } from './components/blog/blog.component';
+import { AchievementsComponent } from './components/achievements/achievements.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 // Factory function for TranslateHttpLoader
 export function HttpLoaderFactory(http: HttpClient) {
@@ -16,21 +26,27 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    ThemeToggleComponent
-    // Remove HeaderComponent from here
+    SkillsComponent,
+    TestimonialsComponent,
+    BlogComponent,
+    AchievementsComponent,
+    NotFoundComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HeaderModule,
     HttpClientModule,
+    FormsModule,
+    ThemeSwitcherModule,
+    LanguageSwitcherModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
-      },
-      defaultLanguage: 'en'
+      }
     })
   ],
   providers: [],
