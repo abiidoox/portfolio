@@ -6,9 +6,8 @@
           (click)="toggleDropdown()"
           [attr.aria-label]="'Select language. Current language: ' + getCurrentLanguage().name"
           [attr.aria-controls]="'language-list'">
-    <span class="flag">{{getCurrentLanguage().flag}}</span>
-    <span class="name">{{getCurrentLanguage().name}}</span>
-    <span class="arrow" [class.open]="isDropdownOpen">▼</span>
+    <i [class]="getCurrentLanguage().icon"></i>
+    <i class="fas fa-chevron-down arrow" [class.open]="isDropdownOpen"></i>
   </button>
 
   <div class="language-dropdown" 
@@ -23,7 +22,7 @@
             [attr.aria-selected]="lang.code === currentLanguage"
             role="option"
             [attr.tabindex]="i === focusedIndex ? '0' : '-1'">
-      <span class="flag">{{lang.flag}}</span>
+      <i [class]="lang.icon"></i>
       <span class="name">{{lang.name}}</span>
     </button>
   </div>

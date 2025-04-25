@@ -5,7 +5,7 @@ import { LanguageService, Language } from '../../services/language.service';
 interface LanguageOption {
   code: Language;
   name: string;
-  flag: string;
+  icon: string;
 }
 
 @Component({
@@ -15,9 +15,9 @@ interface LanguageOption {
 })
 export class LanguageSwitcherComponent implements OnInit {
   languages: LanguageOption[] = [
-    { code: 'en', name: 'English', flag: '🇺🇸' },
-    { code: 'es', name: 'Español', flag: '🇪🇸' },
-    { code: 'fr', name: 'Français', flag: '🇫🇷' }
+    { code: 'en', name: 'English', icon: 'fas fa-flag-usa' },
+    { code: 'es', name: 'Español', icon: 'fas fa-flag' },
+    { code: 'fr', name: 'Français', icon: 'fas fa-flag' }
   ];
 
   currentLanguage: Language;

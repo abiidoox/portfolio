@@ -3,14 +3,43 @@
     <ul class="nav-links">
       <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{ 'header.home' | translate }}</a></li>
       <li><a routerLink="/projects" routerLinkActive="active">{{ 'header.projects' | translate }}</a></li>
-      <li class="dropdown">
-        <a href="javascript:void(0)" class="dropdown-toggle">{{ 'header.more' | translate }}</a>
-        <ul class="dropdown-menu">
-          <li><a routerLink="/skills" routerLinkActive="active">{{ 'header.skills' | translate }}</a></li>
-          <li><a routerLink="/resume" routerLinkActive="active">{{ 'header.resume' | translate }}</a></li>
-          <li><a routerLink="/achievements" routerLinkActive="active">{{ 'header.achievements' | translate }}</a></li>
-          <li><a routerLink="/blog" routerLinkActive="active">{{ 'header.blog' | translate }}</a></li>
-          <li><a routerLink="/testimonials" routerLinkActive="active">{{ 'header.testimonials' | translate }}</a></li>
+      <li class="dropdown" [class.open]="isDropdownOpen">
+        <button 
+          type="button"
+          class="dropdown-toggle"
+          (click)="toggleDropdown($event)"
+          (keydown)="onDropdownKeydown($event)"
+          aria-haspopup="true"
+          [attr.aria-expanded]="isDropdownOpen">
+          {{ 'header.more' | translate }}
+          
+        </button>
+        <ul class="dropdown-menu" role="menu" [class.show]="isDropdownOpen">
+          <li>
+            <a routerLink="/skills" routerLinkActive="active" (click)="closeDropdown()">
+              {{ 'header.skills' | translate }}
+            </a>
+          </li>
+          <li>
+            <a routerLink="/resume" routerLinkActive="active" (click)="closeDropdown()">
+              {{ 'header.resume' | translate }}
+            </a>
+          </li>
+          <li>
+            <a routerLink="/achievements" routerLinkActive="active" (click)="closeDropdown()">
+              {{ 'header.achievements' | translate }}
+            </a>
+          </li>
+          <li>
+            <a routerLink="/blog" routerLinkActive="active" (click)="closeDropdown()">
+              {{ 'header.blog' | translate }}
+            </a>
+          </li>
+          <li>
+            <a routerLink="/testimonials" routerLinkActive="active" (click)="closeDropdown()">
+              {{ 'header.testimonials' | translate }}
+            </a>
+          </li>
         </ul>
       </li>
       <li><a routerLink="/contact" routerLinkActive="active">{{ 'header.contact' | translate }}</a></li>
@@ -18,7 +47,7 @@
     <div class="header-controls">
       <app-theme-switcher></app-theme-switcher>
       <app-language-switcher></app-language-switcher>
-      <button class="mobile-menu-button" (click)="toggleMobileMenu()">
+      <button class="mobile-menu-button" (click)="toggleMobileMenu()" aria-label="Toggle mobile menu">
         <i class="fas" [ngClass]="{'fa-bars': !isMobileMenuOpen, 'fa-times': isMobileMenuOpen}"></i>
       </button>
     </div>

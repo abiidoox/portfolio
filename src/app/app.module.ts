@@ -17,6 +17,7 @@ import { BlogComponent } from './components/blog/blog.component';
 import { AchievementsComponent } from './components/achievements/achievements.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { LoadingComponent } from './components/loading/loading.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
 
 // Factory function for TranslateHttpLoader
 export function HttpLoaderFactory(http: HttpClient) {
@@ -31,7 +32,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     BlogComponent,
     AchievementsComponent,
     NotFoundComponent,
-    LoadingComponent
+    LoadingComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

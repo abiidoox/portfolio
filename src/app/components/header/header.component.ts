@@ -8,6 +8,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class HeaderComponent implements OnInit {
   isMobileMenuOpen = false;
+  isDropdownOpen = false;
   currentLanguage: string;
   isDarkTheme = true;
   
@@ -40,9 +41,27 @@ export class HeaderComponent implements OnInit {
       this.closeMobileMenu();
     }
   }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    const dropdown = document.querySelector('.dropdown');
+    if (dropdown && !dropdown.contains(event.target as Node)) {
+      this.isDropdownOpen = false;
+    }
+  }
   
   private checkTheme(): void {
     this.isDarkTheme = !document.body.classList.contains('light-theme');
+  }
+
+  toggleDropdown(event: Event): void {
+    event.preventDefault();
+    event.stopPropagation();
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+  closeDropdown(): void {
+    this.isDropdownOpen = false;
   }
 
   toggleMobileMenu(): void {
@@ -51,6 +70,15 @@ export class HeaderComponent implements OnInit {
 
   closeMobileMenu(): void {
     this.isMobileMenuOpen = false;
+  }
+
+  onDropdownKeydown(event: KeyboardEvent): void {
+    if (event.key === 'Escape') {
+      this.closeDropdown();
+    } else if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      this.toggleDropdown(event);
+    }
   }
 
   switchLanguage(lang: string): void {
