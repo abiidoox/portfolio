@@ -75,6 +75,10 @@
       "CLOUD": {
         "TITLE": "Technologies Cloud",
         "DESCRIPTION": "Architecture cloud et solutions serverless"
+      },
+      "WEB": {
+        "TITLE": "Développement Web",
+        "DESCRIPTION": "Développement moderne d'applications web et intégration frontend/backend"
       }
     },
     "STATS": {
@@ -115,13 +119,25 @@
       "TITLE": "Système de Gestion des Emplois du Temps",
       "DESCRIPTION": "Un système complet de gestion des emplois du temps développé avec ASP.NET et SQL Server."
     },
-    "PROJECT1": {
-      "TITLE": "Plateforme E-Commerce",
-      "DESCRIPTION": "Une plateforme e-commerce full-stack construite avec Angular et Node.js"
+    "SPAM_DETECTION": {
+      "TITLE": "Modèle de Détection de Courriers Électroniques (Spam/Ham)",
+      "DESCRIPTION": "Projet visant à élaborer un modèle de détection de courriels (spam/normal) en recourant à des méthodes de machine learning et d'analyse textuelle. L'objectif principal était de concevoir un système intelligent apte à filtrer automatiquement les courriels indésirables (spam) des messages légitimes (normal)."
     },
-    "PROJECT2": {
-      "TITLE": "Application de Gestion de Tâches",
-      "DESCRIPTION": "Une application de gestion de tâches responsive avec mises à jour en temps réel"
+    "EMPLOYMENT_PLATFORM": {
+      "TITLE": "Plateforme Web Intégrée pour les offres d'Emploi et des Stages",
+      "DESCRIPTION": "Création d'une plateforme web dédiée aux offres d'emploi et de stage, utilisant le web scraping pour collecter des données à partir de sites comme Indeed et Rekrute, afin de simplifier la recherche d'opportunités professionnelles."
+    },
+    "SCHOOL_MANAGEMENT_APP": {
+      "TITLE": "Application de Gestion Scolaire",
+      "DESCRIPTION": "Application de gestion scolaire complète et conviviale, facilitant la gestion des données académiques et administratives au sein d'une institution scolaire."
+    },
+    "OPTICIAN_ORDER_STOCK": {
+      "TITLE": "Application de Gestion des Commandes et du Stock pour Opticiens",
+      "DESCRIPTION": "Logiciel permettant la gestion des commandes et de l'inventaire directement au sein d'une boutique d'optique."
+    },
+    "COMPANY_DOMICILIATION": {
+      "TITLE": "Plateforme de Gestion de Domiciliation d’Entreprises",
+      "DESCRIPTION": "Développement d’une plateforme web pour la gestion complète de la domiciliation d’entreprises : souscription en ligne, espace client, gestion des contrats et documents, notifications, etc. Stack : Spring Boot, Angular, MySQL, JPA/Hibernate, RESTful API, Spring Security."
     }
   },
   "RESUME": {

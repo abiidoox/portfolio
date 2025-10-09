@@ -20,19 +20,7 @@
     
     <div class="projects-grid">
       <div class="project-card fade-in-up" *ngFor="let project of filteredProjects" [class.featured]="project.featured">
-        <div class="project-image">
-          <img [src]="project.image" [alt]="project.title">
-          <div class="project-overlay">
-            <div class="project-links">
-              <a [href]="project.demoUrl" target="_blank" class="btn" *ngIf="project.demoUrl">
-                <i class="fas fa-external-link-alt"></i> {{ 'PROJECTS.VIEW_DEMO' | translate }}
-              </a>
-              <a [href]="project.githubUrl" target="_blank" class="btn" *ngIf="project.githubUrl">
-                <i class="fab fa-github"></i> {{ 'PROJECTS.VIEW_CODE' | translate }}
-              </a>
-            </div>
-          </div>
-        </div>
+        <!-- Removed project-image and project-links (see demo, github, image) -->
         <div class="project-content">
           <div class="project-header">
             <h3>{{project.title}}</h3>

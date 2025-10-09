@@ -496,14 +496,15 @@
 
 .focus-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
   margin-top: 2rem;
 }
 
 .focus-item {
   background: var(--bg-section);
   padding: 2rem;
+  
   border-radius: 15px;
   transition: all 0.3s ease;
   border: 1px solid rgba(255, 255, 255, 0.05);

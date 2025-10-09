@@ -75,6 +75,10 @@
       "CLOUD": {
         "TITLE": "Cloud Technologies",
         "DESCRIPTION": "Cloud architecture and serverless solutions"
+      },
+      "WEB": {
+        "TITLE": "Web Development",
+        "DESCRIPTION": "Modern web application development and frontend/backend integration"
       }
     },
     "STATS": {
@@ -115,13 +119,25 @@
       "TITLE": "Schedule Management System",
       "DESCRIPTION": "A comprehensive schedule management system developed with ASP.NET and SQL Server."
     },
-    "PROJECT1": {
-      "TITLE": "E-Commerce Platform",
-      "DESCRIPTION": "A full-stack e-commerce platform built with Angular and Node.js"
+    "SPAM_DETECTION": {
+      "TITLE": "Email Spam Detection Model",
+      "DESCRIPTION": "Developed a machine learning model to classify emails as spam or legitimate using text analysis and algorithms such as K-NN and decision trees. The main goal was to create an intelligent system capable of automatically filtering unwanted emails from legitimate messages."
     },
-    "PROJECT2": {
-      "TITLE": "Task Management App",
-      "DESCRIPTION": "A responsive task management application with real-time updates"
+    "EMPLOYMENT_PLATFORM": {
+      "TITLE": "Integrated Web Platform for Job and Internship Offers",
+      "DESCRIPTION": "Designed and developed a web platform dedicated to job and internship offers. The platform uses web scraping to collect data from sites like Indeed and Rekrute, simplifying the search for professional opportunities for students and job seekers."
+    },
+    "SCHOOL_MANAGEMENT_APP": {
+      "TITLE": "School Management Application",
+      "DESCRIPTION": "A complete and user-friendly school management application developed to facilitate the management of academic and administrative data within an educational institution."
+    },
+    "OPTICIAN_ORDER_STOCK": {
+      "TITLE": "Order and Stock Management Application for Opticians",
+      "DESCRIPTION": "Software for managing orders and inventory directly within an optical store, streamlining daily operations and stock tracking."
+    },
+    "COMPANY_DOMICILIATION": {
+      "TITLE": "Company Domiciliation Management Platform",
+      "DESCRIPTION": "Web platform for complete management of company domiciliation: online subscription, client area, contract and document management, notifications, and more. Stack: Spring Boot, Angular, MySQL, JPA/Hibernate, RESTful API, Spring Security."
     }
   },
   "RESUME": {

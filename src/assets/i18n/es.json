@@ -75,6 +75,10 @@
       "CLOUD": {
         "TITLE": "Tecnologías en la Nube",
         "DESCRIPTION": "Arquitectura en la nube y soluciones serverless"
+      },
+      "WEB": {
+        "TITLE": "Desarrollo Web",
+        "DESCRIPTION": "Desarrollo moderno de aplicaciones web e integración frontend/backend"
       }
     },
     "STATS": {
@@ -151,6 +155,26 @@
     "SCHEDULE_SYSTEM": {
       "TITLE": "Sistema de Gestión de Horarios",
       "DESCRIPTION": "Un sistema completo de gestión de horarios desarrollado con ASP.NET y SQL Server."
+    },
+    "SPAM_DETECTION": {
+      "TITLE": "Modelo de Detección de Correos Electrónicos (Spam/Ham)",
+      "DESCRIPTION": "Proyecto orientado a desarrollar un modelo de detección de correos electrónicos (spam/normal) utilizando métodos de machine learning y análisis de texto. El objetivo principal fue diseñar un sistema inteligente capaz de filtrar automáticamente los correos no deseados (spam) de los mensajes legítimos (normal)."
+    },
+    "EMPLOYMENT_PLATFORM": {
+      "TITLE": "Plataforma Web Integrada para Ofertas de Empleo y Prácticas",
+      "DESCRIPTION": "Creación de una plataforma web dedicada a ofertas de empleo y prácticas, utilizando web scraping para recopilar datos de sitios como Indeed y Rekrute, simplificando la búsqueda de oportunidades profesionales."
+    },
+    "SCHOOL_MANAGEMENT_APP": {
+      "TITLE": "Aplicación de Gestión Escolar",
+      "DESCRIPTION": "Aplicación de gestión escolar completa y fácil de usar, desarrollada para facilitar la gestión de datos académicos y administrativos dentro de una institución educativa."
+    },
+    "OPTICIAN_ORDER_STOCK": {
+      "TITLE": "Aplicación de Gestión de Pedidos y Stock para Ópticas",
+      "DESCRIPTION": "Software para la gestión de pedidos e inventario directamente en una óptica, optimizando las operaciones diarias y el seguimiento del stock."
+    },
+    "COMPANY_DOMICILIATION": {
+      "TITLE": "Plataforma de Gestión de Domiciliación de Empresas",
+      "DESCRIPTION": "Plataforma web para la gestión completa de la domiciliación de empresas: suscripción en línea, área de clientes, gestión de contratos y documentos, notificaciones y más. Stack: Spring Boot, Angular, MySQL, JPA/Hibernate, RESTful API, Spring Security."
     }
   },
   "SKILLS": {
@@ -521,4 +545,4 @@
     "SUCCESS": "¡Tu mensaje ha sido enviado con éxito!",
     "ERROR": "Ha ocurrido un error al enviar tu mensaje. Por favor, inténtalo de nuevo."
   }
-} 
+}

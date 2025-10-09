@@ -5,10 +5,7 @@ import { LanguageService } from '../../services/language.service';
 interface Project {
   title: string;
   description: string;
-  image: string;
   technologies: string[];
-  demoUrl?: string;
-  githubUrl?: string;
   category: string;
   featured: boolean;
   date: string;
@@ -44,61 +41,91 @@ export class ProjectsComponent implements OnInit {
       {
         title: '',
         description: '',
-        image: 'assets/projects/ai-chat.jpg',
         technologies: ['FastAPI', 'TinyLlama', 'React.js', 'Docker'],
-        demoUrl: 'https://demo.example.com',
-        githubUrl: 'https://github.com/yourusername/ai-chat',
         category: 'ai',
         featured: true,
-        date: '2024'
+        date: "2025"
       },
       {
         title: '',
         description: '',
-        image: 'assets/projects/face-recognition.jpg',
-        technologies: ['ESP32-S3', 'Django', 'React Native', 'FFmpeg', 'ResNet', 'SCRFD'],
-        demoUrl: 'https://demo.example.com',
-        githubUrl: 'https://github.com/yourusername/face-recognition',
-        category: 'iot',
+        technologies: ["ESP32-S3", "Django", "React Native", "FFmpeg", "ResNet", "SCRFD"],
+        category: "iot",
         featured: true,
-        date: '2024'
+        date: "2024"
       },
       {
         title: '',
         description: '',
-        image: 'assets/projects/job-platform.jpg',
-        technologies: ['Java', 'Spring Boot', 'Angular', 'MySQL', 'Selenium'],
-        demoUrl: 'https://demo.example.com',
-        githubUrl: 'https://github.com/yourusername/job-platform',
-        category: 'web',
+        technologies: ["C#", "ASP.NET", "HTML", "CSS", "JavaScript", "Bootstrap", "SQL Server"],
+        category: "web",
         featured: false,
-        date: '2023'
+        date: "2022"
       },
       {
         title: '',
         description: '',
-        image: 'assets/projects/schedule-system.jpg',
-        technologies: ['C#', 'ASP.NET', 'SQL Server', 'Bootstrap'],
-        demoUrl: 'https://demo.example.com',
-        githubUrl: 'https://github.com/yourusername/schedule-system',
-        category: 'web',
+        technologies: ["ASP.NET", "HTML", "CSS", "JavaScript", "SQL Server"],
+        category: "web",
         featured: false,
-        date: '2022'
+        date: "2021"
+      },
+      {
+        title: '',
+        description: '',
+        technologies: ["Python", "K-NN", "Decision Trees"],
+        category: "ai",
+        featured: false,
+        date: "2023"
+      },
+      {
+        title: '',
+        description: '',
+        technologies: ["Spring Boot", "Bootstrap", "chartjs", "HTML5", "Java", "Spring Data", "CSS", "Spring Security", "MySQL", "JavaScript", "Selenium"],
+        category: "web",
+        featured: true,
+        date: "2023"
+      },
+      {
+        title: '',
+        description: '',
+        technologies: ["Java", "Java Swing", "MySQL"],
+        category: "desktop",
+        featured: false,
+        date: "2022"
+      },
+      {
+        title: '',
+        description: '',
+        technologies: ["C#", "T-SQL", "Microsoft SQL Server"],
+        category: "desktop",
+        featured: false,
+        date: "2021"
+      },
+      {
+        title: '',
+        description: '',
+        technologies: ["Spring Boot", "Angular", "MySQL", "JPA/Hibernate", "RESTful API", "Spring Security"],
+        category: "web",
+        featured: true,
+        date: "2025"
       }
     ];
+    // Sort projects by date descending (most recent first)
+    this.projects.sort((a, b) => Number(b.date) - Number(a.date));
     this.filteredProjects = [...this.projects];
   }
 
   updateProjectTranslations(): void {
-    // Update project 1 (AI Chat)
+    // AI Chat Assistant
     this.translate.get('PROJECTS.AI_CHAT.TITLE').subscribe((title: string) => {
       this.projects[0].title = title;
     });
     this.translate.get('PROJECTS.AI_CHAT.DESCRIPTION').subscribe((desc: string) => {
       this.projects[0].description = desc;
     });
-    
-    // Update project 2 (Face Recognition)
+
+    // Smart Face Recognition System
     this.translate.get('PROJECTS.FACE_RECOGNITION.TITLE').subscribe((title: string) => {
       this.projects[1].title = title;
     });
@@ -106,20 +133,60 @@ export class ProjectsComponent implements OnInit {
       this.projects[1].description = desc;
     });
 
-    // Update project 3 (Job Platform)
-    this.translate.get('PROJECTS.JOB_PLATFORM.TITLE').subscribe((title: string) => {
+    // Schedule Management System
+    this.translate.get('PROJECTS.SCHEDULE_SYSTEM.TITLE').subscribe((title: string) => {
       this.projects[2].title = title;
     });
-    this.translate.get('PROJECTS.JOB_PLATFORM.DESCRIPTION').subscribe((desc: string) => {
+    this.translate.get('PROJECTS.SCHEDULE_SYSTEM.DESCRIPTION').subscribe((desc: string) => {
       this.projects[2].description = desc;
     });
 
-    // Update project 4 (Schedule System)
-    this.translate.get('PROJECTS.SCHEDULE_SYSTEM.TITLE').subscribe((title: string) => {
+    // Maintenance and Improvement of School Information System
+    this.translate.get('PROJECTS.SCHOOL_MANAGEMENT_APP.TITLE').subscribe((title: string) => {
       this.projects[3].title = title;
     });
-    this.translate.get('PROJECTS.SCHEDULE_SYSTEM.DESCRIPTION').subscribe((desc: string) => {
+    this.translate.get('PROJECTS.SCHOOL_MANAGEMENT_APP.DESCRIPTION').subscribe((desc: string) => {
       this.projects[3].description = desc;
+    });
+
+    // Email Spam Detection Model
+    this.translate.get('PROJECTS.SPAM_DETECTION.TITLE').subscribe((title: string) => {
+      this.projects[4].title = title;
+    });
+    this.translate.get('PROJECTS.SPAM_DETECTION.DESCRIPTION').subscribe((desc: string) => {
+      this.projects[4].description = desc;
+    });
+
+    // Integrated Web Platform for Job and Internship Offers
+    this.translate.get('PROJECTS.EMPLOYMENT_PLATFORM.TITLE').subscribe((title: string) => {
+      this.projects[5].title = title;
+    });
+    this.translate.get('PROJECTS.EMPLOYMENT_PLATFORM.DESCRIPTION').subscribe((desc: string) => {
+      this.projects[5].description = desc;
+    });
+
+    // School Management Application
+    this.translate.get('PROJECTS.SCHOOL_MANAGEMENT_APP.TITLE').subscribe((title: string) => {
+      this.projects[6].title = title;
+    });
+    this.translate.get('PROJECTS.SCHOOL_MANAGEMENT_APP.DESCRIPTION').subscribe((desc: string) => {
+      this.projects[6].description = desc;
+    });
+
+    // Order and Stock Management Application for Opticians
+    this.translate.get('PROJECTS.OPTICIAN_ORDER_STOCK.TITLE').subscribe((title: string) => {
+      this.projects[7].title = title;
+    });
+    this.translate.get('PROJECTS.OPTICIAN_ORDER_STOCK.DESCRIPTION').subscribe((desc: string) => {
+      this.projects[7].description = desc;
+    });
+
+    // Company Domiciliation Management Platform
+    this.translate.get('PROJECTS.COMPANY_DOMICILIATION.TITLE').subscribe((title: string) => {
+      this.projects[8].title = title;
+    });
+    this.translate.get('PROJECTS.COMPANY_DOMICILIATION.DESCRIPTION').subscribe((desc: string) => {
+      this.projects[8].description = desc;
     });
   }
 
