@@ -54,12 +54,20 @@
       </div>
 
       <div class="contact-form-container fade-in-up">
-        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+        <!-- Use native form POST to allow Netlify Forms to process submissions. Keep Angular FormGroup for validation. -->
+        <form name="contact" method="POST" netlify netlify-honeypot="bot-field" [formGroup]="contactForm" (ngSubmit)="onSubmit($event)" class="contact-form">
+          <!-- Netlify requires a hidden input with the form name -->
+          <input type="hidden" name="form-name" value="contact">
+          <!-- Honeypot field to deter bots -->
+          <div style="display:none">
+            <label>Don’t fill this out if you're human: <input name="bot-field"></label>
+          </div>
           <div class="form-group">
             <label for="name">{{ 'CONTACT.NAME' | translate }}</label>
             <input 
               type="text" 
               id="name" 
+              name="name"
               formControlName="name" 
               [placeholder]="'CONTACT.NAME_PLACEHOLDER' | translate"
               [ngClass]="{'invalid': submitted && contactForm.get('name')?.errors}"
@@ -74,6 +82,7 @@
             <input 
               type="email" 
               id="email" 
+              name="email"
               formControlName="email" 
               [placeholder]="'CONTACT.EMAIL_PLACEHOLDER' | translate"
               [ngClass]="{'invalid': submitted && contactForm.get('email')?.errors}"
@@ -90,6 +99,7 @@
             <label for="message">{{ 'CONTACT.MESSAGE' | translate }}</label>
             <textarea 
               id="message" 
+              name="message"
               formControlName="message" 
               rows="6" 
               [placeholder]="'CONTACT.MESSAGE_PLACEHOLDER' | translate"

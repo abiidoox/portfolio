@@ -35,29 +35,42 @@ export class ContactComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  onSubmit(event?: Event) {
+    // If the native event is provided, prevent default since we'll submit via fetch
+    if (event) {
+      event.preventDefault();
+    }
+
     this.submitted = true;
     this.success = false;
     this.error = false;
 
     if (this.contactForm.valid) {
       this.isLoading = true;
-      
-      // Simulate API call
-      setTimeout(() => {
-        try {
-          // Here you would normally send the form data to your backend
-          // Avoid logging user-submitted form data in production.
-          
+
+      // Prepare data for Netlify Forms: URL-encoded body including form-name
+      const formValue = this.contactForm.value;
+      const data: { [k: string]: any } = { 'form-name': 'contact', ...formValue };
+      const body = Object.keys(data)
+        .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+        .join('&');
+
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body
+      })
+        .then(() => {
           this.success = true;
           this.contactForm.reset();
           this.submitted = false;
-        } catch (err) {
+        })
+        .catch(() => {
           this.error = true;
-        } finally {
+        })
+        .finally(() => {
           this.isLoading = false;
-        }
-      }, 1500);
+        });
     }
   }
 

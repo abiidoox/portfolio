@@ -25,21 +25,7 @@
               {{ 'header.resume' | translate }}
             </a>
           </li>
-          <!-- <li>
-            <a routerLink="/achievements" routerLinkActive="active" (click)="closeDropdown()">
-              {{ 'header.achievements' | translate }}
-            </a>
-          </li>
-          <li>
-            <a routerLink="/blog" routerLinkActive="active" (click)="closeDropdown()">
-              {{ 'header.blog' | translate }}
-            </a>
-          </li>
-          <li>
-            <a routerLink="/testimonials" routerLinkActive="active" (click)="closeDropdown()">
-              {{ 'header.testimonials' | translate }}
-            </a>
-          </li> -->
+      
         
    
       <li><a routerLink="/contact" routerLinkActive="active">{{ 'header.contact' | translate }}</a></li>
@@ -47,20 +33,22 @@
     <div class="header-controls">
       <app-theme-switcher></app-theme-switcher>
       <app-language-switcher></app-language-switcher>
-      <button class="mobile-menu-button" (click)="toggleMobileMenu()" aria-label="Toggle mobile menu">
+      <button class="mobile-menu-button" (click)="toggleMobileMenu()" [attr.aria-expanded]="isMobileMenuOpen" aria-label="Toggle mobile menu">
         <i class="fas" [ngClass]="{'fa-bars': !isMobileMenuOpen, 'fa-times': isMobileMenuOpen}"></i>
       </button>
     </div>
   </nav>
   <div class="mobile-menu" [class.open]="isMobileMenuOpen">
+    <div class="mobile-controls">
+      <app-theme-switcher></app-theme-switcher>
+      <app-language-switcher></app-language-switcher>
+    </div>
     <ul class="nav-links">
       <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMobileMenu()">{{ 'header.home' | translate }}</a></li>
       <li><a routerLink="/projects" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'header.projects' | translate }}</a></li>
       <li><a routerLink="/skills" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'header.skills' | translate }}</a></li>
       <li><a routerLink="/resume" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'header.resume' | translate }}</a></li>
-      <li><a routerLink="/achievements" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'header.achievements' | translate }}</a></li>
-      <li><a routerLink="/blog" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'header.blog' | translate }}</a></li>
-      <li><a routerLink="/testimonials" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'header.testimonials' | translate }}</a></li>
+  
       <li><a routerLink="/contact" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'header.contact' | translate }}</a></li>
     </ul>
   </div>

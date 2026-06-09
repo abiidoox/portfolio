@@ -1,260 +1,203 @@
+/* header.component.scss
+   Responsive header: horizontal nav on desktop, hamburger + slide-down menu on mobile.
+*/
+
+:host {
+  --header-height: 64px;
+}
+
+/* ─── Main bar ─────────────────────────────────────────────── */
+
 .header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  height: var(--header-height);
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  background: rgba(15, 23, 42, 0.6);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
   z-index: 1000;
-  padding: 1rem 2rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 
-  // Light theme styles
   :host-context(body.light-theme) & {
-    background: rgba(255, 255, 255, 0.8);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.96);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   }
 
-  .nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 2rem;
+  @media (max-width: 768px) {
+    padding: 0 0.75rem;
+  }
+}
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      list-style: none;
-      margin: 0;
-      padding: 0;
+/* ─── Inner flex row ────────────────────────────────────────── */
 
-      @media (max-width: 768px) {
-        display: none;
-      }
+.nav-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
 
-      li {
-        position: relative;
+/* ─── Desktop nav links ─────────────────────────────────────── */
 
-        a, button.dropdown-toggle {
-          color: var(--text-color);
-          text-decoration: none;
-          font-size: 1rem;
-          font-weight: 500;
-          padding: 0.5rem 1rem;
-          border-radius: 8px;
-          transition: all 0.3s ease;
-          opacity: 0.8;
-          background: none;
-          border: none;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 
-          &:hover, &:focus {
-            color: var(--primary-color);
-            opacity: 1;
-            transform: translateY(-2px);
-            outline: none;
-          }
-
-          &.active {
-            color: white;
-            background: var(--primary-color);
-            opacity: 1;
-            box-shadow: 0 4px 20px rgba(var(--primary-color-rgb), 0.3);
-          }
-
-          i {
-            font-size: 0.8rem;
-            transition: transform 0.3s ease;
-          }
-        }
-
-        &.dropdown {
-          .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%) translateY(10px);
-            background: rgba(23, 25, 35, 0.9);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 12px;
-            padding: 0.75rem;
-            min-width: 200px;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            pointer-events: none;
-            z-index: 1001;
-
-            // Light theme styles
-            :host-context(body.light-theme) & {
-              background: rgba(255, 255, 255, 0.9);
-              border: 1px solid rgba(0, 0, 0, 0.1);
-            }
-
-            li {
-              a {
-                display: block;
-                padding: 0.75rem 1rem;
-                color: var(--text-color);
-                opacity: 0.8;
-                transition: all 0.3s ease;
-                white-space: nowrap;
-
-                &:hover, &:focus {
-                  color: var(--primary-color);
-                  opacity: 1;
-                  transform: translateX(5px);
-                  background: rgba(var(--primary-color-rgb), 0.1);
-                }
-
-                &.active {
-                  color: white;
-                  background: var(--primary-color);
-                  opacity: 1;
-                }
-              }
-            }
-          }
-
-          &.open {
-            .dropdown-toggle i {
-              transform: rotate(180deg);
-            }
-
-            .dropdown-menu {
-              opacity: 1;
-              visibility: visible;
-              transform: translateX(-50%) translateY(5px);
-              pointer-events: auto;
-            }
-          }
-        }
-      }
-    }
+  li a,
+  li button {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    transition: color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font: inherit;
   }
 
-  .header-controls {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
+  li a:hover,
+  li button:hover {
+    color: var(--primary-color);
+    transform: translateY(-2px);
+  }
 
-    @media (max-width: 768px) {
-      margin-left: auto;
+  li a.active {
+    background: var(--primary-color);
+    color: #fff;
+  }
+
+  /* Hidden on small screens — mobile menu takes over */
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+/* ─── Right-side controls (theme / language / hamburger) ────── */
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  /* Collapse theme + language switchers into mobile menu */
+  @media (max-width: 768px) {
+    app-theme-switcher,
+    app-language-switcher {
+      display: none;
     }
   }
 }
 
-// Mobile menu button
+/* ─── Hamburger button ──────────────────────────────────────── */
+
 .mobile-menu-button {
   display: none;
   background: none;
   border: none;
   color: var(--text-color);
-  font-size: 1.5rem;
+  font-size: 1.4rem;
+  padding: 0.25rem;
   cursor: pointer;
-  padding: 0.5rem;
-  transition: all 0.3s ease;
-  border-radius: 8px;
-
-  &:hover, &:focus {
-    color: var(--primary-color);
-    background: rgba(var(--primary-color-rgb), 0.1);
-    outline: none;
-  }
+  z-index: 1003;
 
   @media (max-width: 768px) {
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
-// Mobile menu
+/* ─── Mobile slide-down menu ────────────────────────────────── */
+
 .mobile-menu {
-  display: none;
   position: fixed;
-  top: 72px;
+  top: 0;
   left: 0;
   right: 0;
-  background: rgba(23, 25, 35, 0.95);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  padding: 1.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  transform: translateY(-100%);
-  transition: transform 0.3s ease;
-  z-index: 999;
+  bottom: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: calc(var(--header-height) + 1rem) 1rem 1rem;
 
-  // Light theme styles
+  background: rgba(23, 25, 35, 0.98);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+
+  /* Animate in/out */
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 220ms ease-in-out, opacity 220ms ease-in-out, visibility 220ms;
+
+  z-index: 1001; /* above header so it covers it fully */
+
   :host-context(body.light-theme) & {
-    background: rgba(255, 255, 255, 0.95);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.98);
   }
 
   &.open {
     transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
   }
 
-  @media (max-width: 768px) {
-    display: block;
-  }
-
-  .nav-links {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-
-    li {
-      a {
-        display: block;
-        padding: 1rem;
-        color: var(--text-color);
-        text-decoration: none;
-        font-size: 1rem;
-        font-weight: 500;
-        border-radius: 8px;
-        transition: all 0.3s ease;
-        opacity: 0.8;
-
-        &:hover, &:focus {
-          color: var(--primary-color);
-          opacity: 1;
-          background: rgba(var(--primary-color-rgb), 0.1);
-          outline: none;
-        }
-
-        &.active {
-          color: white;
-          background: var(--primary-color);
-          opacity: 1;
-        }
-      }
-    }
+  /* Never shown on desktop */
+  @media (min-width: 769px) {
+    display: none !important;
   }
 }
 
-@media (max-width: 768px) {
-  .header {
-    padding: 1rem;
+/* Controls row inside mobile menu */
+.mobile-controls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
 
-    .nav-container {
-      justify-content: space-between;
-      
-      .header-controls {
-        margin-left: auto;
-      }
-    }
+/* Stacked links inside mobile menu */
+.mobile-menu .nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  li a {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--text-color);
+    background: transparent;
+    border: 1px solid transparent;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+
+  li a:hover,
+  li a:focus {
+    background: rgba(var(--primary-color-rgb), 0.12);
+    color: var(--primary-color);
+    border-color: rgba(var(--primary-color-rgb), 0.3);
+    outline: none;
+  }
+
+  li a.active {
+    background: var(--primary-color);
+    color: #fff;
+    border-color: var(--primary-color);
   }
 }
