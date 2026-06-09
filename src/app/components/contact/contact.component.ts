@@ -47,7 +47,7 @@ export class ContactComponent implements OnInit {
       setTimeout(() => {
         try {
           // Here you would normally send the form data to your backend
-          console.log(this.contactForm.value);
+          // Avoid logging user-submitted form data in production.
           
           this.success = true;
           this.contactForm.reset();

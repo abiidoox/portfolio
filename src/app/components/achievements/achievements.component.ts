@@ -44,7 +44,7 @@ export class AchievementsComponent implements OnInit, OnDestroy {
       issuerKey: 'ACHIEVEMENTS.ITEMS.FACE_RECOGNITION.ISSUER',
       image: 'assets/images/achievements/face-recognition.jpg',
       type: 'project',
-      link: 'https://github.com/yourusername/face-recognition',
+  link: 'https://github.com/abiidoox/face-recognition',
       technologies: ['Python', 'OpenCV', 'TensorFlow', 'ESP32'],
       category: 'ai'
     },

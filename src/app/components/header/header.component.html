@@ -3,7 +3,7 @@
     <ul class="nav-links">
       <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{ 'header.home' | translate }}</a></li>
       <li><a routerLink="/projects" routerLinkActive="active">{{ 'header.projects' | translate }}</a></li>
-      <li class="dropdown" [class.open]="isDropdownOpen">
+      <!-- <li class="dropdown" [class.open]="isDropdownOpen">
         <button 
           type="button"
           class="dropdown-toggle"
@@ -14,7 +14,7 @@
           {{ 'header.more' | translate }}
           
         </button>
-        <ul class="dropdown-menu" role="menu" [class.show]="isDropdownOpen">
+         </li> -->
           <li>
             <a routerLink="/skills" routerLinkActive="active" (click)="closeDropdown()">
               {{ 'header.skills' | translate }}
@@ -25,7 +25,7 @@
               {{ 'header.resume' | translate }}
             </a>
           </li>
-          <li>
+          <!-- <li>
             <a routerLink="/achievements" routerLinkActive="active" (click)="closeDropdown()">
               {{ 'header.achievements' | translate }}
             </a>
@@ -39,9 +39,9 @@
             <a routerLink="/testimonials" routerLinkActive="active" (click)="closeDropdown()">
               {{ 'header.testimonials' | translate }}
             </a>
-          </li>
-        </ul>
-      </li>
+          </li> -->
+        
+   
       <li><a routerLink="/contact" routerLinkActive="active">{{ 'header.contact' | translate }}</a></li>
     </ul>
     <div class="header-controls">

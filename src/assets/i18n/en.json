@@ -153,10 +153,23 @@
       "NAME": "ABDERRAZZAQ EL ABDOUNI",
       "TITLE": "Full Stack Engineer",
       "EMAIL": "elabdouni.abderrazzaq@gmail.com",
-      "PHONE": "0653539113",
+      "PHONE": "+212653539113",
       "LOCATION": "Rabat"
     },
     "EXPERIENCE_ITEMS": {
+      "ITEM6": {
+        "TITLE": "Full Stack Developer – .NET / Angular, Institut National de la Recherche Agronomique (INRA) — Fixed-term",
+        "PERIOD": "04/2025 – 04/2026",
+        "SUBTITLE": "Responsibilities and Achievements:",
+        "POINTS": {
+          "POINT1": "Designed and developed 4 modules for the internal ERP (Régie, Digital Order Office, Professional Card, Asset Management) to digitize administrative and financial processes and improve operational reliability.",
+          "POINT2": "Régie: managed expenses, advances and allocations; automated régie decisions and cash funding; financial monitoring.",
+          "POINT3": "Digital Order Office: handled incoming/outgoing mail; ensured full traceability of processing; implemented real-time notifications.",
+          "POINT4": "Professional Card: implemented request creation & validation, card generation and distribution, and status tracking.",
+          "POINT5": "Asset Management: registered equipment on entry; assigned and tracked movements; monitored lifecycle to disposal with automated reporting."
+        },
+        "TECHNOLOGIES": ".NET 7, ASP.NET Core, Angular, SQL Server, MySQL, REST API, JWT, Git, Scrum, Talend"
+      },
       "ITEM1": {
         "TITLE": "Full Stack Developer, Freelance",
         "PERIOD": "11/2024 – 01/2025",
@@ -267,7 +280,6 @@
     "NAME": "Name",
     "NAME_PLACEHOLDER": "Your Name",
     "NAME_REQUIRED": "Name is required",
-    "EMAIL": "Email",
     "EMAIL_PLACEHOLDER": "Your Email",
     "EMAIL_REQUIRED": "Email is required",
     "EMAIL_INVALID": "Please enter a valid email address",

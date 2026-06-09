@@ -67,6 +67,7 @@ interface ResumeData {
 export class ResumeComponent implements OnInit, OnDestroy {
   private langSubscription!: Subscription;
   resumeData!: ResumeData;
+  error = false;
 
   constructor(
     private translate: TranslateService,
@@ -98,33 +99,21 @@ export class ResumeComponent implements OnInit, OnDestroy {
   }
 
   downloadResume(): void {
-    // Get current language and download appropriate resume
-    const lang = this.languageService.getCurrentLanguage();
-    let resumeFile: string;
-    
-    // Select resume file based on language
-    switch (lang) {
-      case 'fr':
-        resumeFile = 'resume_fr.pdf';
-        break;
-      case 'es':
-        resumeFile = 'resume_es.pdf';
-        break;
-      default:
-        resumeFile = 'resume_en.pdf';
-        break;
-    }
-    
-    // Create a link and trigger download
+    // In production we ship a single CV file under assets (cv.pdf).
+    // If you want per-language resumes, add them under `src/assets/resumes/` and
+    // update this method accordingly.
+    const filePath = 'assets/cv.pdf';
+    const fileName = 'cv.pdf';
+
     const link = document.createElement('a');
-    link.href = `assets/resumes/${resumeFile}`;
-    link.download = resumeFile;
-    
-    // Add error handling for file not found
-    fetch(link.href)
+    link.href = filePath;
+    link.download = fileName;
+
+    // Try to fetch first to provide a nicer error when file is missing
+    fetch(filePath)
       .then(response => {
         if (!response.ok) {
-          throw new Error('Resume not found');
+          throw new Error('CV not found');
         }
         return response.blob();
       })
@@ -135,15 +124,9 @@ export class ResumeComponent implements OnInit, OnDestroy {
         window.URL.revokeObjectURL(url);
       })
       .catch(error => {
-        console.error('Error downloading resume:', error);
-        // Fallback to English version if the specific language version is not found
-        if (lang !== 'en') {
-          console.log('Falling back to English resume');
-          const fallbackLink = document.createElement('a');
-          fallbackLink.href = 'assets/resumes/resume_en.pdf';
-          fallbackLink.download = 'resume_en.pdf';
-          fallbackLink.click();
-        }
+        console.error('Error downloading CV:', error);
+        // Optionally surface a user-visible message here instead of silent failure
+        this.error = true;
       });
   }
 }

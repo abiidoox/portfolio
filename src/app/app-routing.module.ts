@@ -31,18 +31,18 @@ const routes: Routes = [
     path: 'skills',
     component: SkillsComponent
   },
-  {
-    path: 'testimonials',
-    component: TestimonialsComponent
-  },
-  {
-    path: 'blog',
-    component: BlogComponent
-  },
-  {
-    path: 'achievements',
-    component: AchievementsComponent
-  },
+  // {
+  //   path: 'testimonials',
+  //   component: TestimonialsComponent
+  // },
+  // {
+  //   path: 'blog',
+  //   component: BlogComponent
+  // },
+  // {
+  //   path: 'achievements',
+  //   component: AchievementsComponent
+  // },
   {
     path: '404',
     component: NotFoundComponent

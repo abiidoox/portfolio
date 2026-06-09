@@ -303,10 +303,23 @@
       "NAME": "ABDERRAZZAQ EL ABDOUNI",
       "TITLE": "Ingeniero Full Stack",
       "EMAIL": "elabdouni.abderrazzaq@gmail.com",
-      "PHONE": "0653539113",
+      "PHONE": "+212653539113",
       "LOCATION": "Rabat"
     },
     "EXPERIENCE_ITEMS": {
+      "ITEM6": {
+        "TITLE": "Desarrollador Full Stack – .NET / Angular, Institut National de la Recherche Agronomique (INRA) — Contrato temporal",
+        "PERIOD": "04/2025 – 04/2026",
+        "SUBTITLE": "Responsabilidades y Logros:",
+        "POINTS": {
+          "POINT1": "Concepción y desarrollo de 4 módulos vinculados al ERP interno (Régie, Oficina Digital de Correspondencia, Tarjeta Profesional, Gestión de Materiales) para digitalizar procesos administrativos y financieros y reforzar la fiabilidad del seguimiento.",
+          "POINT2": "Régie: gestión de gastos, anticipos y asignaciones; automatización de decisiones de régie y financiación de cajas; seguimiento financiero.",
+          "POINT3": "Oficina Digital de Correspondencia: gestión de correos entrantes/salientes; trazabilidad completa de los tratamientos; notificaciones en tiempo real.",
+          "POINT4": "Tarjeta Profesional: creación y validación de solicitudes; generación y distribución de tarjetas; seguimiento de estados.",
+          "POINT5": "Gestión de Materiales: registro de equipos desde su entrada; asignación y seguimiento de movimientos; seguimiento del ciclo de vida hasta la baja con informes automatizados."
+        },
+        "TECHNOLOGIES": ".NET 7, ASP.NET Core, Angular, SQL Server, MySQL, REST API, JWT, Git, Scrum, Talend"
+      },
       "ITEM1": {
         "TITLE": "Desarrollador Full Stack, Freelance",
         "PERIOD": "11/2024 – 01/2025",
@@ -533,7 +546,6 @@
     "NAME": "Nombre",
     "NAME_PLACEHOLDER": "Tu Nombre",
     "NAME_REQUIRED": "El nombre es obligatorio",
-    "EMAIL": "Email",
     "EMAIL_PLACEHOLDER": "Tu Email",
     "EMAIL_REQUIRED": "El email es obligatorio",
     "EMAIL_INVALID": "Por favor, introduce una dirección de email válida",

@@ -25,3 +25,11 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Deployment checklist
+
+- Ensure `environment.prod.ts` is configured for your host (API endpoints, tracking IDs).
+- Run `npm run build:prod` to generate the `dist/` folder.
+- Serve the `dist/portfolio-website` folder from your static host (Netlify, Vercel, GitHub Pages, S3 + CloudFront, etc.).
+- Verify assets like `assets/cv.pdf` are present in `dist/` after build.
+- Remove any remaining debug logging and do not commit secrets.

@@ -8,8 +8,7 @@ import { Component } from '@angular/core';
 export class FooterComponent {
   currentYear = new Date().getFullYear();
   socialLinks = [
-    { icon: 'fab fa-github', url: 'https://github.com', label: 'GitHub' },
-    { icon: 'fab fa-linkedin', url: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: 'fab fa-twitter', url: 'https://twitter.com', label: 'Twitter' },
+    { icon: 'fab fa-github', url: 'https://github.com/abiidoox', label: 'GitHub' },
+    { icon: 'fab fa-linkedin', url: 'https://www.linkedin.com/in/abderrazzaq-el-abdouni-28004019a', label: 'LinkedIn' },
   ];
 } 

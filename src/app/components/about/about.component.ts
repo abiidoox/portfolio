@@ -28,7 +28,7 @@ export class AboutComponent implements OnInit {
       name: 'ABDERRAZZAQ EL ABDOUNI',
       title: 'Full Stack Engineer',
       email: 'elabdouni.abderrazzaq@gmail.com',
-      phone: '0653539113',
+      phone: '+212653539113',
       location: 'Rabat, Morocco',
       bio: 'I am a passionate Full Stack Engineer based in Rabat, specializing in web development, IoT, and Machine Learning. I combine technical expertise and innovation to create high-performance, scalable software solutions.'
     },
@@ -36,7 +36,7 @@ export class AboutComponent implements OnInit {
       name: 'ABDERRAZZAQ EL ABDOUNI',
       title: 'Ingénieur Full Stack',
       email: 'elabdouni.abderrazzaq@gmail.com',
-      phone: '0653539113',
+      phone: '+212653539113',
       location: 'Rabat, Maroc',
       bio: 'Je suis un Ingénieur Full Stack passionné basé à Rabat, spécialisé dans le développement web, l\'IoT et le Machine Learning. Je combine expertise technique et innovation pour créer des solutions logicielles performantes et évolutives.'
     },
@@ -44,7 +44,7 @@ export class AboutComponent implements OnInit {
       name: 'ABDERRAZZAQ EL ABDOUNI',
       title: 'Ingeniero Full Stack',
       email: 'elabdouni.abderrazzaq@gmail.com',
-      phone: '0653539113',
+      phone: '+212653539113',
       location: 'Rabat, Marruecos',
       bio: 'Soy un Ingeniero Full Stack apasionado con sede en Rabat, especializado en desarrollo web, IoT y Machine Learning. Combino experiencia técnica e innovación para crear soluciones de software escalables y de alto rendimiento.'
     }
