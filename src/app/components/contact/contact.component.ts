@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageService } from '../../services/language.service';
 
@@ -9,14 +9,14 @@ import { LanguageService } from '../../services/language.service';
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent implements OnInit {
-  contactForm: FormGroup;
+  contactForm: UntypedFormGroup;
   submitted = false;
   success = false;
   error = false;
   isLoading = false;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private translate: TranslateService,
     private languageService: LanguageService
   ) {
