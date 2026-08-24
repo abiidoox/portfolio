@@ -1,14 +1,15 @@
-<div class="resume-container section-padding">
-  <div class="container">
-    <div class="resume-header fade-in-up">
-      <h6 class="text-gradient">{{ 'RESUME.SUBTITLE' | translate }}</h6>
-      <h2>{{ 'RESUME.TITLE' | translate }}</h2>
-      <p>{{ 'RESUME.DESCRIPTION' | translate }}</p>
-    </div>
+<div class="page-v2 resume-v2">
+    <header class="resume-head">
+      <span class="kicker-line" appScrollReveal data-reveal-direction="up">{{ 'RESUME.SUBTITLE' | translate }}</span>
+      <h1 class="display-title" appScrollReveal data-reveal-direction="up" data-delay="120">
+        <span class="text-gradient-animated">{{ 'RESUME.TITLE' | translate }}</span>
+      </h1>
+      <p class="resume-sub" appScrollReveal data-reveal-direction="up" data-delay="220">{{ 'RESUME.DESCRIPTION' | translate }}</p>
+    </header>
 
     <div class="resume-content">
       <!-- Personal Info Section -->
-      <div class="resume-section fade-in-up">
+      <div appScrollReveal data-reveal-direction="up" class="resume-section ">
         <div class="personal-info">
           <h1>{{ 'RESUME.PERSONAL_INFO.NAME' | translate }}</h1>
           <p>{{ 'RESUME.PERSONAL_INFO.TITLE' | translate }}</p>
@@ -21,7 +22,7 @@
       </div>
 
       <!-- Experience Section -->
-      <div class="resume-section fade-in-up">
+      <div appScrollReveal data-reveal-direction="up" class="resume-section ">
         <h3 class="section-title">{{ 'RESUME.EXPERIENCE' | translate }}</h3>
         
         <div class="timeline">
@@ -121,7 +122,7 @@
       </div>
       
       <!-- Education Section -->
-      <div class="resume-section fade-in-up">
+      <div appScrollReveal data-reveal-direction="up" class="resume-section ">
         <h3 class="section-title">{{ 'RESUME.EDUCATION' | translate }}</h3>
         
         <div class="timeline">
@@ -155,7 +156,7 @@
       </div>
       
       <!-- Skills Section -->
-      <div class="resume-section fade-in-up">
+      <div appScrollReveal data-reveal-direction="up" class="resume-section ">
         <h3 class="section-title">{{ 'RESUME.SKILLS' | translate }}</h3>
         
         <div class="skills-container">
@@ -221,7 +222,7 @@
       </div>
       
       <!-- Languages Section -->
-      <div class="resume-section fade-in-up">
+      <div appScrollReveal data-reveal-direction="up" class="resume-section ">
         <h3 class="section-title">{{ 'RESUME.LANGUAGES.TITLE' | translate }}</h3>
         <div class="languages-list">
           <div class="language-item">
@@ -237,7 +238,7 @@
       </div>
       
       <!-- Certifications Section -->
-      <div class="resume-section fade-in-up">
+      <div appScrollReveal data-reveal-direction="up" class="resume-section ">
         <h3 class="section-title">{{ 'RESUME.CERTIFICATIONS.TITLE' | translate }}</h3>
         <div class="certifications-list">
           <div class="certification-item">
@@ -247,10 +248,9 @@
       </div>
     </div>
     
-    <div class="download-section fade-in-up">
-      <button (click)="downloadResume()" class="btn download-btn">
+    <div class="download-section-v2" appScrollReveal data-reveal-direction="up">
+      <button (click)="downloadResume()" class="btn-v2 primary download-btn">
         <i class="fas fa-download"></i> {{ 'RESUME.DOWNLOAD' | translate }}
       </button>
     </div>
-  </div>
 </div>

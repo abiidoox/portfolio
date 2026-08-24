@@ -18,6 +18,11 @@ import { AchievementsComponent } from './components/achievements/achievements.co
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
+import { PreloaderComponent } from './components/shared/preloader/preloader.component';
+import { ParticlesBackgroundComponent } from './components/shared/particles-background/particles-background.component';
+import { WordRotatorComponent } from './components/shared/word-rotator/word-rotator.component';
+import { ScrollRevealDirective } from './directives/scroll-reveal.directive';
+import { CountUpDirective } from './directives/count-up.directive';
 
 // Factory function for TranslateHttpLoader
 export function HttpLoaderFactory(http: HttpClient) {
@@ -33,7 +38,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     AchievementsComponent,
     NotFoundComponent,
     LoadingComponent,
-    FooterComponent
+    FooterComponent,
+    PreloaderComponent,
+    ParticlesBackgroundComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +50,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     FormsModule,
     ThemeSwitcherModule,
     LanguageSwitcherModule,
+    ScrollRevealDirective,
+    CountUpDirective,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

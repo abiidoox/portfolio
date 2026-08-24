@@ -11,9 +11,11 @@ const routes: Routes = [
 @NgModule({
   declarations: [ProjectsComponent],
   imports: [
+    ScrollRevealDirective,
     CommonModule,
     RouterModule.forChild(routes),
     TranslateModule
   ]
 })
 export class ProjectsModule { }
+import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';

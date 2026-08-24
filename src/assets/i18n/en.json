@@ -25,6 +25,11 @@
     "TITLE_SMALL": "About Me",
     "TITLE_LARGE": "Crafting Digital Experiences",
     "GREETING": "Hello, I'm",
+    "HERO_SUBTITLE_PREFIX": "I build",
+    "ROTATE_1": "web experiences.",
+    "ROTATE_2": "IoT systems.",
+    "ROTATE_3": "ML solutions.",
+    "ROTATE_4": "things that last.",
     "BIO": "I am a passionate Full Stack Engineer based in Rabat, specializing in web development, IoT, and Machine Learning. I combine technical expertise and innovation to create high-performance, scalable software solutions.",
     "SKILLS_TITLE": "Technical Expertise",
     "SKILLS": {

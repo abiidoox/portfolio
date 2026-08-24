@@ -1,173 +1,92 @@
-<div class="about-container section-padding">
-  <div class="container">
-    <div class="about-header fade-in-up">
-      <h6 class="text-gradient">{{ 'ABOUT.TITLE_SMALL' | translate }}</h6>
-      <h2>{{ 'ABOUT.TITLE_LARGE' | translate }}</h2>
-    </div>
-    
-    <div class="about-content">
-      <div class="profile-section fade-in-up">
-        <div class="profile-image">
-          <img src="assets/me.jpg" alt="{{ 'ABOUT.PROFILE_ALT' | translate }}" class="profile-img">
-          <div class="profile-border"></div>
-          <div class="social-links">
-            <a href="https://github.com/abiidoox" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/abderrazzaq-el-abdouni-28004019a" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="mailto:{{ 'ABOUT.EMAIL' | translate }}" aria-label="Email"><i class="fas fa-envelope"></i></a>
-          </div>
-        </div>
-        <div class="bio-section">
-          <h3>{{ 'ABOUT.GREETING' | translate }} <span class="text-gradient">{{ 'ABOUT.NAME' | translate }}</span></h3>
-          <p class="bio-text">{{ 'ABOUT.BIO' | translate }}</p>
-          <div class="contact-info">
-            <div class="contact-item">
-              <i class="fas fa-envelope"></i>
-              <span>{{ 'ABOUT.EMAIL' | translate }}</span>
-            </div>
-            <div class="contact-item">
-              <i class="fas fa-phone"></i>
-              <span>+212653539113</span>
-            </div>
-            <div class="contact-item">
-              <i class="fas fa-location-dot"></i>
-              <span>{{ 'ABOUT.LOCATION' | translate }}</span>
-            </div>
-          </div>
-          
-          <!-- New: Download CV Button -->
-          <div class="cta-buttons">
-            <a href="/assets/Abderrazzaq_El_Abdouni_CV.pdf" download="Abderrazzaq_El_Abdouni_CV.pdf" class="download-cv">
-              <i class="fas fa-download"></i>
-              {{ 'ABOUT.DOWNLOAD_CV' | translate }}
-            </a>
-            <a routerLink="/contact" class="contact-me">
-              <i class="fas fa-paper-plane"></i>
-              {{ 'ABOUT.CONTACT_ME' | translate }}
-            </a>
-          </div>
-        </div>
+<div class="page-v2 about-v2">
+
+  <!-- ===== HERO ===== -->
+  <section class="hero-v2">
+    <div class="hero-text">
+      <span class="kicker-line" appScrollReveal data-reveal-direction="up">{{ 'ABOUT.TITLE_SMALL' | translate }}</span>
+      <h1 class="display-title">
+        <span class="word" appScrollReveal data-reveal-direction="up"><span>{{ 'ABOUT.GREETING' | translate }}</span></span><br>
+        <span class="grad-name text-gradient-animated">{{ 'ABOUT.NAME' | translate }}</span>
+      </h1>
+      <p class="hero-rotator-line" appScrollReveal data-reveal-direction="up" data-delay="150">
+        <span class="rotator-prefix">{{ 'ABOUT.HERO_SUBTITLE_PREFIX' | translate }}</span>
+        <app-word-rotator class="text-gradient-animated"></app-word-rotator>
+      </p>
+      <p class="bio-text" appScrollReveal data-reveal-direction="up" data-delay="250">{{ 'ABOUT.BIO' | translate }}</p>
+
+      <div class="hero-cta" appScrollReveal data-reveal-direction="up" data-delay="350">
+        <a href="/assets/Abderrazzaq_El_Abdouni_CV.pdf" download="Abderrazzaq_El_Abdouni_CV.pdf" class="btn-v2 primary">
+          <i class="fas fa-download"></i> {{ 'ABOUT.DOWNLOAD_CV' | translate }}
+        </a>
+        <a routerLink="/contact" class="btn-v2 ghost">
+          <i class="fas fa-paper-plane"></i> {{ 'ABOUT.CONTACT_ME' | translate }}
+        </a>
       </div>
 
-      <!-- New: Current Focus Section -->
-      <div class="current-focus-section fade-in-up">
-        <h3>{{ 'ABOUT.CURRENT_FOCUS.TITLE' | translate }}</h3>
-        <div class="focus-grid">
-          <div class="focus-item">
-            <i class="fas fa-brain"></i>
-            <h4>{{ 'ABOUT.CURRENT_FOCUS.AI.TITLE' | translate }}</h4>
-            <p>{{ 'ABOUT.CURRENT_FOCUS.AI.DESCRIPTION' | translate }}</p>
-          </div>
-          <div class="focus-item">
-            <i class="fas fa-mobile-screen-button"></i>
-            <h4>{{ 'ABOUT.CURRENT_FOCUS.MOBILE.TITLE' | translate }}</h4>
-            <p>{{ 'ABOUT.CURRENT_FOCUS.MOBILE.DESCRIPTION' | translate }}</p>
-          </div>
-          <div class="focus-item">
-            <i class="fas fa-cloud"></i>
-            <h4>{{ 'ABOUT.CURRENT_FOCUS.CLOUD.TITLE' | translate }}</h4>
-            <p>{{ 'ABOUT.CURRENT_FOCUS.CLOUD.DESCRIPTION' | translate }}</p>
-          </div>
-          <div class="focus-item">
-            <i class="fas fa-globe"></i>
-            <h4>{{ 'ABOUT.CURRENT_FOCUS.WEB.TITLE' | translate }}</h4>
-            <p>{{ 'ABOUT.CURRENT_FOCUS.WEB.DESCRIPTION' | translate }}</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- New: Key Statistics Section -->
-      <div class="statistics-section fade-in-up">
-        <div class="stats-grid">
-          <div class="stat-item">
-            <div class="stat-number">1+</div>
-            <div class="stat-label">{{ 'ABOUT.STATS.YEARS_EXPERIENCE' | translate }}</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">7+</div>
-            <div class="stat-label">{{ 'ABOUT.STATS.PROJECTS' | translate }}</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">10+</div>
-            <div class="stat-label">{{ 'ABOUT.STATS.TECHNOLOGIES' | translate }}</div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="skills-section fade-in-up">
-        <h3>{{ 'ABOUT.SKILLS_TITLE' | translate }}</h3>
-        <div class="skills-grid">
-          <div class="skill-category">
-            <div class="skill-icon">
-              <i class="fas fa-code"></i>
-            </div>
-            <h4>{{ 'ABOUT.SKILLS.LANGUAGES.TITLE' | translate }}</h4>
-            <ul>
-              <li>{{ 'ABOUT.SKILLS.LANGUAGES.ITEM1' | translate }}</li>
-              <li>{{ 'ABOUT.SKILLS.LANGUAGES.ITEM2' | translate }}</li>
-              <li>{{ 'ABOUT.SKILLS.LANGUAGES.ITEM3' | translate }}</li>
-              <li>{{ 'ABOUT.SKILLS.LANGUAGES.ITEM4' | translate }}</li>
-            </ul>
-          </div>
-          <div class="skill-category">
-            <div class="skill-icon">
-              <i class="fas fa-server"></i>
-            </div>
-            <h4>{{ 'ABOUT.SKILLS.FRAMEWORKS.TITLE' | translate }}</h4>
-            <ul>
-              <li>{{ 'ABOUT.SKILLS.FRAMEWORKS.ITEM1' | translate }}</li>
-              <li>{{ 'ABOUT.SKILLS.FRAMEWORKS.ITEM2' | translate }}</li>
-              <li>{{ 'ABOUT.SKILLS.FRAMEWORKS.ITEM3' | translate }}</li>
-              <li>{{ 'ABOUT.SKILLS.FRAMEWORKS.ITEM4' | translate }}</li>
-            </ul>
-          </div>
-          <div class="skill-category">
-            <div class="skill-icon">
-              <i class="fas fa-database"></i>
-            </div>
-            <h4>{{ 'ABOUT.SKILLS.DATABASES.TITLE' | translate }}</h4>
-            <ul>
-              <li>{{ 'ABOUT.SKILLS.DATABASES.ITEM1' | translate }}</li>
-              <li>{{ 'ABOUT.SKILLS.DATABASES.ITEM2' | translate }}</li>
-              <li>{{ 'ABOUT.SKILLS.DATABASES.ITEM3' | translate }}</li>
-              <li>{{ 'ABOUT.SKILLS.DATABASES.ITEM4' | translate }}</li>
-            </ul>
-          </div>
-          <div class="skill-category">
-            <div class="skill-icon">
-              <i class="fas fa-screwdriver-wrench"></i>
-            </div>
-            <h4>{{ 'ABOUT.SKILLS.TOOLS.TITLE' | translate }}</h4>
-            <ul>
-              <li>{{ 'ABOUT.SKILLS.TOOLS.ITEM1' | translate }}</li>
-              <li>{{ 'ABOUT.SKILLS.TOOLS.ITEM2' | translate }}</li>
-              <li>{{ 'ABOUT.SKILLS.TOOLS.ITEM3' | translate }}</li>
-              <li>{{ 'ABOUT.SKILLS.TOOLS.ITEM4' | translate }}</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- New: Connect Section -->
-      <div class="connect-section fade-in-up">
-        <h3>{{ 'ABOUT.CONNECT.TITLE' | translate }}</h3>
-        <p>{{ 'ABOUT.CONNECT.DESCRIPTION' | translate }}</p>
-        <div class="social-grid">
-          <a href="https://github.com/abiidoox" target="_blank" class="social-item github">
-            <i class="fab fa-github"></i>
-            <span>GitHub</span>
-          </a>
-          <a href="https://www.linkedin.com/in/abderrazzaq-el-abdouni-28004019a" target="_blank" class="social-item linkedin">
-            <i class="fab fa-linkedin"></i>
-            <span>LinkedIn</span>
-          </a>
-         
-          <a href="mailto:{{ 'ABOUT.EMAIL' | translate }}" class="social-item email">
-            <i class="fas fa-envelope"></i>
-            <span>Email</span>
-          </a>
-        </div>
+      <div class="hero-meta" appScrollReveal data-reveal-direction="up" data-delay="450">
+        <span class="meta-item"><i class="fas fa-location-dot"></i> {{ 'ABOUT.LOCATION' | translate }}</span>
+        <span class="meta-item"><i class="fas fa-envelope"></i> {{ 'ABOUT.EMAIL' | translate }}</span>
+        <span class="meta-item socials">
+          <a href="https://github.com/abiidoox" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/abderrazzaq-el-abdouni-28004019a" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </span>
       </div>
     </div>
-  </div>
+
+    <div class="hero-visual" appScrollReveal data-reveal-direction="scale">
+      <div class="avatar-ring">
+        <img src="assets/me.jpg" alt="{{ 'ABOUT.PROFILE_ALT' | translate }}" class="avatar-img">
+      </div>
+      <div class="float-chip chip-a"><i class="fas fa-code"></i> Angular</div>
+      <div class="float-chip chip-b"><i class="fas fa-brain"></i> ML</div>
+      <div class="float-chip chip-c"><i class="fas fa-microchip"></i> IoT</div>
+    </div>
+  </section>
+
+  <!-- ===== STATS ===== -->
+  <section class="stats-v2 glass-card" appScrollReveal data-reveal-direction="up">
+    <div class="stat-item">
+      <div class="stat-number"><span appCountUp countTo="1">0</span>+</div>
+      <div class="stat-label">{{ 'ABOUT.STATS.YEARS_EXPERIENCE' | translate }}</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number"><span appCountUp countTo="7">0</span>+</div>
+      <div class="stat-label">{{ 'ABOUT.STATS.PROJECTS' | translate }}</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number"><span appCountUp countTo="10">0</span>+</div>
+      <div class="stat-label">{{ 'ABOUT.STATS.TECHNOLOGIES' | translate }}</div>
+    </div>
+  </section>
+
+  <!-- ===== CURRENT FOCUS ===== -->
+  <section class="focus-v2">
+    <div class="sec-head" appScrollReveal data-reveal-direction="left">
+      <h2>{{ 'ABOUT.CURRENT_FOCUS.TITLE' | translate }}</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="focus-grid-v2">
+      <div class="focus-card glass-card" appScrollReveal data-reveal-direction="up">
+        <i class="fas fa-brain focus-icon"></i>
+        <h4>{{ 'ABOUT.CURRENT_FOCUS.AI.TITLE' | translate }}</h4>
+        <p>{{ 'ABOUT.CURRENT_FOCUS.AI.DESCRIPTION' | translate }}</p>
+      </div>
+      <div class="focus-card glass-card" appScrollReveal data-reveal-direction="up" data-delay="120">
+        <i class="fas fa-mobile-screen-button focus-icon"></i>
+        <h4>{{ 'ABOUT.CURRENT_FOCUS.MOBILE.TITLE' | translate }}</h4>
+        <p>{{ 'ABOUT.CURRENT_FOCUS.MOBILE.DESCRIPTION' | translate }}</p>
+      </div>
+      <div class="focus-card glass-card" appScrollReveal data-reveal-direction="up" data-delay="240">
+        <i class="fas fa-cloud focus-icon"></i>
+        <h4>{{ 'ABOUT.CURRENT_FOCUS.CLOUD.TITLE' | translate }}</h4>
+        <p>{{ 'ABOUT.CURRENT_FOCUS.CLOUD.DESCRIPTION' | translate }}</p>
+      </div>
+      <div class="focus-card glass-card" appScrollReveal data-reveal-direction="up" data-delay="360">
+        <i class="fas fa-globe focus-icon"></i>
+        <h4>{{ 'ABOUT.CURRENT_FOCUS.WEB.TITLE' | translate }}</h4>
+        <p>{{ 'ABOUT.CURRENT_FOCUS.WEB.DESCRIPTION' | translate }}</p>
+      </div>
+    </div>
+  </section>
+
 </div>
-

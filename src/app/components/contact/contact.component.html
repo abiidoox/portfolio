@@ -1,132 +1,126 @@
-<div class="contact-container section-padding">
-  <div class="container">
-    <div class="contact-header fade-in-up">
-      <h6 class="text-gradient">{{ 'CONTACT.SUBTITLE' | translate }}</h6>
-      <h2>{{ 'CONTACT.TITLE' | translate }}</h2>
-      <p>{{ 'CONTACT.DESCRIPTION' | translate }}</p>
-    </div>
+<div class="page-v2 contact-v2">
 
-    <div class="contact-content">
-      <div class="contact-info fade-in-up">
-        <h3>{{ 'CONTACT.INFO_TITLE' | translate }}</h3>
-        <p>{{ 'CONTACT.INFO_DESCRIPTION' | translate }}</p>
-        
-        <div class="info-items">
-          <div class="info-item">
-            <div class="info-icon">
-              <i class="fas fa-location-dot"></i>
-            </div>
-            <div class="info-details">
-              <h4>{{ 'CONTACT.ADDRESS_TITLE' | translate }}</h4>
-              <p>{{ 'CONTACT.ADDRESS' | translate }}</p>
-            </div>
-          </div>
-          
-          <div class="info-item">
-            <div class="info-icon">
-              <i class="fas fa-envelope"></i>
-            </div>
-            <div class="info-details">
-              <h4>{{ 'CONTACT.EMAIL_TITLE' | translate }}</h4>
-              <p>{{ 'CONTACT.MAIL' | translate }}</p>
-            </div>
-          </div>
-          
-          <div class="info-item">
-            <div class="info-icon">
-              <i class="fas fa-phone"></i>
-            </div>
-            <div class="info-details">
-              <h4>{{ 'CONTACT.PHONE_TITLE' | translate }}</h4>
-              <p>{{ 'CONTACT.PHONE' | translate }}</p>
-            </div>
+  <!-- ===== HEADER ===== -->
+  <header class="contact-head">
+    <span class="kicker-line" appScrollReveal data-reveal-direction="up">{{ 'CONTACT.SUBTITLE' | translate }}</span>
+    <h1 class="display-title" appScrollReveal data-reveal-direction="up" data-delay="120">
+      <span class="text-gradient-animated">{{ 'CONTACT.TITLE' | translate }}</span>
+    </h1>
+    <p class="contact-sub" appScrollReveal data-reveal-direction="up" data-delay="220">{{ 'CONTACT.DESCRIPTION' | translate }}</p>
+  </header>
+
+  <div class="contact-grid-v2">
+
+    <!-- ===== INFO PANEL ===== -->
+    <aside class="contact-info-v2 glass-card" appScrollReveal data-reveal-direction="left">
+      <h3>{{ 'CONTACT.INFO_TITLE' | translate }}</h3>
+      <p class="ci-desc">{{ 'CONTACT.INFO_DESCRIPTION' | translate }}</p>
+
+      <div class="info-items">
+        <div class="info-item">
+          <div class="info-icon"><i class="fas fa-location-dot"></i></div>
+          <div class="info-details">
+            <h4>{{ 'CONTACT.ADDRESS_TITLE' | translate }}</h4>
+            <p>{{ 'CONTACT.ADDRESS' | translate }}</p>
           </div>
         </div>
-
-        <div class="social-links">
-          <a href="https://www.linkedin.com/in/abderrazzaq-el-abdouni-28004019a" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-linkedin-in"></i>
-          </a>
-          <a href="https://github.com/abiidoox" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-github"></i>
-          </a>
+        <div class="info-item">
+          <div class="info-icon"><i class="fas fa-envelope"></i></div>
+          <div class="info-details">
+            <h4>{{ 'CONTACT.EMAIL_TITLE' | translate }}</h4>
+            <p>{{ 'CONTACT.MAIL' | translate }}</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon"><i class="fas fa-phone"></i></div>
+          <div class="info-details">
+            <h4>{{ 'CONTACT.PHONE_TITLE' | translate }}</h4>
+            <p>{{ 'CONTACT.PHONE' | translate }}</p>
+          </div>
         </div>
       </div>
 
-      <div class="contact-form-container fade-in-up">
-        <!-- Use native form POST to allow Netlify Forms to process submissions. Keep Angular FormGroup for validation. -->
-        <form name="contact" method="POST" netlify netlify-honeypot="bot-field" [formGroup]="contactForm" (ngSubmit)="onSubmit($event)" class="contact-form">
-          <!-- Netlify requires a hidden input with the form name -->
-          <input type="hidden" name="form-name" value="contact">
-          <!-- Honeypot field to deter bots -->
-          <div style="display:none">
-            <label>Don’t fill this out if you're human: <input name="bot-field"></label>
-          </div>
-          <div class="form-group">
-            <label for="name">{{ 'CONTACT.NAME' | translate }}</label>
-            <input 
-              type="text" 
-              id="name" 
-              name="name"
-              formControlName="name" 
-              [placeholder]="'CONTACT.NAME_PLACEHOLDER' | translate"
-              [ngClass]="{'invalid': submitted && contactForm.get('name')?.errors}"
-            >
-            <div class="error-message" *ngIf="submitted && contactForm.get('name')?.errors?.['required']">
-              {{ 'CONTACT.NAME_REQUIRED' | translate }}
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="email">{{ 'CONTACT.EMAIL' | translate }}</label>
-            <input 
-              type="email" 
-              id="email" 
-              name="email"
-              formControlName="email" 
-              [placeholder]="'CONTACT.EMAIL_PLACEHOLDER' | translate"
-              [ngClass]="{'invalid': submitted && contactForm.get('email')?.errors}"
-            >
-            <div class="error-message" *ngIf="submitted && contactForm.get('email')?.errors?.['required']">
-              {{ 'CONTACT.EMAIL_REQUIRED' | translate }}
-            </div>
-            <div class="error-message" *ngIf="submitted && contactForm.get('email')?.errors?.['email']">
-              {{ 'CONTACT.EMAIL_INVALID' | translate }}
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="message">{{ 'CONTACT.MESSAGE' | translate }}</label>
-            <textarea 
-              id="message" 
-              name="message"
-              formControlName="message" 
-              rows="6" 
-              [placeholder]="'CONTACT.MESSAGE_PLACEHOLDER' | translate"
-              [ngClass]="{'invalid': submitted && contactForm.get('message')?.errors}"
-            ></textarea>
-            <div class="error-message" *ngIf="submitted && contactForm.get('message')?.errors?.['required']">
-              {{ 'CONTACT.MESSAGE_REQUIRED' | translate }}
-            </div>
-          </div>
-
-          <button type="submit" class="submit-btn" [disabled]="isLoading">
-            <span *ngIf="!isLoading">{{ 'CONTACT.SEND' | translate }}</span>
-            <span *ngIf="isLoading">
-              <i class="fas fa-spinner fa-spin"></i> {{ 'CONTACT.SENDING' | translate }}
-            </span>
-          </button>
-
-          <div class="form-message success" *ngIf="success">
-            <i class="fas fa-check-circle"></i>
-            {{ 'CONTACT.SUCCESS' | translate }}
-          </div>
-          <div class="form-message error" *ngIf="error">
-            <i class="fas fa-exclamation-circle"></i>
-            {{ 'CONTACT.ERROR' | translate }}
-          </div>
-        </form>
+      <div class="socials-v2">
+        <a href="https://www.linkedin.com/in/abderrazzaq-el-abdouni-28004019a" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/abiidoox" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
       </div>
+    </aside>
+
+    <!-- ===== FORM ===== -->
+    <div class="contact-form-container glass-card" appScrollReveal data-reveal-direction="right">
+      <!-- Use native form POST to allow Netlify Forms to process submissions. Keep Angular FormGroup for validation. -->
+      <form name="contact" method="POST" netlify netlify-honeypot="bot-field" [formGroup]="contactForm" (ngSubmit)="onSubmit($event)" class="contact-form">
+        <!-- Netlify requires a hidden input with the form name -->
+        <input type="hidden" name="form-name" value="contact">
+        <!-- Honeypot field to deter bots -->
+        <div style="display:none">
+          <label>Don’t fill this out if you're human: <input name="bot-field"></label>
+        </div>
+        <div class="form-group">
+          <label for="name">{{ 'CONTACT.NAME' | translate }}</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            formControlName="name"
+            [placeholder]="'CONTACT.NAME_PLACEHOLDER' | translate"
+            [ngClass]="{'invalid': submitted && contactForm.get('name')?.errors}"
+          >
+          <div class="error-message" *ngIf="submitted && contactForm.get('name')?.errors?.['required']">
+            {{ 'CONTACT.NAME_REQUIRED' | translate }}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">{{ 'CONTACT.EMAIL' | translate }}</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            formControlName="email"
+            [placeholder]="'CONTACT.EMAIL_PLACEHOLDER' | translate"
+            [ngClass]="{'invalid': submitted && contactForm.get('email')?.errors}"
+          >
+          <div class="error-message" *ngIf="submitted && contactForm.get('email')?.errors?.['required']">
+            {{ 'CONTACT.EMAIL_REQUIRED' | translate }}
+          </div>
+          <div class="error-message" *ngIf="submitted && contactForm.get('email')?.errors?.['email']">
+            {{ 'CONTACT.EMAIL_INVALID' | translate }}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="message">{{ 'CONTACT.MESSAGE' | translate }}</label>
+          <textarea
+            id="message"
+            name="message"
+            formControlName="message"
+            rows="6"
+            [placeholder]="'CONTACT.MESSAGE_PLACEHOLDER' | translate"
+            [ngClass]="{'invalid': submitted && contactForm.get('message')?.errors}"
+          ></textarea>
+          <div class="error-message" *ngIf="submitted && contactForm.get('message')?.errors?.['required']">
+            {{ 'CONTACT.MESSAGE_REQUIRED' | translate }}
+          </div>
+        </div>
+
+        <button type="submit" class="btn-v2 primary submit-btn" [disabled]="isLoading">
+          <span *ngIf="!isLoading"><i class="fas fa-paper-plane"></i> {{ 'CONTACT.SEND' | translate }}</span>
+          <span *ngIf="isLoading">
+            <i class="fas fa-spinner fa-spin"></i> {{ 'CONTACT.SENDING' | translate }}
+          </span>
+        </button>
+
+        <div class="form-message success" *ngIf="success">
+          <i class="fas fa-check-circle"></i>
+          {{ 'CONTACT.SUCCESS' | translate }}
+        </div>
+        <div class="form-message error" *ngIf="error">
+          <i class="fas fa-exclamation-circle"></i>
+          {{ 'CONTACT.ERROR' | translate }}
+        </div>
+      </form>
     </div>
+
   </div>
 </div>

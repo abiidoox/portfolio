@@ -11,9 +11,11 @@ const routes: Routes = [
 @NgModule({
   declarations: [ResumeComponent],
   imports: [
+    ScrollRevealDirective,
     CommonModule,
     RouterModule.forChild(routes),
     TranslateModule
   ]
 })
 export class ResumeModule { }
+import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';

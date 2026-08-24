@@ -1,37 +1,52 @@
-<div class="projects-container section-padding">
-  <div class="container">
-    <div class="projects-header fade-in-up">
-      <h6 class="text-gradient">{{ 'PROJECTS.TITLE' | translate }}</h6>
-      <h2>{{ 'PROJECTS.TITLE' | translate }}</h2>
-      <p>{{ 'PROJECTS.SUBTITLE' | translate }}</p>
-    </div>
+<div class="page-v2 projects-v2">
 
-    <!-- Project Filters -->
-    <div class="project-filters fade-in-up">
-      <button 
-        *ngFor="let category of categories" 
-        [class.active]="selectedCategory === category"
-        (click)="filterProjects(category)"
-        class="filter-btn"
-      >
-        {{ 'PROJECTS.CATEGORIES.' + category.toUpperCase() | translate }}
-      </button>
-    </div>
-    
-    <div class="projects-grid">
-      <div class="project-card fade-in-up" *ngFor="let project of filteredProjects" [class.featured]="project.featured">
-        <!-- Removed project-image and project-links (see demo, github, image) -->
-        <div class="project-content">
-          <div class="project-header">
-            <h3>{{project.title}}</h3>
-            <span class="project-date">{{project.date}}</span>
-          </div>
-          <p class="project-description">{{project.description}}</p>
-          <div class="project-tech">
-            <span class="tech-tag" *ngFor="let tech of project.technologies">{{tech}}</span>
-          </div>
+  <!-- ===== HEADER ===== -->
+  <header class="projects-head">
+    <span class="kicker-line" appScrollReveal data-reveal-direction="up">Portfolio</span>
+    <h1 class="display-title" appScrollReveal data-reveal-direction="up" data-delay="120">
+      <span class="text-gradient-animated">{{ 'PROJECTS.TITLE' | translate }}</span>
+    </h1>
+    <p class="projects-sub" appScrollReveal data-reveal-direction="up" data-delay="220">{{ 'PROJECTS.SUBTITLE' | translate }}</p>
+  </header>
+
+  <!-- ===== FILTERS ===== -->
+  <div class="filters-v2" appScrollReveal data-reveal-direction="up" data-delay="300">
+    <button
+      *ngFor="let category of categories"
+      [class.active]="selectedCategory === category"
+      (click)="filterProjects(category)"
+      class="filter-chip"
+    >
+      {{ 'PROJECTS.CATEGORIES.' + category.toUpperCase() | translate }}
+    </button>
+  </div>
+
+  <!-- ===== PROJECT LIST ===== -->
+  <div class="project-list">
+    <article
+      class="project-row glass-card"
+      *ngFor="let project of filteredProjects; let i = index"
+      [class.featured]="project.featured"
+      appScrollReveal
+      data-reveal-direction="up"
+    >
+      <div class="pr-visual" aria-hidden="true">
+        <div class="pr-glow"></div>
+        <span class="pr-index">{{ i + 1 < 10 ? '0' + (i + 1) : i + 1 }}</span>
+        <span class="pr-year">{{ project.date }}</span>
+      </div>
+
+      <div class="pr-body">
+        <div class="pr-title-row">
+          <h3>{{ project.title }}</h3>
+          <span class="pr-flag" *ngIf="project.featured">★</span>
+        </div>
+        <p>{{ project.description }}</p>
+        <div class="chips">
+          <span class="chip" *ngFor="let tech of project.technologies">{{ tech }}</span>
         </div>
       </div>
-    </div>
+    </article>
   </div>
+
 </div>

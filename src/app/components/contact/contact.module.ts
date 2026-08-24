@@ -12,6 +12,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [ContactComponent],
   imports: [
+    ScrollRevealDirective,
     CommonModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
@@ -19,3 +20,4 @@ const routes: Routes = [
   ]
 })
 export class ContactModule { }
+import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';

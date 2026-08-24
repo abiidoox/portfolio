@@ -21,10 +21,14 @@
     "AVAILABILITY": "Disponible pour des missions freelance ou des postes à temps plein",
     "CONTACT_BTN": "Me Contacter",
     "RESUME_BTN": "Voir CV",
-    
     "TITLE_SMALL": "À Propos de Moi",
     "TITLE_LARGE": "Création d'Expériences Numériques",
     "GREETING": "Bonjour, je suis",
+    "HERO_SUBTITLE_PREFIX": "Je crée",
+    "ROTATE_1": "des expériences web.",
+    "ROTATE_2": "des systèmes IoT.",
+    "ROTATE_3": "des solutions ML.",
+    "ROTATE_4": "des choses qui durent.",
     "BIO": "Je suis un Ingénieur Full Stack passionné basé à Rabat, spécialisé dans le développement web, l'IoT et le Machine Learning. Je combine expertise technique et innovation pour créer des solutions logicielles performantes et évolutives.",
     "SKILLS_TITLE": "Expertise Technique",
     "SKILLS": {
