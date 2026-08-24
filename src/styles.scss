@@ -271,17 +271,28 @@ body:hover .mouse-glow { opacity: 1; }
   .sr-in .skill-fill, .in-view .skill-fill { width: var(--w, 80%); transition: none; }
 }
 
-/* Hero rotator line */
+/* Hero rotator line — consolidated */
 .hero-rotator-line {
   font-family: 'Space Grotesk', 'Inter', sans-serif;
   font-size: 1.35rem;
   font-weight: 600;
-  margin: 10px 0 18px;
+  margin: 14px 0 20px;
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 0.5em;
+  min-height: 2.2em;
+  position: relative;
+  z-index: 2;
 }
-.hero-rotator-line .rotator-prefix { color: var(--text-light); }
+.rotator-prefix { color: var(--text-light); }
+.hero-rotator-line app-word-rotator {
+  display: inline-block;
+  min-width: 320px;
+}
+.hero-rotator-line .word-rotator { min-width: 100%; }
+@media (max-width: 900px) {
+  .hero-rotator-line app-word-rotator { min-width: 220px; }
+}
 
 /* ============================================================
    V2 REDESIGN — modern layout foundation
@@ -784,3 +795,13 @@ h1, h2, h3, h4 {
 }
 
 .download-section-v2 { text-align: center; margin-top: 40px; }
+
+
+/* Ensure hero grid children never overlap the floating chips */
+.hero-v2 { position: relative; z-index: 1; }
+.hero-text { position: relative; z-index: 2; }
+.hero-visual { position: relative; z-index: 1; }
+.float-chip { z-index: 3; }
+
+/* Static hero subtitle (rotator removed) */
+.rotator-static { font-weight: 700; }

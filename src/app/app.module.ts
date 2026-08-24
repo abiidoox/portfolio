@@ -20,7 +20,6 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { PreloaderComponent } from './components/shared/preloader/preloader.component';
 import { ParticlesBackgroundComponent } from './components/shared/particles-background/particles-background.component';
-import { WordRotatorComponent } from './components/shared/word-rotator/word-rotator.component';
 import { ScrollRevealDirective } from './directives/scroll-reveal.directive';
 import { CountUpDirective } from './directives/count-up.directive';
 

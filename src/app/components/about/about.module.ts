@@ -5,7 +5,6 @@ import { AboutComponent } from './about.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
 import { CountUpDirective } from '../../directives/count-up.directive';
-import { WordRotatorComponent } from '../../components/shared/word-rotator/word-rotator.component';
 
 const routes: Routes = [
   { path: '', component: AboutComponent }
@@ -18,8 +17,7 @@ const routes: Routes = [
     TranslateModule,
     RouterModule.forChild(routes),
     ScrollRevealDirective,
-    CountUpDirective,
-    WordRotatorComponent
+    CountUpDirective
   ]
 })
 export class AboutModule { }
