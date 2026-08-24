@@ -102,8 +102,8 @@ export class ResumeComponent implements OnInit, OnDestroy {
     // In production we ship a single CV file under assets (cv.pdf).
     // If you want per-language resumes, add them under `src/assets/resumes/` and
     // update this method accordingly.
-    const filePath = 'assets/cv.pdf';
-    const fileName = 'cv.pdf';
+    const filePath = 'assets/Abderrazzaq_El_Abdouni_CV.pdf';
+    const fileName = 'Abderrazzaq_El_Abdouni_CV.pdf';
 
     const link = document.createElement('a');
     link.href = filePath;
