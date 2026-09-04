@@ -183,14 +183,15 @@
     "EXPERIENCE_ITEMS": {
       "ITEM6": {
         "TITLE": "Développeur Full Stack – .NET / Angular, Institut National de la Recherche Agronomique (INRA) — CDD",
-        "PERIOD": "04/2025 – 04/2026",
+        "PERIOD": "04/2025 – Aujourd'hui",
         "SUBTITLE": "Responsabilités et Réalisations :",
         "POINTS": {
           "POINT1": "Conception et développement de 4 modules liés à l’ERP interne (Régie, Bureau d’Ordre Digital, Carte Professionnelle, Gestion du Matériel) afin de digitaliser les processus administratifs et financiers et renforcer la fiabilité du pilotage.",
           "POINT2": "Régie : gestion des dépenses, avances et allocations ; automatisation des décisions de régie et de l’alimentation des caisses ; suivi financier.",
           "POINT3": "Bureau d’Ordre Digital : gestion des courriers entrants/sortants ; traçabilité complète des traitements ; notifications en temps réel.",
           "POINT4": "Carte Professionnelle : création et validation des demandes ; génération et distribution des cartes ; suivi des statuts.",
-          "POINT5": "Gestion du Matériel : enregistrement des équipements dès l’entrée ; affectation et suivi des mouvements ; suivi du cycle de vie jusqu’à la réforme avec reporting automatisé."
+          "POINT5": "Gestion du Matériel : enregistrement des équipements dès l’entrée ; affectation et suivi des mouvements ; suivi du cycle de vie jusqu’à la réforme avec reporting automatisé.",
+          "POINT6": "Module Avance sur Salaires : développement d’un module paramétrable permettant aux agents de demander des avances sur salaire selon des règles métier (éligibilité, plafonds, échéancier de remboursement, flux de validation) avec calculs automatisés et traçabilité."
         },
         "TECHNOLOGIES": ".NET 7, ASP.NET Core, Angular, SQL Server, MySQL, REST API, JWT, Git, Scrum, Talend"
       },

@@ -184,14 +184,15 @@
     "EXPERIENCE_ITEMS": {
       "ITEM6": {
         "TITLE": "Full Stack Developer – .NET / Angular, Institut National de la Recherche Agronomique (INRA) — Fixed-term",
-        "PERIOD": "04/2025 – 04/2026",
+        "PERIOD": "04/2025 – Present",
         "SUBTITLE": "Responsibilities and Achievements:",
         "POINTS": {
           "POINT1": "Designed and developed 4 modules for the internal ERP (Régie, Digital Order Office, Professional Card, Asset Management) to digitize administrative and financial processes and improve operational reliability.",
           "POINT2": "Régie: managed expenses, advances and allocations; automated régie decisions and cash funding; financial monitoring.",
           "POINT3": "Digital Order Office: handled incoming/outgoing mail; ensured full traceability of processing; implemented real-time notifications.",
           "POINT4": "Professional Card: implemented request creation & validation, card generation and distribution, and status tracking.",
-          "POINT5": "Asset Management: registered equipment on entry; assigned and tracked movements; monitored lifecycle to disposal with automated reporting."
+          "POINT5": "Asset Management: registered equipment on entry; assigned and tracked movements; monitored lifecycle to disposal with automated reporting.",
+          "POINT6": "Salary Advance (Avance sur Salaires) module: built a configurable module enabling agents to request salary advances subject to business rules (eligibility, ceilings, repayment schedule, validation workflow) with automated calculations and traceability."
         },
         "TECHNOLOGIES": ".NET 7, ASP.NET Core, Angular, SQL Server, MySQL, REST API, JWT, Git, Scrum, Talend"
       },
