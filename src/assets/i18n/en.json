@@ -5,6 +5,11 @@
     "RESUME": "Resume",
     "CONTACT": "Contact"
   },
+  "NOT_FOUND": {
+    "TITLE": "Page Not Found",
+    "MESSAGE": "The page you are looking for doesn't exist or it might have been moved.",
+    "BACK_HOME": "Back to Home"
+  },
   "ABOUT": {
     "TITLE": "About Me",
     "SUBTITLE": "Get to Know Me",
@@ -26,6 +31,7 @@
     "TITLE_LARGE": "Crafting Digital Experiences",
     "GREETING": "Hello, I'm",
     "HERO_SUBTITLE_PREFIX": "I build",
+    "AVAILABLE": "Available for new opportunities",
     "ROTATE_1": "web experiences.",
     "ROTATE_2": "IoT systems.",
     "ROTATE_3": "ML solutions.",
@@ -99,50 +105,63 @@
   "PROJECTS": {
     "TITLE": "My Projects",
     "SUBTITLE": "A showcase of my best work and creative solutions",
+    "VIEW_PROJECT": "View Project",
     "VIEW_DEMO": "View Demo",
     "VIEW_CODE": "View Code",
+    "DETAILS": "View Details",
     "CATEGORIES": {
       "ALL": "All Projects",
       "WEB": "Web Development",
       "MOBILE": "Mobile Apps",
       "AI": "AI & ML",
-      "IOT": "IoT Solutions"
+      "IOT": "IoT Solutions",
+      "DESKTOP": "Desktop"
     },
+    "TECHNOLOGIES": "Technologies Used",
     "AI_CHAT": {
       "TITLE": "AI Chat Assistant",
-      "DESCRIPTION": "A conversational AI assistant built with FastAPI and TinyLlama, featuring a modern React.js interface and Docker deployment."
+      "DESCRIPTION": "A conversational AI assistant built with FastAPI and TinyLlama, featuring a modern React.js interface and Docker deployment.",
+      "LONG_DESCRIPTION": "Built a full-stack conversational AI assistant from the ground up, powered by the TinyLlama language model served through a high-performance FastAPI backend with Server-Sent Events (SSE) for real-time streaming responses. The architecture separates inference from the web layer, allowing the LLM to generate tokens incrementally while the frontend renders them as they arrive. The React.js single-page application features a modern chat interface with real-time message rendering, persistent chat history stored in local storage, full Markdown support for rich text formatting, and syntax-highlighted code blocks. Authentication and session management ensure conversation privacy. The entire stack — backend API, LLM inference service, and React frontend — is fully containerized using Docker and Docker Compose, enabling one-command deployment and horizontal scaling across environments."
     },
     "FACE_RECOGNITION": {
       "TITLE": "Smart Face Recognition System",
-      "DESCRIPTION": "An IoT-based facial recognition system using ESP32-S3, Django, and React Native, with real-time streaming and authentication."
-    },
-    "JOB_PLATFORM": {
-      "TITLE": "Job Search Platform",
-      "DESCRIPTION": "A full-stack job search platform with web scraping capabilities, built with Spring Boot and Angular."
+      "DESCRIPTION": "An IoT-based facial recognition system using ESP32-S3, Django, and React Native, with real-time streaming and authentication.",
+      "LONG_DESCRIPTION": "Designed and built a complete IoT-based facial recognition pipeline spanning hardware, backend, and mobile layers. An ESP32-S3 camera module captures video and streams it over RTSP to a Django backend server, where FFmpeg converts the raw stream to HLS for browser-compatible playback. On the server side, face detection is handled by SCRFD while ResNet generates high-dimensional face embeddings for identity matching against an enrolled users database stored in PostgreSQL with Redis caching for low-latency lookups. A React Native mobile application provides a live camera feed viewer, enrollment workflow with photo capture, and real-time push notifications when a recognized face is detected. The system runs on Ubuntu 22.04 with Supervisor managing all services, and uses WebSocket connections for instant status updates between the server and mobile client."
     },
     "SCHEDULE_SYSTEM": {
       "TITLE": "Schedule Management System",
-      "DESCRIPTION": "A comprehensive schedule management system developed with ASP.NET and SQL Server."
+      "DESCRIPTION": "A comprehensive schedule management system developed with ASP.NET and SQL Server.",
+      "LONG_DESCRIPTION": "Developed a comprehensive schedule management system tailored for academic institutions using ASP.NET MVC with Entity Framework and SQL Server. The application solves the complex problem of timetable generation by implementing constraint-based conflict detection that automatically identifies scheduling overlaps across rooms, instructors, and student groups. Administrators can create, modify, and publish schedules through an intuitive drag-and-drop interface, while instructors receive automated email reminders for upcoming classes. Role-based access control separates permissions between administrators, instructors, and department heads, each with customized dashboard views. Calendar views can be exported to iCal format for integration with external calendar applications, and the reporting module generates utilization statistics for rooms and faculty workload analysis."
     },
     "SPAM_DETECTION": {
       "TITLE": "Email Spam Detection Model",
-      "DESCRIPTION": "Developed a machine learning model to classify emails as spam or legitimate using text analysis and algorithms such as K-NN and decision trees. The main goal was to create an intelligent system capable of automatically filtering unwanted emails from legitimate messages."
+      "DESCRIPTION": "Developed a machine learning model to classify emails as spam or legitimate using text analysis and algorithms such as K-NN and decision trees.",
+      "LONG_DESCRIPTION": "Built an end-to-end machine learning pipeline for email spam classification, covering every stage from raw data ingestion to model evaluation. The preprocessing pipeline handles tokenization, lowercasing, stopword removal, punctuation stripping, and lemmatization to normalize email text. Feature extraction uses TF-IDF vectorization with bigram support to capture contextual word patterns, reducing high-dimensional text into sparse numerical representations. Two classifiers — K-Nearest Neighbors and Decision Tree — were trained and evaluated using stratified k-fold cross-validation, with metrics including precision, recall, F1-score, and confusion matrix analysis. The best-performing model was serialized with pickle for inference, and the entire experiment was tracked in a Jupyter notebook with visualized ROC curves and feature importance rankings to identify the most discriminative spam indicators."
     },
     "EMPLOYMENT_PLATFORM": {
       "TITLE": "Integrated Web Platform for Job and Internship Offers",
-      "DESCRIPTION": "Designed and developed a web platform dedicated to job and internship offers. The platform uses web scraping to collect data from sites like Indeed and Rekrute, simplifying the search for professional opportunities for students and job seekers."
+      "DESCRIPTION": "A web platform dedicated to job and internship offers using web scraping to collect data from job boards.",
+      "LONG_DESCRIPTION": "Designed and developed a full-stack web platform that aggregates job and internship listings from multiple sources using automated web scraping. The Spring Boot backend employs Selenium WebDriver with headless Chrome to scrape listings from Indeed and Rekrute, applying data normalization pipelines to standardize job titles, company names, locations, and salary ranges into a unified MySQL schema. Security is handled through Spring Security with role-based authentication and JWT token management. The Angular frontend offers advanced search with multi-criteria filtering (location, contract type, experience level), saved search alerts, bookmarked listings, and a personalized recommendation engine based on user preferences and browsing history. Chart.js analytics dashboards visualize market trends, salary distributions, and application statistics to help job seekers make informed decisions."
     },
     "SCHOOL_MANAGEMENT_APP": {
       "TITLE": "School Management Application",
-      "DESCRIPTION": "A complete and user-friendly school management application developed to facilitate the management of academic and administrative data within an educational institution."
+      "DESCRIPTION": "A complete and user-friendly school management application developed to facilitate the management of academic and administrative data.",
+      "LONG_DESCRIPTION": "A full-featured school management web application built with ASP.NET Web Forms, HTML, CSS, JavaScript, and SQL Server, designed to digitize administrative and academic workflows for educational institutions. The platform handles the complete student lifecycle from enrollment through graduation, including registration with class assignment, daily attendance tracking with calendar views, continuous assessment and exam grade management with weighted averages, and automated report card generation with printable PDF export. Administrators access a centralized dashboard with real-time analytics showing enrollment trends, attendance rates, and academic performance distributions. Teachers have role-scoped views for managing their assigned classes, inputting grades, and recording absences. The system enforces role-based access control to ensure data privacy and operational separation between administrative staff and teaching faculty."
+    },
+    "SCHOOL_MANAGEMENT_APP_2": {
+      "TITLE": "School Management Desktop App",
+      "DESCRIPTION": "A Java Swing desktop application for managing school records and student data locally.",
+      "LONG_DESCRIPTION": "Developed a Java Swing desktop application for offline school management, designed for institutions without reliable internet access. The application connects to a MySQL database backend and provides a tabbed interface covering student registration with demographic profiles, daily attendance logging, continuous assessment and exam grading with configurable weight distributions, and automated report card generation. Data import and export features allow bulk operations via CSV files, enabling administrators to migrate existing records or generate summary spreadsheets. The reporting module produces print-ready PDF report cards with school branding, configurable grading scales, and class ranking calculations. Built with the MVC pattern for maintainability, the application includes input validation, error handling, and a data backup/restore utility to protect against data loss."
     },
     "OPTICIAN_ORDER_STOCK": {
       "TITLE": "Order and Stock Management Application for Opticians",
-      "DESCRIPTION": "Software for managing orders and inventory directly within an optical store, streamlining daily operations and stock tracking."
+      "DESCRIPTION": "Software for managing orders and inventory directly within an optical store.",
+      "LONG_DESCRIPTION": "Built a comprehensive desktop application for optical store management using C# with Windows Forms and T-SQL stored procedures on Microsoft SQL Server. The system manages the complete retail operations workflow: inventory tracking with real-time stock levels and barcode scanning, supplier order placement with purchase order generation and delivery tracking, customer prescription records with lens specifications and expiry monitoring, point-of-sale transactions with receipt printing and payment processing, and automated low-stock alerts triggered by configurable threshold rules. The reporting module generates exportable Excel and PDF reports covering sales performance, inventory valuation, supplier lead times, and customer prescription analytics. Role-based access separates cashier, optician, and manager permissions, with audit logging tracking all critical operations."
     },
     "COMPANY_DOMICILIATION": {
       "TITLE": "Company Domiciliation Management Platform",
-      "DESCRIPTION": "Web platform for complete management of company domiciliation: online subscription, client area, contract and document management, notifications, and more. Stack: Spring Boot, Angular, MySQL, JPA/Hibernate, RESTful API, Spring Security."
+      "DESCRIPTION": "Web platform for complete management of company domiciliation: online subscription, client area, contract and document management.",
+      "LONG_DESCRIPTION": "A full-stack web platform for managing company domiciliation services, enabling businesses to establish legal addresses and receive administrative support without maintaining a physical office. Built with Spring Boot on the backend and Angular on the frontend, the platform features online subscription workflows with plan selection and payment integration, a comprehensive client dashboard showing active services and upcoming renewals, contract and document management with digital signature capabilities using DocuSign API integration, and a multi-channel notification system (email, SMS, in-app) for service updates and deadline reminders. Security is enforced through Spring Security with JWT authentication, role-based access control separating client, agent, and admin permissions, and MySQL backing all transactional data with full audit trail logging."
     }
   },
   "RESUME": {
@@ -150,6 +169,7 @@
     "SUBTITLE": "Professional Experience",
     "DESCRIPTION": "A summary of my professional experience, education, and skills",
     "DOWNLOAD": "Download PDF",
+    "DOWNLOAD_ERROR": "Failed to download CV. Please try again.",
     "EXPERIENCE": "PROFESSIONAL EXPERIENCE",
     "EDUCATION": "EDUCATION",
     "SKILLS": "SKILLS",
@@ -292,6 +312,8 @@
     "MESSAGE": "Message",
     "MESSAGE_PLACEHOLDER": "Your Message",
     "MESSAGE_REQUIRED": "Message is required",
+    "NAME_MINLENGTH": "Name must be at least 2 characters",
+    "MESSAGE_MINLENGTH": "Message must be at least 10 characters",
     "SEND": "Send Message",
     "SENDING": "Sending...",
     "SUCCESS": "Your message has been sent successfully!",
@@ -308,6 +330,17 @@
     "testimonials": "Testimonials",
     "contact": "Contact",
     "more": "More"
+  },
+  "terminal": {
+    "open": "open",
+    "ls": "ls",
+    "cat": "cat",
+    "run": "run"
+  },
+  "not_found": {
+    "title": "Page Not Found",
+    "message": "Oops! The page you're looking for doesn't exist or has been moved.",
+    "back_home": "Take Me Home"
   },
   "skills": {
     "title": "My Skills",
@@ -562,5 +595,16 @@
         "RATING": 5
       }
     }
+  },
+  "FOOTER": {
+    "COPYRIGHT": "© {{year}} Abderrazzaq El Abdouni. All rights reserved.",
+    "COPY_HINT": "Click to copy"
+  },
+  "TOAST": {
+    "EMAIL_COPIED": "Email copied to clipboard!",
+    "EMAIL_COPY_FAILED": "Failed to copy email",
+    "THEME_LIGHT": "Light theme",
+    "THEME_DARK": "Dark theme",
+    "LANGUAGE_CHANGED": "Language: {{lang}}"
   }
 }

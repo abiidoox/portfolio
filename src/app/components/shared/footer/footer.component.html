@@ -1,5 +1,22 @@
 <footer class="footer">
   <div class="footer-content">
+    <a routerLink="/" class="logo-mark" aria-label="Home">
+      <svg viewBox="0 0 40 40" width="36" height="36" aria-hidden="true">
+        <rect rx="10" width="40" height="40" fill="url(#fl-grad)"></rect>
+        <text x="20" y="27" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-weight="700" font-size="18" fill="#fff">AE</text>
+        <defs><linearGradient id="fl-grad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#ff5e3a"></stop>
+          <stop offset="100%" stop-color="#38bdf8"></stop>
+        </linearGradient></defs>
+      </svg>
+    </a>
+    <nav class="footer-nav" aria-label="Footer">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{ 'header.home' | translate }}</a>
+      <a routerLink="/projects" routerLinkActive="active">{{ 'header.projects' | translate }}</a>
+      <a routerLink="/skills" routerLinkActive="active">{{ 'header.skills' | translate }}</a>
+      <a routerLink="/resume" routerLinkActive="active">{{ 'header.resume' | translate }}</a>
+      <a routerLink="/contact" routerLinkActive="active">{{ 'header.contact' | translate }}</a>
+    </nav>
     <div class="footer-social">
       <a *ngFor="let link of socialLinks"
          [href]="link.url"
@@ -12,16 +29,16 @@
     </div>
     <div class="footer-info">
       <p class="copyright">
-        © {{currentYear}} Abderrazzaq El Abdouni. All rights reserved.
+        {{ 'FOOTER.COPYRIGHT' | translate:{ year: currentYear } }}
       </p>
       <p class="contact-email">
-        <a [href]="'mailto:elabdouni.abderrazzaq@gmail.com'">elabdouni.abderrazzaq&#64;gmail.com</a>
+        <a [href]="'mailto:elabdouni.abderrazzaq@gmail.com'">
+          elabdouni.abderrazzaq&#64;gmail.com
+        </a>
+        <button class="copy-hint" [attr.aria-label]="'FOOTER.COPY_HINT' | translate" (click)="copyEmail()">
+          <i class="fas fa-copy"></i>
+        </button>
       </p>
-      <nav class="footer-nav">
-        <a routerLink="/privacy">Privacy Policy</a>
-        <a routerLink="/terms">Terms of Service</a>
-        <a routerLink="/contact">Contact</a>
-      </nav>
     </div>
   </div>
 </footer> 

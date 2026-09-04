@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderModule } from './components/header/header.module';
@@ -12,16 +13,18 @@ import { LanguageSwitcherModule } from './components/language-switcher/language-
 
 // Import all new components
 import { SkillsComponent } from './components/skills/skills.component';
-import { TestimonialsComponent } from './components/testimonials/testimonials.component';
-import { BlogComponent } from './components/blog/blog.component';
-import { AchievementsComponent } from './components/achievements/achievements.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { LoadingComponent } from './components/loading/loading.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
-import { PreloaderComponent } from './components/shared/preloader/preloader.component';
 import { ParticlesBackgroundComponent } from './components/shared/particles-background/particles-background.component';
+import { ScrollProgressComponent } from './components/shared/scroll-progress/scroll-progress.component';
+import { BackToTopComponent } from './components/shared/back-to-top/back-to-top.component';
+import { TerminalIntroComponent } from './components/shared/terminal-intro/terminal-intro.component';
+import { ToastContainerComponent } from './components/shared/toast-container/toast-container.component';
+import { ToastService } from './services/toast.service';
 import { ScrollRevealDirective } from './directives/scroll-reveal.directive';
 import { CountUpDirective } from './directives/count-up.directive';
+import { TiltDirective } from './directives/tilt.directive';
+import { ProjectModalModule } from './components/shared/project-modal/project-modal.module';
 
 // Factory function for TranslateHttpLoader
 export function HttpLoaderFactory(http: HttpClient) {
@@ -32,17 +35,17 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     SkillsComponent,
-    TestimonialsComponent,
-    BlogComponent,
-    AchievementsComponent,
     NotFoundComponent,
-    LoadingComponent,
     FooterComponent,
-    PreloaderComponent,
-    ParticlesBackgroundComponent
+    ParticlesBackgroundComponent,
+    ScrollProgressComponent,
+    BackToTopComponent,
+    TerminalIntroComponent,
+    ToastContainerComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HeaderModule,
     HttpClientModule,
@@ -51,6 +54,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     LanguageSwitcherModule,
     ScrollRevealDirective,
     CountUpDirective,
+    TiltDirective,
+    ProjectModalModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -59,7 +64,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     })
   ],
-  providers: [],
+  providers: [ToastService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

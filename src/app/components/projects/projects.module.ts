@@ -3,6 +3,10 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { ProjectsComponent } from './projects.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
+import { TiltDirective } from '../../directives/tilt.directive';
+import { SplitTextDirective } from '../../directives/split-text.directive';
+import { ProjectModalModule } from '../../components/shared/project-modal/project-modal.module';
 
 const routes: Routes = [
   { path: '', component: ProjectsComponent }
@@ -11,11 +15,13 @@ const routes: Routes = [
 @NgModule({
   declarations: [ProjectsComponent],
   imports: [
-    ScrollRevealDirective,
     CommonModule,
     RouterModule.forChild(routes),
-    TranslateModule
+    TranslateModule,
+    ScrollRevealDirective,
+    TiltDirective,
+    SplitTextDirective,
+    ProjectModalModule
   ]
 })
 export class ProjectsModule { }
-import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';

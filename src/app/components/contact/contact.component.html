@@ -56,66 +56,72 @@
         <div style="display:none">
           <label>Don’t fill this out if you're human: <input name="bot-field"></label>
         </div>
-        <div class="form-group">
-          <label for="name">{{ 'CONTACT.NAME' | translate }}</label>
+        <div class="form-group float-group">
           <input
             type="text"
             id="name"
             name="name"
             formControlName="name"
-            [placeholder]="'CONTACT.NAME_PLACEHOLDER' | translate"
+            placeholder=" "
             [ngClass]="{'invalid': submitted && contactForm.get('name')?.errors}"
           >
-          <div class="error-message" *ngIf="submitted && contactForm.get('name')?.errors?.['required']">
+          <label for="name">{{ 'CONTACT.NAME' | translate }}</label>
+          <div class="error-message" [class.visible]="submitted && contactForm.get('name')?.errors?.['required']">
             {{ 'CONTACT.NAME_REQUIRED' | translate }}
+          </div>
+          <div class="error-message" [class.visible]="submitted && contactForm.get('name')?.errors?.['minlength']">
+            {{ 'CONTACT.NAME_MINLENGTH' | translate }}
           </div>
         </div>
 
-        <div class="form-group">
-          <label for="email">{{ 'CONTACT.EMAIL' | translate }}</label>
+        <div class="form-group float-group">
           <input
             type="email"
             id="email"
             name="email"
             formControlName="email"
-            [placeholder]="'CONTACT.EMAIL_PLACEHOLDER' | translate"
+            placeholder=" "
             [ngClass]="{'invalid': submitted && contactForm.get('email')?.errors}"
           >
-          <div class="error-message" *ngIf="submitted && contactForm.get('email')?.errors?.['required']">
+          <label for="email">{{ 'CONTACT.EMAIL' | translate }}</label>
+          <div class="error-message" [class.visible]="submitted && contactForm.get('email')?.errors?.['required']">
             {{ 'CONTACT.EMAIL_REQUIRED' | translate }}
           </div>
-          <div class="error-message" *ngIf="submitted && contactForm.get('email')?.errors?.['email']">
+          <div class="error-message" [class.visible]="submitted && contactForm.get('email')?.errors?.['email']">
             {{ 'CONTACT.EMAIL_INVALID' | translate }}
           </div>
         </div>
 
-        <div class="form-group">
-          <label for="message">{{ 'CONTACT.MESSAGE' | translate }}</label>
+        <div class="form-group float-group">
           <textarea
             id="message"
             name="message"
             formControlName="message"
             rows="6"
-            [placeholder]="'CONTACT.MESSAGE_PLACEHOLDER' | translate"
+            placeholder=" "
             [ngClass]="{'invalid': submitted && contactForm.get('message')?.errors}"
           ></textarea>
-          <div class="error-message" *ngIf="submitted && contactForm.get('message')?.errors?.['required']">
+          <label for="message">{{ 'CONTACT.MESSAGE' | translate }}</label>
+          <div class="error-message" [class.visible]="submitted && contactForm.get('message')?.errors?.['required']">
             {{ 'CONTACT.MESSAGE_REQUIRED' | translate }}
+          </div>
+          <div class="error-message" [class.visible]="submitted && contactForm.get('message')?.errors?.['minlength']">
+            {{ 'CONTACT.MESSAGE_MINLENGTH' | translate }}
           </div>
         </div>
 
-        <button type="submit" class="btn-v2 primary submit-btn" [disabled]="isLoading">
+        <button type="submit" class="btn-v2 primary submit-btn" [disabled]="isLoading" appMagnetic>
           <span *ngIf="!isLoading"><i class="fas fa-paper-plane"></i> {{ 'CONTACT.SEND' | translate }}</span>
           <span *ngIf="isLoading">
             <i class="fas fa-spinner fa-spin"></i> {{ 'CONTACT.SENDING' | translate }}
           </span>
         </button>
 
-        <div class="form-message success" *ngIf="success">
+        <div class="form-message success" [class.visible]="success">
           <i class="fas fa-check-circle"></i>
           {{ 'CONTACT.SUCCESS' | translate }}
         </div>
-        <div class="form-message error" *ngIf="error">
+        <div class="form-message error" [class.visible]="error">
           <i class="fas fa-exclamation-circle"></i>
           {{ 'CONTACT.ERROR' | translate }}
         </div>

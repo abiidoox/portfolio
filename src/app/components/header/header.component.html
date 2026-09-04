@@ -1,34 +1,26 @@
-<header class="header">
+<header class="header" [class.scrolled]="isScrolled">
   <nav class="nav-container">
-    <ul class="nav-links">
-      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{ 'header.home' | translate }}</a></li>
-      <li><a routerLink="/projects" routerLinkActive="active">{{ 'header.projects' | translate }}</a></li>
-      <!-- <li class="dropdown" [class.open]="isDropdownOpen">
-        <button 
-          type="button"
-          class="dropdown-toggle"
-          (click)="toggleDropdown($event)"
-          (keydown)="onDropdownKeydown($event)"
-          aria-haspopup="true"
-          [attr.aria-expanded]="isDropdownOpen">
-          {{ 'header.more' | translate }}
-          
-        </button>
-         </li> -->
-          <li>
-            <a routerLink="/skills" routerLinkActive="active" (click)="closeDropdown()">
-              {{ 'header.skills' | translate }}
-            </a>
-          </li>
-          <li>
-            <a routerLink="/resume" routerLinkActive="active" (click)="closeDropdown()">
-              {{ 'header.resume' | translate }}
-            </a>
-          </li>
-      
-        
-   
-      <li><a routerLink="/contact" routerLinkActive="active">{{ 'header.contact' | translate }}</a></li>
+    <a routerLink="/" class="logo-mark" aria-label="Home">
+      <svg viewBox="0 0 40 40" width="38" height="38" aria-hidden="true">
+        <rect rx="10" width="40" height="40" fill="url(#lm-grad)"></rect>
+        <text x="20" y="27" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-weight="700" font-size="18" fill="#fff">AE</text>
+        <defs><linearGradient id="lm-grad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#ff5e3a"></stop>
+          <stop offset="100%" stop-color="#38bdf8"></stop>
+        </linearGradient></defs>
+      </svg>
+    </a>
+<ul class="nav-links" #navLinks>
+      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="setActiveLink($event, 0)">{{ 'header.home' | translate }}</a></li>
+      <li><a routerLink="/projects" routerLinkActive="active" (click)="setActiveLink($event, 1)">{{ 'header.projects' | translate }}</a></li>
+      <li>
+        <a routerLink="/skills" routerLinkActive="active" (click)="setActiveLink($event, 2)">{{ 'header.skills' | translate }}</a>
+      </li>
+      <li>
+        <a routerLink="/resume" routerLinkActive="active" (click)="setActiveLink($event, 3)">{{ 'header.resume' | translate }}</a>
+      </li>
+      <li><a routerLink="/contact" routerLinkActive="active" (click)="setActiveLink($event, 4)">{{ 'header.contact' | translate }}</a></li>
+      <span class="nav-indicator" [style.transform]="'translateX(' + indicatorX + 'px) scaleX(' + indicatorScale + ')'" [style.width.px]="indicatorWidth"></span>
     </ul>
     <div class="header-controls">
       <app-theme-switcher></app-theme-switcher>

@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { TranslateService } from '@ngx-translate/core';
 import { LanguageService } from '../../services/language.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss']
 })
-export class ContactComponent implements OnInit {
+export class ContactComponent implements OnInit, OnDestroy {
   contactForm: UntypedFormGroup;
   submitted = false;
   success = false;
@@ -17,7 +17,6 @@ export class ContactComponent implements OnInit {
 
   constructor(
     private fb: UntypedFormBuilder,
-    private translate: TranslateService,
     private languageService: LanguageService
   ) {
     this.contactForm = this.fb.group({
@@ -27,12 +26,18 @@ export class ContactComponent implements OnInit {
     });
   }
 
+  private langSub?: Subscription;
+
   ngOnInit(): void {
-    this.languageService.currentLanguage$.subscribe(() => {
+    this.langSub = this.languageService.currentLanguage$.subscribe(() => {
       // Reset form messages when language changes
       this.success = false;
       this.error = false;
     });
+  }
+
+  ngOnDestroy(): void {
+    this.langSub?.unsubscribe();
   }
 
   onSubmit(event?: Event) {
@@ -71,12 +76,11 @@ export class ContactComponent implements OnInit {
         .finally(() => {
           this.isLoading = false;
         });
+    } else {
+      // Trigger error visibility for invalid fields
+      Object.keys(this.contactForm.controls).forEach(key => {
+        this.contactForm.get(key)?.markAsTouched();
+      });
     }
-  }
-
-  // Helper method to check if a field has errors
-  hasError(controlName: string, errorType: string): boolean {
-    const control = this.contactForm.get(controlName);
-    return control ? control.hasError(errorType) && (control.touched || this.submitted) : false;
   }
 }

@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SkillsComponent } from './components/skills/skills.component';
-import { TestimonialsComponent } from './components/testimonials/testimonials.component';
-import { BlogComponent } from './components/blog/blog.component';
-import { AchievementsComponent } from './components/achievements/achievements.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
@@ -31,18 +28,6 @@ const routes: Routes = [
     path: 'skills',
     component: SkillsComponent
   },
-  // {
-  //   path: 'testimonials',
-  //   component: TestimonialsComponent
-  // },
-  // {
-  //   path: 'blog',
-  //   component: BlogComponent
-  // },
-  // {
-  //   path: 'achievements',
-  //   component: AchievementsComponent
-  // },
   {
     path: '404',
     component: NotFoundComponent

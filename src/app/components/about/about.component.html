@@ -1,10 +1,10 @@
 <div class="page-v2 about-v2">
 
   <!-- ===== HERO ===== -->
-  <section class="hero-v2">
+  <section class="hero-v2" appHeroParallax>
     <div class="hero-text">
       <span class="kicker-line" appScrollReveal data-reveal-direction="up">{{ 'ABOUT.TITLE_SMALL' | translate }}</span>
-      <h1 class="display-title">
+      <h1 class="display-title" appScrollReveal data-reveal-direction="up">
         <span class="word" appScrollReveal data-reveal-direction="up"><span>{{ 'ABOUT.GREETING' | translate }}</span></span><br>
         <span class="grad-name text-gradient-animated">{{ 'ABOUT.NAME' | translate }}</span>
       </h1>
@@ -12,13 +12,17 @@
         <span class="rotator-prefix">{{ 'ABOUT.HERO_SUBTITLE_PREFIX' | translate }}</span>
         <span class="text-gradient-animated">{{ 'ABOUT.ROTATE_1' | translate }}</span>
       </p>
+      <div class="avail-badge" appScrollReveal data-reveal-direction="up" data-delay="200">
+        <span class="avail-dot"></span>
+        <span>{{ 'ABOUT.AVAILABLE' | translate }}</span>
+      </div>
       <p class="bio-text" appScrollReveal data-reveal-direction="up" data-delay="250">{{ 'ABOUT.BIO' | translate }}</p>
 
       <div class="hero-cta" appScrollReveal data-reveal-direction="up" data-delay="350">
-        <a href="/assets/Abderrazzaq_El_Abdouni_CV.pdf" download="Abderrazzaq_El_Abdouni_CV.pdf" class="btn-v2 primary">
+        <a href="/assets/Abderrazzaq_El_Abdouni_CV.pdf" download="Abderrazzaq_El_Abdouni_CV.pdf" class="btn-v2 primary" appMagnetic>
           <i class="fas fa-download"></i> {{ 'ABOUT.DOWNLOAD_CV' | translate }}
         </a>
-        <a routerLink="/contact" class="btn-v2 ghost">
+        <a routerLink="/contact" class="btn-v2 ghost" appMagnetic>
           <i class="fas fa-paper-plane"></i> {{ 'ABOUT.CONTACT_ME' | translate }}
         </a>
       </div>
@@ -33,13 +37,17 @@
       </div>
     </div>
 
-    <div class="hero-visual" appScrollReveal data-reveal-direction="scale">
+    <div class="hero-visual" appScrollReveal data-reveal-direction="scale" (mousemove)="onHeroMove($event)" (mouseleave)="onHeroLeave()">
       <div class="avatar-ring">
         <img src="assets/me.jpg" alt="{{ 'ABOUT.PROFILE_ALT' | translate }}" class="avatar-img">
       </div>
       <div class="float-chip chip-a"><i class="fas fa-code"></i> Angular</div>
       <div class="float-chip chip-b"><i class="fas fa-brain"></i> ML</div>
       <div class="float-chip chip-c"><i class="fas fa-microchip"></i> IoT</div>
+      <div class="float-chip chip-d"><i class="fab fa-python"></i> Python</div>
+      <div class="float-chip chip-e"><i class="fab fa-docker"></i> Docker</div>
+      <div class="float-chip chip-f"><i class="fas fa-database"></i> .NET</div>
+      <div class="float-chip chip-g"><i class="fab fa-react"></i> React</div>
     </div>
   </section>
 
@@ -66,22 +74,22 @@
       <div class="sec-line"></div>
     </div>
     <div class="focus-grid-v2">
-      <div class="focus-card glass-card" appScrollReveal data-reveal-direction="up">
+      <div class="focus-card glass-card" appScrollReveal data-reveal-direction="up" appTilt>
         <i class="fas fa-brain focus-icon"></i>
         <h4>{{ 'ABOUT.CURRENT_FOCUS.AI.TITLE' | translate }}</h4>
         <p>{{ 'ABOUT.CURRENT_FOCUS.AI.DESCRIPTION' | translate }}</p>
       </div>
-      <div class="focus-card glass-card" appScrollReveal data-reveal-direction="up" data-delay="120">
+      <div class="focus-card glass-card" appScrollReveal data-reveal-direction="up" data-delay="120" appTilt>
         <i class="fas fa-mobile-screen-button focus-icon"></i>
         <h4>{{ 'ABOUT.CURRENT_FOCUS.MOBILE.TITLE' | translate }}</h4>
         <p>{{ 'ABOUT.CURRENT_FOCUS.MOBILE.DESCRIPTION' | translate }}</p>
       </div>
-      <div class="focus-card glass-card" appScrollReveal data-reveal-direction="up" data-delay="240">
+      <div class="focus-card glass-card" appScrollReveal data-reveal-direction="up" data-delay="240" appTilt>
         <i class="fas fa-cloud focus-icon"></i>
         <h4>{{ 'ABOUT.CURRENT_FOCUS.CLOUD.TITLE' | translate }}</h4>
         <p>{{ 'ABOUT.CURRENT_FOCUS.CLOUD.DESCRIPTION' | translate }}</p>
       </div>
-      <div class="focus-card glass-card" appScrollReveal data-reveal-direction="up" data-delay="360">
+      <div class="focus-card glass-card" appScrollReveal data-reveal-direction="up" data-delay="360" appTilt>
         <i class="fas fa-globe focus-icon"></i>
         <h4>{{ 'ABOUT.CURRENT_FOCUS.WEB.TITLE' | translate }}</h4>
         <p>{{ 'ABOUT.CURRENT_FOCUS.WEB.DESCRIPTION' | translate }}</p>

@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { LanguageService } from '../../services/language.service';
 
 interface Skill {
   name: string;
@@ -16,7 +15,7 @@ interface Skill {
   templateUrl: './skills.component.html',
   styleUrls: ['./skills.component.scss']
 })
-export class SkillsComponent implements OnInit {
+export class SkillsComponent {
   skills: Skill[] = [
     // Languages
     { name: 'C#', level: 90, icon: 'csharp', category: 'languages', experience: '3+', projects: 5 },
@@ -51,15 +50,8 @@ export class SkillsComponent implements OnInit {
   selectedCategory: string = 'all';
 
   constructor(
-    private translate: TranslateService,
-    private languageService: LanguageService
+    private translate: TranslateService
   ) { }
-
-  ngOnInit(): void {
-    this.languageService.currentLanguage$.subscribe(() => {
-      // Update any translated content if needed
-    });
-  }
 
   get filteredSkills(): Skill[] {
     if (this.selectedCategory === 'all') {
@@ -103,17 +95,5 @@ export class SkillsComponent implements OnInit {
     return this.translate.instant(
       years > 1 ? 'SKILLS.EXPERIENCE.YEARS' : 'SKILLS.EXPERIENCE.YEAR'
     );
-  }
-
-  getCategoryStats(category: string): { total: number, avgLevel: number, totalProjects: number } {
-    const categorySkills = category === 'all' 
-      ? this.skills 
-      : this.skills.filter(skill => skill.category === category);
-
-    const total = categorySkills.length;
-    const avgLevel = Math.round(categorySkills.reduce((acc, skill) => acc + skill.level, 0) / total);
-    const totalProjects = categorySkills.reduce((acc, skill) => acc + (skill.projects || 0), 0);
-
-    return { total, avgLevel, totalProjects };
   }
 } 

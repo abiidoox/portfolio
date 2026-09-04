@@ -1,14 +1,14 @@
 <div class="not-found-container">
   <div class="not-found-content">
-    <div class="error-code">
-      <span class="number">4</span>
-      <span class="zero">0</span>
-      <span class="number">4</span>
+    <div class="error-code" aria-label="404">
+      <span class="number glitch" data-text="4">4</span>
+      <span class="zero glitch" data-text="0">0</span>
+      <span class="number glitch" data-text="4">4</span>
     </div>
-    <h1 class="error-title">Page Not Found</h1>
-    <p class="error-message">Oops! The page you're looking for doesn't exist or has been moved.</p>
+    <h1 class="error-title">{{ 'NOT_FOUND.TITLE' | translate }}</h1>
+    <p class="error-message">{{ 'NOT_FOUND.MESSAGE' | translate }}</p>
     <button class="home-button" (click)="goHome()">
-      <span class="button-text">Take Me Home</span>
+      <span class="button-text">{{ 'NOT_FOUND.BACK_HOME' | translate }}</span>
       <span class="button-icon">→</span>
     </button>
   </div>

@@ -1,14 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageService } from '../../services/language.service';
+import { ProjectModalService } from '../../services/project-modal.service';
+import { forkJoin, Subscription } from 'rxjs';
 
 interface Project {
+  key: string;
   title: string;
   description: string;
+  longDescription?: string;
   technologies: string[];
   category: string;
   featured: boolean;
   date: string;
+  links?: { label: string; url: string; icon: string }[];
 }
 
 @Component({
@@ -16,99 +21,142 @@ interface Project {
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss']
 })
-export class ProjectsComponent implements OnInit {
+export class ProjectsComponent implements OnInit, OnDestroy {
   projects: Project[] = [];
   filteredProjects: Project[] = [];
-  categories: string[] = ['all', 'web', 'mobile', 'ai', 'iot'];
+  categories: string[] = ['all', 'web', 'mobile', 'desktop', 'ai', 'iot'];
   selectedCategory: string = 'all';
 
   constructor(
     private translate: TranslateService,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    private projectModalService: ProjectModalService
   ) { }
+
+  private langSub?: Subscription;
 
   ngOnInit(): void {
     this.initializeProjects();
     this.updateProjectTranslations();
-    
-    this.languageService.currentLanguage$.subscribe(() => {
+
+    this.langSub = this.translate.onLangChange.subscribe(() => {
       this.updateProjectTranslations();
     });
+  }
+
+  ngOnDestroy(): void {
+    this.langSub?.unsubscribe();
   }
 
   initializeProjects(): void {
     this.projects = [
       {
-        title: '',
-        description: '',
+        key: 'AI_CHAT',
+        title: 'AI Chat Assistant',
+        description: 'A conversational AI assistant built with FastAPI and TinyLlama',
+        longDescription: 'PROJECTS.AI_CHAT.LONG_DESCRIPTION',
         technologies: ['FastAPI', 'TinyLlama', 'React.js', 'Docker'],
         category: 'ai',
         featured: true,
-        date: "2025"
+        date: "2025",
+        links: [
+          { label: 'GitHub', url: 'https://github.com/abiidoox', icon: 'fab fa-github' }
+        ]
       },
       {
-        title: '',
-        description: '',
+        key: 'FACE_RECOGNITION',
+        title: 'Smart Face Recognition System',
+        description: 'An IoT-based facial recognition system using ESP32-S3, Django, and React Native',
+        longDescription: 'PROJECTS.FACE_RECOGNITION.LONG_DESCRIPTION',
         technologies: ["ESP32-S3", "Django", "React Native", "FFmpeg", "ResNet", "SCRFD"],
         category: "iot",
         featured: true,
-        date: "2024"
+        date: "2024",
+        links: [
+          { label: 'GitHub', url: 'https://github.com/abiidoox', icon: 'fab fa-github' }
+        ]
       },
       {
-        title: '',
-        description: '',
+        key: 'SCHEDULE_SYSTEM',
+        title: 'Schedule Management System',
+        description: 'A comprehensive schedule management system developed with ASP.NET and SQL Server',
+        longDescription: 'PROJECTS.SCHEDULE_SYSTEM.LONG_DESCRIPTION',
         technologies: ["C#", "ASP.NET", "HTML", "CSS", "JavaScript", "Bootstrap", "SQL Server"],
         category: "web",
         featured: false,
-        date: "2022"
+        date: "2022",
+        links: [
+          { label: 'GitHub', url: 'https://github.com/abiidoox', icon: 'fab fa-github' }
+        ]
       },
       {
-        title: '',
-        description: '',
+        key: 'SCHOOL_MANAGEMENT_APP',
+        title: 'School Management Application',
+        description: 'A complete and user-friendly school management application',
+        longDescription: 'PROJECTS.SCHOOL_MANAGEMENT_APP.LONG_DESCRIPTION',
         technologies: ["ASP.NET", "HTML", "CSS", "JavaScript", "SQL Server"],
         category: "web",
         featured: false,
         date: "2021"
       },
       {
-        title: '',
-        description: '',
+        key: 'SPAM_DETECTION',
+        title: 'Email Spam Detection Model',
+        description: 'A machine learning model to classify emails as spam or legitimate',
+        longDescription: 'PROJECTS.SPAM_DETECTION.LONG_DESCRIPTION',
         technologies: ["Python", "K-NN", "Decision Trees"],
         category: "ai",
         featured: false,
-        date: "2023"
+        date: "2023",
+        links: [
+          { label: 'GitHub', url: 'https://github.com/abiidoox', icon: 'fab fa-github' }
+        ]
       },
       {
-        title: '',
-        description: '',
+        key: 'EMPLOYMENT_PLATFORM',
+        title: 'Integrated Web Platform for Job and Internship Offers',
+        description: 'A web platform dedicated to job and internship offers using web scraping',
+        longDescription: 'PROJECTS.EMPLOYMENT_PLATFORM.LONG_DESCRIPTION',
         technologies: ["Spring Boot", "Bootstrap", "chartjs", "HTML5", "Java", "Spring Data", "CSS", "Spring Security", "MySQL", "JavaScript", "Selenium"],
         category: "web",
         featured: true,
-        date: "2023"
+        date: "2023",
+        links: [
+          { label: 'GitHub', url: 'https://github.com/abiidoox', icon: 'fab fa-github' }
+        ]
       },
       {
-        title: '',
-        description: '',
+        key: 'SCHOOL_MANAGEMENT_APP_2',
+        title: 'School Management Desktop App',
+        description: 'A Java Swing desktop application for managing school records',
+        longDescription: 'PROJECTS.SCHOOL_MANAGEMENT_APP_2.LONG_DESCRIPTION',
         technologies: ["Java", "Java Swing", "MySQL"],
         category: "desktop",
         featured: false,
         date: "2022"
       },
       {
-        title: '',
-        description: '',
+        key: 'OPTICIAN_ORDER_STOCK',
+        title: 'Order and Stock Management Application for Opticians',
+        description: 'Software for managing orders and inventory in an optical store',
+        longDescription: 'PROJECTS.OPTICIAN_ORDER_STOCK.LONG_DESCRIPTION',
         technologies: ["C#", "T-SQL", "Microsoft SQL Server"],
         category: "desktop",
         featured: false,
         date: "2021"
       },
       {
-        title: '',
-        description: '',
+        key: 'COMPANY_DOMICILIATION',
+        title: 'Company Domiciliation Management Platform',
+        description: 'Web platform for complete management of company domiciliation',
+        longDescription: 'PROJECTS.COMPANY_DOMICILIATION.LONG_DESCRIPTION',
         technologies: ["Spring Boot", "Angular", "MySQL", "JPA/Hibernate", "RESTful API", "Spring Security"],
         category: "web",
         featured: true,
-        date: "2025"
+        date: "2025",
+        links: [
+          { label: 'GitHub', url: 'https://github.com/abiidoox', icon: 'fab fa-github' }
+        ]
       }
     ];
     // Sort projects by date descending (most recent first)
@@ -117,76 +165,25 @@ export class ProjectsComponent implements OnInit {
   }
 
   updateProjectTranslations(): void {
-    // AI Chat Assistant
-    this.translate.get('PROJECTS.AI_CHAT.TITLE').subscribe((title: string) => {
-      this.projects[0].title = title;
-    });
-    this.translate.get('PROJECTS.AI_CHAT.DESCRIPTION').subscribe((desc: string) => {
-      this.projects[0].description = desc;
-    });
+    const keys = this.projects.map(p => p.key);
 
-    // Smart Face Recognition System
-    this.translate.get('PROJECTS.FACE_RECOGNITION.TITLE').subscribe((title: string) => {
-      this.projects[1].title = title;
-    });
-    this.translate.get('PROJECTS.FACE_RECOGNITION.DESCRIPTION').subscribe((desc: string) => {
-      this.projects[1].description = desc;
-    });
+    const translationObservables = keys.flatMap(key => [
+      this.translate.get(`PROJECTS.${key}.TITLE`),
+      this.translate.get(`PROJECTS.${key}.DESCRIPTION`),
+      this.translate.get(`PROJECTS.${key}.LONG_DESCRIPTION`)
+    ]);
 
-    // Schedule Management System
-    this.translate.get('PROJECTS.SCHEDULE_SYSTEM.TITLE').subscribe((title: string) => {
-      this.projects[2].title = title;
-    });
-    this.translate.get('PROJECTS.SCHEDULE_SYSTEM.DESCRIPTION').subscribe((desc: string) => {
-      this.projects[2].description = desc;
-    });
-
-    // Maintenance and Improvement of School Information System
-    this.translate.get('PROJECTS.SCHOOL_MANAGEMENT_APP.TITLE').subscribe((title: string) => {
-      this.projects[3].title = title;
-    });
-    this.translate.get('PROJECTS.SCHOOL_MANAGEMENT_APP.DESCRIPTION').subscribe((desc: string) => {
-      this.projects[3].description = desc;
-    });
-
-    // Email Spam Detection Model
-    this.translate.get('PROJECTS.SPAM_DETECTION.TITLE').subscribe((title: string) => {
-      this.projects[4].title = title;
-    });
-    this.translate.get('PROJECTS.SPAM_DETECTION.DESCRIPTION').subscribe((desc: string) => {
-      this.projects[4].description = desc;
-    });
-
-    // Integrated Web Platform for Job and Internship Offers
-    this.translate.get('PROJECTS.EMPLOYMENT_PLATFORM.TITLE').subscribe((title: string) => {
-      this.projects[5].title = title;
-    });
-    this.translate.get('PROJECTS.EMPLOYMENT_PLATFORM.DESCRIPTION').subscribe((desc: string) => {
-      this.projects[5].description = desc;
-    });
-
-    // School Management Application
-    this.translate.get('PROJECTS.SCHOOL_MANAGEMENT_APP.TITLE').subscribe((title: string) => {
-      this.projects[6].title = title;
-    });
-    this.translate.get('PROJECTS.SCHOOL_MANAGEMENT_APP.DESCRIPTION').subscribe((desc: string) => {
-      this.projects[6].description = desc;
-    });
-
-    // Order and Stock Management Application for Opticians
-    this.translate.get('PROJECTS.OPTICIAN_ORDER_STOCK.TITLE').subscribe((title: string) => {
-      this.projects[7].title = title;
-    });
-    this.translate.get('PROJECTS.OPTICIAN_ORDER_STOCK.DESCRIPTION').subscribe((desc: string) => {
-      this.projects[7].description = desc;
-    });
-
-    // Company Domiciliation Management Platform
-    this.translate.get('PROJECTS.COMPANY_DOMICILIATION.TITLE').subscribe((title: string) => {
-      this.projects[8].title = title;
-    });
-    this.translate.get('PROJECTS.COMPANY_DOMICILIATION.DESCRIPTION').subscribe((desc: string) => {
-      this.projects[8].description = desc;
+    forkJoin(translationObservables).subscribe({
+      next: (translations) => {
+        this.projects.forEach((project, i) => {
+          const base = i * 3;
+          project.title = translations[base] || project.title;
+          project.description = translations[base + 1] || project.description;
+          project.longDescription = translations[base + 2] || project.longDescription;
+        });
+        this.filterProjects(this.selectedCategory);
+      },
+      error: () => {}
     });
   }
 
@@ -196,6 +193,25 @@ export class ProjectsComponent implements OnInit {
       this.filteredProjects = [...this.projects];
     } else {
       this.filteredProjects = this.projects.filter(project => project.category === category);
+    }
+  }
+
+  openModal(project: Project): void {
+    this.projectModalService.open(project);
+  }
+
+  closeModal(): void {
+    this.projectModalService.close();
+  }
+
+  getCategoryIcon(category: string): string {
+    switch (category) {
+      case 'web': return 'fa-globe';
+      case 'mobile': return 'fa-mobile-screen-button';
+      case 'ai': return 'fa-brain';
+      case 'iot': return 'fa-microchip';
+      case 'desktop': return 'fa-desktop';
+      default: return 'fa-code';
     }
   }
 }

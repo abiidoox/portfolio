@@ -5,6 +5,11 @@
     "RESUME": "CV",
     "CONTACT": "Contact"
   },
+  "NOT_FOUND": {
+    "TITLE": "Page introuvable",
+    "MESSAGE": "La page que vous recherchez n'existe pas ou a été déplacée.",
+    "BACK_HOME": "Retour à l'accueil"
+  },
   "ABOUT": {
     "TITLE": "À Propos de Moi",
     "SUBTITLE": "Apprenez à Me Connaître",
@@ -25,6 +30,7 @@
     "TITLE_LARGE": "Création d'Expériences Numériques",
     "GREETING": "Bonjour, je suis",
     "HERO_SUBTITLE_PREFIX": "Je crée",
+    "AVAILABLE": "Disponible pour de nouvelles opportunités",
     "ROTATE_1": "des expériences web.",
     "ROTATE_2": "des systèmes IoT.",
     "ROTATE_3": "des solutions ML.",
@@ -98,50 +104,63 @@
   "PROJECTS": {
     "TITLE": "Mes Projets",
     "SUBTITLE": "Une vitrine de mon meilleur travail et de mes solutions créatives",
+    "VIEW_PROJECT": "Voir le Projet",
     "VIEW_DEMO": "Voir la Démo",
     "VIEW_CODE": "Voir le Code",
+    "DETAILS": "Voir les Détails",
     "CATEGORIES": {
       "ALL": "Tous les Projets",
       "WEB": "Développement Web",
       "MOBILE": "Applications Mobiles",
       "AI": "IA & ML",
-      "IOT": "Solutions IoT"
+      "IOT": "Solutions IoT",
+      "DESKTOP": "Bureau"
     },
+    "TECHNOLOGIES": "Technologies Utilisées",
     "AI_CHAT": {
       "TITLE": "Assistant IA Conversationnel",
-      "DESCRIPTION": "Un assistant conversationnel IA construit avec FastAPI et TinyLlama, doté d'une interface moderne React.js et déployé avec Docker."
+      "DESCRIPTION": "Un assistant conversationnel IA construit avec FastAPI et TinyLlama, doté d'une interface moderne React.js et déployé avec Docker.",
+      "LONG_DESCRIPTION": "Construit un assistant conversationnel IA full-stack de A à Z, propulsé par le modèle de langage TinyLlama servi via un backend haute performance FastAPI avec Server-Sent Events (SSE) pour le streaming temps réel des réponses. L'architecture sépare l'inférence du web, permettant au LLM de générer les tokens de manière incrémentale tandis que le frontend les rend au fur et à mesure. L'application React.js single-page propose une interface de chat moderne avec rendu en temps réel, historique des conversations persistant stocké en local storage, support Markdown complet pour le formatage riche et blocs de code avec syntaxe colorisée. L'authentification et la gestion des sessions garantissent la confidentialité des échanges. L'ensemble de la pile — API backend, service d'inférence LLM et frontend React — est entièrement conteneurisé avec Docker et Docker Compose, permettant un déploiement en une commande et un scaling horizontal."
     },
     "FACE_RECOGNITION": {
       "TITLE": "Système Intelligent de Reconnaissance Faciale",
-      "DESCRIPTION": "Un système de reconnaissance faciale basé sur l'IoT utilisant ESP32-S3, Django et React Native, avec streaming en temps réel et authentification."
-    },
-    "JOB_PLATFORM": {
-      "TITLE": "Plateforme de Recherche d'Emploi",
-      "DESCRIPTION": "Une plateforme full-stack de recherche d'emploi avec capacités de web scraping, construite avec Spring Boot et Angular."
+      "DESCRIPTION": "Un système de reconnaissance faciale basé sur l'IoT utilisant ESP32-S3, Django et React Native.",
+      "LONG_DESCRIPTION": "Conception et développement d'un pipeline complet de reconnaissance faciale IoT couvrant le matériel, le backend et le mobile. Un module caméra ESP32-S3 capture la vidéo et la diffuse via RTSP vers un serveur backend Django, où FFmpeg convertit le flux brut en HLS pour une lecture compatible navigateur. Côté serveur, la détection faciale est gérée par SCRFD tandis que ResNet génère des embeddings faciaux de haute dimension pour la correspondance d'identité contre une base de données d'utilisateurs enregistrés stockée dans PostgreSQL avec mise en cache Redis pour des recherches à faible latence. L'application mobile React Native fournit un visualiseur de flux caméra en direct, un workflow d'inscription avec capture photo et des notifications push en temps réel lorsqu'un visage reconnu est détecté. Le système tourne sur Ubuntu 22.04 avec Supervisor gérant tous les services, et utilise des connexions WebSocket pour les mises à jour instantanées entre le serveur et le client mobile."
     },
     "SCHEDULE_SYSTEM": {
       "TITLE": "Système de Gestion des Emplois du Temps",
-      "DESCRIPTION": "Un système complet de gestion des emplois du temps développé avec ASP.NET et SQL Server."
+      "DESCRIPTION": "Un système complet de gestion des emplois du temps développé avec ASP.NET et SQL Server.",
+      "LONG_DESCRIPTION": "Développement d'un système de gestion des emplois du temps complet pour les institutions académiques avec ASP.NET MVC, Entity Framework et SQL Server. L'application résout le problème complexe de la génération d'emplois du temps en implémentant une détection de conflits basée sur des contraintes identifiant automatiquement les chevauchements entre salles, enseignants et groupes d'étudiants. Les administrateurs peuvent créer, modifier et publier les plannings via une interface intuitive glisser-déposer, tandis que les enseignants reçoivent des rappels automatiques par email pour les cours à venir. Le contrôle d'accès basé sur les rôles sépare les permissions entre administrateurs, enseignants et chefs de département, chacun avec des vues de tableau de bord personnalisées. Les vues calendrier peuvent être exportées au format iCal pour l'intégration avec des applications calendrier externes, et le module de reporting génère des statistiques d'utilisation des salles et d'analyse de la charge enseignante."
     },
     "SPAM_DETECTION": {
-      "TITLE": "Modèle de Détection de Courriers Électroniques (Spam/Ham)",
-      "DESCRIPTION": "Projet visant à élaborer un modèle de détection de courriels (spam/normal) en recourant à des méthodes de machine learning et d'analyse textuelle. L'objectif principal était de concevoir un système intelligent apte à filtrer automatiquement les courriels indésirables (spam) des messages légitimes (normal)."
+      "TITLE": "Modèle de Détection de Courriers Indésirables",
+      "DESCRIPTION": "Modèle de machine learning pour classifier les courriels en spam ou légitimes par analyse textuelle et algorithmes K-NN et arbres de décision.",
+      "LONG_DESCRIPTION": "Construction d'un pipeline de machine learning de bout en bout pour la classification de courriels en spam ou légitimes, couvrant chaque étape de l'ingestion des données brutes à l'évaluation du modèle. Le pipeline de prétraitement gère la tokenisation, la conversion en minuscules, la suppression des mots vides, la ponctuation et la lemmatisation pour normaliser le texte. L'extraction de caractéristiques utilise la vectorisation TF-IDF avec support bigramme pour capturer les patterns contextuels de mots, réduisant le texte haute dimension en représentations numériques creuses. Deux classificateurs — K-Plus Proches Voisins et Arbre de Décision — ont été entraînés et évalués avec validation croisée stratifiée k-fold, avec des métriques incluant précision, rappel, F1-score et analyse de matrice de confusion. Le meilleur modèle a été sérialisé avec pickle pour l'inférence, et l'expérience complète suivie dans un notebook Jupyter avec courbes ROC et classement de l'importance des caractéristiques."
     },
     "EMPLOYMENT_PLATFORM": {
-      "TITLE": "Plateforme Web Intégrée pour les offres d'Emploi et des Stages",
-      "DESCRIPTION": "Création d'une plateforme web dédiée aux offres d'emploi et de stage, utilisant le web scraping pour collecter des données à partir de sites comme Indeed et Rekrute, afin de simplifier la recherche d'opportunités professionnelles."
+      "TITLE": "Plateforme Web Intégrée pour les Offres d'Emploi et de Stages",
+      "DESCRIPTION": "Plateforme web dédiée aux offres d'emploi et de stage utilisant le web scraping.",
+      "LONG_DESCRIPTION": "Conception et développement d'une plateforme web full-stack agrégant des offres d'emploi et de stage à partir de multiples sources via le web scraping automatisé. Le backend Spring Boot utilise Selenium WebDriver avec Chrome headless pour scraper les annonces d'Indeed et Rekrute, appliquant des pipelines de normalisation pour standardiser les titres d'emploi, noms d'entreprises, localisations et fourchettes salariales dans un schéma MySQL unifié. La sécurité est gérée par Spring Security avec authentification basée sur les rôles et gestion de tokens JWT. Le frontend Angular offre une recherche avancée avec filtrage multi-critères (localisation, type de contrat, niveau d'expérience), des alertes de recherche sauvegardées, des annonces en favoris et un moteur de recommandation personnalisé basé sur les préférences et l'historique de navigation. Les tableaux de bord analytiques Chart.js visualisent les tendances du marché, les distributions salariales et les statistiques de candidature."
     },
     "SCHOOL_MANAGEMENT_APP": {
       "TITLE": "Application de Gestion Scolaire",
-      "DESCRIPTION": "Application de gestion scolaire complète et conviviale, facilitant la gestion des données académiques et administratives au sein d'une institution scolaire."
+      "DESCRIPTION": "Application de gestion scolaire complète et conviviale pour les données académiques et administratives.",
+      "LONG_DESCRIPTION": "Application web complète de gestion scolaire construite avec ASP.NET Web Forms, HTML, CSS, JavaScript et SQL Server, conçue pour numériser les workflows administratifs et académiques des institutions éducatives. La plateforme gère le cycle de vie complet de l'élève de l'inscription à la sortie, incluant l'enregistrement avec affectation de classe, le suivi des présences quotidiennes avec vues calendrier, la gestion continue des évaluations et notes d'examens avec moyennes pondérées, et la génération automatique de bulletins avec export PDF imprimable. Les administrateurs accèdent à un tableau de bord centralisé avec analyses en temps réel montrant les tendances d'inscription, les taux de présence et les distributions de performance académique. Les enseignants disposent de vues scoped par rôle pour gérer leurs classes, saisir les notes et enregistrer les absences. Le système applique un contrôle d'accès basé sur les rôles pour garantir la confidentialité des données."
+    },
+    "SCHOOL_MANAGEMENT_APP_2": {
+      "TITLE": "Application de Bureau de Gestion Scolaire",
+      "DESCRIPTION": "Application de bureau Java Swing pour la gestion locale des données scolaires.",
+      "LONG_DESCRIPTION": "Développement d'une application de bureau Java Swing pour la gestion scolaire hors ligne, conçue pour les institutions sans accès internet fiable. L'application se connecte à une base MySQL et propose une interface à onglets couvrant l'enregistrement des élèves avec profils démographiques, la saisie journalière des présences, la notation continue et les examens avec distributions de pondération configurables, et la génération automatique de bulletins. Les fonctionnalités d'import/export permettent des opérations en masse via fichiers CSV. Le module de reporting produit des bulletins PDF imprimables avec identité visuelle de l'école, barèmes configurables et calculs de classement. Construite avec le pattern MVC pour la maintenabilité, l'application inclut validation des données, gestion des erreurs et un utilitaire de sauvegarde/restauration."
     },
     "OPTICIAN_ORDER_STOCK": {
       "TITLE": "Application de Gestion des Commandes et du Stock pour Opticiens",
-      "DESCRIPTION": "Logiciel permettant la gestion des commandes et de l'inventaire directement au sein d'une boutique d'optique."
+      "DESCRIPTION": "Logiciel permettant la gestion des commandes et de l'inventaire au sein d'une boutique d'optique.",
+      "LONG_DESCRIPTION": "Développement d'une application de bureau complète pour la gestion de magasin d'optique avec C# Windows Forms et procédures stockées T-SQL sur Microsoft SQL Server. Le système gère le workflow complet des opérations de vente au détail : suivi des stocks en temps réel avec niveaux de stock et lecture de codes-barres, placement de commandes fournisseurs avec génération de bons de commande et suivi des livrables, dossiers de prescriptions clients avec spécifications de lentilles et surveillance des dates d'expiration, transactions point de vente avec impression de reçus et traitement des paiements, et alertes automatiques de stock bas déclenchées par des règles de seuil configurables. Le module de reporting génère des rapports Excel et PDF exportables couvrant performance commerciale, valorisation des stocks, délais de livraison fournisseurs et analyses de prescriptions clients."
     },
     "COMPANY_DOMICILIATION": {
-      "TITLE": "Plateforme de Gestion de Domiciliation d’Entreprises",
-      "DESCRIPTION": "Développement d’une plateforme web pour la gestion complète de la domiciliation d’entreprises : souscription en ligne, espace client, gestion des contrats et documents, notifications, etc. Stack : Spring Boot, Angular, MySQL, JPA/Hibernate, RESTful API, Spring Security."
+      "TITLE": "Plateforme de Gestion de Domiciliation d'Entreprises",
+      "DESCRIPTION": "Plateforme web pour la gestion complète de la domiciliation d'entreprises.",
+      "LONG_DESCRIPTION": "Plateforme web full-stack pour la gestion des services de domiciliation d'entreprises, permettant aux sociétés d'établir des adresses légales et de recevoir un support administratif sans maintenir un bureau physique. Construite avec Spring Boot en backend et Angular en frontend, la plateforme comprend des workflows d'abonnement en ligne avec sélection de plans et intégration de paiement, un tableau de bord client complet affichant les services actifs et les prochaines rénovations, la gestion de contrats et documents avec capacités de signature numérique via intégration DocuSign API, et un système de notification multi-canal (email, SMS, in-app) pour les mises à jour de services et rappels d'échéances. La sécurité est assurée par Spring Security avec authentification JWT, contrôle d'accès par rôles séparant les permissions client/agent/admin, et MySQL soutenant toutes les données transactionnelles avec journalisation complète d'audit."
     }
   },
   "RESUME": {
@@ -149,6 +168,7 @@
     "SUBTITLE": "Expérience Professionnelle",
     "DESCRIPTION": "Un résumé de mon expérience professionnelle, de ma formation et de mes compétences",
     "DOWNLOAD": "Télécharger PDF",
+    "DOWNLOAD_ERROR": "Échec du téléchargement du CV. Veuillez réessayer.",
     "EXPERIENCE": "EXPÉRIENCE PROFESSIONNELLE",
     "EDUCATION": "FORMATION",
     "SKILLS": "COMPÉTENCES",
@@ -291,6 +311,8 @@
     "MESSAGE": "Message",
     "MESSAGE_PLACEHOLDER": "Votre Message",
     "MESSAGE_REQUIRED": "Le message est requis",
+    "NAME_MINLENGTH": "Le nom doit contenir au moins 2 caractères",
+    "MESSAGE_MINLENGTH": "Le message doit contenir au moins 10 caractères",
     "SEND": "Envoyer le Message",
     "SENDING": "Envoi en cours...",
     "SUCCESS": "Votre message a été envoyé avec succès !",
@@ -308,6 +330,17 @@
     "testimonials": "Témoignages",
     "contact": "Contact",
     "more": "Plus"
+  },
+  "terminal": {
+    "open": "ouvrir",
+    "ls": "ls",
+    "cat": "cat",
+    "run": "exécuter"
+  },
+  "not_found": {
+    "title": "Page Introuvable",
+    "message": "Oups ! La page que vous recherchez n'existe pas ou a été déplacée.",
+    "back_home": "Retour à l'Accueil"
   },
   "skills": {
     "title": "Mes Compétences",
@@ -562,5 +595,16 @@
         "RATING": 5
       }
     }
+  },
+  "FOOTER": {
+    "COPYRIGHT": "© {{year}} Abderrazzaq El Abdouni. Tous droits réservés.",
+    "COPY_HINT": "Cliquer pour copier"
+  },
+  "TOAST": {
+    "EMAIL_COPIED": "Email copié dans le presse-papiers !",
+    "EMAIL_COPY_FAILED": "Échec de la copie de l'email",
+    "THEME_LIGHT": "Thème clair",
+    "THEME_DARK": "Thème sombre",
+    "LANGUAGE_CHANGED": "Langue : {{lang}}"
   }
 }

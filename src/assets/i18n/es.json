@@ -5,6 +5,11 @@
     "RESUME": "Currículum",
     "CONTACT": "Contacto"
   },
+  "NOT_FOUND": {
+    "TITLE": "Página no encontrada",
+    "MESSAGE": "La página que buscas no existe o ha sido movida.",
+    "BACK_HOME": "Volver a Inicio"
+  },
   "ABOUT": {
     "TITLE": "Sobre Mí",
     "SUBTITLE": "Conóceme",
@@ -25,6 +30,7 @@
     "TITLE_LARGE": "Creando Experiencias Digitales",
     "GREETING": "Hola, soy",
     "HERO_SUBTITLE_PREFIX": "Creo",
+    "AVAILABLE": "Disponible para nuevas oportunidades",
     "ROTATE_1": "experiencias web.",
     "ROTATE_2": "sistemas IoT.",
     "ROTATE_3": "soluciones de ML.",
@@ -107,6 +113,17 @@
     "contact": "Contacto",
     "more": "Más"
   },
+  "terminal": {
+    "open": "abrir",
+    "ls": "ls",
+    "cat": "cat",
+    "run": "ejecutar"
+  },
+  "not_found": {
+    "title": "Página No Encontrada",
+    "message": "¡Ups! La página que buscas no existe o ha sido movida.",
+    "back_home": "Volver al Inicio"
+  },
   "skills": {
     "title": "Mis Habilidades",
     "categories": {
@@ -135,50 +152,63 @@
   "PROJECTS": {
     "TITLE": "Mis Proyectos",
     "SUBTITLE": "Una muestra de mi mejor trabajo y soluciones creativas",
+    "VIEW_PROJECT": "Ver Proyecto",
     "VIEW_DEMO": "Ver Demo",
     "VIEW_CODE": "Ver Código",
+    "DETAILS": "Ver Detalles",
     "CATEGORIES": {
       "ALL": "Todos los Proyectos",
       "WEB": "Desarrollo Web",
       "MOBILE": "Aplicaciones Móviles",
       "AI": "IA & ML",
-      "IOT": "Soluciones IoT"
+      "IOT": "Soluciones IoT",
+      "DESKTOP": "Escritorio"
     },
+    "TECHNOLOGIES": "Tecnologías Utilizadas",
     "AI_CHAT": {
       "TITLE": "Asistente de Chat con IA",
-      "DESCRIPTION": "Un asistente conversacional de IA construido con FastAPI y TinyLlama, con una interfaz moderna en React.js y despliegue con Docker."
+      "DESCRIPTION": "Un asistente conversacional de IA construido con FastAPI y TinyLlama, con una interfaz moderna en React.js y despliegue con Docker.",
+      "LONG_DESCRIPTION": "Construcción de un asistente conversacional de IA full-stack desde cero, impulsado por el modelo de lenguaje TinyLlama servido a través de un backend de alto rendimiento FastAPI con Server-Sent Events (SSE) para streaming de respuestas en tiempo real. La arquitectura separa la inferencia de la capa web, permitiendo que el LLM genere tokens incrementalmente mientras el frontend los renderiza a medida que llegan. La aplicación SPA React.js presenta una interfaz de chat moderna con renderizado en tiempo real, historial de conversaciones persistente almacenado en local storage, soporte completo de Markdown para formato enriquecido y bloques de código con resaltado de sintaxis. La autenticación y gestión de sesiones garantizan la privacidad de las conversaciones. Toda la pila — API backend, servicio de inferencia LLM y frontend React — está completamente conteneurizada con Docker y Docker Compose, permitiendo despliegue con un solo comando y escalado horizontal."
     },
     "FACE_RECOGNITION": {
       "TITLE": "Sistema Inteligente de Reconocimiento Facial",
-      "DESCRIPTION": "Un sistema de reconocimiento facial basado en IoT que utiliza ESP32-S3, Django y React Native, con transmisión en tiempo real y autenticación."
-    },
-    "JOB_PLATFORM": {
-      "TITLE": "Plataforma de Búsqueda de Empleo",
-      "DESCRIPTION": "Una plataforma full-stack de búsqueda de empleo con capacidades de web scraping, construida con Spring Boot y Angular."
+      "DESCRIPTION": "Un sistema de reconocimiento facial basado en IoT que utiliza ESP32-S3, Django y React Native.",
+      "LONG_DESCRIPTION": "Diseño y construcción de un pipeline completo de reconocimiento facial IoT que abarca hardware, backend y capa móvil. Un módulo de cámara ESP32-S3 captura video y lo transmite por RTSP a un servidor backend Django, donde FFmpeg convierte el stream crudo a HLS para reproducción compatible con navegadores. Del lado del servidor, la detección facial es manejada por SCRFD mientras ResNet genera embeddings faciales de alta dimensión para la coincidencia de identidad contra una base de datos de usuarios inscritos almacenada en PostgreSQL con caché Redis para búsquedas de baja latencia. La aplicación móvil React Native proporciona un visor de feed de cámara en vivo, flujo de inscripción con captura de fotos y notificaciones push en tiempo real cuando se detecta un rostro reconocido. El sistema funciona en Ubuntu 22.04 con Supervisor gestionando todos los servicios, y usa conexiones WebSocket para actualizaciones instantáneas entre el servidor y el cliente móvil."
     },
     "SCHEDULE_SYSTEM": {
       "TITLE": "Sistema de Gestión de Horarios",
-      "DESCRIPTION": "Un sistema completo de gestión de horarios desarrollado con ASP.NET y SQL Server."
+      "DESCRIPTION": "Un sistema completo de gestión de horarios desarrollado con ASP.NET y SQL Server.",
+      "LONG_DESCRIPTION": "Desarrollo de un sistema completo de gestión de horarios para instituciones académicas con ASP.NET MVC, Entity Framework y SQL Server. La aplicación resuelve el problema complejo de generación de horarios implementando detección de conflictos basada en restricciones que identifica automáticamente solapamientos entre salas, instructores y grupos de estudiantes. Los administradores pueden crear, modificar y publicar horarios a través de una interfaz intuitiva de arrastrar y soltar, mientras los instructores reciben recordatorios automáticos por email para sus próximas clases. El control de acceso basado en roles separa permisos entre administradores, instructores y jefes de departamento, cada uno con vistas personalizadas del panel. Las vistas de calendario se pueden exportar en formato iCal para integración con aplicaciones de calendario externas, y el módulo de informes genera estadísticas de utilización de salas y análisis de carga docente."
     },
     "SPAM_DETECTION": {
-      "TITLE": "Modelo de Detección de Correos Electrónicos (Spam/Ham)",
-      "DESCRIPTION": "Proyecto orientado a desarrollar un modelo de detección de correos electrónicos (spam/normal) utilizando métodos de machine learning y análisis de texto. El objetivo principal fue diseñar un sistema inteligente capaz de filtrar automáticamente los correos no deseados (spam) de los mensajes legítimos (normal)."
+      "TITLE": "Modelo de Detección de Correos No Deseados",
+      "DESCRIPTION": "Modelo de machine learning para clasificar correos en spam o legítimos mediante análisis de texto y algoritmos K-NN y árboles de decisión.",
+      "LONG_DESCRIPTION": "Construcción de un pipeline de machine learning de extremo a extremo para clasificación de correo electrónico en spam o legítimo, cubriendo cada etapa desde la ingesta de datos crudos hasta la evaluación del modelo. El pipeline de preprocesamiento maneja tokenización, conversión a minúsculas, eliminación de palabras vacías, puntuación y lematización para normalizar el texto. La extracción de características usa vectorización TF-IDF con soporte de bigramas para capturar patrones contextuales de palabras, reduciendo texto de alta dimensionalidad a representaciones numéricas dispersas. Dos clasificadores — K-Vecinos Más Cercanos y Árbol de Decisión — fueron entrenados y evaluados con validación cruzada estratificada k-fold, con métricas que incluyen precisión, recall, F1-score y análisis de matriz de confusión. El mejor modelo fue serializado con pickle para inferencia, y el experimento completo rastreado en notebook Jupyter con curvas ROC y rankings de importancia de características."
     },
     "EMPLOYMENT_PLATFORM": {
       "TITLE": "Plataforma Web Integrada para Ofertas de Empleo y Prácticas",
-      "DESCRIPTION": "Creación de una plataforma web dedicada a ofertas de empleo y prácticas, utilizando web scraping para recopilar datos de sitios como Indeed y Rekrute, simplificando la búsqueda de oportunidades profesionales."
+      "DESCRIPTION": "Plataforma web dedicada a ofertas de empleo y prácticas utilizando web scraping.",
+      "LONG_DESCRIPTION": "Diseño y desarrollo de una plataforma web full-stack que agrega ofertas de empleo y prácticas de múltiples fuentes usando web scraping automatizado. El backend Spring Boot emplea Selenium WebDriver con Chrome headless para raspar ofertas de Indeed y Rekrute, aplicando pipelines de normalización para estandarizar títulos de trabajo, nombres de empresas, ubicaciones y rangos salariales en un esquema MySQL unificado. La seguridad se maneja con Spring Security con autenticación basada en roles y gestión de tokens JWT. El frontend Angular ofrece búsqueda avanzada con filtrado multi-criterio (ubicación, tipo de contrato, nivel de experiencia), alertas de búsqueda guardada, ofertas favoritas y un motor de recomendación personalizado basado en preferencias e historial de navegación. Los dashboards analíticos de Chart.js visualizan tendencias del mercado, distribuciones salariales y estadísticas de aplicación."
     },
     "SCHOOL_MANAGEMENT_APP": {
       "TITLE": "Aplicación de Gestión Escolar",
-      "DESCRIPTION": "Aplicación de gestión escolar completa y fácil de usar, desarrollada para facilitar la gestión de datos académicos y administrativos dentro de una institución educativa."
+      "DESCRIPTION": "Aplicación de gestión escolar completa y fácil de usar para datos académicos y administrativos.",
+      "LONG_DESCRIPTION": "Aplicación web completa de gestión escolar construida con ASP.NET Web Forms, HTML, CSS, JavaScript y SQL Server, diseñada para digitalizar los flujos de trabajo administrativos y académicos de instituciones educativas. La plataforma maneja el ciclo de vida completo del estudiante desde la inscripción hasta la graduación, incluyendo registro con asignación de clase, seguimiento de asistencia diaria con vistas de calendario, gestión continua de evaluaciones y calificaciones de exámenes con promedios ponderados, y generación automatizada de reportes de calificaciones con exportación PDF imprimable. Los administradores acceden a un panel centralizado con analíticas en tiempo real mostrando tendencias de inscripción, tasas de asistencia y distribuciones de rendimiento académico. Los instructores tienen vistas con permisos por rol para gestionar sus clases, ingresar calificaciones y registrar ausencias. El sistema aplica control de acceso basado en roles para garantizar la privacidad de datos."
+    },
+    "SCHOOL_MANAGEMENT_APP_2": {
+      "TITLE": "Aplicación de Escritorio de Gestión Escolar",
+      "DESCRIPTION": "Aplicación de escritorio Java Swing para gestión local de registros escolares.",
+      "LONG_DESCRIPTION": "Desarrollo de una aplicación de escritorio Java Swing para gestión escolar sin conexión, diseñada para instituciones sin acceso a internet confiable. La aplicación se conecta a una base de datos MySQL y proporciona una interfaz con pestañas que cubre inscripción de estudiantes con perfiles demográficos, registro diario de asistencia, calificación continua y exámenes con distribuciones de ponderación configurables, y generación automatizada de reportes de calificaciones. Las funciones de importación/exportación permiten operaciones masivas mediante archivos CSV. El módulo de informes produce reportes de calificaciones PDF listos para imprimir con identidad visual del colegio, escalas de calificación configurables y cálculos de ranking de clase. Construida con patrón MVC para mantenibilidad, la aplicación incluye validación de entrada, manejo de errores y un utilitario de respaldo/restauración."
     },
     "OPTICIAN_ORDER_STOCK": {
       "TITLE": "Aplicación de Gestión de Pedidos y Stock para Ópticas",
-      "DESCRIPTION": "Software para la gestión de pedidos e inventario directamente en una óptica, optimizando las operaciones diarias y el seguimiento del stock."
+      "DESCRIPTION": "Software para la gestión de pedidos e inventario directamente en una óptica.",
+      "LONG_DESCRIPTION": "Desarrollo de una aplicación de escritorio completa para gestión de tiendas de óptica usando C# con Windows Forms y procedimientos almacenados T-SQL en Microsoft SQL Server. El sistema maneja el flujo completo de operaciones de venta al detalle: seguimiento de inventario en tiempo real con niveles de stock y escaneo de códigos de barras, colocación de pedidos a proveedores con generación de órdenes de compra y seguimiento de entregas, registros de prescripciones de clientes con especificaciones de lentes y monitoreo de vencimiento, transacciones punto de venta con impresión de recibos y procesamiento de pagos, y alertas automáticas de stock bajo activadas por reglas de umbral configurables. El módulo de informes genera reportes exportables en Excel y PDF cubriendo rendimiento de ventas, valoración de inventario, tiempos de entrega de proveedores y analíticas de prescripciones de clientes."
     },
     "COMPANY_DOMICILIATION": {
       "TITLE": "Plataforma de Gestión de Domiciliación de Empresas",
-      "DESCRIPTION": "Plataforma web para la gestión completa de la domiciliación de empresas: suscripción en línea, área de clientes, gestión de contratos y documentos, notificaciones y más. Stack: Spring Boot, Angular, MySQL, JPA/Hibernate, RESTful API, Spring Security."
+      "DESCRIPTION": "Plataforma web para la gestión completa de la domiciliación de empresas.",
+      "LONG_DESCRIPTION": "Plataforma web full-stack para la gestión de servicios de domiciliación de empresas, permitiendo a las compañías establecer direcciones legales y recibir soporte administrativo sin mantener una oficina física. Construida con Spring Boot en el backend y Angular en el frontend, la plataforma incluye flujos de suscripción en línea con selección de planes e integración de pagos, un panel de control completo del cliente mostrando servicios activos y próximas renovaciones, gestión de contratos y documentos con capacidades de firma digital vía integración con API de DocuSign, y un sistema de notificación multi-canal (email, SMS, in-app) para actualizaciones de servicios y recordatorios de vencimientos. La seguridad se asegura con Spring Security con autenticación JWT, control de acceso por roles separando permisos de cliente/agente/administrador, y MySQL respaldando todos los datos transaccionales con registro completo de auditoría."
     }
   },
   "SKILLS": {
@@ -299,6 +329,7 @@
     "SUBTITLE": "Experiencia Profesional",
     "DESCRIPTION": "Un resumen de mi experiencia profesional, educación y habilidades",
     "DOWNLOAD": "Descargar PDF",
+    "DOWNLOAD_ERROR": "Error al descargar el CV. Por favor, inténtalo de nuevo.",
     "EXPERIENCE": "EXPERIENCIA PROFESIONAL",
     "EDUCATION": "EDUCACIÓN",
     "SKILLS": "HABILIDADES",
@@ -557,9 +588,22 @@
     "MESSAGE": "Mensaje",
     "MESSAGE_PLACEHOLDER": "Tu Mensaje",
     "MESSAGE_REQUIRED": "El mensaje es obligatorio",
+    "NAME_MINLENGTH": "El nombre debe tener al menos 2 caracteres",
+    "MESSAGE_MINLENGTH": "El mensaje debe tener al menos 10 caracteres",
     "SEND": "Enviar Mensaje",
     "SENDING": "Enviando...",
     "SUCCESS": "¡Tu mensaje ha sido enviado con éxito!",
     "ERROR": "Ha ocurrido un error al enviar tu mensaje. Por favor, inténtalo de nuevo."
+  },
+  "FOOTER": {
+    "COPYRIGHT": "© {{year}} Abderrazzaq El Abdouni. Todos los derechos reservados.",
+    "COPY_HINT": "Hacer clic para copiar"
+  },
+  "TOAST": {
+    "EMAIL_COPIED": "¡Email copiado al portapapeles!",
+    "EMAIL_COPY_FAILED": "Error al copiar el email",
+    "THEME_LIGHT": "Tema claro",
+    "THEME_DARK": "Tema oscuro",
+    "LANGUAGE_CHANGED": "Idioma: {{lang}}"
   }
 }

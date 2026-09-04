@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ContactComponent } from './contact.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { MagneticDirective } from '../../directives/magnetic.directive';
+import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
 
 const routes: Routes = [
   { path: '', component: ContactComponent }
@@ -16,8 +18,8 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
-    TranslateModule
+    TranslateModule,
+    MagneticDirective
   ]
 })
 export class ContactModule { }
-import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';

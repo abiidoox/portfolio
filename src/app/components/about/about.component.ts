@@ -1,111 +1,51 @@
-import { Component, OnInit } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
-import { LanguageService } from '../../services/language.service';
-
-interface ProfileInfo {
-  name: string;
-  title: string;
-  email: string;
-  phone: string;
-  location: string;
-  bio: string;
-}
-
-interface SkillCategory {
-  title: string;
-  items: string[];
-  icon: string;
-}
+import { Component, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss']
 })
-export class AboutComponent implements OnInit {
-  profileData: { [key: string]: ProfileInfo } = {
-    en: {
-      name: 'ABDERRAZZAQ EL ABDOUNI',
-      title: 'Full Stack Engineer',
-      email: 'elabdouni.abderrazzaq@gmail.com',
-      phone: '+212653539113',
-      location: 'Rabat, Morocco',
-      bio: 'I am a passionate Full Stack Engineer based in Rabat, specializing in web development, IoT, and Machine Learning. I combine technical expertise and innovation to create high-performance, scalable software solutions.'
-    },
-    fr: {
-      name: 'ABDERRAZZAQ EL ABDOUNI',
-      title: 'Ingénieur Full Stack',
-      email: 'elabdouni.abderrazzaq@gmail.com',
-      phone: '+212653539113',
-      location: 'Rabat, Maroc',
-      bio: 'Je suis un Ingénieur Full Stack passionné basé à Rabat, spécialisé dans le développement web, l\'IoT et le Machine Learning. Je combine expertise technique et innovation pour créer des solutions logicielles performantes et évolutives.'
-    },
-    es: {
-      name: 'ABDERRAZZAQ EL ABDOUNI',
-      title: 'Ingeniero Full Stack',
-      email: 'elabdouni.abderrazzaq@gmail.com',
-      phone: '+212653539113',
-      location: 'Rabat, Marruecos',
-      bio: 'Soy un Ingeniero Full Stack apasionado con sede en Rabat, especializado en desarrollo web, IoT y Machine Learning. Combino experiencia técnica e innovación para crear soluciones de software escalables y de alto rendimiento.'
-    }
-  };
+export class AboutComponent {
+  constructor(private elRef: ElementRef) {}
 
-  skillCategories: SkillCategory[] = [
-    {
-      title: 'ABOUT.SKILLS.LANGUAGES.TITLE',
-      items: [
-        'ABOUT.SKILLS.LANGUAGES.ITEM1',
-        'ABOUT.SKILLS.LANGUAGES.ITEM2',
-        'ABOUT.SKILLS.LANGUAGES.ITEM3',
-        'ABOUT.SKILLS.LANGUAGES.ITEM4'
-      ],
-      icon: 'fas fa-code'
-    },
-    {
-      title: 'ABOUT.SKILLS.FRAMEWORKS.TITLE',
-      items: [
-        'ABOUT.SKILLS.FRAMEWORKS.ITEM1',
-        'ABOUT.SKILLS.FRAMEWORKS.ITEM2',
-        'ABOUT.SKILLS.FRAMEWORKS.ITEM3',
-        'ABOUT.SKILLS.FRAMEWORKS.ITEM4'
-      ],
-      icon: 'fas fa-layer-group'
-    },
-    {
-      title: 'ABOUT.SKILLS.DATABASES.TITLE',
-      items: [
-        'ABOUT.SKILLS.DATABASES.ITEM1',
-        'ABOUT.SKILLS.DATABASES.ITEM2',
-        'ABOUT.SKILLS.DATABASES.ITEM3',
-        'ABOUT.SKILLS.DATABASES.ITEM4'
-      ],
-      icon: 'fas fa-database'
-    },
-    {
-      title: 'ABOUT.SKILLS.TOOLS.TITLE',
-      items: [
-        'ABOUT.SKILLS.TOOLS.ITEM1',
-        'ABOUT.SKILLS.TOOLS.ITEM2',
-        'ABOUT.SKILLS.TOOLS.ITEM3',
-        'ABOUT.SKILLS.TOOLS.ITEM4'
-      ],
-      icon: 'fas fa-tools'
-    }
-  ];
+  onHeroMove(e: MouseEvent): void {
+    const motion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (motion) return;
+    const visual = this.elRef.nativeElement.querySelector('.hero-visual') as HTMLElement;
+    if (!visual) return;
+    const rect = visual.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width;
+    const py = (e.clientY - rect.top) / rect.height;
 
-  get profile(): ProfileInfo {
-    const currentLang = this.translate.currentLang || this.translate.defaultLang || 'en';
-    return this.profileData[currentLang] || this.profileData['en'];
+    const ring = visual.querySelector('.avatar-ring') as HTMLElement;
+    const chips = visual.querySelectorAll('.float-chip');
+    if (ring) {
+      const rx = (py - 0.5) * 26;
+      const ry = (px - 0.5) * 26;
+      ring.style.transition = 'transform .12s ease-out';
+      ring.style.transform = `perspective(800px) rotateX(${(-rx).toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg)`;
+    }
+    chips.forEach((chip, i) => {
+      const depth = (i + 1) * 14;
+      const cx = (px - 0.5) * depth;
+      const cy = (py - 0.5) * depth;
+      (chip as HTMLElement).style.transition = 'transform .25s ease-out';
+      (chip as HTMLElement).style.transform = `translate(${cy.toFixed(1)}px, ${cx.toFixed(1)}px)`;
+    });
   }
 
-  constructor(
-    private translate: TranslateService,
-    private languageService: LanguageService
-  ) {}
-
-  ngOnInit(): void {
-    this.languageService.currentLanguage$.subscribe(() => {
-      // Update any translated content if needed
+  onHeroLeave(): void {
+    const visual = this.elRef.nativeElement.querySelector('.hero-visual') as HTMLElement;
+    if (!visual) return;
+    const ring = visual.querySelector('.avatar-ring') as HTMLElement;
+    const chips = visual.querySelectorAll('.float-chip');
+    if (ring) {
+      ring.style.transition = 'transform .6s cubic-bezier(.22,1,.36,1)';
+      ring.style.transform = '';
+    }
+    chips.forEach((chip) => {
+      (chip as HTMLElement).style.transition = 'transform .6s cubic-bezier(.22,1,.36,1)';
+      (chip as HTMLElement).style.transform = '';
     });
   }
 }

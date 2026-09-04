@@ -1,6 +1,7 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageService, Language } from '../../services/language.service';
+import { Subscription } from 'rxjs';
 
 interface LanguageOption {
   code: Language;
@@ -13,7 +14,7 @@ interface LanguageOption {
   templateUrl: './language-switcher.component.html',
   styleUrls: ['./language-switcher.component.scss']
 })
-export class LanguageSwitcherComponent implements OnInit {
+export class LanguageSwitcherComponent implements OnInit, OnDestroy {
   languages: LanguageOption[] = [
     { code: 'en', name: 'English', icon: 'fas fa-flag-usa' },
     { code: 'es', name: 'Español', icon: 'fas fa-flag' },
@@ -31,11 +32,16 @@ export class LanguageSwitcherComponent implements OnInit {
     this.currentLanguage = this.languageService.getCurrentLanguage();
   }
 
+  private langSub?: Subscription;
+
   ngOnInit(): void {
-    // Subscribe to language changes
-    this.languageService.currentLanguage$.subscribe(lang => {
+    this.langSub = this.languageService.currentLanguage$.subscribe(lang => {
       this.currentLanguage = lang;
     });
+  }
+
+  ngOnDestroy(): void {
+    this.langSub?.unsubscribe();
   }
 
   @HostListener('document:keydown', ['$event'])
@@ -91,5 +97,12 @@ export class LanguageSwitcherComponent implements OnInit {
   getLanguageName(languageCode: Language): string {
     const lang = this.languages.find(l => l.code === languageCode);
     return lang ? lang.name : '';
+  }
+
+  // Cycle to next language (for keyboard shortcut)
+  cycleLanguage(): void {
+    const currentIndex = this.languages.findIndex(lang => lang.code === this.currentLanguage);
+    const nextIndex = (currentIndex + 1) % this.languages.length;
+    this.switchLanguage(this.languages[nextIndex].code);
   }
 } 

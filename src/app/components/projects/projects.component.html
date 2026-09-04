@@ -2,7 +2,7 @@
 
   <!-- ===== HEADER ===== -->
   <header class="projects-head">
-    <span class="kicker-line" appScrollReveal data-reveal-direction="up">Portfolio</span>
+    <span class="kicker-line" appScrollReveal data-reveal-direction="up" appSplitText>Portfolio</span>
     <h1 class="display-title" appScrollReveal data-reveal-direction="up" data-delay="120">
       <span class="text-gradient-animated">{{ 'PROJECTS.TITLE' | translate }}</span>
     </h1>
@@ -27,13 +27,21 @@
       class="project-row glass-card"
       *ngFor="let project of filteredProjects; let i = index"
       [class.featured]="project.featured"
+      [attr.data-category]="project.category"
       appScrollReveal
       data-reveal-direction="up"
+      appTilt
     >
       <div class="pr-visual" aria-hidden="true">
         <div class="pr-glow"></div>
+        <span class="pr-glyph"><i [class]="'fas ' + getCategoryIcon(project.category)"></i></span>
         <span class="pr-index">{{ i + 1 < 10 ? '0' + (i + 1) : i + 1 }}</span>
         <span class="pr-year">{{ project.date }}</span>
+        <div class="pr-overlay">
+          <button class="pr-view" (click)="openModal(project)">
+            <i class="fas fa-arrow-up-right-from-square"></i> {{ 'PROJECTS.VIEW_PROJECT' | translate }}
+          </button>
+        </div>
       </div>
 
       <div class="pr-body">
@@ -43,8 +51,11 @@
         </div>
         <p>{{ project.description }}</p>
         <div class="chips">
-          <span class="chip" *ngFor="let tech of project.technologies">{{ tech }}</span>
+          <span class="chip" *ngFor="let tech of project.technologies; let c = index" [style.transitionDelay.ms]="c * 45">{{ tech }}</span>
         </div>
+        <button class="pr-details" (click)="openModal(project)">
+          <i class="fas fa-arrow-right"></i> {{ 'PROJECTS.DETAILS' | translate }}
+        </button>
       </div>
     </article>
   </div>

@@ -249,8 +249,11 @@
     </div>
     
     <div class="download-section-v2" appScrollReveal data-reveal-direction="up">
-      <button (click)="downloadResume()" class="btn-v2 primary download-btn">
+      <button (click)="downloadResume()" class="btn-v2 primary download-btn" appMagnetic>
         <i class="fas fa-download"></i> {{ 'RESUME.DOWNLOAD' | translate }}
       </button>
+      <div class="download-error" *ngIf="error" role="alert">
+        <i class="fas fa-exclamation-circle"></i> {{ 'RESUME.DOWNLOAD_ERROR' | translate }}
+      </div>
     </div>
 </div>
