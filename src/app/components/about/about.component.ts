@@ -18,7 +18,7 @@ export class AboutComponent {
     const py = (e.clientY - rect.top) / rect.height;
 
     const ring = visual.querySelector('.avatar-ring') as HTMLElement;
-    const chips = visual.querySelectorAll('.float-chip');
+    const chips = visual.querySelectorAll('.float-slot');
     if (ring) {
       const rx = (py - 0.5) * 26;
       const ry = (px - 0.5) * 26;
@@ -38,7 +38,7 @@ export class AboutComponent {
     const visual = this.elRef.nativeElement.querySelector('.hero-visual') as HTMLElement;
     if (!visual) return;
     const ring = visual.querySelector('.avatar-ring') as HTMLElement;
-    const chips = visual.querySelectorAll('.float-chip');
+    const chips = visual.querySelectorAll('.float-slot');
     if (ring) {
       ring.style.transition = 'transform .6s cubic-bezier(.22,1,.36,1)';
       ring.style.transform = '';

@@ -429,7 +429,7 @@ h1, h2, h3, h4 {
 }
 .meta-item.socials a:hover { color: var(--primary-color); transform: translateY(-3px); }
 
-/* avatar with rotating conic ring */
+/* avatar ring (no spin) */
 .hero-visual { position: relative; display: flex; justify-content: center; }
 .avatar-ring {
   position: relative;
@@ -440,20 +440,20 @@ h1, h2, h3, h4 {
   background: conic-gradient(from 0deg, #ff5e3a, #38bdf8, #c084fc, #ff5e3a);
   transition: transform 0.6s cubic-bezier(.22,1,.36,1);
 }
-.avatar-ring:hover {
-  animation: spin-slow 9s linear infinite;
-}
 .avatar-img {
   width: 100%; height: 100%; object-fit: cover;
   border-radius: 50%;
   border: 6px solid var(--bg-dark);
   display: block;
 }
-@keyframes spin-slow { to { transform: rotate(360deg); } }
 
 /* floating tech chips around avatar */
-.float-chip {
+.float-slot {
   position: absolute;
+  z-index: 3;
+  transition: transform .25s ease-out;
+}
+.float-chip {
   padding: 10px 18px;
   border-radius: 99px;
   font-size: 0.82rem;
@@ -462,15 +462,24 @@ h1, h2, h3, h4 {
   border: 1px solid var(--border-color);
   box-shadow: 0 14px 30px rgba(0,0,0,.35);
   animation: float-soft 5s ease-in-out infinite;
+  white-space: nowrap;
+  will-change: transform;
+  transition: none;
 }
 .float-chip i { color: var(--primary-color); margin-right: 6px; }
-.chip-a { top: 4%; left: 2%; }
-.chip-b { top: 38%; right: -4%; animation-delay: -1.6s; }
-.chip-c { bottom: 2%; left: 14%; animation-delay: -3.2s; }
-.chip-d { bottom: -4%; right: 20%; animation-delay: -0.8s; }
-.chip-e { top: 2%; right: 6%; animation-delay: -2.4s; }
-.chip-f { top: 60%; left: -6%; animation-delay: -4s; }
-.chip-g { bottom: 20%; right: -10%; animation-delay: -1.2s; }
+.slot-a { top: 4%; left: 2%; }
+.slot-b { top: 38%; right: -4%; }
+.slot-b .float-chip { animation-delay: -1.6s; }
+.slot-c { bottom: 2%; left: 14%; }
+.slot-c .float-chip { animation-delay: -3.2s; }
+.slot-d { bottom: -4%; right: 20%; }
+.slot-d .float-chip { animation-delay: -0.8s; }
+.slot-e { top: 2%; right: 6%; }
+.slot-e .float-chip { animation-delay: -2.4s; }
+.slot-f { top: 60%; left: -6%; }
+.slot-f .float-chip { animation-delay: -4s; }
+.slot-g { bottom: 20%; right: -10%; }
+.slot-g .float-chip { animation-delay: -1.2s; }
 @keyframes pulse-dot {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: .5; transform: scale(1.4); }
@@ -885,7 +894,7 @@ h1, h2, h3, h4 {
 .hero-v2 { position: relative; z-index: 1; }
 .hero-text { position: relative; z-index: 2; }
 .hero-visual { position: relative; z-index: 1; }
-.float-chip { z-index: 3; }
+.float-slot { z-index: 3; }
 
 /* Static hero subtitle (rotator removed) */
 .rotator-static { font-weight: 700; }
