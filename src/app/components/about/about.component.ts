@@ -9,8 +9,6 @@ export class AboutComponent {
   constructor(private elRef: ElementRef) {}
 
   onHeroMove(e: MouseEvent): void {
-    const motion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (motion) return;
     const visual = this.elRef.nativeElement.querySelector('.hero-visual') as HTMLElement;
     if (!visual) return;
     const rect = visual.getBoundingClientRect();

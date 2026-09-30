@@ -354,8 +354,10 @@ h1, h2, h3, h4 {
 
 /* Floating animation for decorative elements */
 @keyframes float-soft {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-14px); }
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  25%      { transform: translate3d(5px, -16px, 0) rotate(-1.4deg); }
+  50%      { transform: translate3d(0, -24px, 0) rotate(0deg); }
+  75%      { transform: translate3d(-5px, -16px, 0) rotate(1.4deg); }
 }
 
 /* Button system */
@@ -461,7 +463,7 @@ h1, h2, h3, h4 {
   background: var(--bg-section);
   border: 1px solid var(--border-color);
   box-shadow: 0 14px 30px rgba(0,0,0,.35);
-  animation: float-soft 5s ease-in-out infinite;
+  animation: float-soft 5.5s ease-in-out infinite;
   white-space: nowrap;
   will-change: transform;
   transition: none;
@@ -469,17 +471,17 @@ h1, h2, h3, h4 {
 .float-chip i { color: var(--primary-color); margin-right: 6px; }
 .slot-a { top: 4%; left: 2%; }
 .slot-b { top: 38%; right: -4%; }
-.slot-b .float-chip { animation-delay: -1.6s; }
+.slot-b .float-chip { animation: float-soft 6.2s ease-in-out -1.6s infinite; }
 .slot-c { bottom: 2%; left: 14%; }
-.slot-c .float-chip { animation-delay: -3.2s; }
+.slot-c .float-chip { animation: float-soft 5.8s ease-in-out -3.2s infinite; }
 .slot-d { bottom: -4%; right: 20%; }
-.slot-d .float-chip { animation-delay: -0.8s; }
+.slot-d .float-chip { animation: float-soft 6.5s ease-in-out -0.8s infinite; }
 .slot-e { top: 2%; right: 6%; }
-.slot-e .float-chip { animation-delay: -2.4s; }
+.slot-e .float-chip { animation: float-soft 5.4s ease-in-out -2.4s infinite; }
 .slot-f { top: 60%; left: -6%; }
-.slot-f .float-chip { animation-delay: -4s; }
+.slot-f .float-chip { animation: float-soft 6.8s ease-in-out -4s infinite; }
 .slot-g { bottom: 20%; right: -10%; }
-.slot-g .float-chip { animation-delay: -1.2s; }
+.slot-g .float-chip { animation: float-soft 5.9s ease-in-out -1.2s infinite; }
 @keyframes pulse-dot {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: .5; transform: scale(1.4); }
@@ -504,7 +506,7 @@ h1, h2, h3, h4 {
   animation: pulse-dot 2s ease-in-out infinite;
 }
 @media (prefers-reduced-motion: reduce) {
-  .float-chip { animation: none !important; }
+  .float-slot { transition: none; }
 }
 
 .stats-v2 {
