@@ -1,77 +1,27 @@
 {
-  "HEADER": {
-    "ABOUT": "About",
-    "PROJECTS": "Projects",
-    "RESUME": "Resume",
-    "CONTACT": "Contact"
-  },
+  "HEADER": {},
   "NOT_FOUND": {
     "TITLE": "Page Not Found",
     "MESSAGE": "The page you are looking for doesn't exist or it might have been moved.",
-    "BACK_HOME": "Back to Home"
+    "BACK_HOME": "Back to Home",
+    "META_DESCRIPTION": "The requested page could not be found on Abderrazzaq El Abdouni's portfolio website.",
+    "OG_DESCRIPTION": "Page not found - the content you're looking for doesn't exist on this portfolio site."
   },
   "ABOUT": {
-    "TITLE": "About Me",
-    "SUBTITLE": "Get to Know Me",
     "PROFILE_ALT": "Profile Picture",
-    "INTRO": "Hello! I'm Abderrazzaq El Abdouni, a passionate Full Stack Engineer with expertise in web development, IoT, and machine learning.",
-    "DESCRIPTION": "With a strong background in both frontend and backend technologies, I enjoy creating efficient, scalable, and user-friendly applications. I'm constantly learning and exploring new technologies to stay at the forefront of the rapidly evolving tech landscape.",
-    "NAME_LABEL": "Name",
     "NAME": "Abderrazzaq El Abdouni",
-    "EMAIL_LABEL": "Email",
-    "EMAIL": "elabdouni.abderrazzaq@gmail.com",
-    "LOCATION_LABEL": "Location",
     "LOCATION": "Rabat, Morocco",
-    "AVAILABILITY_LABEL": "Availability",
-    "AVAILABILITY": "Available for freelance or full-time positions",
-    "CONTACT_BTN": "Contact Me",
-    "RESUME_BTN": "View Resume",
-    
-    "TITLE_SMALL": "About Me",
     "TITLE_LARGE": "Crafting Digital Experiences",
     "GREETING": "Hello, I'm",
-    "HERO_SUBTITLE_PREFIX": "I build",
     "AVAILABLE": "Available for new opportunities",
     "ROTATE_1": "web experiences.",
-    "ROTATE_2": "IoT systems.",
-    "ROTATE_3": "ML solutions.",
-    "ROTATE_4": "things that last.",
     "BIO": "I am a passionate Full Stack Engineer based in Rabat, specializing in web development, IoT, and Machine Learning. I combine technical expertise and innovation to create high-performance, scalable software solutions.",
-    "SKILLS_TITLE": "Technical Expertise",
     "SKILLS": {
-      "TITLE": "Technical Skills",
-      "SUBTITLE": "A comprehensive overview of my technical expertise and capabilities",
-      "VIEW_MORE": "View Detailed Skills",
-      "LANGUAGES": {
-        "TITLE": "Programming Languages",
-        "ITEM1": "C#, Java (Advanced)",
-        "ITEM2": "Python, JavaScript",
-        "ITEM3": "TypeScript, HTML5",
-        "ITEM4": "CSS3, SCSS"
-      },
-      "FRAMEWORKS": {
-        "TITLE": "Frameworks & Libraries",
-        "ITEM1": ".NET Core, Spring Boot",
-        "ITEM2": "Angular, React",
-        "ITEM3": "FastAPI, Django",
-        "ITEM4": "Node.js, Express"
-      },
-      "DATABASES": {
-        "TITLE": "Databases",
-        "ITEM1": "SQL Server, MySQL",
-        "ITEM2": "PostgreSQL, MongoDB",
-        "ITEM3": "Redis, SQLite",
-        "ITEM4": "Entity Framework"
-      },
-      "TOOLS": {
-        "TITLE": "Tools & DevOps",
-        "ITEM1": "Git, GitHub, GitLab",
-        "ITEM2": "Docker, Kubernetes",
-        "ITEM3": "Jenkins, Azure DevOps",
-        "ITEM4": "AWS, Azure Cloud"
-      }
+      "LANGUAGES": {},
+      "FRAMEWORKS": {},
+      "DATABASES": {},
+      "TOOLS": {}
     },
-    "DOWNLOAD_CV": "Download CV",
     "CONTACT_ME": "Contact Me",
     "CURRENT_FOCUS": {
       "TITLE": "Current Focus Areas",
@@ -97,72 +47,49 @@
       "PROJECTS": "Projects Completed",
       "TECHNOLOGIES": "Technologies Mastered"
     },
-    "CONNECT": {
-      "TITLE": "Let's Connect",
-      "DESCRIPTION": "Feel free to reach out for projects or opportunities"
-    }
+    "CONNECT": {},
+    "ROLE": "Full Stack Engineer",
+    "STACK_KEYS": {
+      "ROLE": "role",
+      "BASED": "based in",
+      "STACK": "stack",
+      "DATA": "data",
+      "OPS": "ops"
+    },
+    "STACK_VALUES": {
+      "WEB": "Angular · .NET · Spring Boot",
+      "DATA": "Python · SQL Server · MongoDB",
+      "OPS": "Docker · Git · Postman"
+    },
+    "META_DESCRIPTION": "Portfolio of Abderrazzaq El Abdouni, full-stack developer specializing in web development, IoT, and Machine Learning. View projects, skills, resume and contact information.",
+    "OG_DESCRIPTION": "Explore the portfolio of Abderrazzaq El Abdouni showcasing projects in web development, IoT, AI, and more."
   },
   "PROJECTS": {
     "TITLE": "My Projects",
     "SUBTITLE": "A showcase of my best work and creative solutions",
-    "VIEW_PROJECT": "View Project",
-    "VIEW_DEMO": "View Demo",
-    "VIEW_CODE": "View Code",
     "DETAILS": "View Details",
     "CATEGORIES": {
       "ALL": "All Projects",
       "WEB": "Web Development",
       "MOBILE": "Mobile Apps",
       "AI": "AI & ML",
-      "IOT": "IoT Solutions",
       "DESKTOP": "Desktop"
     },
-    "TECHNOLOGIES": "Technologies Used",
-    "AI_CHAT": {
-      "TITLE": "AI Chat Assistant",
-      "DESCRIPTION": "A conversational AI assistant built with FastAPI and TinyLlama, featuring a modern React.js interface and Docker deployment.",
-      "LONG_DESCRIPTION": "Built a full-stack conversational AI assistant from the ground up, powered by the TinyLlama language model served through a high-performance FastAPI backend with Server-Sent Events (SSE) for real-time streaming responses. The architecture separates inference from the web layer, allowing the LLM to generate tokens incrementally while the frontend renders them as they arrive. The React.js single-page application features a modern chat interface with real-time message rendering, persistent chat history stored in local storage, full Markdown support for rich text formatting, and syntax-highlighted code blocks. Authentication and session management ensure conversation privacy. The entire stack — backend API, LLM inference service, and React frontend — is fully containerized using Docker and Docker Compose, enabling one-command deployment and horizontal scaling across environments."
-    },
-    "FACE_RECOGNITION": {
-      "TITLE": "Smart Face Recognition System",
-      "DESCRIPTION": "An IoT-based facial recognition system using ESP32-S3, Django, and React Native, with real-time streaming and authentication.",
-      "LONG_DESCRIPTION": "Designed and built a complete IoT-based facial recognition pipeline spanning hardware, backend, and mobile layers. An ESP32-S3 camera module captures video and streams it over RTSP to a Django backend server, where FFmpeg converts the raw stream to HLS for browser-compatible playback. On the server side, face detection is handled by SCRFD while ResNet generates high-dimensional face embeddings for identity matching against an enrolled users database stored in PostgreSQL with Redis caching for low-latency lookups. A React Native mobile application provides a live camera feed viewer, enrollment workflow with photo capture, and real-time push notifications when a recognized face is detected. The system runs on Ubuntu 22.04 with Supervisor managing all services, and uses WebSocket connections for instant status updates between the server and mobile client."
-    },
-    "SCHEDULE_SYSTEM": {
-      "TITLE": "Schedule Management System",
-      "DESCRIPTION": "A comprehensive schedule management system developed with ASP.NET and SQL Server.",
-      "LONG_DESCRIPTION": "Developed a comprehensive schedule management system tailored for academic institutions using ASP.NET MVC with Entity Framework and SQL Server. The application solves the complex problem of timetable generation by implementing constraint-based conflict detection that automatically identifies scheduling overlaps across rooms, instructors, and student groups. Administrators can create, modify, and publish schedules through an intuitive drag-and-drop interface, while instructors receive automated email reminders for upcoming classes. Role-based access control separates permissions between administrators, instructors, and department heads, each with customized dashboard views. Calendar views can be exported to iCal format for integration with external calendar applications, and the reporting module generates utilization statistics for rooms and faculty workload analysis."
-    },
-    "SPAM_DETECTION": {
-      "TITLE": "Email Spam Detection Model",
-      "DESCRIPTION": "Developed a machine learning model to classify emails as spam or legitimate using text analysis and algorithms such as K-NN and decision trees.",
-      "LONG_DESCRIPTION": "Built an end-to-end machine learning pipeline for email spam classification, covering every stage from raw data ingestion to model evaluation. The preprocessing pipeline handles tokenization, lowercasing, stopword removal, punctuation stripping, and lemmatization to normalize email text. Feature extraction uses TF-IDF vectorization with bigram support to capture contextual word patterns, reducing high-dimensional text into sparse numerical representations. Two classifiers — K-Nearest Neighbors and Decision Tree — were trained and evaluated using stratified k-fold cross-validation, with metrics including precision, recall, F1-score, and confusion matrix analysis. The best-performing model was serialized with pickle for inference, and the entire experiment was tracked in a Jupyter notebook with visualized ROC curves and feature importance rankings to identify the most discriminative spam indicators."
-    },
-    "EMPLOYMENT_PLATFORM": {
-      "TITLE": "Integrated Web Platform for Job and Internship Offers",
-      "DESCRIPTION": "A web platform dedicated to job and internship offers using web scraping to collect data from job boards.",
-      "LONG_DESCRIPTION": "Designed and developed a full-stack web platform that aggregates job and internship listings from multiple sources using automated web scraping. The Spring Boot backend employs Selenium WebDriver with headless Chrome to scrape listings from Indeed and Rekrute, applying data normalization pipelines to standardize job titles, company names, locations, and salary ranges into a unified MySQL schema. Security is handled through Spring Security with role-based authentication and JWT token management. The Angular frontend offers advanced search with multi-criteria filtering (location, contract type, experience level), saved search alerts, bookmarked listings, and a personalized recommendation engine based on user preferences and browsing history. Chart.js analytics dashboards visualize market trends, salary distributions, and application statistics to help job seekers make informed decisions."
-    },
-    "SCHOOL_MANAGEMENT_APP": {
-      "TITLE": "School Management Application",
-      "DESCRIPTION": "A complete and user-friendly school management application developed to facilitate the management of academic and administrative data.",
-      "LONG_DESCRIPTION": "A full-featured school management web application built with ASP.NET Web Forms, HTML, CSS, JavaScript, and SQL Server, designed to digitize administrative and academic workflows for educational institutions. The platform handles the complete student lifecycle from enrollment through graduation, including registration with class assignment, daily attendance tracking with calendar views, continuous assessment and exam grade management with weighted averages, and automated report card generation with printable PDF export. Administrators access a centralized dashboard with real-time analytics showing enrollment trends, attendance rates, and academic performance distributions. Teachers have role-scoped views for managing their assigned classes, inputting grades, and recording absences. The system enforces role-based access control to ensure data privacy and operational separation between administrative staff and teaching faculty."
-    },
-    "SCHOOL_MANAGEMENT_APP_2": {
-      "TITLE": "School Management Desktop App",
-      "DESCRIPTION": "A Java Swing desktop application for managing school records and student data locally.",
-      "LONG_DESCRIPTION": "Developed a Java Swing desktop application for offline school management, designed for institutions without reliable internet access. The application connects to a MySQL database backend and provides a tabbed interface covering student registration with demographic profiles, daily attendance logging, continuous assessment and exam grading with configurable weight distributions, and automated report card generation. Data import and export features allow bulk operations via CSV files, enabling administrators to migrate existing records or generate summary spreadsheets. The reporting module produces print-ready PDF report cards with school branding, configurable grading scales, and class ranking calculations. Built with the MVC pattern for maintainability, the application includes input validation, error handling, and a data backup/restore utility to protect against data loss."
-    },
-    "OPTICIAN_ORDER_STOCK": {
-      "TITLE": "Order and Stock Management Application for Opticians",
-      "DESCRIPTION": "Software for managing orders and inventory directly within an optical store.",
-      "LONG_DESCRIPTION": "Built a comprehensive desktop application for optical store management using C# with Windows Forms and T-SQL stored procedures on Microsoft SQL Server. The system manages the complete retail operations workflow: inventory tracking with real-time stock levels and barcode scanning, supplier order placement with purchase order generation and delivery tracking, customer prescription records with lens specifications and expiry monitoring, point-of-sale transactions with receipt printing and payment processing, and automated low-stock alerts triggered by configurable threshold rules. The reporting module generates exportable Excel and PDF reports covering sales performance, inventory valuation, supplier lead times, and customer prescription analytics. Role-based access separates cashier, optician, and manager permissions, with audit logging tracking all critical operations."
-    },
-    "COMPANY_DOMICILIATION": {
-      "TITLE": "Company Domiciliation Management Platform",
-      "DESCRIPTION": "Web platform for complete management of company domiciliation: online subscription, client area, contract and document management.",
-      "LONG_DESCRIPTION": "A full-stack web platform for managing company domiciliation services, enabling businesses to establish legal addresses and receive administrative support without maintaining a physical office. Built with Spring Boot on the backend and Angular on the frontend, the platform features online subscription workflows with plan selection and payment integration, a comprehensive client dashboard showing active services and upcoming renewals, contract and document management with digital signature capabilities using DocuSign API integration, and a multi-channel notification system (email, SMS, in-app) for service updates and deadline reminders. Security is enforced through Spring Security with JWT authentication, role-based access control separating client, agent, and admin permissions, and MySQL backing all transactional data with full audit trail logging."
-    }
+    "AI_CHAT": {},
+    "FACE_RECOGNITION": {},
+    "SCHEDULE_SYSTEM": {},
+    "SPAM_DETECTION": {},
+    "EMPLOYMENT_PLATFORM": {},
+    "SCHOOL_MANAGEMENT_APP": {},
+    "SCHOOL_MANAGEMENT_APP_2": {},
+    "OPTICIAN_ORDER_STOCK": {},
+    "COMPANY_DOMICILIATION": {},
+    "PORTFOLIO_LABEL": "Portfolio",
+    "FEATURED": "Featured",
+    "NO_RESULTS": "No projects in this category.",
+    "META_DESCRIPTION": "Projects portfolio of Abderrazzaq El Abdouni featuring web applications, mobile apps, AI systems, IoT solutions, and desktop software.",
+    "OG_DESCRIPTION": "View detailed projects by Abderrazzaq El Abdouni including AI chat assistants, face recognition systems, schedule management, and more.",
+    "GITHUB_PROFILE": "GitHub profile"
   },
   "RESUME": {
     "TITLE": "My Resume",
@@ -182,98 +109,76 @@
       "LOCATION": "Rabat"
     },
     "EXPERIENCE_ITEMS": {
-      "ITEM6": {
+      "ITEM4": {
+        "POINTS": {
+          "POINT1": "Designed and developed four modules for the internal ERP (Régie, Digital Mail Register, Professional Card, Asset Management) to digitise the administrative and financial processes and make management more reliable.",
+          "POINT2": "Régie: expense, advance and allocation management; automated treasury decisions and cash replenishment; financial tracking.",
+          "POINT3": "Digital Mail Register: incoming and outgoing mail handling with full processing traceability and real-time notifications.",
+          "POINT4": "Professional Card: request creation and validation, card generation and distribution, and status tracking.",
+          "POINT5": "Asset Management: equipment registration, assignment and movement tracking, and lifecycle tracking through to decommissioning with automated reporting."
+        },
         "TITLE": "Full Stack Developer – .NET / Angular, Institut National de la Recherche Agronomique (INRA) — Fixed-term",
         "PERIOD": "04/2025 – Present",
         "SUBTITLE": "Responsibilities and Achievements:",
-        "POINTS": {
-          "POINT1": "Designed and developed 4 modules for the internal ERP (Régie, Digital Order Office, Professional Card, Asset Management) to digitize administrative and financial processes and improve operational reliability.",
-          "POINT2": "Régie: managed expenses, advances and allocations; automated régie decisions and cash funding; financial monitoring.",
-          "POINT3": "Digital Order Office: handled incoming/outgoing mail; ensured full traceability of processing; implemented real-time notifications.",
-          "POINT4": "Professional Card: implemented request creation & validation, card generation and distribution, and status tracking.",
-          "POINT5": "Asset Management: registered equipment on entry; assigned and tracked movements; monitored lifecycle to disposal with automated reporting.",
-          "POINT6": "Salary Advance (Avance sur Salaires) module: built a configurable module enabling agents to request salary advances subject to business rules (eligibility, ceilings, repayment schedule, validation workflow) with automated calculations and traceability."
-        },
         "TECHNOLOGIES": ".NET 7, ASP.NET Core, Angular, SQL Server, MySQL, REST API, JWT, Git, Scrum, Talend"
       },
-      "ITEM1": {
-        "TITLE": "Full Stack Developer, Freelance",
-        "PERIOD": "11/2024 – 01/2025",
-        "SUBTITLE": "Responsibilities and Achievements:",
+      "ITEM3": {
         "POINTS": {
-          "POINT1": "Developed a REST API with FastAPI and integrated the TinyLlama model.",
-          "POINT2": "Created a React.js user interface for AI interaction.",
-          "POINT3": "Containerized and deployed with Docker."
+          "POINT1": "Developed a web application for domiciliation management to digitise the processing of client files according to business needs.",
+          "POINT2": "Domiciliation cycle: design and implementation of the features that create, validate and track files, with end-to-end business logic.",
+          "POINT3": "Collaboration and reliability: a secure interface and coordination mechanisms between employees to streamline processing and reduce operational errors."
         },
-        "TECHNOLOGIES": "FastAPI, TinyLlama, Docker, React.js, Docker, GitHub"
+        "TITLE": "Full Stack Developer – Java / Angular, ERYX MAROC — Internship",
+        "PERIOD": "12/2024 – 03/2025",
+        "SUBTITLE": "Responsibilities and Achievements:",
+        "TECHNOLOGIES": "Spring Boot, Angular, SQL Server, T-SQL, REST API, Git"
       },
       "ITEM2": {
-        "TITLE": "Full Stack, IoT and Machine Learning Engineer, Automize Technology — Final Project Internship",
-        "PERIOD": "02/2024 – 07/2024",
-        "SUBTITLE": "Responsibilities and Achievements:",
         "POINTS": {
-          "POINT1": "Developed a facial recognition system combining IoT, machine learning, web, and mobile.",
-          "POINT2": "Configured ESP32-S3 for RTSP/WebSocket streaming and designed a REST API with Django.",
-          "POINT3": "Converted RTSP streams to HLS via FFmpeg, and implemented facial recognition with ResNet/SCRFD.",
-          "POINT4": "Created a mobile application for streaming and authentication."
+          "POINT1": "Developed and maintained multiple client websites and web applications using modern frontend and backend technologies.",
+          "POINT2": "Implemented responsive designs and optimized performance for improved user experience across devices.",
+          "POINT3": "Collaborated with clients to gather requirements and deliver tailored solutions meeting business objectives."
         },
-        "TECHNOLOGIES": "ESP32-S3, Django, React Native, FFmpeg, ResNet, SCRFD, PostgreSQL, Redis, Ubuntu 22.04"
+        "TITLE": "Full Stack Developer – Freelance / Contract Work",
+        "PERIOD": "06/2024 – 11/2024",
+        "SUBTITLE": "Responsibilities and Achievements:",
+        "TECHNOLOGIES": "HTML5, CSS3, JavaScript, TypeScript, Angular, React, Node.js, Express, MongoDB, Git"
       },
-      "ITEM3": {
-        "TITLE": "Full Stack Java / Angular Developer, Freelance",
-        "PERIOD": "06/2023 – 08/2023",
-        "SUBTITLE": "Responsibilities and Achievements:",
+      "ITEM1": {
         "POINTS": {
-          "POINT1": "Developed a job search platform with web scraping capabilities.",
-          "POINT2": "Created the backend with Spring Boot and managed security with Spring Security.",
-          "POINT3": "Developed the frontend in Angular for an interactive interface."
+          "POINT1": "Developed frontend components and integrated backend APIs for a SaaS product using modern web technologies.",
+          "POINT2": "Participated in agile development processes including daily standups, sprint planning, and code reviews.",
+          "POINT3": "Contributed to database design and optimization for improved query performance and data integrity."
         },
-        "TECHNOLOGIES": "Java, Spring Boot, Spring Data, Spring Security, Thymeleaf, Bootstrap, Selenium, MySQL"
-      },
-      "ITEM4": {
-        "TITLE": "C#/.Net Developer, ISMA salé — Internship",
-        "PERIOD": "05/2022 – 07/2022",
+        "TITLE": "Full Stack Developer Intern – Tech Startup",
+        "PERIOD": "01/2024 – 05/2024",
         "SUBTITLE": "Responsibilities and Achievements:",
-        "POINTS": {
-          "POINT1": "Developed a module for automating the generation of schedules.",
-          "POINT2": "Tested, validated, and trained users to ensure optimal use."
-        },
-        "TECHNOLOGIES": "C#, ASP.NET, HTML, CSS, JavaScript, Bootstrap, SQL Server / T-sql"
-      },
-      "ITEM5": {
-        "TITLE": "C#/.Net Developer, ISMA salé — Internship",
-        "PERIOD": "07/2021 – 11/2021",
-        "SUBTITLE": "Responsibilities and Achievements:",
-        "POINTS": {
-          "POINT1": "Maintained and improved the absence and schedule management system.",
-          "POINT2": "Optimized and automated processes in the database."
-        },
-        "TECHNOLOGIES": "C#, ASP.NET, HTML, CSS, JavaScript, Bootstrap, SQL Server / T-sql"
+        "TECHNOLOGIES": "HTML5, CSS3, JavaScript, TypeScript, Angular, Node.js, MongoDB, REST API, Git"
       }
     },
     "EDUCATION_ITEMS": {
       "ITEM1": {
-        "TITLE": "MASTER IN BIG DATA AND INTERNET OF THINGS",
-        "PERIOD": "11/2022 – 07/2024",
-        "INSTITUTION": "National School of Arts and Crafts | CASABLANCA, Morocco"
+        "TITLE": "Master in Big Data and Internet of Things (IoT)",
+        "INSTITUTION": "École Nationale Supérieure d'Arts et Métiers (ENSAM)",
+        "PERIOD": "11/2022 – 07/2024"
       },
       "ITEM2": {
-        "TITLE": "Professional Bachelor's in Software and Web Development",
-        "PERIOD": "11/2021 – 07/2022",
-        "INSTITUTION": "Tetouan Normal School | Tetouan, Morocco"
+        "TITLE": "Professional Bachelor in Software and Web Development",
+        "INSTITUTION": "École Normale Supérieure",
+        "PERIOD": "11/2021 – 07/2022"
       },
       "ITEM3": {
-        "TITLE": "Specialized Technician in Computer Development",
-        "PERIOD": "09/2019 – 07/2021",
-        "INSTITUTION": "Specialized Institute of Applied Technology | RABAT, Morocco"
+        "TITLE": "Specialized Technician in Computer Science",
+        "INSTITUTION": "ISTA Hay Riad",
+        "PERIOD": "09/2019 – 07/2021"
       }
     },
     "SKILLS_CATEGORIES": {
-      "LANGUAGES": "Languages",
+      "SOFT_SKILLS": "Soft skills",
+      "LANGUAGES": "Programming Languages",
       "FRAMEWORKS": "Frameworks",
       "DATABASES": "Databases",
-      "TOOLS": "Tools & DevOps",
-      "SOFT_SKILLS": "Soft skills"
+      "TOOLS": "Developer Tools"
     },
     "SOFT_SKILLS": {
       "TEAMWORK": "Teamwork",
@@ -288,8 +193,10 @@
     },
     "CERTIFICATIONS": {
       "TITLE": "CERTIFICATIONS",
-      "SCRUM": "Scrum Foundations"
-    }
+      "SCRUM": "Scrum"
+    },
+    "META_DESCRIPTION": "Professional resume and CV of Abderrazzaq El Abdouni highlighting experience in full-stack development, IoT, AI, and software engineering roles.",
+    "OG_DESCRIPTION": "Download the resume of Abderrazzaq El Abdouni showcasing expertise in .NET, Angular, Spring Boot, Docker, and Machine Learning technologies."
   },
   "CONTACT": {
     "TITLE": "Get In Touch",
@@ -297,12 +204,10 @@
     "DESCRIPTION": "Feel free to reach out for collaborations, opportunities, or just to say hello!",
     "INFO_TITLE": "Contact Information",
     "INFO_DESCRIPTION": "You can reach me through any of the following channels:",
-    "ADDRESS_TITLE": "Location",
-    "ADDRESS": "Rabat, Morocco",
     "EMAIL_TITLE": "Email",
     "MAIL": "elabdouni.abderrazzaq@gmail.com",
     "PHONE_TITLE": "Phone",
-    "PHONE": "+212 653539113",
+    "PHONE": "+212 653 539 113",
     "NAME": "Name",
     "EMAIL": "Email",
     "NAME_PLACEHOLDER": "Your Name",
@@ -318,52 +223,33 @@
     "SEND": "Send Message",
     "SENDING": "Sending...",
     "SUCCESS": "Your message has been sent successfully!",
-    "ERROR": "An error occurred while sending your message. Please try again."
+    "ERROR": "An error occurred while sending your message. Please try again.",
+    "FORM_TITLE": "Send a message",
+    "META_DESCRIPTION": "Contact Abderrazzaq El Abdouni for collaboration opportunities, job inquiries, or professional networking. Available via email, phone, and social media.",
+    "OG_DESCRIPTION": "Get in touch with full-stack developer Abderrazzaq El Abdouni through the contact form or direct communication channels."
   },
   "header": {
     "home": "Home",
-    "about": "About",
     "skills": "Skills",
     "projects": "Projects",
     "resume": "Resume",
-    "achievements": "Achievements",
-    "blog": "Blog",
-    "testimonials": "Testimonials",
-    "contact": "Contact",
-    "more": "More"
+    "contact": "Contact"
   },
   "terminal": {
     "open": "open",
     "ls": "ls",
     "cat": "cat",
-    "run": "run"
+    "run": "run",
+    "title": "loading",
+    "ready": "app ready",
+    "welcome": "Welcome"
   },
-  "not_found": {
-    "title": "Page Not Found",
-    "message": "Oops! The page you're looking for doesn't exist or has been moved.",
-    "back_home": "Take Me Home"
-  },
+  "not_found": {},
   "skills": {
-    "title": "My Skills",
-    "categories": {
-      "all": "All",
-      "frontend": "Frontend",
-      "backend": "Backend",
-      "tools": "Tools",
-      "cloud": "Cloud"
-    }
+    "categories": {}
   },
-  "about": {
-    "title": "About Me",
-    "description": "I am a passionate developer with experience in web development"
-  },
-  "contact": {
-    "title": "Contact Me",
-    "name": "Name",
-    "email": "Email",
-    "message": "Message",
-    "send": "Send Message"
-  },
+  "about": {},
+  "contact": {},
   "theme": {
     "light": "Switch to Light Mode",
     "dark": "Switch to Dark Mode"
@@ -372,230 +258,43 @@
     "TITLE_SMALL": "What I do",
     "TITLE_LARGE": "My Skills & Expertise",
     "SUBTITLE": "I specialize in a range of modern technologies and frameworks, continuously expanding my skillset to deliver innovative solutions.",
-    "CATEGORIES": {
-      "ALL": "All Skills",
-      "LANGUAGES": "Programming Languages",
-      "FRAMEWORKS": "Frameworks & Libraries",
-      "DATABASES": "Databases",
-      "TOOLS": "Tools & DevOps"
-    },
-    "LEVEL": {
-      "EXPERT": "Expert",
-      "ADVANCED": "Advanced",
-      "INTERMEDIATE": "Intermediate",
-      "BEGINNER": "Beginner"
-    },
-    "EXPERIENCE": {
-      "YEARS": "years",
-      "YEAR": "year"
-    },
-    "PROJECTS": "projects",
+    "CATEGORIES": {},
+    "LEVEL": {},
+    "EXPERIENCE": {},
     "DETAILS": {
       "LANGUAGES": {
-        "CSHARP": {
-          "NAME": "C#",
-          "DESCRIPTION": "Backend development with .NET Core"
-        },
-        "JAVA": {
-          "NAME": "Java",
-          "DESCRIPTION": "Enterprise applications and Spring Boot"
-        },
-        "PYTHON": {
-          "NAME": "Python",
-          "DESCRIPTION": "Data processing and API development"
-        },
-        "JAVASCRIPT": {
-          "NAME": "JavaScript",
-          "DESCRIPTION": "Frontend and Node.js development"
-        },
-        "TYPESCRIPT": {
-          "NAME": "TypeScript",
-          "DESCRIPTION": "Type-safe JavaScript development"
-        },
-        "HTML_CSS": {
-          "NAME": "HTML/CSS",
-          "DESCRIPTION": "Web development and styling"
-        }
+        "CSHARP": {},
+        "JAVA": {},
+        "PYTHON": {},
+        "JAVASCRIPT": {},
+        "TYPESCRIPT": {},
+        "HTML_CSS": {}
       },
       "FRAMEWORKS": {
-        "DOTNET": {
-          "NAME": ".NET Core",
-          "DESCRIPTION": "Cross-platform application development"
-        },
-        "SPRING": {
-          "NAME": "Spring Boot",
-          "DESCRIPTION": "Java-based enterprise applications"
-        },
-        "ANGULAR": {
-          "NAME": "Angular",
-          "DESCRIPTION": "Frontend web applications"
-        },
-        "REACT": {
-          "NAME": "React",
-          "DESCRIPTION": "UI component development"
-        },
-        "FASTAPI": {
-          "NAME": "FastAPI",
-          "DESCRIPTION": "Modern Python web APIs"
-        },
-        "DJANGO": {
-          "NAME": "Django",
-          "DESCRIPTION": "Full-stack Python web development"
-        }
+        "DOTNET": {},
+        "SPRING": {},
+        "ANGULAR": {},
+        "REACT": {},
+        "FASTAPI": {},
+        "DJANGO": {}
       },
       "DATABASES": {
-        "SQLSERVER": {
-          "NAME": "SQL Server",
-          "DESCRIPTION": "Enterprise database management"
-        },
-        "MYSQL": {
-          "NAME": "MySQL",
-          "DESCRIPTION": "Relational database systems"
-        },
-        "POSTGRESQL": {
-          "NAME": "PostgreSQL",
-          "DESCRIPTION": "Advanced relational databases"
-        },
-        "MONGODB": {
-          "NAME": "MongoDB",
-          "DESCRIPTION": "NoSQL document databases"
-        }
+        "SQLSERVER": {},
+        "MYSQL": {},
+        "POSTGRESQL": {},
+        "MONGODB": {}
       },
       "TOOLS": {
-        "GIT": {
-          "NAME": "Git",
-          "DESCRIPTION": "Version control and collaboration"
-        },
-        "DOCKER": {
-          "NAME": "Docker",
-          "DESCRIPTION": "Container development and deployment"
-        },
-        "JENKINS": {
-          "NAME": "Jenkins",
-          "DESCRIPTION": "Continuous Integration/Deployment"
-        },
-        "AZURE": {
-          "NAME": "Azure DevOps",
-          "DESCRIPTION": "Cloud development and DevOps"
-        }
+        "GIT": {},
+        "DOCKER": {},
+        "JENKINS": {},
+        "AZURE": {}
       }
-    }
-  },
-  "ACHIEVEMENTS": {
-    "SUBTITLE": "My Achievements",
-    "TITLE": "Professional Milestones",
-    "DESCRIPTION": "A showcase of my certifications, awards, and notable projects that demonstrate my expertise and dedication.",
-    "FILTER": {
-      "TYPE": "Filter by Type",
-      "CATEGORY": "Filter by Category"
     },
-    "TYPES": {
-      "ALL": "All",
-      "CERTIFICATION": "Certifications",
-      "AWARD": "Awards",
-      "PROJECT": "Projects",
-      "PUBLICATION": "Publications"
-    },
-    "CATEGORIES": {
-      "ALL": "All Categories",
-      "WEB": "Web Development",
-      "AI": "Artificial Intelligence",
-      "METHODOLOGY": "Methodology",
-      "CLOUD": "Cloud Computing"
-    },
-    "TECHNOLOGIES": "Technologies Used",
-    "VIEW_DETAILS": "View Details",
-    "NO_RESULTS": "No achievements found matching the selected filters.",
-    "ITEMS": {
-      "SCRUM": {
-        "TITLE": "Professional Scrum Master I",
-        "DESCRIPTION": "Certified Scrum Master with expertise in Agile methodologies and team leadership.",
-        "ISSUER": "Scrum.org"
-      },
-      "FACE_RECOGNITION": {
-        "TITLE": "AI-Powered Face Recognition System",
-        "DESCRIPTION": "Developed a real-time face recognition system using Python and OpenCV.",
-        "ISSUER": "Personal Project"
-      },
-      "BEST_PROJECT": {
-        "TITLE": "Best Project Award 2023",
-        "DESCRIPTION": "Recognized for outstanding contribution to web development project.",
-        "ISSUER": "Tech Innovation Awards"
-      }
-    }
-  },
-  "BLOG": {
-    "SUBTITLE": "Latest Articles",
-    "TITLE": "My Blog",
-    "DESCRIPTION": "Explore my thoughts, experiences, and insights on software development, AI, and technology.",
-    "SEARCH_PLACEHOLDER": "Search articles...",
-    "FILTER": {
-      "CATEGORY": "Categories",
-      "TAGS": "Tags"
-    },
-    "MIN_READ": "min read",
-    "READ_MORE": "Read More",
-    "NO_RESULTS": "No articles found matching your criteria.",
-    "CATEGORIES": {
-      "ALL": "All Categories",
-      "DEVELOPMENT": "Development",
-      "AI": "Artificial Intelligence",
-      "IOT": "Internet of Things",
-      "CLOUD": "Cloud Computing"
-    },
-    "TAGS": {
-      "ALL": "All Tags",
-      "ANGULAR": "Angular",
-      "PYTHON": "Python",
-      "MACHINE-LEARNING": "Machine Learning",
-      "WEB-DEVELOPMENT": "Web Development",
-      "CLOUD-COMPUTING": "Cloud Computing"
-    },
-    "POSTS": {
-      "AI_CHAT": {
-        "TITLE": "Building an AI Chat Application with Python",
-        "EXCERPT": "Learn how to create a modern chat application powered by artificial intelligence using Python and natural language processing.",
-        "CONTENT": "In this comprehensive guide, we'll explore the process of building an AI-powered chat application from scratch. We'll cover everything from setting up the development environment to implementing natural language processing and creating an intuitive user interface. The article includes code examples, best practices, and tips for optimizing your AI chat application."
-      },
-      "FACE_RECOGNITION": {
-        "TITLE": "Implementing Face Recognition in IoT Devices",
-        "EXCERPT": "A practical guide to implementing face recognition technology in IoT devices using Python and OpenCV.",
-        "CONTENT": "This article dives deep into the world of face recognition technology and its implementation in IoT devices. We'll discuss the challenges of running face recognition on resource-constrained devices, optimization techniques, and security considerations. The guide includes practical examples and code snippets to help you implement face recognition in your own IoT projects."
-      },
-      "CLOUD_ARCHITECTURE": {
-        "TITLE": "Modern Cloud Architecture Patterns",
-        "EXCERPT": "Explore the latest cloud architecture patterns and best practices for building scalable applications.",
-        "CONTENT": "In this article, we'll examine modern cloud architecture patterns and how they can be applied to build scalable, resilient applications. We'll cover microservices, serverless architecture, containerization, and more. The guide includes real-world examples and practical advice for implementing these patterns in your projects."
-      }
-    }
-  },
-  "TESTIMONIALS": {
-    "TITLE": "What People Say",
-    "SUBTITLE": "Client and Colleague Testimonials",
-    "DESCRIPTION": "Hear what others have to say about working with me and my contributions to various projects.",
-    "ITEMS": {
-      "JOHN": {
-        "NAME": "John Doe",
-        "POSITION": "Senior Developer",
-        "COMPANY": "Tech Corp",
-        "TEXT": "Working with this developer was a pleasure. Their attention to detail and problem-solving skills are exceptional.",
-        "RATING": 5
-      },
-      "JANE": {
-        "NAME": "Jane Smith",
-        "POSITION": "Project Manager",
-        "COMPANY": "Innovate Solutions",
-        "TEXT": "A highly skilled professional who consistently delivers quality work on time. Great team player!",
-        "RATING": 5
-      },
-      "MIKE": {
-        "NAME": "Mike Johnson",
-        "POSITION": "CTO",
-        "COMPANY": "StartupX",
-        "TEXT": "An innovative thinker with a strong technical background. Their contributions were invaluable to our project's success.",
-        "RATING": 5
-      }
-    }
+    "ITEMS_SUFFIX": "technologies",
+    "NO_RESULTS": "No skills in this category.",
+    "META_DESCRIPTION": "Technical skills inventory of Abderrazzaq El Abdouni including programming languages, frameworks, databases, and developer tools.",
+    "OG_DESCRIPTION": "Explore the comprehensive skills list of Abderrazzaq El Abdouni covering C#, Java, Python, Angular, React, SQL Server, MongoDB, Docker, and more."
   },
   "FOOTER": {
     "COPYRIGHT": "© {{year}} Abderrazzaq El Abdouni. All rights reserved.",
@@ -607,5 +306,10 @@
     "THEME_LIGHT": "Light theme",
     "THEME_DARK": "Dark theme",
     "LANGUAGE_CHANGED": "Language: {{lang}}"
-  }
+  },
+  "NAV": {
+    "VIEW_WORK": "View my work",
+    "SKIP_TO_CONTENT": "Skip to content"
+  },
+  "A11Y": {}
 }
