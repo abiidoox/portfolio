@@ -42,3 +42,9 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Stray editor/migration backups. These are dangerous under src/assets,
+# which the build copies wholesale into dist — a *.json.backup sitting in
+# src/assets/i18n/ gets published to production.
+*.backup
+*.backup?
