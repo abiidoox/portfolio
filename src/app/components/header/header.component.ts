@@ -4,116 +4,123 @@ import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 
+interface NavItem {
+  path: string;
+  key: string;
+  label: string;
+}
+
 @Component({
   selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
+  templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   isMobileMenuOpen = false;
   isScrolled = false;
-  currentLanguage: string;
-  isDarkTheme = true;
-  
-  // Sliding nav indicator
+
+  navItems: NavItem[] = [
+    { path: '/', key: 'header.home', label: 'Home' },
+    { path: '/projects', key: 'header.projects', label: 'Projects' },
+    { path: '/skills', key: 'header.skills', label: 'Skills' },
+    { path: '/resume', key: 'header.resume', label: 'Resume' },
+    { path: '/contact', key: 'header.contact', label: 'Contact' }
+  ];
+
+  // Sliding active indicator
   indicatorX = 0;
   indicatorWidth = 0;
-  indicatorScale = 0;
-  
-  @ViewChild('navLinks') navLinks!: ElementRef<HTMLUListElement>;
-  
+  indicatorVisible = false;
+
+  @ViewChild('navLinks') navLinks?: ElementRef<HTMLUListElement>;
+
   private subs: Subscription[] = [];
-  private storageHandler?: () => void;
-  private observer?: MutationObserver;
-  
-  constructor(private translateService: TranslateService, private router: Router) {
-    this.currentLanguage = this.translateService.currentLang || 'en';
-  }
+
+  constructor(private translateService: TranslateService, private router: Router) {}
 
   ngOnInit(): void {
+    this.loadLabels();
+
     this.subs.push(
-      this.translateService.onLangChange.subscribe(event => {
-        this.currentLanguage = event.lang;
+      this.translateService.onLangChange.subscribe(() => {
+        this.loadLabels();
+        // Labels change width, so the indicator must be recomputed.
         setTimeout(() => this.updateIndicator(), 0);
       })
     );
-    
-    // Check for theme changes
-    this.checkTheme();
-    // Listen for theme changes
-    this.storageHandler = () => this.checkTheme();
-    window.addEventListener('storage', this.storageHandler);
-    
-    // Also check when body class changes
-    this.observer = new MutationObserver(() => this.checkTheme());
-    this.observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-    
-    // Initialize indicator position
+
+    // Removed: a `storage` listener and a MutationObserver on body's class
+    // attribute, both wired to an empty detectTheme(). The observer fired on
+    // every body class change to do nothing. Cross-tab theme sync now lives in
+    // ThemeService, where it has an actual implementation.
+
     setTimeout(() => this.updateIndicator(), 0);
 
-    // Sync indicator on route changes
     this.subs.push(
-      this.router.events.pipe(
-        filter(event => event instanceof NavigationEnd)
-      ).subscribe(() => {
-        setTimeout(() => this.updateIndicator(), 0);
-      })
+      this.router.events
+        .pipe(filter(event => event instanceof NavigationEnd))
+        .subscribe(() => {
+          this.closeMobileMenu();
+          setTimeout(() => this.updateIndicator(), 0);
+        })
     );
   }
 
   ngOnDestroy(): void {
     this.subs.forEach(s => s.unsubscribe());
-    if (this.storageHandler) window.removeEventListener('storage', this.storageHandler);
-    this.observer?.disconnect();
   }
 
-  @HostListener('window:scroll', ['$event'])
-  onScroll() {
+  @HostListener('window:scroll')
+  onScroll(): void {
     this.isScrolled = window.scrollY > 24;
   }
 
-  @HostListener('window:resize', ['$event'])
-  onResize(event: Event) {
-    if (window.innerWidth > 768) {
-      this.closeMobileMenu();
+  @HostListener('window:resize')
+  onResize(): void {
+    if (window.innerWidth > 768) this.closeMobileMenu();
+    setTimeout(() => this.updateIndicator(), 0);
+  }
+
+  private loadLabels(): void {
+    for (const item of this.navItems) {
+      this.translateService.get(item.key).subscribe(label => (item.label = label));
     }
   }
 
-  private checkTheme(): void {
-    this.isDarkTheme = !document.body.classList.contains('light-theme');
+  isActive(path: string): boolean {
+    if (path === '/') return this.router.url === '/';
+    return this.router.url.startsWith(path);
+  }
+
+  /** Both handlers used to take parameters they immediately discarded. */
+  onNavClick(): void {
+    setTimeout(() => this.updateIndicator(), 0);
+  }
+
+  onMobileNavClick(): void {
+    this.closeMobileMenu();
   }
 
   toggleMobileMenu(): void {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
+    setTimeout(() => this.updateIndicator(), 0);
   }
 
   closeMobileMenu(): void {
     this.isMobileMenuOpen = false;
   }
 
-  switchLanguage(lang: string): void {
-    this.translateService.use(lang);
-    this.currentLanguage = lang;
-  }
-  
-  setActiveLink(event: Event, index: number): void {
-    const target = event.target as HTMLAnchorElement;
-    const li = target.closest('li') as HTMLLIElement;
-    if (!li || !this.navLinks) return;
-    
-    this.updateIndicator();
-  }
-  
   private updateIndicator(): void {
-    const activeLink = this.navLinks?.nativeElement.querySelector('a.active');
-    if (!activeLink) return;
-    
-    const containerRect = this.navLinks.nativeElement.getBoundingClientRect();
+    const list = this.navLinks?.nativeElement;
+    if (!list) return;
+    const activeLink = list.querySelector<HTMLAnchorElement>('a[data-active="true"]');
+    if (!activeLink) {
+      this.indicatorVisible = false;
+      return;
+    }
+    const listRect = list.getBoundingClientRect();
     const linkRect = activeLink.getBoundingClientRect();
-    
-    // Slightly wider indicator, centered on the link (the extra width via CSS margin, offset here)
-    this.indicatorX = (linkRect.left - containerRect.left) - 6;
-    this.indicatorWidth = linkRect.width + 12;
-    this.indicatorScale = 1;
+    this.indicatorX = linkRect.left - listRect.left;
+    this.indicatorWidth = linkRect.width;
+    this.indicatorVisible = true;
   }
 }

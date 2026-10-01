@@ -1,902 +1,853 @@
-/* Global styles with modern developer theme */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  /* Dark theme (default) */
-  --primary-color: #ff5e3a;
-  --primary-color-dark: #e04a2a;
-  --secondary-color: #1e2a3a;
-  --text-color: #ffffff;
-  --text-light: #a0a8b3;
-  --bg-dark: #121a24;
-  --bg-section: #1a2432;
-  --gradient-primary: linear-gradient(to right, #ff5e3a, #ff8c66);
-  --border-color: rgba(255, 255, 255, 0.05);
-  --shadow-color: rgba(0, 0, 0, 0.2);
-}
-
-/* Light theme variables */
-body.light-theme {
-  --primary-color: #ff5e3a;
-  --primary-color-dark: #e04a2a;
-  --secondary-color: #f0f2f5;
-  --text-color: #333333;
-  --text-light: #666666;
-  --bg-dark: #f5f5f5;
-  --bg-section: #ffffff;
-  --gradient-primary: linear-gradient(to right, #ff5e3a, #ff8c66);
-  --border-color: rgba(0, 0, 0, 0.05);
-  --shadow-color: rgba(0, 0, 0, 0.1);
-}
-
-/* Add smooth transitions for all elements */
-* {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: 'Inter', sans-serif;
-  background-color: var(--bg-dark);
-  color: var(--text-color);
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 600;
-  line-height: 1.3;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-  transition: all 0.3s ease;
-}
-
-.section-padding {
-  padding: 120px 0;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg-section);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--primary-color);
-  border-radius: 5px;
-}
-
-/* Animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+/* ============================================================
+   THEME TOKENS
+   Dark "digital laboratory" is the default. Light theme is a
+   deliberate second surface, not an inverted accident.
+   ============================================================ */
+@layer base {
+  :root {
+    --lab-bg: #080b12;
+    --lab-surface: #0f141f;
+    --lab-surface-2: #161d2b;
+    --lab-line: rgba(148, 163, 184, 0.12);
+    --lab-line-strong: rgba(148, 163, 184, 0.22);
+    --lab-text: #f1f5f9;
+    --lab-muted: #94a3b8;
+    --signal: #ff5e3a;
+    --ion: #38bdf8;
   }
-  to {
-    opacity: 1;
+
+  /* Matched on <html> as well as <body>: the pre-paint script in index.html can
+     only set a class on the root element, which has no <body> yet. */
+  html.light-theme,
+  body.light-theme {
+    --lab-bg: #f4f6fa;
+    --lab-surface: #ffffff;
+    --lab-surface-2: #eef1f6;
+    --lab-line: rgba(15, 23, 42, 0.1);
+    --lab-line-strong: rgba(15, 23, 42, 0.18);
+    --lab-text: #0f172a;
+    --lab-muted: #55637a;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Header offset for in-page anchor scrolling */
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-ink-900 font-sans text-slate-100 antialiased;
+    background-color: var(--lab-bg);
+    color: var(--lab-text);
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  html.light-theme,
+  body.light-theme {
+    @apply text-ink-900;
+  }
+
+  /* Visible, high-contrast focus ring for keyboard users only. */
+  :focus-visible {
+    outline: 2px solid var(--ion);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* Skip link: off-screen until a keyboard user tabs to it. */
+  .skip-link {
+    position: fixed;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 3000;
+    transform: translateY(-200%);
+    border-radius: 0.5rem;
+    background: var(--signal);
+    color: #fff;
+    padding: 0.6rem 1.1rem;
+    font-family: theme('fontFamily.display');
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: transform 0.2s ease-out;
+  }
+  .skip-link:focus {
     transform: translateY(0);
   }
+  main:focus {
+    outline: none;
+  }
+
+  ::selection {
+    background: rgba(255, 94, 58, 0.28);
+    color: #fff;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display font-semibold text-balance;
+  }
+
+  /* Slim, theme-aware scrollbar */
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: var(--lab-bg); }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.25);
+    border-radius: 99px;
+    border: 2px solid var(--lab-bg);
+  }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(255, 94, 58, 0.6); }
 }
 
-.fade-in-up {
-  animation: fadeInUp 0.6s ease forwards;
-  opacity: 0;
+/* ============================================================
+   THEME-AWARE TEXT RAMP
+   Templates compose Tailwind's slate ramp directly. That ramp is
+   built for a dark surface, so on the light surface it inverts and
+   most of it falls under WCAG AA (slate-400 = 2.37:1, slate-200 =
+   1.14:1). Remapping the ramp once here is far cheaper and safer
+   than editing ~50 call sites, and it keeps the "higher number =
+   fainter text" hierarchy intact in both themes.
+
+   These rules are deliberately UNLAYERED: unlayered declarations
+   beat Tailwind's `utilities` cascade layer at equal specificity,
+   which a rule inside @layer base could not do.
+   ============================================================ */
+
+/* Dark is the default surface. Only the faint end needs lifting:
+   slate-500 was 3.87:1 and slate-600 2.43:1 on a panel. */
+.text-slate-500 { color: #8494a8; }
+.text-slate-600 { color: #8b9ab0; }
+
+/* Light surface: every step inverts to a darker neutral. */
+body.light-theme .text-slate-100 { color: #0f172a; } /* 17.0:1 */
+body.light-theme .text-slate-200 { color: #1e293b; } /* 13.5:1 */
+body.light-theme .text-slate-300 { color: #334155; } /*  9.6:1 */
+body.light-theme .text-slate-400 { color: #475569; } /*  7.0:1 */
+body.light-theme .text-slate-500 { color: #556070; } /*  5.9:1 */
+body.light-theme .text-slate-600 { color: #5f6b7d; } /*  5.0:1 */
+
+/* Hairlines and faint fills sit on white in light mode, where a
+   white-alpha border simply disappears. */
+body.light-theme .border-white\/\[0\.06\],
+body.light-theme .border-white\/\[0\.07\],
+body.light-theme .border-white\/\[0\.09\],
+body.light-theme .border-white\/10 { border-color: rgba(15, 23, 42, 0.14); }
+body.light-theme .bg-white\/\[0\.02\],
+body.light-theme .bg-white\/\[0\.03\],
+body.light-theme .bg-white\/\[0\.04\],
+body.light-theme .bg-white\/\[0\.06\] { background-color: rgba(15, 23, 42, 0.04); }
+
+/* ============================================================
+   COMPONENT PRIMITIVES
+   Reused across pages. Keep these few; everything else is a
+   utility composition in the templates.
+   ============================================================ */
+@layer components {
+  /* Content shell */
+  .lab-shell {
+    @apply mx-auto w-full max-w-shell px-5 sm:px-7 lg:px-10;
+  }
+
+  /* Section vertical rhythm */
+  .lab-section {
+    @apply py-20 sm:py-24 lg:py-32;
+  }
+
+  /* Section eyebrow: small mono label with a leading rule */
+  .lab-kicker {
+    @apply inline-flex items-center gap-3 font-mono text-[0.7rem] uppercase tracking-[0.28em] text-ion;
+  }
+  .lab-kicker::before {
+    content: '';
+    @apply h-px w-8 bg-ion/60;
+  }
+
+  /* Page heading */
+  .lab-title {
+    @apply font-display text-display-lg;
+    color: var(--lab-text);
+  }
+
+  /* Lead paragraph */
+  .lab-lead {
+    @apply max-w-2xl text-base leading-relaxed sm:text-lg;
+    color: var(--lab-muted);
+  }
+
+  /* Primary panel surface: thin border, subtle inner highlight, no heavy glass */
+  .lab-panel {
+    @apply relative rounded-3xl border backdrop-blur-sm;
+    background-color: color-mix(in srgb, var(--lab-surface) 82%, transparent);
+    border-color: var(--lab-line);
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.04) inset,
+                0 24px 60px -28px rgba(0, 0, 0, 0.7);
+  }
+  body.light-theme .lab-panel {
+    background-color: var(--lab-surface);
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.9) inset,
+                0 18px 44px -28px rgba(15, 23, 42, 0.28);
+  }
+
+  /* Accent glow that follows the pointer via --mx/--my custom props */
+  .lab-glow-hover::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: radial-gradient(
+      380px circle at var(--mx, 50%) var(--my, 50%),
+      rgba(255, 94, 58, 0.13),
+      transparent 62%
+    );
+  }
+  .lab-glow-hover:hover::after { opacity: 1; }
+
+  /* Primary CTA */
+  .lab-btn {
+    @apply relative inline-flex select-none items-center justify-center gap-2.5
+           overflow-hidden rounded-full px-6 py-3.5 font-display text-sm font-semibold
+           transition-all duration-300 ease-smooth will-change-transform;
+  }
+  .lab-btn:focus-visible { outline-offset: 4px; }
+  .lab-btn:active { transform: scale(0.97); }
+
+  .lab-btn-primary {
+    @apply text-white shadow-signal-glow;
+    background-image: linear-gradient(105deg, #9a3412 0%, #c2410c 100%);
+  }
+  .lab-btn-primary::before {
+    content: '';
+    @apply absolute inset-0 -translate-x-full;
+    background: linear-gradient(100deg, transparent 20%, rgba(255, 255, 255, 0.32) 50%, transparent 80%);
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .lab-btn-primary:hover::before { @apply translate-x-full; }
+  .lab-btn-primary:hover { @apply -translate-y-0.5; }
+
+  .lab-btn-ghost {
+    border: 1px solid var(--lab-line-strong);
+    background-color: rgba(148, 163, 184, 0.06);
+    color: var(--lab-text);
+  }
+  body.light-theme .lab-btn-ghost { @apply text-ink-900; }
+  .lab-btn-ghost:hover {
+    @apply -translate-y-0.5 border-signal/60 text-signal;
+    background-color: rgba(255, 94, 58, 0.09);
+  }
+
+  /* Light theme needs its own accent ramp. The neon set is tuned for ink
+     surfaces and only reaches 1.5:1 to 3.2:1 on paper, so every accent used
+     as TEXT is deepened here. Fills, borders, glows and the vivid sweep keep
+     the neon values because they never carry body copy. */
+  body.light-theme .text-signal { color: #a8330c; }      /* 6.4:1 on paper */
+  body.light-theme .text-signal-soft { color: #b8390e; } /* 5.8:1 on paper */
+  body.light-theme .text-ion { color: #0369a1; }         /* 5.9:1 on paper */
+  body.light-theme .text-ion-soft { color: #075985; }    /* 7.6:1 on paper */
+  body.light-theme .text-plasma { color: #7e22ce; }      /* 7.0:1 on paper */
+  body.light-theme .text-mint { color: #047857; }        /* 5.5:1 on paper */
+
+  /* The project card's visual band is a dark media zone in both themes: it
+     carries white glyphs and white pills, which disappear on a paper card. */
+  body.light-theme .lab-media-band { background-color: #0b0f18; }
+  body.light-theme .lab-media-band .lab-grid-bg { opacity: 0.35; }
+
+  /* Overlays that keep the dark surface in both themes must not inherit the
+     light-theme slate ramp, or their labels would go dark-on-dark. Declared
+     after the ramp above so it wins on equal specificity. */
+  .lab-dark-panel { background-color: rgba(11, 15, 24, 0.96); }
+  .lab-dark-panel .lab-menu-item { color: #cbd5e1; }
+  .lab-dark-panel .lab-menu-item:hover { color: #f8fafc; background-color: rgba(255, 255, 255, 0.08); }
+  .lab-dark-panel .lab-menu-item:focus-visible {
+    color: #f8fafc;
+    background-color: rgba(255, 255, 255, 0.08);
+    outline: 2px solid var(--lab-signal, #ff5e3a);
+    outline-offset: -2px;
+  }
+  .lab-dark-panel .lab-menu-item[aria-checked='true'] {
+    color: #f8fafc;
+    background-color: rgba(255, 255, 255, 0.06);
+  }
+
+  /* Small mono tag used for technologies */
+  .lab-tag {
+    @apply inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1
+           font-mono text-[0.68rem] leading-none transition-colors duration-300;
+    border-color: var(--lab-line);
+    color: var(--lab-muted);
+  }
+  .lab-tag:hover {
+    border-color: rgba(255, 94, 58, 0.5);
+    color: var(--signal);
+    background-color: rgba(255, 94, 58, 0.08);
+  }
+
+  /* Filter pill */
+  .lab-pill {
+    @apply inline-flex items-center gap-2 rounded-full border px-4 py-2 font-display
+           text-[0.8rem] font-medium transition-all duration-300 ease-smooth;
+    border-color: var(--lab-line);
+    color: var(--lab-muted);
+  }
+  .lab-pill:hover {
+    @apply -translate-y-0.5;
+    border-color: var(--lab-line-strong);
+    color: var(--lab-text);
+  }
+  .lab-pill[aria-pressed='true'] {
+    @apply text-white;
+    border-color: transparent;
+    background-image: linear-gradient(105deg, #9a3412 0%, #c2410c 100%);
+    box-shadow: 0 12px 30px -12px rgba(255, 94, 58, 0.55);
+  }
+
+  /* Animated underline for nav/links */
+  .lab-underline {
+    @apply relative;
+  }
+  .lab-underline::after {
+    content: '';
+    @apply absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0
+           transition-transform duration-300 ease-smooth;
+    background: linear-gradient(90deg, var(--signal), var(--ion));
+  }
+  .lab-underline:hover::after,
+  .lab-underline[data-active='true']::after {
+    @apply scale-x-100;
+  }
+
+  /* ============================================================
+     FORM CONTROLS
+     These four classes are applied by name from the templates, so
+     they live here rather than being composed inline. They were
+     referenced by the contact form without ever being defined,
+     which left the fields as raw browser inputs: white fill,
+     near-white text, no border, no radius. Everything below is
+     driven by the theme tokens so both surfaces stay correct.
+     ============================================================ */
+
+  .lab-label {
+    @apply mb-2.5 block font-mono text-[0.66rem] uppercase tracking-[0.18em];
+    color: var(--lab-muted);
+  }
+  /* The required marker is decorative; the label text already carries it. */
+  .lab-label .text-signal { font-size: 0.9em; }
+
+  .lab-input {
+    @apply block w-full rounded-xl px-4 py-3.5 font-sans text-[0.95rem] leading-relaxed;
+    color: var(--lab-text);
+    background-color: var(--lab-surface-2);
+    border: 1px solid var(--lab-line-strong);
+    /* Only transform and box-shadow change on focus, so nothing reflows
+       and the caret never jumps. */
+    transition: border-color 0.3s ease-smooth, box-shadow 0.3s ease-smooth,
+                background-color 0.3s ease-smooth;
+    appearance: none;
+  }
+  .lab-input::placeholder {
+    color: var(--lab-muted);
+    opacity: 0.72;
+  }
+  .lab-input:hover { border-color: rgba(148, 163, 184, 0.34); }
+  body.light-theme .lab-input:hover { border-color: rgba(15, 23, 42, 0.3); }
+
+  .lab-input:focus {
+    outline: none;
+    border-color: var(--ion);
+    background-color: var(--lab-surface);
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.18);
+  }
+  /* Keyboard focus must never be invisible, so the global ring is
+     suppressed above only where this equivalent ring replaces it. */
+  .lab-input:focus-visible { outline: none; }
+
+  .lab-input:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  /* Chrome's autofill paints its own opaque background, which would put
+     light text on a light box in the dark theme. Transparent via a
+     longhand colour that keeps the field's own background visible. */
+  .lab-input:-webkit-autofill,
+  .lab-input:-webkit-autofill:hover,
+  .lab-input:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--lab-text);
+    -webkit-box-shadow: 0 0 0 1000px var(--lab-surface-2) inset;
+    caret-color: var(--lab-text);
+    transition: background-color 100000s ease-in-out 0s;
+  }
+
+  .lab-input-error {
+    border-color: var(--signal);
+    background-color: color-mix(in srgb, var(--signal) 5%, var(--lab-surface-2));
+  }
+  .lab-input-error:focus {
+    border-color: var(--signal);
+    box-shadow: 0 0 0 3px rgba(255, 94, 58, 0.2);
+  }
+
+  .lab-error {
+    @apply mt-2 flex items-start gap-1.5 text-[0.78rem] leading-snug;
+    color: var(--signal);
+  }
+  .lab-error::before {
+    content: '\f068';
+    @apply mt-[0.15rem] shrink-0;
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 0.68rem;
+  }
+  body.light-theme .lab-error { color: #a8330c; }
 }
 
-/* Utility classes */
-.text-gradient {
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+/* ============================================================
+   SCROLL REVEAL
+   The appScrollReveal directive toggles .sr-init / .sr-in.
+   ============================================================ */
+@layer utilities {
+  .sr-init { opacity: 0; will-change: opacity, transform; }
+  .sr-init.sr-up { transform: translate3d(0, 30px, 0); }
+  .sr-init.sr-down { transform: translate3d(0, -30px, 0); }
+  .sr-init.sr-left { transform: translate3d(-36px, 0, 0); }
+  .sr-init.sr-right { transform: translate3d(36px, 0, 0); }
+  .sr-init.sr-scale { transform: scale(0.95); }
 
-.btn {
-  display: inline-block;
-  padding: 12px 30px;
-  border: 1px solid var(--primary-color);
-  border-radius: 8px;
-  color: var(--text-color);
-  font-size: 15px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  background: rgba(255, 94, 58, 0.1);
-}
+  .sr-in {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
 
-.btn:hover {
-  background: var(--primary-color);
-  color: var(--text-color);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(255, 94, 58, 0.2);
-}
+  /* Text splitting (appSplitText) */
+  .split-parent { display: inline-block; }
+  .split-word,
+  .split-char {
+    display: inline-block;
+    opacity: 0;
+    transform: translate3d(0, 0.5em, 0);
+    transition:
+      opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .split-parent.is-revealed .split-word,
+  .split-parent.is-revealed .split-char {
+    opacity: 1;
+    transform: none;
+  }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .section-padding {
-    padding: 80px 0;
+  /* Gradient text used sparingly for accents only */
+  .lab-gradient-text {
+    background-image: linear-gradient(100deg, #ff8c66 0%, #ff5e3a 40%, #38bdf8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Ambient grid layer */
+  .lab-grid-bg {
+    background-image:
+      linear-gradient(to right, rgba(148, 163, 184, 0.055) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(148, 163, 184, 0.055) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  /* Theme-aware base wash for the fixed backdrop behind every route. */
+  .lab-bg-base {
+    background-color: var(--lab-bg);
+  }
+
+  /* Film-grain noise: inline SVG so there is no extra network request */
+  .lab-noise::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  }
+
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+
+  /* Cursor-following glow. Positioned with a transform written by
+     AppComponent so no layout is invalidated per mousemove. */
+  .mouse-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 30rem;
+    height: 30rem;
+    margin: -15rem 0 0 -15rem;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+    background: radial-gradient(
+      circle,
+      rgba(255, 94, 58, 0.09) 0%,
+      rgba(56, 189, 248, 0.05) 34%,
+      transparent 62%
+    );
+    will-change: transform;
+  }
+  body.light-theme .mouse-glow { opacity: 0.35; }
+
+  /* Particle canvas sits behind content, above the ambient wash */
+  app-particles-background {
+    position: fixed;
+    inset: 0;
+    z-index: -5;
+    pointer-events: none;
+    opacity: 0.55;
+  }
+
+  /* ---- Navbar surface: transparent at rest, blurred once scrolled ---- */
+  .lab-nav-scrolled {
+    background-color: color-mix(in srgb, var(--lab-bg) 72%, transparent);
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    border-bottom: 1px solid var(--lab-line);
+    box-shadow: 0 12px 40px -24px rgba(0, 0, 0, 0.9);
+  }
+  body.light-theme .lab-nav-scrolled {
+    background-color: rgba(255, 255, 255, 0.78);
+  }
+
+  /* Nav list establishes the containing block for the sliding indicator. */
+  header nav ul { position: relative; }
+
+  /* Mobile menu height transition driven by a class, not inline styles. */
+  .lab-mobile-menu {
+    max-height: 0;
+    opacity: 0;
+    background-color: color-mix(in srgb, var(--lab-bg) 94%, transparent);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    transition: max-height 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.3s ease;
+  }
+  .lab-mobile-menu.is-open {
+    max-height: 32rem;
+    opacity: 1;
+  }
+
+  /* ---- Hero terminal: floating tech chips ----
+     The slot wrapper owns placement; the chip inside owns only the
+     ambient float, so the two transforms never fight each other. */
+  .float-slot {
+    position: absolute;
+    pointer-events: none;
+  }
+  /* Per-chip placement. The console panel is full-width, so the chips now
+     frame its top and bottom edges as a constellation rather than orbiting
+     its left and right sides — at full width, side placement put them past
+     the viewport edge. Every offset stays inside the section's vertical
+     padding, so nothing reaches the page edge at any breakpoint. */
+  .chip-slot-a { top: -1.9rem; left: 3%; }
+  .chip-slot-b { top: -2.4rem; left: 26%; }
+  .chip-slot-c { top: -1.9rem; right: 26%; }
+  .chip-slot-d { top: -2.4rem; right: 3%; }
+  .chip-slot-e { bottom: -1.9rem; left: 12%; }
+  .chip-slot-f { bottom: -2.4rem; left: 40%; }
+  .chip-slot-g { bottom: -1.9rem; right: 12%; }
+
+  /* Per-chip float timing. Distinct durations and negative delays keep the seven
+     chips out of sync so they read as independently drifting, not pulsing. */
+  .chip-slot-a .lab-tag { --chip-dur: 4.4s; --chip-delay: -0.4s; }
+  .chip-slot-b .lab-tag { --chip-dur: 5.2s; --chip-delay: -1.6s; }
+  .chip-slot-c .lab-tag { --chip-dur: 4.8s; --chip-delay: -2.7s; }
+  .chip-slot-d .lab-tag { --chip-dur: 5.6s; --chip-delay: -0.8s; }
+  .chip-slot-e .lab-tag { --chip-dur: 4.1s; --chip-delay: -3.5s; }
+  .chip-slot-f .lab-tag { --chip-dur: 5.9s; --chip-delay: -4.1s; }
+  .chip-slot-g .lab-tag { --chip-dur: 4.6s; --chip-delay: -1.2s; }
+
+  /* Reduced-motion fallback for the chips: a 4px drift at a slow rate instead
+     of the full 14px travel. Declared here rather than in the Tailwind theme
+     because it is applied by name from the media query below, which Tailwind's
+     content scanner cannot see and would therefore never emit. */
+  @keyframes float-calm {
+    0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); opacity: 1; }
+    50% { transform: translate3d(0, -4px, 0) rotate(0deg); opacity: 0.88; }
+  }
+
+  /* Terminal panel tilts in response to the pointer. */
+  .lab-terminal {
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+  }
+
+  /* ============================================================
+     HOME — MASTHEAD PORTRAIT
+     The brief: creative presentation, but the portrait must stay clear.
+
+     Two earlier passes got this wrong in opposite directions. The first
+     put a duotone filter, a misregistration ghost, orbit ticks, a sheen
+     and contact-sheet marks ON the photo, which recoloured the face and
+     read as a filter preset. The second stripped it to a bare rounded
+     rectangle, which was clear but had no idea behind it.
+
+     The fix is to move all the creativity OFF the image and put it
+     around it. The photograph itself is never altered — it keeps only
+     contrast(1.03) saturate(1.04), which is grading, not recolouring.
+     Everything expressive is built from separate layers behind and
+     around it:
+
+       ambient   — one wide, slow glow behind the whole assembly
+       secondary — two heavily blurred, hue-shifted copies of the photo,
+                   offset behind the mount. Past the point of recognition,
+                   so they read as coloured light, not as a second image.
+       primary   — the mount: the portrait inset in a backing panel with
+                   a border gap, slightly rotated, straightening on hover
+
+     Motion personality is Premium: 0% overshoot, one signature easing,
+     one slow ambient loop, and every entrance decelerating.
+     ============================================================ */
+
+  /* ---- Primary: the mount ----
+     A print sitting in a mat. The gap between the backing panel and the
+     photo is what makes it read as mounted rather than as a bordered
+     image, and it costs one element. */
+  .lab-mount {
+    @apply relative rounded-[2.25rem] p-3;
+    background-color: var(--lab-surface);
+    border: 1px solid var(--lab-line-strong);
+    box-shadow: 0 40px 80px -34px rgba(0, 0, 0, 0.88),
+                0 1px 0 0 rgba(255, 255, 255, 0.05) inset;
+    transform: rotate(-2deg);
+    transform-origin: 50% 60%;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .lab-plate-stack:hover .lab-mount {
+    transform: rotate(0deg);
+    box-shadow: 0 54px 98px -34px rgba(0, 0, 0, 0.92),
+                0 1px 0 0 rgba(255, 255, 255, 0.07) inset;
+  }
+  body.light-theme .lab-mount {
+    box-shadow: 0 30px 60px -30px rgba(15, 23, 42, 0.34),
+                0 1px 0 0 rgba(255, 255, 255, 0.9) inset;
+  }
+
+  /* ---- Secondary: the two haloes ----
+     Offset, blurred panels of brand light that give the mount depth and a
+     colour edge without touching or duplicating the photograph.
+
+     An earlier attempt built these from blurred, hue-shifted copies of the
+     photo itself, which was the more interesting idea. It measured at zero
+     visible colour: the periphery of this portrait is a dark studio
+     backdrop, so blurring and saturating it just produced more dark, and
+     growing the copies only spread the same nothing further. Tinted light
+     is driven by the accent colours instead of by whatever happens to be in
+     the corners of the image, so the effect is identical for any photo. */
+  .lab-halo {
+    @apply absolute rounded-[3rem];
+    inset: -6%;
+    filter: blur(16px);
+    will-change: transform;
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .lab-halo-warm {
+    background-color: rgba(255, 94, 58, 0.62);
+    opacity: 0.72;
+    transform: translate3d(-16px, 14px, 0);
+  }
+  .lab-halo-cool {
+    background-color: rgba(56, 189, 248, 0.55);
+    opacity: 0.62;
+    transform: translate3d(18px, -12px, 0);
+  }
+  /* On hover the haloes drift apart, so the stack gains depth rather than
+     the portrait changing. */
+  .lab-plate-stack:hover .lab-halo-warm { transform: translate3d(-28px, 24px, 0); opacity: 0.88; }
+  .lab-plate-stack:hover .lab-halo-cool { transform: translate3d(30px, -20px, 0); opacity: 0.76; }
+
+  /* Light surfaces swallow a wash, so the haloes carry more weight there to
+     stay legible against paper. */
+  body.light-theme .lab-halo-warm { opacity: 0.8; }
+  body.light-theme .lab-halo-cool { opacity: 0.7; }
+
+  /* ---- Ambient: one slow glow behind everything ----
+     farthest-side, not closest-side: a closest-side radial hits full
+     transparency exactly at the element's edge, which parks all the colour
+     in the middle where the mount hides it. */
+  .lab-portrait-glow {
+    background-image: radial-gradient(farthest-side at 50% 50%,
+      rgba(255, 94, 58, 0.26) 0%,
+      rgba(255, 94, 58, 0.16) 38%,
+      rgba(56, 189, 248, 0.14) 66%,
+      rgba(56, 189, 248, 0.04) 100%);
+    animation: plate-hue 14s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+  }
+
+  /* The mount carries the shadow, so the figure itself needs none. The
+     vignette only settles the photo into its border gap. */
+  .lab-plate {
+    @apply relative overflow-hidden rounded-[1.75rem];
+    background-color: var(--ink-850);
+  }
+
+  /* Very slow, very small lift. Premium means the mount settles, it does
+     not bounce. */
+  .lab-plate-stack {
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .lab-plate-stack:hover { transform: translate3d(0, -3px, 0); }
+
+  /* A whisper of a vignette to settle the edges. No colour cast and no
+     blend mode, so skin tones render exactly as photographed. */
+  .lab-plate-wash {
+    background-image: radial-gradient(118% 88% at 50% 46%,
+      transparent 62%, rgba(5, 7, 12, 0.3) 100%);
+  }
+  body.light-theme .lab-plate-wash {
+    background-image: radial-gradient(118% 88% at 50% 46%,
+      transparent 68%, rgba(15, 23, 42, 0.08) 100%);
+  }
+
+  /* The portrait itself: a barely-there contrast and saturation lift so the
+     photo looks graded rather than raw. Small enough to be imperceptible as
+     a change, which is the point. No hue rotation and no blend mode — the
+     face must stay recognisable and true to life. */
+  .lab-plate-photo {
+    filter: contrast(1.03) saturate(1.04);
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                filter 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .lab-plate-stack:hover .lab-plate-photo {
+    transform: scale(1.02);
+    filter: contrast(1.05) saturate(1.06);
+  }
+
+  /* Caption plate: offset, mono, and counter-rotated so the type stays level
+     while the plate it belongs to is tilted. */
+  .lab-plate-caption {
+    @apply absolute -bottom-4 -left-3 rounded-lg border px-3 py-1.5 font-mono text-[0.6rem]
+           uppercase tracking-[0.18em];
+    border-color: var(--lab-line-strong);
+    background-color: color-mix(in srgb, var(--lab-surface) 88%, transparent);
+    backdrop-filter: blur(10px);
+    color: var(--lab-muted);
+    transform: rotate(2deg);
+  }
+
+  /* ---- Ledger: editorial stat strip ---- */
+  .lab-ledger {
+    border-top: 1px solid var(--lab-line);
+    border-bottom: 1px solid var(--lab-line);
+  }
+  /* Hairline that draws in from the left when the row is revealed. */
+  .lab-rule {
+    transform-origin: left center;
+    transform: scaleX(0);
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .sr-in .lab-rule { transform: scaleX(1); }
+  /* Staggered so the three rules resolve left-to-right rather than together. */
+  .sr-in .lab-rule:nth-child(2) { transition-delay: 90ms; }
+  .sr-in .lab-rule:nth-child(3) { transition-delay: 180ms; }
+
+  /* Oversized ghost numeral. Outlined at rest, filled on row hover. */
+  .lab-ghost-num {
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--lab-line-strong);
+    transition: color 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                -webkit-text-stroke-color 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* ---- Practice: de-boxed editorial row ---- */
+  .lab-practice-row {
+    position: relative;
+    transition: background-color 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  /* Accent bar that grows from the left edge on hover. */
+  .lab-practice-row::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 12%;
+    height: 76%;
+    width: 2px;
+    border-radius: 2px;
+    background-image: var(--tw-gradient, linear-gradient(to bottom, #ff5e3a, #38bdf8));
+    transform: scaleY(0);
+    transform-origin: center;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .lab-practice-row:hover::before,
+  .lab-practice-row:focus-within::before { transform: scaleY(1); }
+  .lab-practice-row:hover { background-color: rgba(255, 94, 58, 0.045); }
+  .lab-practice-row:hover .lab-ghost-num {
+    color: rgba(255, 94, 58, 0.16);
+    -webkit-text-stroke-color: transparent;
+  }
+
+  /* Section index rule: a short gradient tick that anchors each kicker. */
+  .lab-index-rule {
+    @apply inline-block h-px w-10 align-middle;
+    background-image: linear-gradient(to right, #ff5e3a, rgba(56, 189, 248, 0.2));
+  }
+
+  /* The one ambient loop left on the portrait. Opacity only, looping between
+     two values that both read as "a thin lit edge", so there is no visible
+     seam and nothing invalidates layout. */
+  @keyframes plate-hue {
+    from { opacity: 0.42; }
+    to { opacity: 0.62; }
+  }
+
+  /* Static conic ring on the 404 readout. Lives here rather than in an
+     inline style so the mask stays inspectable and themeable. */
+  .lab-ring-static {
+    background: conic-gradient(from 180deg, #ff5e3a, #38bdf8, #ff5e3a);
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 0);
+    mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 0);
   }
 }
-/* ============================================================
-   MOTION SYSTEM — scroll reveals, glow, marquee, gradient text
-   ============================================================ */
-
-/* Mouse-follow ambient glow */
-.mouse-glow {
-  position: fixed;
-  width: 560px;
-  height: 560px;
-  border-radius: 50%;
-  z-index: -1;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(255, 94, 58, 0.12), transparent 65%);
-  filter: blur(40px);
-  opacity: 0;
-  transition: opacity 0.8s ease;
-}
-body:hover .mouse-glow { opacity: 1; }
-@media (pointer: coarse) { .mouse-glow { display: none; } }
-
-/* Scroll-reveal base states (activated by ScrollRevealDirective) */
-.sr-init {
-  opacity: 0;
-  will-change: transform, opacity;
-  transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 1s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.sr-up    { transform: translateY(56px); }
-.sr-down  { transform: translateY(-56px); }
-.sr-left  { transform: translateX(-64px); }
-.sr-right { transform: translateX(64px); }
-.sr-scale { transform: scale(0.88); }
-.sr-init.sr-in {
-  opacity: 1;
-  transform: none;
-}
-
-/* Animated gradient text */
-.text-gradient-animated {
-  background: linear-gradient(90deg, var(--primary-color), #38bdf8, var(--primary-color));
-  background-size: 300% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  animation: gradient-shine 5s linear infinite;
-}
-@keyframes gradient-shine {
-  to { background-position: 300% center; }
-}
-
-/* Tech marquee strip */
-.tech-marquee {
-  overflow: hidden;
-  padding: 26px 0;
-  border-top: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
-  transform: rotate(-1.2deg);
-  margin: 30px 0;
-  user-select: none;
-}
-.tech-marquee .mq-track {
-  display: flex;
-  gap: 54px;
-  width: max-content;
-  animation: marquee-scroll 26s linear infinite;
-  font-family: 'Space Grotesk', 'Inter', sans-serif;
-  font-weight: 700;
-  font-size: 1.7rem;
-  white-space: nowrap;
-}
-.tech-marquee .mq-track span {
-  -webkit-text-stroke: 1.4px var(--text-light);
-  color: transparent;
-}
-.tech-marquee .mq-track span.filled {
-  color: var(--primary-color);
-  -webkit-text-stroke: 0;
-}
-@keyframes marquee-scroll {
-  to { transform: translateX(-50%); }
-}
-
-/* Skill bar fill animation (triggered by .in-view on ancestor section) */
-.skill-track {
-  height: 7px;
-  background: rgba(128, 128, 128, 0.18);
-  border-radius: 99px;
-  overflow: hidden;
-}
-.skill-track .skill-fill {
-  display: block;
-  height: 100%;
-  width: 0;
-  border-radius: 99px;
-  background: linear-gradient(90deg, var(--primary-color), #38bdf8);
-  transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1) 0.25s;
-}
-.sr-in .skill-fill, .in-view .skill-fill { width: var(--w, 80%); }
-
-/* Section heading line sweep */
-.sec-head {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin-bottom: 48px;
-}
-.sec-head h2 { white-space: nowrap; margin: 0; }
-.sec-head .sec-line {
-  flex: 1;
-  height: 1px;
-  background: var(--border-color);
-  position: relative;
-  overflow: hidden;
-}
-.sec-head .sec-line::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, var(--primary-color), transparent);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.2s;
-}
-.in-view .sec-line::after { transform: scaleX(1); }
-
-/* Respect reduced-motion preference */
-@media (prefers-reduced-motion: reduce) {
-  .sr-init { opacity: 1 !important; transform: none !important; transition: none !important; }
-  .mouse-glow, .tech-marquee .mq-track { animation: none; }
-  .tech-marquee .mq-track span { color: var(--text-light); -webkit-text-stroke: 0; }
-  .sr-in .skill-fill, .in-view .skill-fill { width: var(--w, 80%); transition: none; }
-}
-
-/* Hero rotator line — consolidated */
-.hero-rotator-line {
-  font-family: 'Space Grotesk', 'Inter', sans-serif;
-  font-size: 1.35rem;
-  font-weight: 600;
-  margin: 14px 0 20px;
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-  min-height: 2.2em;
-  position: relative;
-  z-index: 2;
-}
-.rotator-prefix { color: var(--text-light); }
 
 /* ============================================================
-   V2 REDESIGN — modern layout foundation
+   ACCESSIBILITY — REDUCED MOTION
+   Ambient loops stop or degrade; nothing ever disappears.
    ============================================================ */
-
-/* Typography upgrade */
-body {
-  font-family: 'Space Grotesk', 'Inter', sans-serif;
-  letter-spacing: -0.01em;
-}
-h1, h2, h3, h4 {
-  font-family: 'Space Grotesk', 'Inter', sans-serif;
-  font-weight: 700;
-  letter-spacing: -0.025em;
-}
-
-/* Page shell — every routed page gets this rhythm */
-.page-v2 {
-  max-width: 1160px;
-  margin: 0 auto;
-  padding: clamp(90px, 12vh, 140px) 28px 110px;
-}
-
-/* Big display headings */
-.display-title {
-  font-size: clamp(2.4rem, 6vw, 4.2rem);
-  line-height: 1.04;
-  margin-bottom: 18px;
-}
-.kicker-line {
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.22em;
-  font-size: 0.78rem;
-  color: var(--text-light);
-  margin-bottom: 22px;
-}
-.kicker-line::before {
-  content: '';
-  width: 42px;
-  height: 2px;
-  background: var(--primary-color);
-  border-radius: 2px;
-}
-
-/* Glass cards */
-.glass-card {
-  background: color-mix(in srgb, var(--bg-section) 72%, transparent);
-  border: 1px solid var(--border-color);
-  border-radius: 22px;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  transition: transform .45s cubic-bezier(.22,1,.36,1),
-              border-color .45s ease,
-              box-shadow .45s ease;
-}
-.glass-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(255, 94, 58, 0.4);
-  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.35);
-}
-
-/* Gradient outline avatar ring */
-@keyframes spin-slow { to { transform: rotate(360deg); } }
-
-/* Floating animation for decorative elements */
-@keyframes float-soft {
-  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
-  25%      { transform: translate3d(5px, -16px, 0) rotate(-1.4deg); }
-  50%      { transform: translate3d(0, -24px, 0) rotate(0deg); }
-  75%      { transform: translate3d(-5px, -16px, 0) rotate(1.4deg); }
-}
-
-/* Button system */
-.btn-v2 {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 15px 30px;
-  border-radius: 14px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  text-decoration: none !important;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .35s ease;
-}
-.btn-v2::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.25) 50%, transparent 70%);
-  transform: translateX(-120%);
-  transition: transform .7s ease;
-}
-.btn-v2:hover::before { transform: translateX(120%); }
-.btn-v2:hover { transform: translateY(-3px); }
-.btn-v2.primary {
-  background: linear-gradient(120deg, var(--primary-color), #ff8c66);
-  color: #fff;
-  box-shadow: 0 10px 30px rgba(255, 94, 58, .3);
-}
-.btn-v2.primary:hover { box-shadow: 0 16px 40px rgba(255, 94, 58, .45); }
-.btn-v2.ghost {
-  background: transparent;
-  color: var(--text-color);
-  border: 1px solid var(--border-color);
-}
-.btn-v2.ghost:hover { border-color: var(--primary-color); color: var(--primary-color); }
-
-/* Stagger helpers (applied via inline delay attr) */
-.sr-init[style*="transition-delay"] { will-change: transform, opacity; }
-
-/* ===== ABOUT V2 ===== */
-.hero-v2 {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 60px;
-  align-items: center;
-  min-height: 62vh;
-}
-.hero-text .display-title { margin-bottom: 10px; }
-.grad-name { font-size: clamp(2.8rem, 7vw, 5rem); }
-.bio-text {
-  color: var(--text-light);
-  line-height: 1.85;
-  max-width: 520px;
-  font-weight: 300;
-  font-size: 1.02rem;
-}
-.hero-cta { display: flex; gap: 16px; margin-top: 34px; flex-wrap: wrap; }
-.hero-meta {
-  display: flex; gap: 26px; flex-wrap: wrap; align-items: center;
-  margin-top: 34px;
-  color: var(--text-light); font-size: 0.88rem;
-}
-.meta-item { display: inline-flex; align-items: center; gap: 8px; }
-.meta-item i { color: var(--primary-color); }
-.meta-item.socials a {
-  color: var(--text-light); font-size: 1.15rem; margin-right: 12px;
-  transition: color .3s, transform .3s;
-}
-.meta-item.socials a:hover { color: var(--primary-color); transform: translateY(-3px); }
-
-/* avatar ring (no spin) */
-.hero-visual { position: relative; display: flex; justify-content: center; }
-.avatar-ring {
-  position: relative;
-  width: min(340px, 70vw);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  padding: 6px;
-  background: conic-gradient(from 0deg, #ff5e3a, #38bdf8, #c084fc, #ff5e3a);
-  transition: transform 0.6s cubic-bezier(.22,1,.36,1);
-}
-.avatar-img {
-  width: 100%; height: 100%; object-fit: cover;
-  border-radius: 50%;
-  border: 6px solid var(--bg-dark);
-  display: block;
-}
-
-/* floating tech chips around avatar */
-.float-slot {
-  position: absolute;
-  z-index: 3;
-  transition: transform .25s ease-out;
-}
-.float-chip {
-  padding: 10px 18px;
-  border-radius: 99px;
-  font-size: 0.82rem;
-  font-weight: 600;
-  background: var(--bg-section);
-  border: 1px solid var(--border-color);
-  box-shadow: 0 14px 30px rgba(0,0,0,.35);
-  animation: float-soft 5.5s ease-in-out infinite;
-  white-space: nowrap;
-  will-change: transform;
-  transition: none;
-}
-.float-chip i { color: var(--primary-color); margin-right: 6px; }
-.slot-a { top: 4%; left: 2%; }
-.slot-b { top: 38%; right: -4%; }
-.slot-b .float-chip { animation: float-soft 6.2s ease-in-out -1.6s infinite; }
-.slot-c { bottom: 2%; left: 14%; }
-.slot-c .float-chip { animation: float-soft 5.8s ease-in-out -3.2s infinite; }
-.slot-d { bottom: -4%; right: 20%; }
-.slot-d .float-chip { animation: float-soft 6.5s ease-in-out -0.8s infinite; }
-.slot-e { top: 2%; right: 6%; }
-.slot-e .float-chip { animation: float-soft 5.4s ease-in-out -2.4s infinite; }
-.slot-f { top: 60%; left: -6%; }
-.slot-f .float-chip { animation: float-soft 6.8s ease-in-out -4s infinite; }
-.slot-g { bottom: 20%; right: -10%; }
-.slot-g .float-chip { animation: float-soft 5.9s ease-in-out -1.2s infinite; }
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: .5; transform: scale(1.4); }
-}
-.avail-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 7px 16px;
-  border-radius: 99px;
-  font-size: .78rem;
-  font-weight: 600;
-  color: #4ade80;
-  background: rgba(74, 222, 128, .1);
-  border: 1px solid rgba(74, 222, 128, .25);
-  margin-top: 18px;
-}
-.avail-dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: #4ade80;
-  animation: pulse-dot 2s ease-in-out infinite;
-}
 @media (prefers-reduced-motion: reduce) {
-  .float-slot { transition: none; }
-}
+  html { scroll-behavior: auto; }
 
-.stats-v2 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  text-align: center;
-  margin: 90px 0;
-  padding: 44px 24px;
-}
-.stats-v2 .stat-number {
-  font-family: 'Space Grotesk', 'Inter', sans-serif;
-  font-size: clamp(2rem, 4.5vw, 3rem);
-  font-weight: 700;
-  color: var(--primary-color);
-}
-.stats-v2 .stat-label {
-  color: var(--text-light);
-  text-transform: uppercase;
-  letter-spacing: .14em;
-  font-size: .75rem;
-  margin-top: 6px;
-}
+  .sr-init { opacity: 1 !important; transform: none !important; }
+  .sr-in { transition: none !important; }
+  .split-word, .split-char { opacity: 1 !important; transform: none !important; }
 
-.focus-grid-v2 {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
-}
-.focus-card { padding: 30px 26px; }
-.focus-icon {
-  font-size: 1.6rem;
-  color: var(--primary-color);
-  background: rgba(255, 94, 58, .1);
-  width: 56px; height: 56px;
-  border-radius: 16px;
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 18px;
-}
-.focus-card h4 { margin-bottom: 8px; font-size: 1.05rem; }
-.focus-card p { color: var(--text-light); font-size: .88rem; line-height: 1.65; font-weight: 300; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 
-@media (max-width: 900px) {
-  .hero-v2 { grid-template-columns: 1fr; gap: 46px; }
-  .hero-visual { order: -1; }
-  .stats-v2 { grid-template-columns: 1fr; gap: 30px; }
-}
+  /* The floating tech chips are a deliberate part of the hero composition, so
+     they stay alive — but swap to the 4px "float-calm" drift at a slow rate
+     instead of the full 14px travel, which avoids vestibular triggers. */
+  .animate-float-soft {
+    animation-name: float-calm !important;
+    animation-duration: 9s !important;
+    animation-iteration-count: infinite !important;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
 
-/* ===== PROJECTS V2 ===== */
-.projects-head { margin-bottom: 40px; }
-.projects-sub { color: var(--text-light); font-weight: 300; max-width: 560px; line-height: 1.75; }
-
-.filters-v2 { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 46px; }
-.filter-chip {
-  padding: 10px 22px;
-  border-radius: 99px;
-  border: 1px solid var(--border-color);
-  background: transparent;
-  color: var(--text-light);
-  font-weight: 600;
-  font-size: .88rem;
-  cursor: pointer;
-  transition: all .3s ease;
+  /* The portrait keeps its mount, echoes and caption for reduced-motion
+     users; only the slow opacity breath on the ambient glow stops, since that
+     is the sole looping motion on it. Hover-driven separation is a pointer
+     affordance, not an animation, so it stays. */
+  .lab-portrait-glow { animation: none !important; }
 }
-.filter-chip:hover { color: var(--text-color); border-color: var(--primary-color); transform: translateY(-2px); }
-.filter-chip.active {
-  background: linear-gradient(120deg, var(--primary-color), #ff8c66);
-  border-color: transparent;
-  color: #fff;
-  box-shadow: 0 8px 24px rgba(255,94,58,.3);
-}
-
-.project-list { display: flex; flex-direction: column; gap: 22px; }
-.project-row {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  overflow: hidden;
-}
-.pr-visual {
-  position: relative;
-  background:
-    radial-gradient(circle at 30% 25%, rgba(255,94,58,.35), transparent 60%),
-    radial-gradient(circle at 75% 80%, rgba(56,189,248,.28), transparent 55%),
-    rgba(0,0,0,.25);
-  min-height: 150px;
-  overflow: hidden;
-}
-.pr-row-hover .pr-visual, .project-row:hover .pr-visual { filter: saturate(1.4); }
-.pr-glow {
-  position:absolute; inset:-40%;
-  background: conic-gradient(from 0deg, transparent, rgba(255,94,58,.18), transparent 40%);
-  animation: spin-slow 7s linear infinite;
-}
-.pr-index {
-  position: absolute; bottom: 10px; left: 16px;
-  font-family: 'Space Grotesk','Inter',sans-serif;
-  font-size: 2.6rem; font-weight: 700;
-  color: transparent;
-  -webkit-text-stroke: 1.5px rgba(255,255,255,.28);
-  line-height: 1;
-}
-.pr-year {
-  position: absolute; top: 12px; right: 14px;
-  font-size: .74rem; letter-spacing: .18em;
-  color: rgba(255,255,255,.55);
-}
-.pr-body { padding: 30px 34px; }
-.pr-title-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
-.pr-title-row h3 { font-size: 1.45rem; transition: color .3s; }
-.project-row:hover .pr-title-row h3 { color: var(--primary-color); }
-.pr-flag { color: #fbbf24; font-size: 1.05rem; }
-.pr-body > p { color: var(--text-light); font-weight: 300; line-height: 1.75; font-size: .95rem; }
-.chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; }
-.chip {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: .72rem;
-  padding: 5px 13px;
-  border-radius: 99px;
-  border: 1px solid rgba(255,94,58,.35);
-  color: var(--primary-color);
-  background: rgba(255,94,58,.07);
-}
-.pr-glyph {
-  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-  font-size: 2.4rem; color: rgba(255,255,255,.12);
-  transition: transform .4s cubic-bezier(.22,1,.36,1), color .4s;
-}
-.project-row:hover .pr-glyph { transform: translate(-50%, -50%) scale(1.15); color: rgba(255,255,255,.22); }
-.pr-overlay {
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  background: rgba(10,12,18,.7);
-  opacity: 0; transition: opacity .35s ease;
-}
-.project-row:hover .pr-overlay { opacity: 1; }
-.pr-view {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 10px 22px; border-radius: 99px;
-  font-weight: 600; font-size: .82rem;
-  background: linear-gradient(120deg, var(--primary-color), #ff8c66);
-  color: #fff; border: none; cursor: pointer;
-  transform: translateY(8px); transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s;
-}
-.project-row:hover .pr-view { transform: translateY(0); }
-.pr-view:hover { box-shadow: 0 10px 28px rgba(255,94,58,.4); }
-.pr-details {
-  display: inline-flex; align-items: center; gap: 8px;
-  margin-top: 18px; padding: 10px 22px; border: none;
-  background: linear-gradient(120deg, var(--primary-color), #ff8c66);
-  color: #fff; font-weight: 600; font-size: .88rem;
-  border-radius: 99px; cursor: pointer;
-  transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .35s;
-}
-.pr-details:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(255,94,58,.4); }
-@media (max-width: 700px) {
-  .project-row { grid-template-columns: 1fr; }
-  .pr-visual { min-height: 90px; }
-}
-
-/* ===== SKILLS V2 ===== */
-.skills-head { margin-bottom: 40px; }
-.skills-sub { color: var(--text-light); font-weight: 300; max-width: 560px; line-height: 1.75; }
-
-.skill-grid-v2 {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-  gap: 20px;
-}
-.skill-cell { padding: 26px; position: relative; overflow: hidden; }
-.sc-glow {
-  position: absolute; inset: -40%;
-  background: conic-gradient(from 0deg, transparent, rgba(255,94,58,.12), transparent 40%);
-  animation: spin-slow 9s linear infinite;
-  pointer-events: none;
-}
-.sc-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
-.sc-icon {
-  width: 50px; height: 50px;
-  border-radius: 14px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.35rem;
-  color: var(--primary-color);
-  background: rgba(255, 94, 58, .1);
-  transition: transform .35s cubic-bezier(.22,1,.36,1);
-}
-.skill-cell:hover .sc-icon { transform: rotate(-8deg) scale(1.12); }
-.sc-pct {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: .82rem;
-  color: var(--text-light);
-}
-.skill-cell h3 { font-size: 1.12rem; margin-bottom: 6px; }
-.sc-level {
-  font-size: .7rem;
-  text-transform: uppercase;
-  letter-spacing: .14em;
-  padding: 4px 10px;
-  border-radius: 99px;
-  display: inline-block;
-  margin-bottom: 16px;
-}
-.lvl-expert { color: #4ade80; background: rgba(74,222,128,.1); }
-.lvl-advanced { color: #38bdf8; background: rgba(56,189,248,.1); }
-.lvl-intermediate { color: #fbbf24; background: rgba(251,191,36,.1); }
-.lvl-beginner { color: #c084fc; background: rgba(192,132,252,.1); }
-.sc-meta {
-  display: flex; flex-direction: column; gap: 5px;
-  color: var(--text-light);
-  font-size: .8rem;
-  margin-bottom: 18px;
-}
-.sc-meta i { color: var(--primary-color); width: 16px; }
-
-/* ===== CONTACT V2 ===== */
-.contact-head { margin-bottom: 50px; }
-.contact-sub { color: var(--text-light); font-weight: 300; max-width: 560px; line-height: 1.75; }
-
-.contact-grid-v2 {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 26px;
-  align-items: start;
-}
-.contact-info-v2 { padding: 38px 34px; }
-.contact-info-v2 h3 { margin-bottom: 10px; }
-.ci-desc { color: var(--text-light); font-weight: 300; font-size: .92rem; line-height: 1.7; margin-bottom: 30px; }
-
-.info-items { display: flex; flex-direction: column; gap: 22px; margin-bottom: 32px; }
-.info-item { display: flex; gap: 16px; align-items: flex-start; }
-.info-icon {
-  width: 46px; height: 46px; flex-shrink: 0;
-  border-radius: 13px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.05rem;
-  color: var(--primary-color);
-  background: rgba(255,94,58,.1);
-  transition: transform .3s;
-}
-.info-item:hover .info-icon { transform: scale(1.1) rotate(-6deg); }
-.info-details h4 { font-size: .95rem; margin-bottom: 2px; }
-.info-details p { color: var(--text-light); font-size: .85rem; font-weight: 300; }
-
-.socials-v2 { display: flex; gap: 12px; }
-.socials-v2 a {
-  width: 44px; height: 44px;
-  border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  border: 1px solid var(--border-color);
-  color: var(--text-light);
-  font-size: 1.1rem;
-  transition: all .3s ease;
-}
-.socials-v2 a:hover {
-  color: #fff;
-  background: linear-gradient(120deg, var(--primary-color), #ff8c66);
-  border-color: transparent;
-  transform: translateY(-4px);
-  box-shadow: 0 10px 24px rgba(255,94,58,.35);
-}
-
-.contact-form-container { padding: 38px 34px; }
-.form-group { margin-bottom: 20px; }
-.float-group { position: relative; }
-.float-group label {
-  position: absolute;
-  left: 16px; top: 14px;
-  color: var(--text-light);
-  font-size: .88rem;
-  pointer-events: none;
-  transition: all .25s ease;
-  transform-origin: left top;
-}
-.float-group input:focus + label,
-.float-group input:not(:placeholder-shown) + label,
-.float-group textarea:focus + label,
-.float-group textarea:not(:placeholder-shown) + label {
-  transform: translateY(-22px) scale(.78);
-  color: var(--primary-color);
-}
-.float-group input, .float-group textarea {
-  padding-top: 20px;
-}
-.float-group .error-message {
-  position: relative;
-}
-.contact-form input, .contact-form textarea {
-  width: 100%;
-  padding: 14px 16px;
-  border-radius: 12px;
-  border: 1px solid var(--border-color);
-  background: rgba(0,0,0,.18);
-  color: var(--text-color);
-  font-family: inherit;
-  transition: border-color .3s, box-shadow .3s;
-}
-.contact-form input:focus, .contact-form textarea:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(255,94,58,.15);
-}
-.contact-form input.invalid, .contact-form textarea.invalid { border-color: #ef4444; }
-.error-message { color: #ef4444; font-size: .78rem; margin-top: 6px; display: none; }
-.error-message.visible { display: block; }
-.submit-btn { width: 100%; justify-content: center; border: none; font-family: inherit; }
-.submit-btn:disabled { opacity: .6; cursor: wait; }
-.form-message {
-  margin-top: 18px; padding: 13px 16px; border-radius: 12px; font-size: .88rem;
-  display: none;
-}
-.form-message.visible { display: flex; }
-.form-message.success { background: rgba(74,222,128,.12); color: #4ade80; }
-.form-message.error { background: rgba(239,68,68,.12); color: #ef4444; }
-
-@media (max-width: 900px) {
-  .contact-grid-v2 { grid-template-columns: 1fr; }
-}
-
-/* ===== RESUME V2 ===== */
-.resume-head { margin-bottom: 50px; }
-.resume-sub { color: var(--text-light); font-weight: 300; max-width: 560px; line-height: 1.75; }
-
-.resume-v2 .resume-section {
-  background: color-mix(in srgb, var(--bg-section) 72%, transparent);
-  border: 1px solid var(--border-color);
-  border-radius: 22px;
-  padding: 34px;
-  margin-bottom: 22px;
-  backdrop-filter: blur(14px);
-}
-.resume-v2 .section-title {
-  font-size: 1.3rem;
-  margin-bottom: 24px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.resume-v2 .section-title::before {
-  content: '';
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: var(--primary-color);
-  box-shadow: 0 0 12px rgba(255,94,58,.7);
-}
-
-.resume-v2 .timeline-item {
-  position: relative;
-  padding-left: 30px;
-  padding-bottom: 28px;
-  border-left: 2px solid var(--border-color);
-  margin-left: 6px;
-}
-.resume-v2 .timeline-item:last-child { padding-bottom: 0; }
-.resume-v2 .timeline-marker {
-  position: absolute;
-  left: -7px; top: 4px;
-  width: 12px; height: 12px;
-  border-radius: 50%;
-  background: var(--bg-dark);
-  border: 2.5px solid var(--primary-color);
-  transition: transform .3s, box-shadow .3s;
-}
-.resume-v2 .timeline-item:hover .timeline-marker {
-  transform: scale(1.35);
-  box-shadow: 0 0 16px rgba(255,94,58,.6);
-}
-.resume-v2 .timeline-content h4 { font-size: 1.05rem; margin-bottom: 4px; }
-.resume-v2 .timeline-date {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: .74rem;
-  color: var(--primary-color);
-  letter-spacing: .08em;
-}
-.resume-v2 .timeline-subtitle { color: var(--text-light); font-size: .88rem; margin: 4px 0 10px; }
-.resume-v2 .timeline-content ul { margin: 8px 0 0; padding-left: 18px; }
-.resume-v2 .timeline-content li {
-  color: var(--text-light);
-  font-weight: 300;
-  font-size: .88rem;
-  line-height: 1.7;
-  margin-bottom: 4px;
-}
-
-.download-section-v2 { text-align: center; margin-top: 40px; }
-
-
-/* Ensure hero grid children never overlap the floating chips */
-.hero-v2 { position: relative; z-index: 1; }
-.hero-text { position: relative; z-index: 2; }
-.hero-visual { position: relative; z-index: 1; }
-.float-slot { z-index: 3; }
-
-/* Static hero subtitle (rotator removed) */
-.rotator-static { font-weight: 700; }

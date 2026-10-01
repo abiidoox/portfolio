@@ -1,11 +1,34 @@
-<section class="relative overflow-hidden pb-20 pt-32 sm:pt-36 lg:pb-28 lg:pt-44">
+<!-- ══════════════════════════════════════════════════════════════════════
+     HOME — "LABORATORY DOSSIER"
+     An editorial composition rather than a stacked profile card.
 
+     Motion personality: Premium — zero overshoot, one signature easing
+     (cubic-bezier(0.22, 1, 0.36, 1)), one entrance pattern (rise + fade,
+     decelerate), durations 120 / 320 / 700ms.
+
+     Three motion layers on the masthead plate:
+       primary   — the plate settles in, then straightens on hover
+       secondary — the aperture ring rotates and the light sweep passes
+       ambient   — the seven tech chips drift around the console
+     ══════════════════════════════════════════════════════════════════ -->
+
+<!-- ══════════ 01 — MASTHEAD ══════════ -->
+<section class="relative overflow-hidden pb-16 pt-28 sm:pt-32 lg:pb-24 lg:pt-40">
   <div class="lab-shell">
-    <div class="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
+    <!-- Folio index: reads as printed page furniture, not as body copy. -->
+    <div class="mb-12 flex items-center gap-4 lg:mb-16">
+      <span class="font-mono text-[0.7rem] tabular-nums text-signal">01</span>
+      <span class="lab-index-rule"></span>
+      <span class="font-mono text-[0.68rem] uppercase tracking-[0.28em] text-slate-500">
+        {{ 'ABOUT.SECTION_MASTHEAD' | translate }}
+      </span>
+    </div>
 
-      <!-- ══════════ LEFT: identity ══════════ -->
+    <div class="grid items-center gap-16 lg:grid-cols-[1.08fr_0.92fr] lg:gap-10 xl:gap-16">
+
+      <!-- ── Identity column ── -->
       <div class="relative z-10">
-        <div class="mb-7 flex flex-wrap items-center gap-3">
+        <div class="mb-8 flex flex-wrap items-center gap-3">
           <span class="inline-flex items-center gap-2 rounded-full border border-mint/25 bg-mint/[0.07]
                        px-3.5 py-1.5 font-mono text-[0.68rem] uppercase tracking-[0.16em] text-mint">
             <span class="h-1.5 w-1.5 animate-pulse-soft rounded-full bg-mint"></span>
@@ -16,44 +39,16 @@
           </span>
         </div>
 
-        <!-- Prominent Creative Profile Image -->
-        <div class="relative mb-10">
-          <!-- Creative floating background elements -->
-          <div class="absolute -inset-4 -z-0 rounded-full bg-signal/5 blur-3xl opacity-20"></div>
-          <div class="absolute -inset-2 -z-0 rounded-full bg-plasma/5 blur-3xl opacity-15"></div>
-
-          <!-- Main image container with enhanced styling -->
-          <div class="relative h-36 w-36 sm:h-44 sm:w-44 mx-auto">
-            <!-- Outer creative frame -->
-            <div class="absolute -inset-3 rounded-full bg-gradient-to-br from-signal/15 to-plasma/15 opacity-30 blur-sm"></div>
-            <!-- Main image with effects -->
-            <div class="relative h-full w-full overflow-hidden rounded-full bg-white/[0.04] bg-clip-border border border-white/12 backdrop-blur">
-              <img src="assets/me.jpg"
-                   alt="{{ 'ABOUT.PROFILE_ALT' | translate }}"
-                   class="h-full w-full object-cover transition-all duration-800 hover:scale-105 hover:-rotate-0.5 hover:brightness-110 hover:saturate-110"
-                   width="144"
-                   height="144"
-                   loading="lazy">
-              <!-- Dynamic light overlay -->
-              <div class="absolute inset-0 bg-gradient-to-tr from-signal/10 via-transparent to-plasma/10 mix-blend-overlay animate-[pulse_4s_ease-in-out_infinite] pointer-events-none"></div>
-            </div>
-            <!-- Status pulse indicator -->
-            <div class="absolute -right-2 -bottom-2 flex h-3.5 w-3.5 items-center justify-center">
-              <div class="h-3 w-3 bg-signal rounded-full ring-2 ring-white/25 animate-pulse"></div>
-            </div>
-          </div>
-        </div>
-
-        <h1 class="font-display text-display-xl font-bold text-balance mb-6 text-center">
+        <h1 class="font-display text-display-xl font-bold text-balance">
           <span class="block text-slate-400">{{ 'ABOUT.GREETING' | translate }}</span>
-          <span class="lab-gradient-text mt-3 block relative z-10" appSplitText>{{ 'ABOUT.NAME' | translate }}</span>
-          <!-- Enhanced animated underline -->
-          <div class="relative mt-4">
-            <div class="w-0 h-0.5 bg-gradient-to-r from-signal to-plasma transition-all duration-700 group-hover:w-full"></div>
-          </div>
+          <span class="lab-gradient-text mt-3 block" appSplitText>{{ 'ABOUT.NAME' | translate }}</span>
         </h1>
 
-        <div class="mt-4 flex flex-wrap justify-center gap-x-3 gap-y-2 font-mono text-sm sm:text-base">
+        <!-- A rule that draws itself under the name, offset from the left edge
+             so it reads as a printed measure rather than a centred flourish. -->
+        <div class="lab-rule mt-6 h-px w-full max-w-sm bg-signal-sweep" appScrollReveal></div>
+
+        <div class="mt-6 flex flex-wrap gap-x-3 gap-y-2 font-mono text-sm sm:text-base">
           <span class="text-ion">const</span>
           <span class="font-display font-semibold text-slate-200">craft</span>
           <span class="text-slate-600">=</span>
@@ -61,9 +56,8 @@
           <span class="inline-block h-4 w-[1.5] animate-caret bg-signal align-middle"></span>
         </div>
 
-        <p class="lab-lead mt-6 text-pretty max-w-md text-center">{{ 'ABOUT.BIO' | translate }}</p>
+        <p class="lab-lead mt-6 max-w-lg text-pretty">{{ 'ABOUT.BIO' | translate }}</p>
 
-        <!-- CTAs -->
         <div class="mt-10 flex flex-wrap items-center gap-4">
           <a routerLink="/projects" class="lab-btn lab-btn-primary" appMagnetic>
             <span>{{ 'NAV.VIEW_WORK' | translate }}</span>
@@ -75,7 +69,6 @@
           </a>
         </div>
 
-        <!-- Social rail -->
         <div class="mt-10 flex items-center gap-4">
           <span class="h-px w-8 bg-white/10"></span>
           <a href="https://github.com/abiidoox" target="_blank" rel="noopener noreferrer"
@@ -101,29 +94,121 @@
         </div>
       </div>
 
-      <!-- ══════════ RIGHT: interactive terminal ══════════ -->
-      <div class="relative">
-        <!-- Soft halo behind the terminal -->
-        <div class="pointer-events-none absolute -inset-8 -z-10 rounded-full bg-signal/[0.06] blur-3xl"></div>
+      <!-- ── The plate ──
+           All the expression lives AROUND the portrait, never on it, so the
+           photo stays sharp and true to life. Outside in: the ambient glow,
+           two blurred hue-shifted echoes of the same photo for depth, and
+           the mount that insets the portrait with a border gap. -->
+      <div class="flex justify-center py-10 lg:py-14">
+        <div class="relative w-full max-w-[19rem] sm:max-w-sm lg:max-w-none">
 
-        <div class="lab-panel lab-terminal overflow-hidden rounded-3xl"
-             (mousemove)="onTerminalMove($event)" (mouseleave)="onTerminalLeave($event)">
-          <!-- Title bar -->
-          <div class="flex items-center gap-3 border-b border-white/[0.07] bg-white/[0.02] px-4 py-3">
-            <div class="flex gap-1.5" aria-hidden="true">
-              <span class="h-2.5 w-2.5 rounded-full bg-[#ff5f57]"></span>
-              <span class="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]"></span>
-              <span class="h-2.5 w-2.5 rounded-full bg-[#28ca42]"></span>
+          <!-- Ambient layer: one wide, slow glow. -->
+          <div class="lab-portrait-glow pointer-events-none absolute -inset-12 rounded-full"
+               aria-hidden="true"></div>
+
+          <div class="lab-plate-stack group relative">
+            <!-- Secondary layer: two offset washes of brand light. -->
+            <div class="lab-halo lab-halo-warm pointer-events-none" aria-hidden="true"></div>
+            <div class="lab-halo lab-halo-cool pointer-events-none" aria-hidden="true"></div>
+
+            <!-- Primary layer: the portrait, inset in its mount. -->
+            <div class="lab-mount">
+              <figure class="lab-plate aspect-[4/5]">
+                <img src="assets/me.jpg"
+                     [alt]="'A11Y.PROFILE_PHOTO' | translate"
+                     class="lab-plate-photo h-full w-full object-cover"
+                     width="360" height="450"
+                     loading="eager" decoding="async">
+
+                <div class="lab-plate-wash pointer-events-none absolute inset-0" aria-hidden="true"></div>
+              </figure>
+
+              <figcaption class="lab-plate-caption">
+                {{ 'ABOUT.ROLE' | translate }}
+              </figcaption>
             </div>
-            <span class="ml-1 font-mono text-[0.7rem] text-slate-500">~/workspace — zsh</span>
-            <span class="ml-auto flex items-center gap-1.5 font-mono text-[0.62rem] text-mint">
-              <span class="h-1.5 w-1.5 animate-pulse-soft rounded-full bg-mint"></span>
-              online
-            </span>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-          <!-- Output -->
-          <div class="min-h-[19rem] space-y-2.5 p-5 font-mono text-[0.78rem] leading-relaxed sm:min-h-[21rem] sm:p-6 sm:text-[0.82rem]">
+<!-- ══════════ 02 — LEDGER ══════════
+     The three figures are presented as an editorial ledger strip — a
+     labelled row ruled top and bottom — rather than three equal cards.
+     Each cell owns a hairline that draws in on reveal, staggered so the
+     row resolves left to right. -->
+<section class="pb-4">
+  <div class="lab-shell">
+    <div class="lab-ledger grid grid-cols-1 sm:grid-cols-[0.85fr_repeat(3,1fr)]">
+
+      <div class="flex items-center px-1 py-7 sm:px-6 sm:py-9">
+        <span class="font-mono text-[0.68rem] uppercase tracking-[0.28em] text-slate-500">
+          {{ 'ABOUT.SECTION_LEDGER' | translate }}
+        </span>
+      </div>
+
+      <div *ngFor="let s of stats"
+           appScrollReveal data-reveal-direction="up"
+           class="group relative px-7 py-7 sm:px-6 sm:py-9">
+        <div class="font-display text-4xl font-bold tabular-nums sm:text-5xl">
+          <span appCountUp [countTo]="s.value" class="lab-gradient-text">0</span>
+        </div>
+        <p class="mt-2 font-mono text-[0.64rem] uppercase leading-relaxed tracking-[0.18em] text-slate-500">
+          {{ s.label | translate }}
+        </p>
+        <span class="lab-rule absolute inset-x-6 bottom-0 h-px bg-signal-sweep"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 03 — CONSOLE ══════════
+     The terminal becomes a full-width instrument rather than a sidebar
+     box, and its output splits into two columns on wide screens so the
+     stack and the commit log can be read side by side. The seven tech
+     chips keep their existing float slots and timings. -->
+<section class="lab-section relative pb-28 pt-32 lg:pb-32 lg:pt-40">
+  <div class="lab-shell">
+    <div class="mb-14 flex flex-wrap items-end justify-between gap-6">
+      <div>
+        <div class="flex items-center gap-4">
+          <span class="font-mono text-[0.7rem] tabular-nums text-signal">03</span>
+          <span class="lab-index-rule"></span>
+          <span class="font-mono text-[0.68rem] uppercase tracking-[0.28em] text-slate-500">
+            {{ 'ABOUT.SECTION_CONSOLE' | translate }}
+          </span>
+        </div>
+        <h2 class="lab-title mt-5" appScrollReveal data-reveal-direction="up">
+          {{ 'ABOUT.ROLE' | translate }}
+        </h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="lab-shell">
+    <div class="relative">
+      <div class="pointer-events-none absolute inset-x-6 top-0 -z-10 h-24 rounded-[2rem] bg-signal/[0.05] blur-3xl"></div>
+
+      <div class="lab-panel lab-terminal lab-glow-hover overflow-hidden rounded-3xl"
+           (mousemove)="onGlowMove($event); onTerminalMove($event)"
+           (mouseleave)="onTerminalLeave($event)">
+        <div class="flex items-center gap-3 border-b border-white/[0.07] bg-white/[0.02] px-4 py-3">
+          <div class="flex gap-1.5" aria-hidden="true">
+            <span class="h-2.5 w-2.5 rounded-full bg-[#ff5f57]"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-[#28ca42]"></span>
+          </div>
+          <span class="ml-1 font-mono text-[0.7rem] text-slate-500">~/workspace — zsh</span>
+          <span class="ml-auto flex items-center gap-1.5 font-mono text-[0.62rem] text-mint">
+            <span class="h-1.5 w-1.5 animate-pulse-soft rounded-full bg-mint"></span>
+            online
+          </span>
+        </div>
+
+        <div class="grid gap-x-10 p-5 font-mono text-[0.78rem] leading-relaxed sm:p-6 sm:text-[0.82rem] lg:grid-cols-2">
+          <div class="space-y-2.5">
             <div class="flex gap-2.5">
               <span class="shrink-0 text-signal">~/dev</span>
               <span class="text-slate-300">whoami</span>
@@ -141,8 +226,10 @@
                 <span class="text-slate-400">{{ s.value | translate }}</span>
               </li>
             </ul>
+          </div>
 
-            <div class="flex gap-2.5 pt-1.5">
+          <div class="mt-6 space-y-2.5 lg:mt-0">
+            <div class="flex gap-2.5">
               <span class="shrink-0 text-signal">~/dev</span>
               <span class="text-slate-300">git log --oneline</span>
             </div>
@@ -153,64 +240,62 @@
               </li>
             </ul>
 
-            <!-- Live prompt -->
             <div class="flex items-center gap-2.5 pt-2">
               <span class="shrink-0 text-signal">~/dev</span>
               <span class="inline-block h-4 w-1.5 animate-caret bg-signal"></span>
             </div>
           </div>
-
-          <!-- Status bar -->
-          <div class="flex items-center justify-between gap-3 border-t border-white/[0.07]
-                       bg-white/[0.02] px-4 py-2.5 font-mono text-[0.62rem] text-slate-500 sm:px-6">
-            <span class="flex items-center gap-1.5">
-              <i class="fas fa-code-branch text-[0.6rem]"></i>
-              main
-            </span>
-            <span class="hidden sm:inline">UTF-8</span>
-            <span class="flex items-center gap-1.5">
-              <i class="fas fa-microchip text-[0.6rem]"></i>
-              {{ 'ABOUT.LOCATION' | translate }}
-            </span>
-          </div>
         </div>
 
-        <!-- Floating tech chips orbiting the terminal -->
-        <div class="pointer-events-none absolute inset-0 hidden lg:block" aria-hidden="true">
-          <div class="float-slot chip-slot-a">
-            <div class="lab-tag animate-float-soft border-signal/25 bg-ink-850/90 !text-signal-soft shadow-signal-glow backdrop-blur">
-              <i class="fas fa-code"></i> Angular
-            </div>
+        <div class="flex items-center justify-between gap-3 border-t border-white/[0.07]
+                     bg-white/[0.02] px-4 py-2.5 font-mono text-[0.62rem] text-slate-500 sm:px-6">
+          <span class="flex items-center gap-1.5">
+            <i class="fas fa-code-branch text-[0.6rem]"></i>
+            main
+          </span>
+          <span class="hidden sm:inline">UTF-8</span>
+          <span class="flex items-center gap-1.5">
+            <i class="fas fa-microchip text-[0.6rem]"></i>
+            {{ 'ABOUT.LOCATION' | translate }}
+          </span>
+        </div>
+      </div>
+
+      <!-- Ambient layer: seven chips, unchanged slots and timings. -->
+      <div class="pointer-events-none absolute inset-0 hidden lg:block" aria-hidden="true">
+        <div class="float-slot chip-slot-a">
+          <div class="lab-tag animate-float-soft border-signal/25 bg-ink-850/90 !text-signal-soft shadow-signal-glow backdrop-blur">
+            <i class="fas fa-code"></i> Angular
           </div>
-          <div class="float-slot chip-slot-b">
-            <div class="lab-tag animate-float-soft border-plasma/25 bg-ink-850/90 !text-plasma backdrop-blur">
-              <i class="fas fa-brain"></i> ML
-            </div>
+        </div>
+        <div class="float-slot chip-slot-b">
+          <div class="lab-tag animate-float-soft border-plasma/25 bg-ink-850/90 !text-plasma backdrop-blur">
+            <i class="fas fa-brain"></i> ML
           </div>
-          <div class="float-slot chip-slot-c">
-            <div class="lab-tag animate-float-soft border-mint/25 bg-ink-850/90 !text-mint backdrop-blur">
-              <i class="fas fa-microchip"></i> IoT
-            </div>
+        </div>
+        <div class="float-slot chip-slot-c">
+          <div class="lab-tag animate-float-soft border-mint/25 bg-ink-850/90 !text-mint backdrop-blur">
+            <i class="fas fa-microchip"></i> IoT
           </div>
-          <div class="float-slot chip-slot-d">
-            <div class="lab-tag animate-float-soft border-plasma/25 bg-ink-850/90 !text-plasma backdrop-blur">
-              <i class="fab fa-python text-[#ffd343]"></i> Python
-            </div>
+        </div>
+        <div class="float-slot chip-slot-d">
+          <div class="lab-tag animate-float-soft border-plasma/25 bg-ink-850/90 !text-plasma backdrop-blur">
+            <i class="fab fa-python text-[#ffd343]"></i> Python
           </div>
-          <div class="float-slot chip-slot-e">
-            <div class="lab-tag animate-float-soft border-ion/25 bg-ink-850/90 !text-ion-soft backdrop-blur">
-              <i class="fab fa-docker"></i> Docker
-            </div>
+        </div>
+        <div class="float-slot chip-slot-e">
+          <div class="lab-tag animate-float-soft border-ion/25 bg-ink-850/90 !text-ion-soft backdrop-blur">
+            <i class="fab fa-docker"></i> Docker
           </div>
-          <div class="float-slot chip-slot-f">
-            <div class="lab-tag animate-float-soft border-ion/25 bg-ink-850/90 !text-ion-soft backdrop-blur">
-              <i class="fas fa-database"></i> .NET
-            </div>
+        </div>
+        <div class="float-slot chip-slot-f">
+          <div class="lab-tag animate-float-soft border-ion/25 bg-ink-850/90 !text-ion-soft backdrop-blur">
+            <i class="fas fa-database"></i> .NET
           </div>
-          <div class="float-slot chip-slot-g">
-            <div class="lab-tag animate-float-soft border-signal/25 bg-ink-850/90 !text-signal-soft backdrop-blur">
-              <i class="fab fa-react"></i> React
-            </div>
+        </div>
+        <div class="float-slot chip-slot-g">
+          <div class="lab-tag animate-float-soft border-signal/25 bg-ink-850/90 !text-signal-soft backdrop-blur">
+            <i class="fab fa-react"></i> React
           </div>
         </div>
       </div>
@@ -218,58 +303,57 @@
   </div>
 </section>
 
-<!-- ══════════ STATS ══════════ -->
-<section class="pb-6">
-  <div class="lab-shell">
-    <div class="lab-panel grid grid-cols-1 divide-y divide-white/[0.06] sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-      <div *ngFor="let s of stats; let i = index"
-           appScrollReveal data-reveal-direction="up"
-           class="group relative px-7 py-8 text-center sm:py-9">
-        <div class="font-display text-4xl font-bold tabular-nums sm:text-5xl">
-          <span appCountUp [countTo]="s.value" class="lab-gradient-text">0</span>
-        </div>
-        <p class="mt-2 font-mono text-[0.68rem] uppercase tracking-[0.2em] text-slate-500">
-          {{ s.label | translate }}
-        </p>
-        <!-- Hover accent line -->
-        <span class="absolute inset-x-7 bottom-0 h-px scale-x-0 bg-signal-sweep transition-transform
-                     duration-500 ease-smooth group-hover:scale-x-100"></span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ WHAT I BUILD ══════════ -->
+<!-- ══════════ 04 — PRACTICE ══════════
+     The four focus areas are no longer four identical cards. They read as
+     a set of ruled entries: an oversized ghost numeral, the discipline,
+     and the sentence describing it. Hovering fills the numeral and grows
+     an accent bar from the left edge. -->
 <section class="lab-section">
   <div class="lab-shell">
-    <div class="mb-14 max-w-2xl">
-      <span class="lab-kicker" appScrollReveal data-reveal-direction="up">
+    <div class="mb-14 flex flex-wrap items-end justify-between gap-6">
+      <div class="max-w-2xl">
+        <div class="flex items-center gap-4">
+          <span class="font-mono text-[0.7rem] tabular-nums text-signal">04</span>
+          <span class="lab-index-rule"></span>
+          <span class="font-mono text-[0.68rem] uppercase tracking-[0.28em] text-slate-500">
+            {{ 'ABOUT.SECTION_PRACTICE' | translate }}
+          </span>
+        </div>
+        <h2 class="lab-title mt-5" appScrollReveal data-reveal-direction="up" data-delay="120">
+          {{ 'ABOUT.TITLE_LARGE' | translate }}
+        </h2>
+      </div>
+      <p class="font-mono text-[0.68rem] uppercase tracking-[0.2em] text-slate-600">
         {{ 'ABOUT.CURRENT_FOCUS.TITLE' | translate }}
-      </span>
-      <h2 class="lab-title mt-5" appScrollReveal data-reveal-direction="up" data-delay="120">
-        {{ 'ABOUT.TITLE_LARGE' | translate }}
-      </h2>
+      </p>
     </div>
 
-    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="border-t border-white/[0.06]">
       <article
         *ngFor="let f of focusAreas; let i = index"
         appScrollReveal data-reveal-direction="up"
-        [attr.data-delay]="i * 90"
-        class="lab-panel lab-glow-hover group flex flex-col p-7 transition-all duration-500
-               ease-smooth hover:-translate-y-1.5 hover:border-signal/30"
-        (mousemove)="onGlowMove($event)"
+        [attr.data-delay]="i * 80"
+        class="lab-practice-row group grid grid-cols-[auto_1fr] items-center gap-x-6 gap-y-3
+               border-b border-white/[0.06] py-7 pl-5 pr-2 sm:gap-x-10 sm:py-8 lg:grid-cols-[auto_minmax(0,1fr)_minmax(0,1.15fr)]"
       >
-        <span class="mb-5 grid h-12 w-12 place-items-center rounded-2xl border border-white/10
-                     bg-white/[0.04] text-ion transition-all duration-500 ease-smooth
-                     group-hover:border-signal/40 group-hover:text-signal">
-          <i class="fas text-lg" [ngClass]="f.icon"></i>
+        <span class="lab-ghost-num font-display text-5xl font-bold tabular-nums sm:text-6xl lg:text-7xl">
+          0{{ i + 1 }}
         </span>
-        <h3 class="font-display text-lg font-semibold">{{ 'ABOUT.CURRENT_FOCUS.' + f.key + '.TITLE' | translate }}</h3>
-        <p class="mt-2.5 text-sm leading-relaxed text-slate-400">{{ 'ABOUT.CURRENT_FOCUS.' + f.key + '.DESCRIPTION' | translate }}</p>
-        <span class="mt-6 font-mono text-[0.62rem] text-slate-600">
-          0{{ i + 1 }} / 04
-        </span>
+
+        <div class="flex items-center gap-4">
+          <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-white/10
+                       bg-white/[0.06] text-ion transition-colors duration-500 ease-smooth
+                       group-hover:text-signal">
+            <i class="fas text-base" [ngClass]="f.icon"></i>
+          </span>
+          <h3 class="font-display text-lg font-semibold sm:text-xl">
+            {{ 'ABOUT.CURRENT_FOCUS.' + f.key + '.TITLE' | translate }}
+          </h3>
+        </div>
+
+        <p class="col-start-2 max-w-xl text-sm leading-relaxed text-slate-400 lg:col-start-3">
+          {{ 'ABOUT.CURRENT_FOCUS.' + f.key + '.DESCRIPTION' | translate }}
+        </p>
       </article>
     </div>
   </div>

@@ -23,9 +23,39 @@ export class SplitTextDirective implements AfterViewInit {
     this.ngZone.runOutsideAngular(() => {
       requestAnimationFrame(() => {
         this.split(el, mode);
+        this.revealWhenVisible(el);
         this.watchForAngularReinsert(el, mode);
       });
     });
+  }
+
+  /**
+   * Split spans start at opacity 0, so the element is revealed once it enters
+   * the viewport. Without this the text would stay invisible.
+   */
+  private revealWhenVisible(el: HTMLElement): void {
+    const reveal = () => el.classList.add('is-revealed');
+    if (!('IntersectionObserver' in window)) {
+      reveal();
+      return;
+    }
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            reveal();
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    // Safety net: never leave text hidden if the observer never fires.
+    setTimeout(() => {
+      el.classList.add('is-revealed');
+      observer.disconnect();
+    }, 2500);
   }
 
   private split(el: HTMLElement, mode: string): void {
@@ -101,6 +131,10 @@ export class SplitTextDirective implements AfterViewInit {
             });
           } else {
             this.split(el, mode);
+            // A language change replaced the text: re-run the reveal so the
+            // newly inserted spans are not stuck at opacity 0.
+            el.classList.remove('is-revealed');
+            this.revealWhenVisible(el);
           }
           pending = false;
         });

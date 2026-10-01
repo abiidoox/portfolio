@@ -1,6 +1,11 @@
-<button class="theme-switcher" 
+<button type="button"
         (click)="toggleTheme()"
         [attr.aria-label]="getThemeLabel()"
-        [title]="getThemeLabel()">
-  <span class="theme-icon">{{getThemeIcon()}}</span>
-</button> 
+        [title]="getThemeLabel()"
+        aria-keyshortcuts="t"
+        class="grid h-9 w-9 place-items-center rounded-lg border border-white/10 bg-white/[0.03]
+               text-slate-400 transition-all duration-300 hover:border-signal/50 hover:text-signal">
+  <i class="fas text-[0.8rem]"
+     [class.fa-sun]="currentTheme === 'dark'"
+     [class.fa-moon]="currentTheme === 'light'"></i>
+</button>

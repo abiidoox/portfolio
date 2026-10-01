@@ -8,12 +8,15 @@
     "OG_DESCRIPTION": "Página no encontrada - el contenido que buscas no existe en este sitio de portafolio."
   },
   "ABOUT": {
-    "PROFILE_ALT": "Foto de Perfil",
     "NAME": "Abderrazzaq El Abdouni",
     "LOCATION": "Rabat, Marruecos",
     "TITLE_LARGE": "Creando Experiencias Digitales",
     "GREETING": "Hola, soy",
     "AVAILABLE": "Disponible para nuevas oportunidades",
+    "SECTION_MASTHEAD": "Identidad",
+    "SECTION_LEDGER": "Registro",
+    "SECTION_CONSOLE": "Consola",
+    "SECTION_PRACTICE": "Práctica",
     "ROTATE_1": "experiencias web.",
     "BIO": "Soy un Ingeniero Full Stack apasionado con sede en Rabat, especializado en desarrollo web, IoT y Machine Learning. Combino experiencia técnica e innovación para crear soluciones de software escalables y de alto rendimiento.",
     "SKILLS": {
@@ -62,7 +65,8 @@
       "OPS": "Docker · Git · Postman"
     },
     "META_DESCRIPTION": "Portfolio de Abderrazzaq El Abdouni, desarrollador full-stack especializado en desarrollo web, IoT y aprendizaje automático. Descubre proyectos, habilidades, CV e información de contacto.",
-    "OG_DESCRIPTION": "Explora el portafolio de Abderrazzaq El Abdouni que muestra proyectos en desarrollo web, IoT, IA y mucho más."
+    "OG_DESCRIPTION": "Explora el portafolio de Abderrazzaq El Abdouni que muestra proyectos en desarrollo web, IoT, IA y mucho más.",
+    "TITLE": "Desarrollador Full-Stack"
   },
   "header": {
     "home": "Inicio",
@@ -101,15 +105,33 @@
       "AI": "IA & ML",
       "DESKTOP": "Escritorio"
     },
-    "AI_CHAT": {},
-    "FACE_RECOGNITION": {},
-    "SCHEDULE_SYSTEM": {},
-    "SPAM_DETECTION": {},
-    "EMPLOYMENT_PLATFORM": {},
-    "SCHOOL_MANAGEMENT_APP": {},
-    "SCHOOL_MANAGEMENT_APP_2": {},
-    "OPTICIAN_ORDER_STOCK": {},
-    "COMPANY_DOMICILIATION": {},
+    "AI_CHAT": {
+      "LONG_DESCRIPTION": "Construcción de un asistente conversacional de IA full-stack desde cero, impulsado por el modelo de lenguaje TinyLlama servido a través de un backend de alto rendimiento FastAPI con Server-Sent Events (SSE) para streaming de respuestas en tiempo real. La arquitectura separa la inferencia de la capa web, permitiendo que el LLM genere tokens incrementalmente mientras el frontend los renderiza a medida que llegan. La aplicación SPA React.js presenta una interfaz de chat moderna con renderizado en tiempo real, historial de conversaciones persistente almacenado en local storage, soporte completo de Markdown para formato enriquecido y bloques de código con resaltado de sintaxis. La autenticación y gestión de sesiones garantizan la privacidad de las conversaciones. Toda la pila — API backend, servicio de inferencia LLM y frontend React — está completamente conteneurizada con Docker y Docker Compose, permitiendo despliegue con un solo comando y escalado horizontal."
+    },
+    "FACE_RECOGNITION": {
+      "LONG_DESCRIPTION": "Diseño y construcción de un pipeline completo de reconocimiento facial IoT que abarca hardware, backend y capa móvil. Un módulo de cámara ESP32-S3 captura video y lo transmite por RTSP a un servidor backend Django, donde FFmpeg convierte el stream crudo a HLS para reproducción compatible con navegadores. Del lado del servidor, la detección facial es manejada por SCRFD mientras ResNet genera embeddings faciales de alta dimensión para la coincidencia de identidad contra una base de datos de usuarios inscritos almacenada en PostgreSQL con caché Redis para búsquedas de baja latencia. La aplicación móvil React Native proporciona un visor de feed de cámara en vivo, flujo de inscripción con captura de fotos y notificaciones push en tiempo real cuando se detecta un rostro reconocido. El sistema funciona en Ubuntu 22.04 con Supervisor gestionando todos los servicios, y usa conexiones WebSocket para actualizaciones instantáneas entre el servidor y el cliente móvil."
+    },
+    "SCHEDULE_SYSTEM": {
+      "LONG_DESCRIPTION": "Desarrollo de un sistema completo de gestión de horarios para instituciones académicas con ASP.NET MVC, Entity Framework y SQL Server. La aplicación resuelve el problema complejo de generación de horarios implementando detección de conflictos basada en restricciones que identifica automáticamente solapamientos entre salas, instructores y grupos de estudiantes. Los administradores pueden crear, modificar y publicar horarios a través de una interfaz intuitiva de arrastrar y soltar, mientras los instructores reciben recordatorios automáticos por email para sus próximas clases. El control de acceso basado en roles separa permisos entre administradores, instructores y jefes de departamento, cada uno con vistas personalizadas del panel. Las vistas de calendario se pueden exportar en formato iCal para integración con aplicaciones de calendario externas, y el módulo de informes genera estadísticas de utilización de salas y análisis de carga docente."
+    },
+    "SPAM_DETECTION": {
+      "LONG_DESCRIPTION": "Construcción de un pipeline de machine learning de extremo a extremo para clasificación de correo electrónico en spam o legítimo, cubriendo cada etapa desde la ingesta de datos crudos hasta la evaluación del modelo. El pipeline de preprocesamiento maneja tokenización, conversión a minúsculas, eliminación de palabras vacías, puntuación y lematización para normalizar el texto. La extracción de características usa vectorización TF-IDF con soporte de bigramas para capturar patrones contextuales de palabras, reduciendo texto de alta dimensionalidad a representaciones numéricas dispersas. Dos clasificadores — K-Vecinos Más Cercanos y Árbol de Decisión — fueron entrenados y evaluados con validación cruzada estratificada k-fold, con métricas que incluyen precisión, recall, F1-score y análisis de matriz de confusión. El mejor modelo fue serializado con pickle para inferencia, y el experimento completo rastreado en notebook Jupyter con curvas ROC y rankings de importancia de características."
+    },
+    "EMPLOYMENT_PLATFORM": {
+      "LONG_DESCRIPTION": "Diseño y desarrollo de una plataforma web full-stack que agrega ofertas de empleo y prácticas de múltiples fuentes usando web scraping automatizado. El backend Spring Boot emplea Selenium WebDriver con Chrome headless para raspar ofertas de Indeed y Rekrute, aplicando pipelines de normalización para estandarizar títulos de trabajo, nombres de empresas, ubicaciones y rangos salariales en un esquema MySQL unificado. La seguridad se maneja con Spring Security con autenticación basada en roles y gestión de tokens JWT. El frontend Angular ofrece búsqueda avanzada con filtrado multi-criterio (ubicación, tipo de contrato, nivel de experiencia), alertas de búsqueda guardada, ofertas favoritas y un motor de recomendación personalizado basado en preferencias e historial de navegación. Los dashboards analíticos de Chart.js visualizan tendencias del mercado, distribuciones salariales y estadísticas de aplicación."
+    },
+    "SCHOOL_MANAGEMENT_APP": {
+      "LONG_DESCRIPTION": "Aplicación web completa de gestión escolar construida con ASP.NET Web Forms, HTML, CSS, JavaScript y SQL Server, diseñada para digitalizar los flujos de trabajo administrativos y académicos de instituciones educativas. La plataforma maneja el ciclo de vida completo del estudiante desde la inscripción hasta la graduación, incluyendo registro con asignación de clase, seguimiento de asistencia diaria con vistas de calendario, gestión continua de evaluaciones y calificaciones de exámenes con promedios ponderados, y generación automatizada de reportes de calificaciones con exportación PDF imprimable. Los administradores acceden a un panel centralizado con analíticas en tiempo real mostrando tendencias de inscripción, tasas de asistencia y distribuciones de rendimiento académico. Los instructores tienen vistas con permisos por rol para gestionar sus clases, ingresar calificaciones y registrar ausencias. El sistema aplica control de acceso basado en roles para garantizar la privacidad de datos."
+    },
+    "SCHOOL_MANAGEMENT_APP_2": {
+      "LONG_DESCRIPTION": "Desarrollo de una aplicación de escritorio Java Swing para gestión escolar sin conexión, diseñada para instituciones sin acceso a internet confiable. La aplicación se conecta a una base de datos MySQL y proporciona una interfaz con pestañas que cubre inscripción de estudiantes con perfiles demográficos, registro diario de asistencia, calificación continua y exámenes con distribuciones de ponderación configurables, y generación automatizada de reportes de calificaciones. Las funciones de importación/exportación permiten operaciones masivas mediante archivos CSV. El módulo de informes produce reportes de calificaciones PDF listos para imprimir con identidad visual del colegio, escalas de calificación configurables y cálculos de ranking de clase. Construida con patrón MVC para mantenibilidad, la aplicación incluye validación de entrada, manejo de errores y un utilitario de respaldo/restauración."
+    },
+    "OPTICIAN_ORDER_STOCK": {
+      "LONG_DESCRIPTION": "Desarrollo de una aplicación de escritorio completa para gestión de tiendas de óptica usando C# con Windows Forms y procedimientos almacenados T-SQL en Microsoft SQL Server. El sistema maneja el flujo completo de operaciones de venta al detalle: seguimiento de inventario en tiempo real con niveles de stock y escaneo de códigos de barras, colocación de pedidos a proveedores con generación de órdenes de compra y seguimiento de entregas, registros de prescripciones de clientes con especificaciones de lentes y monitoreo de vencimiento, transacciones punto de venta con impresión de recibos y procesamiento de pagos, y alertas automáticas de stock bajo activadas por reglas de umbral configurables. El módulo de informes genera reportes exportables en Excel y PDF cubriendo rendimiento de ventas, valoración de inventario, tiempos de entrega de proveedores y analíticas de prescripciones de clientes."
+    },
+    "COMPANY_DOMICILIATION": {
+      "LONG_DESCRIPTION": "Plataforma web full-stack para la gestión de servicios de domiciliación de empresas, permitiendo a las compañías establecer direcciones legales y recibir soporte administrativo sin mantener una oficina física. Construida con Spring Boot en el backend y Angular en el frontend, la plataforma incluye flujos de suscripción en línea con selección de planes e integración de pagos, un panel de control completo del cliente mostrando servicios activos y próximas renovaciones, gestión de contratos y documentos con capacidades de firma digital vía integración con API de DocuSign, y un sistema de notificación multi-canal (email, SMS, in-app) para actualizaciones de servicios y recordatorios de vencimientos. La seguridad se asegura con Spring Security con autenticación JWT, control de acceso por roles separando permisos de cliente/agente/administrador, y MySQL respaldando todos los datos transaccionales con registro completo de auditoría."
+    },
     "PORTFOLIO_LABEL": "Portafolio",
     "FEATURED": "Destacado",
     "NO_RESULTS": "No hay proyectos en esta categoría.",
@@ -121,7 +143,13 @@
     "TITLE_SMALL": "Lo que hago",
     "TITLE_LARGE": "Mis Habilidades y Experiencia",
     "SUBTITLE": "Me especializo en una variedad de tecnologías y frameworks modernos, expandiendo continuamente mis habilidades para ofrecer soluciones innovadoras.",
-    "CATEGORIES": {},
+    "CATEGORIES": {
+      "ALL": "Todos",
+      "LANGUAGES": "Lenguajes",
+      "FRAMEWORKS": "Frameworks",
+      "DATABASES": "Bases de datos",
+      "TOOLS": "Herramientas y Prácticas"
+    },
     "LEVEL": {},
     "EXPERIENCE": {},
     "DETAILS": {
@@ -157,7 +185,8 @@
     "ITEMS_SUFFIX": "tecnologías",
     "NO_RESULTS": "No hay habilidades en esta categoría.",
     "META_DESCRIPTION": "Inventario de habilidades técnicas de Abderrazzaq El Abdouni incluyendo lenguajes de programación, frameworks, bases de datos y herramientas de desarrollo.",
-    "OG_DESCRIPTION": "Explora la lista completa de habilidades de Abderrazzaq El Abdouni que incluye C#, Java, Python, Angular, React, SQL Server, MongoDB, Docker y más."
+    "OG_DESCRIPTION": "Explora la lista completa de habilidades de Abderrazzaq El Abdouni que incluye C#, Java, Python, Angular, React, SQL Server, MongoDB, Docker y más.",
+    "TITLE": "Habilidades"
   },
   "RESUME": {
     "TITLE": "Mi Currículum",
@@ -311,5 +340,22 @@
     "VIEW_WORK": "Ver mis proyectos",
     "SKIP_TO_CONTENT": "Ir al contenido"
   },
-  "A11Y": {}
+  "A11Y": {
+    "BACK_TO_TOP": "Volver arriba",
+    "FILTER_PROJECTS": "Filtrar proyectos por categoría",
+    "FILTER_SKILLS": "Filtrar habilidades por categoría",
+    "FOOTER": "Pie de página",
+    "GITHUB": "Perfil de GitHub",
+    "LINKEDIN": "Perfil de LinkedIn",
+    "MODAL_CLOSE": "Cerrar los detalles del proyecto",
+    "NAV_HOME": "Abderrazzaq El Abdouni — inicio",
+    "NAV_MAIN": "Navegación principal",
+    "SELECT_LANGUAGE": "Seleccionar idioma",
+    "PROFILE_PHOTO": "Retrato de Abderrazzaq El Abdouni",
+    "OPEN_MENU": "Abrir menú",
+    "CLOSE_MENU": "Cerrar menú"
+  },
+  "SEO": {
+    "DEFAULT_DESCRIPTION": "Portafolio de Abderrazzaq El Abdouni, desarrollador full-stack especializado en aplicaciones web Angular y .NET. Proyectos, habilidades, CV y contacto."
+  }
 }

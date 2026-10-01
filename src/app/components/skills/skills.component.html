@@ -1,56 +1,93 @@
-<div class="page-v2 skills-v2">
+<section class="lab-section pt-10 sm:pt-14">
+  <div class="lab-shell">
 
-  <!-- ===== HEADER ===== -->
-  <header class="skills-head">
-    <span class="kicker-line" appScrollReveal data-reveal-direction="up">{{ 'SKILLS.TITLE_SMALL' | translate }}</span>
-    <h1 class="display-title" appScrollReveal data-reveal-direction="up" data-delay="120">
-      <span class="text-gradient-animated">{{ 'SKILLS.TITLE_LARGE' | translate }}</span>
-    </h1>
-    <p class="skills-sub" appScrollReveal data-reveal-direction="up" data-delay="220">{{ 'SKILLS.SUBTITLE' | translate }}</p>
-  </header>
+    <!-- Header -->
+    <header class="mb-12 max-w-2xl">
+      <span class="lab-kicker" appScrollReveal data-reveal-direction="up">{{ 'SKILLS.TITLE_SMALL' | translate }}</span>
+      <h1 class="lab-title mt-5" appScrollReveal data-reveal-direction="up" data-delay="100">
+        <span class="lab-gradient-text">{{ 'SKILLS.TITLE_LARGE' | translate }}</span>
+      </h1>
+      <p class="lab-lead mt-5 text-pretty" appScrollReveal data-reveal-direction="up" data-delay="200">
+        {{ 'SKILLS.SUBTITLE' | translate }}
+      </p>
+    </header>
 
-  <!-- ===== CATEGORY CHIPS ===== -->
-  <div class="filters-v2" appScrollReveal data-reveal-direction="up" data-delay="300">
-    <button
-      *ngFor="let category of categories"
-      [class.active]="selectedCategory === category"
-      (click)="selectedCategory = category"
-      class="filter-chip"
-    >
-      <i [class]="'fas ' + getCategoryIcon(category)"></i>
-      {{ 'SKILLS.CATEGORIES.' + category.toUpperCase() | translate }}
-    </button>
-  </div>
-
-  <!-- ===== SKILL CARDS ===== -->
-  <div class="skill-grid-v2">
-    <div
-      class="skill-cell glass-card"
-      *ngFor="let skill of filteredSkills"
-      [attr.data-category]="skill.category"
-      appScrollReveal
-      data-reveal-direction="up"
-      appTilt
-    >
-      <div class="sc-glow" aria-hidden="true"></div>
-      <div class="sc-top">
-        <div class="sc-icon"><i [class]="getSkillIconClass(skill.icon)"></i></div>
-        <span class="sc-level" [class]="'lvl-' + getSkillLevel(skill.level).toLowerCase()">
-          {{ 'SKILLS.LEVEL.' + getSkillLevel(skill.level).toUpperCase() | translate }}
-        </span>
-      </div>
-
-      <h3>{{ skill.name }}</h3>
-
-      <div class="sc-meta">
-        <span *ngIf="skill.experience"><i class="fas fa-clock"></i> {{ skill.experience }} {{ formatExperience(skill.experience) }}</span>
-        <span *ngIf="skill.projects"><i class="fas fa-code-branch"></i> {{ skill.projects }} {{ 'SKILLS.PROJECTS' | translate }}</span>
-      </div>
-
-      <div class="skill-track">
-        <span class="skill-fill" [style.--w.%]="skill.level"></span>
-      </div>
+    <!-- Category filters -->
+    <div class="mb-12 flex flex-wrap gap-2.5"
+         appScrollReveal data-reveal-direction="up" data-delay="280"
+         role="group" [attr.aria-label]="'A11Y.FILTER_SKILLS' | translate">
+      <button
+        *ngFor="let c of categories"
+        type="button"
+        class="lab-pill"
+        [attr.aria-pressed]="selectedCategory === c"
+        (click)="selectCategory(c)"
+      >
+        <i class="fas text-[0.7rem]" [ngClass]="categoryIcon(c)"></i>
+        <span>{{ 'SKILLS.CATEGORIES.' + c.toUpperCase() | translate }}</span>
+        <span class="font-mono text-[0.62rem] opacity-55">{{ countFor(c) }}</span>
+      </button>
     </div>
-  </div>
 
-</div>
+    <!-- Ecosystem grid: one panel per category, items inside -->
+    <div class="space-y-6">
+      <ng-container *ngFor="let group of visibleGroups; let g = index">
+        <article
+          appScrollReveal data-reveal-direction="up" [attr.data-delay]="g * 90"
+          class="lab-panel lab-glow-hover overflow-hidden rounded-3xl transition-all duration-500
+                 ease-smooth hover:border-signal/25"
+          (mousemove)="onGlowMove($event)"
+        >
+          <!-- Category header -->
+          <header class="flex flex-wrap items-center justify-between gap-4 border-b border-white/[0.06] px-6 py-5 sm:px-8">
+            <div class="flex items-center gap-3.5">
+              <span class="grid h-10 w-10 place-items-center rounded-xl border border-white/10
+                           bg-white/[0.04] text-ion">
+                <i class="fas" [ngClass]="categoryIcon(group.category)"></i>
+              </span>
+              <div>
+                <h2 class="font-display text-lg font-semibold">
+                  {{ 'SKILLS.CATEGORIES.' + group.category.toUpperCase() | translate }}
+                </h2>
+                <p class="font-mono text-[0.65rem] text-slate-500">
+                  {{ group.items.length }} {{ 'SKILLS.ITEMS_SUFFIX' | translate }}
+                </p>
+              </div>
+            </div>
+
+            <!-- Category accent rule -->
+            <span class="hidden h-px flex-1 bg-gradient-to-r from-signal/40 to-transparent sm:block"></span>
+          </header>
+
+          <!-- Item chips -->
+          <div class="flex flex-wrap gap-2.5 p-6 sm:p-8">
+            <div
+              *ngFor="let s of group.items; let i = index"
+              class="group flex items-center gap-3 rounded-2xl border border-white/[0.07]
+                     bg-white/[0.02] px-4 py-3 transition-all duration-400 ease-smooth
+                     hover:-translate-y-1 hover:border-signal/40 hover:bg-signal/[0.05]"
+              [style.transition-delay.ms]="i * 35"
+            >
+              <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-white/[0.04]
+                           transition-colors duration-400 group-hover:bg-signal/10">
+                <i class="text-base" [class]="s.icon"></i>
+              </span>
+              <span class="flex flex-col leading-tight">
+                <span class="font-display text-sm font-medium text-slate-200 transition-colors
+                             duration-300 group-hover:text-white">{{ s.name }}</span>
+              </span>
+            </div>
+          </div>
+        </article>
+      </ng-container>
+    </div>
+
+    <!-- Empty state -->
+    <div *ngIf="visibleGroups.length === 0"
+         class="lab-panel rounded-3xl px-8 py-16 text-center">
+      <i class="fas fa-folder-open text-2xl text-slate-600"></i>
+      <p class="mt-4 text-slate-400">{{ 'SKILLS.NO_RESULTS' | translate }}</p>
+    </div>
+
+  </div>
+</section>

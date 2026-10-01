@@ -1,29 +1,35 @@
-<div class="language-switcher" 
-     role="combobox" 
-     [attr.aria-expanded]="isDropdownOpen" 
-     [attr.aria-haspopup]="'listbox'">
-  <button class="current-language" 
+<div class="relative">
+  <button type="button"
+          id="language-trigger"
           (click)="toggleDropdown()"
-          [attr.aria-label]="'Select language. Current language: ' + getCurrentLanguage().name"
-          [attr.aria-controls]="'language-list'">
-    <i [class]="getCurrentLanguage().icon"></i>
-    <i class="fas fa-chevron-down arrow" [class.open]="isDropdownOpen"></i>
+          [attr.aria-label]="triggerLabel"
+          [attr.aria-expanded]="isDropdownOpen"
+          aria-haspopup="true"
+          aria-controls="language-menu"
+          aria-keyshortcuts="l"
+          class="grid h-9 w-9 place-items-center rounded-lg border border-white/10 bg-white/[0.03]
+                 text-slate-400 transition-all duration-300 hover:border-signal/50 hover:text-signal">
+    <i [class]="getCurrentLanguage().icon" class="text-[0.8rem]"></i>
   </button>
 
-  <div class="language-dropdown" 
-       *ngIf="isDropdownOpen"
-       id="language-list"
-       role="listbox">
-    <button class="language-option" 
-            *ngFor="let lang of languages; let i = index" 
+  <div *ngIf="isDropdownOpen"
+       id="language-menu"
+       role="menu"
+       aria-labelledby="language-trigger"
+       class="lab-dark-panel absolute right-0 top-11 z-50 w-44 overflow-hidden rounded-xl border
+              border-white/10 p-1.5 shadow-lift backdrop-blur-xl animate-fade-in">
+    <button type="button"
+            #optionBtn
+            *ngFor="let lang of languages"
             (click)="switchLanguage(lang.code)"
-            [class.active]="lang.code === currentLanguage"
-            [class.focused]="i === focusedIndex"
-            [attr.aria-selected]="lang.code === currentLanguage"
-            role="option"
-            [attr.tabindex]="i === focusedIndex ? '0' : '-1'">
-      <i [class]="lang.icon"></i>
-      <span class="name">{{lang.name}}</span>
+            role="menuitemradio"
+            [attr.aria-checked]="lang.code === currentLanguage"
+            [attr.lang]="lang.code"
+            class="lab-menu-item flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-left
+                   font-display text-[0.82rem] transition-colors duration-200">
+      <i [class]="lang.icon" class="text-[0.7rem]" aria-hidden="true"></i>
+      <span>{{ lang.name }}</span>
+      <i *ngIf="lang.code === currentLanguage" class="fas fa-check ml-auto text-[0.6rem]" aria-hidden="true"></i>
     </button>
   </div>
-</div> 
+</div>

@@ -7,7 +7,7 @@ import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
       class="btt"
       [class.visible]="visible"
       (click)="scrollTop()"
-      aria-label="Back to top"
+      [attr.aria-label]="'A11Y.BACK_TO_TOP' | translate"
     >
       <svg class="btt-ring" viewBox="0 0 56 56" aria-hidden="true">
         <circle class="btt-track" cx="28" cy="28" r="25" pathLength="100"></circle>

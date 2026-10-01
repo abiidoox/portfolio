@@ -23,7 +23,6 @@ import { ToastContainerComponent } from './components/shared/toast-container/toa
 import { ToastService } from './services/toast.service';
 import { ScrollRevealDirective } from './directives/scroll-reveal.directive';
 import { CountUpDirective } from './directives/count-up.directive';
-import { TiltDirective } from './directives/tilt.directive';
 import { ProjectModalModule } from './components/shared/project-modal/project-modal.module';
 
 // Factory function for TranslateHttpLoader
@@ -54,7 +53,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     LanguageSwitcherModule,
     ScrollRevealDirective,
     CountUpDirective,
-    TiltDirective,
     ProjectModalModule,
     TranslateModule.forRoot({
       loader: {

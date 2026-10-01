@@ -8,12 +8,15 @@
     "OG_DESCRIPTION": "Page non trouvée - le contenu recherché n'existe pas sur ce site portfolio."
   },
   "ABOUT": {
-    "PROFILE_ALT": "Photo de Profil",
     "NAME": "Abderrazzaq El Abdouni",
     "LOCATION": "Rabat, Maroc",
     "TITLE_LARGE": "Création d'Expériences Numériques",
     "GREETING": "Bonjour, je suis",
     "AVAILABLE": "Disponible pour de nouvelles opportunités",
+    "SECTION_MASTHEAD": "Identité",
+    "SECTION_LEDGER": "Registre",
+    "SECTION_CONSOLE": "Console",
+    "SECTION_PRACTICE": "Pratique",
     "ROTATE_1": "des expériences web.",
     "BIO": "Je suis un Ingénieur Full Stack passionné basé à Rabat, spécialisé dans le développement web, l'IoT et le Machine Learning. Je combine expertise technique et innovation pour créer des solutions logicielles performantes et évolutives.",
     "SKILLS": {
@@ -62,7 +65,8 @@
       "OPS": "Docker · Git · Postman"
     },
     "META_DESCRIPTION": "Portfolio d'Abderrazzaq El Abdouni, développeur full-stack spécialisé en développement web, IoT et apprentissage automatique. Découvrez les projets, compétences, CV et informations de contact.",
-    "OG_DESCRIPTION": "Explorez le portfolio d'Abderrazzaq El Abdouni présentant des projets en développement web, IoT, IA et plus encore."
+    "OG_DESCRIPTION": "Explorez le portfolio d'Abderrazzaq El Abdouni présentant des projets en développement web, IoT, IA et plus encore.",
+    "TITLE": "Développeur Full-Stack"
   },
   "PROJECTS": {
     "TITLE": "Mes Projets",
@@ -75,15 +79,33 @@
       "AI": "IA & ML",
       "DESKTOP": "Bureau"
     },
-    "AI_CHAT": {},
-    "FACE_RECOGNITION": {},
-    "SCHEDULE_SYSTEM": {},
-    "SPAM_DETECTION": {},
-    "EMPLOYMENT_PLATFORM": {},
-    "SCHOOL_MANAGEMENT_APP": {},
-    "SCHOOL_MANAGEMENT_APP_2": {},
-    "OPTICIAN_ORDER_STOCK": {},
-    "COMPANY_DOMICILIATION": {},
+    "AI_CHAT": {
+      "LONG_DESCRIPTION": "Construit un assistant conversationnel IA full-stack de A à Z, propulsé par le modèle de langage TinyLlama servi via un backend haute performance FastAPI avec Server-Sent Events (SSE) pour le streaming temps réel des réponses. L'architecture sépare l'inférence du web, permettant au LLM de générer les tokens de manière incrémentale tandis que le frontend les rend au fur et à mesure. L'application React.js single-page propose une interface de chat moderne avec rendu en temps réel, historique des conversations persistant stocké en local storage, support Markdown complet pour le formatage riche et blocs de code avec syntaxe colorisée. L'authentification et la gestion des sessions garantissent la confidentialité des échanges. L'ensemble de la pile — API backend, service d'inférence LLM et frontend React — est entièrement conteneurisé avec Docker et Docker Compose, permettant un déploiement en une commande et un scaling horizontal."
+    },
+    "FACE_RECOGNITION": {
+      "LONG_DESCRIPTION": "Conception et développement d'un pipeline complet de reconnaissance faciale IoT couvrant le matériel, le backend et le mobile. Un module caméra ESP32-S3 capture la vidéo et la diffuse via RTSP vers un serveur backend Django, où FFmpeg convertit le flux brut en HLS pour une lecture compatible navigateur. Côté serveur, la détection faciale est gérée par SCRFD tandis que ResNet génère des embeddings faciaux de haute dimension pour la correspondance d'identité contre une base de données d'utilisateurs enregistrés stockée dans PostgreSQL avec mise en cache Redis pour des recherches à faible latence. L'application mobile React Native fournit un visualiseur de flux caméra en direct, un workflow d'inscription avec capture photo et des notifications push en temps réel lorsqu'un visage reconnu est détecté. Le système tourne sur Ubuntu 22.04 avec Supervisor gérant tous les services, et utilise des connexions WebSocket pour les mises à jour instantanées entre le serveur et le client mobile."
+    },
+    "SCHEDULE_SYSTEM": {
+      "LONG_DESCRIPTION": "Développement d'un système de gestion des emplois du temps complet pour les institutions académiques avec ASP.NET MVC, Entity Framework et SQL Server. L'application résout le problème complexe de la génération d'emplois du temps en implémentant une détection de conflits basée sur des contraintes identifiant automatiquement les chevauchements entre salles, enseignants et groupes d'étudiants. Les administrateurs peuvent créer, modifier et publier les plannings via une interface intuitive glisser-déposer, tandis que les enseignants reçoivent des rappels automatiques par email pour les cours à venir. Le contrôle d'accès basé sur les rôles sépare les permissions entre administrateurs, enseignants et chefs de département, chacun avec des vues de tableau de bord personnalisées. Les vues calendrier peuvent être exportées au format iCal pour l'intégration avec des applications calendrier externes, et le module de reporting génère des statistiques d'utilisation des salles et d'analyse de la charge enseignante."
+    },
+    "SPAM_DETECTION": {
+      "LONG_DESCRIPTION": "Construction d'un pipeline de machine learning de bout en bout pour la classification de courriels en spam ou légitimes, couvrant chaque étape de l'ingestion des données brutes à l'évaluation du modèle. Le pipeline de prétraitement gère la tokenisation, la conversion en minuscules, la suppression des mots vides, la ponctuation et la lemmatisation pour normaliser le texte. L'extraction de caractéristiques utilise la vectorisation TF-IDF avec support bigramme pour capturer les patterns contextuels de mots, réduisant le texte haute dimension en représentations numériques creuses. Deux classificateurs — K-Plus Proches Voisins et Arbre de Décision — ont été entraînés et évalués avec validation croisée stratifiée k-fold, avec des métriques incluant précision, rappel, F1-score et analyse de matrice de confusion. Le meilleur modèle a été sérialisé avec pickle pour l'inférence, et l'expérience complète suivie dans un notebook Jupyter avec courbes ROC et classement de l'importance des caractéristiques."
+    },
+    "EMPLOYMENT_PLATFORM": {
+      "LONG_DESCRIPTION": "Conception et développement d'une plateforme web full-stack agrégant des offres d'emploi et de stage à partir de multiples sources via le web scraping automatisé. Le backend Spring Boot utilise Selenium WebDriver avec Chrome headless pour scraper les annonces d'Indeed et Rekrute, appliquant des pipelines de normalisation pour standardiser les titres d'emploi, noms d'entreprises, localisations et fourchettes salariales dans un schéma MySQL unifié. La sécurité est gérée par Spring Security avec authentification basée sur les rôles et gestion de tokens JWT. Le frontend Angular offre une recherche avancée avec filtrage multi-critères (localisation, type de contrat, niveau d'expérience), des alertes de recherche sauvegardées, des annonces en favoris et un moteur de recommandation personnalisé basé sur les préférences et l'historique de navigation. Les tableaux de bord analytiques Chart.js visualisent les tendances du marché, les distributions salariales et les statistiques de candidature."
+    },
+    "SCHOOL_MANAGEMENT_APP": {
+      "LONG_DESCRIPTION": "Application web complète de gestion scolaire construite avec ASP.NET Web Forms, HTML, CSS, JavaScript et SQL Server, conçue pour numériser les workflows administratifs et académiques des institutions éducatives. La plateforme gère le cycle de vie complet de l'élève de l'inscription à la sortie, incluant l'enregistrement avec affectation de classe, le suivi des présences quotidiennes avec vues calendrier, la gestion continue des évaluations et notes d'examens avec moyennes pondérées, et la génération automatique de bulletins avec export PDF imprimable. Les administrateurs accèdent à un tableau de bord centralisé avec analyses en temps réel montrant les tendances d'inscription, les taux de présence et les distributions de performance académique. Les enseignants disposent de vues scoped par rôle pour gérer leurs classes, saisir les notes et enregistrer les absences. Le système applique un contrôle d'accès basé sur les rôles pour garantir la confidentialité des données."
+    },
+    "SCHOOL_MANAGEMENT_APP_2": {
+      "LONG_DESCRIPTION": "Développement d'une application de bureau Java Swing pour la gestion scolaire hors ligne, conçue pour les institutions sans accès internet fiable. L'application se connecte à une base MySQL et propose une interface à onglets couvrant l'enregistrement des élèves avec profils démographiques, la saisie journalière des présences, la notation continue et les examens avec distributions de pondération configurables, et la génération automatique de bulletins. Les fonctionnalités d'import/export permettent des opérations en masse via fichiers CSV. Le module de reporting produit des bulletins PDF imprimables avec identité visuelle de l'école, barèmes configurables et calculs de classement. Construite avec le pattern MVC pour la maintenabilité, l'application inclut validation des données, gestion des erreurs et un utilitaire de sauvegarde/restauration."
+    },
+    "OPTICIAN_ORDER_STOCK": {
+      "LONG_DESCRIPTION": "Développement d'une application de bureau complète pour la gestion de magasin d'optique avec C# Windows Forms et procédures stockées T-SQL sur Microsoft SQL Server. Le système gère le workflow complet des opérations de vente au détail : suivi des stocks en temps réel avec niveaux de stock et lecture de codes-barres, placement de commandes fournisseurs avec génération de bons de commande et suivi des livrables, dossiers de prescriptions clients avec spécifications de lentilles et surveillance des dates d'expiration, transactions point de vente avec impression de reçus et traitement des paiements, et alertes automatiques de stock bas déclenchées par des règles de seuil configurables. Le module de reporting génère des rapports Excel et PDF exportables couvrant performance commerciale, valorisation des stocks, délais de livraison fournisseurs et analyses de prescriptions clients."
+    },
+    "COMPANY_DOMICILIATION": {
+      "LONG_DESCRIPTION": "Plateforme web full-stack pour la gestion des services de domiciliation d'entreprises, permettant aux sociétés d'établir des adresses légales et de recevoir un support administratif sans maintenir un bureau physique. Construite avec Spring Boot en backend et Angular en frontend, la plateforme comprend des workflows d'abonnement en ligne avec sélection de plans et intégration de paiement, un tableau de bord client complet affichant les services actifs et les prochaines rénovations, la gestion de contrats et documents avec capacités de signature numérique via intégration DocuSign API, et un système de notification multi-canal (email, SMS, in-app) pour les mises à jour de services et rappels d'échéances. La sécurité est assurée par Spring Security avec authentification JWT, contrôle d'accès par rôles séparant les permissions client/agent/admin, et MySQL soutenant toutes les données transactionnelles avec journalisation complète d'audit."
+    },
     "PORTFOLIO_LABEL": "Portfolio",
     "FEATURED": "À la une",
     "NO_RESULTS": "Aucun projet dans cette catégorie.",
@@ -258,7 +280,13 @@
     "TITLE_SMALL": "Ce que je fais",
     "TITLE_LARGE": "Mes Compétences & Expertise",
     "SUBTITLE": "Je me spécialise dans une gamme de technologies et frameworks modernes, élargissant continuellement mes compétences pour offrir des solutions innovantes.",
-    "CATEGORIES": {},
+    "CATEGORIES": {
+      "ALL": "Tous",
+      "LANGUAGES": "Langages",
+      "FRAMEWORKS": "Frameworks",
+      "DATABASES": "Bases de données",
+      "TOOLS": "Outils & Pratiques"
+    },
     "LEVEL": {},
     "EXPERIENCE": {},
     "DETAILS": {
@@ -294,7 +322,8 @@
     "ITEMS_SUFFIX": "technologies",
     "NO_RESULTS": "Aucune compétence dans cette catégorie.",
     "META_DESCRIPTION": "Inventaire des compétences techniques d'Abderrazzaq El Abdouni incluant les langages de programmation, frameworks, bases de données et outils de développement.",
-    "OG_DESCRIPTION": "Explorez la liste complète des compétences d'Abderrazzaq El Abdouni couvrant C#, Java, Python, Angular, React, SQL Server, MongoDB, Docker et plus encore."
+    "OG_DESCRIPTION": "Explorez la liste complète des compétences d'Abderrazzaq El Abdouni couvrant C#, Java, Python, Angular, React, SQL Server, MongoDB, Docker et plus encore.",
+    "TITLE": "Compétences"
   },
   "FOOTER": {
     "COPYRIGHT": "© {{year}} Abderrazzaq El Abdouni. Tous droits réservés.",
@@ -311,5 +340,22 @@
     "VIEW_WORK": "Voir mes projets",
     "SKIP_TO_CONTENT": "Aller au contenu"
   },
-  "A11Y": {}
+  "A11Y": {
+    "BACK_TO_TOP": "Retour en haut",
+    "FILTER_PROJECTS": "Filtrer les projets par catégorie",
+    "FILTER_SKILLS": "Filtrer les compétences par catégorie",
+    "FOOTER": "Pied de page",
+    "GITHUB": "Profil GitHub",
+    "LINKEDIN": "Profil LinkedIn",
+    "MODAL_CLOSE": "Fermer les détails du projet",
+    "NAV_HOME": "Abderrazzaq El Abdouni — accueil",
+    "NAV_MAIN": "Navigation principale",
+    "SELECT_LANGUAGE": "Choisir la langue",
+    "PROFILE_PHOTO": "Portrait d'Abderrazzaq El Abdouni",
+    "OPEN_MENU": "Ouvrir le menu",
+    "CLOSE_MENU": "Fermer le menu"
+  },
+  "SEO": {
+    "DEFAULT_DESCRIPTION": "Portfolio d'Abderrazzaq El Abdouni, développeur full-stack specialized en applications web Angular et .NET. Projets, compétences, CV et contact."
+  }
 }

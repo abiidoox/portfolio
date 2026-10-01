@@ -1,15 +1,33 @@
-<div class="not-found-container">
-  <div class="not-found-content">
-    <div class="error-code" aria-label="404">
-      <span class="number glitch" data-text="4">4</span>
-      <span class="zero glitch" data-text="0">0</span>
-      <span class="number glitch" data-text="4">4</span>
+<section class="lab-section grid min-h-[70vh] place-items-center py-20 text-center">
+  <div class="w-full max-w-lg">
+
+    <!-- 404 readout: decorative, the message below carries the meaning -->
+    <div class="mb-8 flex items-end justify-center gap-1.5" aria-hidden="true">
+      <span class="font-mono text-7xl font-bold leading-none text-slate-300 sm:text-8xl">4</span>
+      <span class="relative grid h-20 w-20 place-items-center sm:h-24 sm:w-24">
+        <!-- Static ring — decorative, never spins. -->
+        <span class="lab-ring-static absolute inset-0 rounded-full border-2 border-signal/30"></span>
+        <span class="font-mono text-6xl font-bold leading-none text-signal sm:text-7xl">0</span>
+      </span>
+      <span class="font-mono text-7xl font-bold leading-none text-slate-300 sm:text-8xl">4</span>
     </div>
-    <h1 class="error-title">{{ 'NOT_FOUND.TITLE' | translate }}</h1>
-    <p class="error-message">{{ 'NOT_FOUND.MESSAGE' | translate }}</p>
-    <button class="home-button" (click)="goHome()">
-      <span class="button-text">{{ 'NOT_FOUND.BACK_HOME' | translate }}</span>
-      <span class="button-icon">→</span>
-    </button>
+
+    <h1 class="font-display text-2xl font-semibold text-balance sm:text-3xl">
+      {{ 'NOT_FOUND.TITLE' | translate }}
+    </h1>
+    <p class="lab-lead mt-4 text-pretty">
+      {{ 'NOT_FOUND.MESSAGE' | translate }}
+    </p>
+
+    <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
+      <button type="button" (click)="goHome()" class="lab-btn lab-btn-primary">
+        <i class="fas fa-arrow-left text-xs"></i>
+        <span>{{ 'NOT_FOUND.BACK_HOME' | translate }}</span>
+      </button>
+      <a routerLink="/projects" class="lab-btn lab-btn-ghost">
+        <i class="fas fa-diagram-project text-xs"></i>
+        <span>{{ 'header.projects' | translate }}</span>
+      </a>
+    </div>
   </div>
-</div> 
+</section>

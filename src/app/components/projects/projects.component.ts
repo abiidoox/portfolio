@@ -1,217 +1,158 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { LanguageService } from '../../services/language.service';
 import { ProjectModalService } from '../../services/project-modal.service';
-import { forkJoin, Subscription } from 'rxjs';
+import { PROJECTS, Project } from '../../data/projects.data';
+import { Subscription, forkJoin } from 'rxjs';
 
-interface Project {
+interface DisplayProject {
   key: string;
   title: string;
   description: string;
-  longDescription?: string;
+  longDescription: string;
   technologies: string[];
   category: string;
   featured: boolean;
   date: string;
-  links?: { label: string; url: string; icon: string }[];
+  links?: { labelKey: string; url: string; icon: string }[];
 }
 
 @Component({
   selector: 'app-projects',
-  templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.scss']
+  templateUrl: './projects.component.html'
 })
 export class ProjectsComponent implements OnInit, OnDestroy {
-  projects: Project[] = [];
-  filteredProjects: Project[] = [];
-  categories: string[] = ['all', 'web', 'mobile', 'desktop', 'ai', 'iot'];
-  selectedCategory: string = 'all';
+  /** Canonical filter order; only categories present in the data are shown. */
+  private static readonly CATEGORY_ORDER = ['web', 'mobile', 'ai', 'iot', 'desktop'];
 
-  constructor(
-    private translate: TranslateService,
-    private languageService: LanguageService,
-    private projectModalService: ProjectModalService
-  ) { }
+  selectedCategory = 'all';
+
+  projects: DisplayProject[] = [];
+  filteredProjects: DisplayProject[] = [];
+
+  /**
+   * Derived from the projects themselves so a category can never be offered
+   * with nothing behind it — a tab that filters to an empty grid is a dead end.
+   */
+  get categories(): string[] {
+    const present = new Set(this.projects.map(p => p.category));
+    return ['all', ...ProjectsComponent.CATEGORY_ORDER.filter(c => present.has(c))];
+  }
 
   private langSub?: Subscription;
 
-  ngOnInit(): void {
-    this.initializeProjects();
-    this.updateProjectTranslations();
+  constructor(
+    private translate: TranslateService,
+    private projectModalService: ProjectModalService
+  ) {}
 
-    this.langSub = this.translate.onLangChange.subscribe(() => {
-      this.updateProjectTranslations();
-    });
+  ngOnInit(): void {
+    this.projects = PROJECTS
+      .slice()
+      .sort((a, b) => Number(b.date) - Number(a.date))
+      .map(p => ({
+        key: p.key,
+        title: p.fallbackTitle,
+        description: p.fallbackDescription,
+        longDescription: '',
+        technologies: p.technologies,
+        category: p.category,
+        featured: p.featured,
+        date: p.date,
+        links: p.links
+      }));
+
+    this.filterProjects('all');
+    this.loadTranslations();
+
+    this.langSub = this.translate.onLangChange.subscribe(() => this.loadTranslations());
   }
 
   ngOnDestroy(): void {
     this.langSub?.unsubscribe();
   }
 
-  initializeProjects(): void {
-    this.projects = [
-      {
-        key: 'AI_CHAT',
-        title: 'AI Chat Assistant',
-        description: 'A conversational AI assistant built with FastAPI and TinyLlama',
-        longDescription: 'PROJECTS.AI_CHAT.LONG_DESCRIPTION',
-        technologies: ['FastAPI', 'TinyLlama', 'React.js', 'Docker'],
-        category: 'ai',
-        featured: true,
-        date: "2025",
-        links: [
-          { label: 'GitHub', url: 'https://github.com/abiidoox', icon: 'fab fa-github' }
-        ]
-      },
-      {
-        key: 'FACE_RECOGNITION',
-        title: 'Smart Face Recognition System',
-        description: 'An IoT-based facial recognition system using ESP32-S3, Django, and React Native',
-        longDescription: 'PROJECTS.FACE_RECOGNITION.LONG_DESCRIPTION',
-        technologies: ["ESP32-S3", "Django", "React Native", "FFmpeg", "ResNet", "SCRFD"],
-        category: "iot",
-        featured: true,
-        date: "2024",
-        links: [
-          { label: 'GitHub', url: 'https://github.com/abiidoox', icon: 'fab fa-github' }
-        ]
-      },
-      {
-        key: 'SCHEDULE_SYSTEM',
-        title: 'Schedule Management System',
-        description: 'A comprehensive schedule management system developed with ASP.NET and SQL Server',
-        longDescription: 'PROJECTS.SCHEDULE_SYSTEM.LONG_DESCRIPTION',
-        technologies: ["C#", "ASP.NET", "HTML", "CSS", "JavaScript", "Bootstrap", "SQL Server"],
-        category: "web",
-        featured: false,
-        date: "2022",
-        links: [
-          { label: 'GitHub', url: 'https://github.com/abiidoox', icon: 'fab fa-github' }
-        ]
-      },
-      {
-        key: 'SCHOOL_MANAGEMENT_APP',
-        title: 'School Management Application',
-        description: 'A complete and user-friendly school management application',
-        longDescription: 'PROJECTS.SCHOOL_MANAGEMENT_APP.LONG_DESCRIPTION',
-        technologies: ["ASP.NET", "HTML", "CSS", "JavaScript", "SQL Server"],
-        category: "web",
-        featured: false,
-        date: "2021"
-      },
-      {
-        key: 'SPAM_DETECTION',
-        title: 'Email Spam Detection Model',
-        description: 'A machine learning model to classify emails as spam or legitimate',
-        longDescription: 'PROJECTS.SPAM_DETECTION.LONG_DESCRIPTION',
-        technologies: ["Python", "K-NN", "Decision Trees"],
-        category: "ai",
-        featured: false,
-        date: "2023",
-        links: [
-          { label: 'GitHub', url: 'https://github.com/abiidoox', icon: 'fab fa-github' }
-        ]
-      },
-      {
-        key: 'EMPLOYMENT_PLATFORM',
-        title: 'Integrated Web Platform for Job and Internship Offers',
-        description: 'A web platform dedicated to job and internship offers using web scraping',
-        longDescription: 'PROJECTS.EMPLOYMENT_PLATFORM.LONG_DESCRIPTION',
-        technologies: ["Spring Boot", "Bootstrap", "chartjs", "HTML5", "Java", "Spring Data", "CSS", "Spring Security", "MySQL", "JavaScript", "Selenium"],
-        category: "web",
-        featured: true,
-        date: "2023",
-        links: [
-          { label: 'GitHub', url: 'https://github.com/abiidoox', icon: 'fab fa-github' }
-        ]
-      },
-      {
-        key: 'SCHOOL_MANAGEMENT_APP_2',
-        title: 'School Management Desktop App',
-        description: 'A Java Swing desktop application for managing school records',
-        longDescription: 'PROJECTS.SCHOOL_MANAGEMENT_APP_2.LONG_DESCRIPTION',
-        technologies: ["Java", "Java Swing", "MySQL"],
-        category: "desktop",
-        featured: false,
-        date: "2022"
-      },
-      {
-        key: 'OPTICIAN_ORDER_STOCK',
-        title: 'Order and Stock Management Application for Opticians',
-        description: 'Software for managing orders and inventory in an optical store',
-        longDescription: 'PROJECTS.OPTICIAN_ORDER_STOCK.LONG_DESCRIPTION',
-        technologies: ["C#", "T-SQL", "Microsoft SQL Server"],
-        category: "desktop",
-        featured: false,
-        date: "2021"
-      },
-      {
-        key: 'COMPANY_DOMICILIATION',
-        title: 'Company Domiciliation Management Platform',
-        description: 'Web platform for complete management of company domiciliation',
-        longDescription: 'PROJECTS.COMPANY_DOMICILIATION.LONG_DESCRIPTION',
-        technologies: ["Spring Boot", "Angular", "MySQL", "JPA/Hibernate", "RESTful API", "Spring Security"],
-        category: "web",
-        featured: true,
-        date: "2025",
-        links: [
-          { label: 'GitHub', url: 'https://github.com/abiidoox', icon: 'fab fa-github' }
-        ]
-      }
-    ];
-    // Sort projects by date descending (most recent first)
-    this.projects.sort((a, b) => Number(b.date) - Number(a.date));
-    this.filteredProjects = [...this.projects];
-  }
-
-  updateProjectTranslations(): void {
-    const keys = this.projects.map(p => p.key);
-
-    const translationObservables = keys.flatMap(key => [
-      this.translate.get(`PROJECTS.${key}.TITLE`),
-      this.translate.get(`PROJECTS.${key}.DESCRIPTION`),
-      this.translate.get(`PROJECTS.${key}.LONG_DESCRIPTION`)
+  private loadTranslations(): void {
+    const source = new Map(PROJECTS.map(p => [p.key, p]));
+    const requests = PROJECTS.flatMap(p => [
+      this.translate.get(p.titleKey),
+      this.translate.get(p.descriptionKey),
+      this.translate.get(p.longDescriptionKey)
     ]);
 
-    forkJoin(translationObservables).subscribe({
-      next: (translations) => {
-        this.projects.forEach((project, i) => {
+    forkJoin(requests).subscribe({
+      next: values => {
+        this.projects = this.projects.map(p => {
+          const src = source.get(p.key)!;
+          const i = PROJECTS.findIndex(x => x.key === p.key);
           const base = i * 3;
-          project.title = translations[base] || project.title;
-          project.description = translations[base + 1] || project.description;
-          project.longDescription = translations[base + 2] || project.longDescription;
+          return {
+            ...p,
+            // If a key is missing ngx-translate echoes the key back; fall back
+            // to the English source so a card is never blank.
+            title: usable(values[base], src.fallbackTitle),
+            description: usable(values[base + 1], src.fallbackDescription),
+            longDescription: usable(values[base + 2], '')
+          };
         });
         this.filterProjects(this.selectedCategory);
       },
-      error: () => {}
+      error: () => this.filterProjects(this.selectedCategory)
     });
   }
 
   filterProjects(category: string): void {
     this.selectedCategory = category;
-    if (category === 'all') {
-      this.filteredProjects = [...this.projects];
-    } else {
-      this.filteredProjects = this.projects.filter(project => project.category === category);
-    }
+    this.filteredProjects = category === 'all'
+      ? this.projects
+      : this.projects.filter(p => p.category === category);
   }
 
-  openModal(project: Project): void {
-    this.projectModalService.open(project);
+  countFor(category: string): number {
+    return category === 'all'
+      ? this.projects.length
+      : this.projects.filter(p => p.category === category).length;
   }
 
-  closeModal(): void {
-    this.projectModalService.close();
+  openModal(project: DisplayProject): void {
+    this.projectModalService.open(project as DisplayProject);
   }
 
-  getCategoryIcon(category: string): string {
+  categoryIcon(category: string): string {
     switch (category) {
       case 'web': return 'fa-globe';
-      case 'mobile': return 'fa-mobile-screen-button';
       case 'ai': return 'fa-brain';
       case 'iot': return 'fa-microchip';
       case 'desktop': return 'fa-desktop';
+      case 'mobile': return 'fa-mobile-screen-button';
       default: return 'fa-code';
     }
   }
+
+  /** Restrained per-category washes — depth, not decoration. */
+  gradientFor(category: string): string {
+    switch (category) {
+      case 'ai': return 'from-violet-500/[0.16] via-fuchsia-500/[0.07] to-transparent';
+      case 'iot': return 'from-emerald-500/[0.16] via-teal-500/[0.07] to-transparent';
+      case 'desktop': return 'from-sky-500/[0.14] via-blue-500/[0.06] to-transparent';
+      case 'web': return 'from-signal/[0.16] via-orange-500/[0.06] to-transparent';
+      case 'mobile': return 'from-violet-500/[0.14] via-sky-500/[0.06] to-transparent';
+      default: return 'from-slate-500/[0.12] to-transparent';
+    }
+  }
+
+  onGlowMove(e: MouseEvent): void {
+    const el = e.currentTarget as HTMLElement;
+    const rect = el.getBoundingClientRect();
+    el.style.setProperty('--mx', `${e.clientX - rect.left}px`);
+    el.style.setProperty('--my', `${e.clientY - rect.top}px`);
+  }
 }
+
+function usable(value: string | undefined, fallback: string): string {
+  if (!value || !value.trim()) return fallback;
+  // ngx-translate returns the key itself when a translation is missing.
+  if (/^[A-Z0-9_]+(\.[A-Z0-9_]+)+$/.test(value)) return fallback;
+  return value;
+}
+
+export type { Project };

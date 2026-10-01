@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProjectsComponent } from './projects.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
-import { TiltDirective } from '../../directives/tilt.directive';
 import { SplitTextDirective } from '../../directives/split-text.directive';
 import { ProjectModalModule } from '../../components/shared/project-modal/project-modal.module';
 
@@ -19,7 +18,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     TranslateModule,
     ScrollRevealDirective,
-    TiltDirective,
     SplitTextDirective,
     ProjectModalModule
   ]

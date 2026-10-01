@@ -3,23 +3,25 @@ import { TranslateService } from '@ngx-translate/core';
 import { LanguageService } from './services/language.service';
 import { ToastService } from './services/toast.service';
 import { ProjectModalService } from './services/project-modal.service';
+import { SeoService } from './services/seo.service';
+import { ThemeService } from './services/theme.service';
+import { RouterOutlet } from '@angular/router';
 import { ProjectModalData } from './components/shared/project-modal/project-modal.component';
 import { trigger, transition, style, animate, query } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
   animations: [
     trigger('routeAnimations', [
       transition('* <=> *', [
         query(':leave', [
           style({ opacity: 1 }),
-          animate('200ms ease-out', style({ opacity: 0, transform: 'translateY(-16px)' }))
+          animate('180ms ease-out', style({ opacity: 0, transform: 'translateY(-12px)' }))
         ], { optional: true }),
         query(':enter', [
-          style({ opacity: 0, transform: 'translateY(28px)' }),
-          animate('480ms 180ms cubic-bezier(.22,1,.36,1)', style({ opacity: 1, transform: 'none' }))
+          style({ opacity: 0, transform: 'translateY(24px)' }),
+          animate('520ms 160ms cubic-bezier(.22,1,.36,1)', style({ opacity: 1, transform: 'none' }))
         ], { optional: true })
       ])
     ])
@@ -29,7 +31,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private mouseHandler?: (e: MouseEvent) => void;
   modalProject: ProjectModalData | null = null;
 
-  prepareRoute(outlet: any): any {
+  prepareRoute(outlet: RouterOutlet | null): string {
     return outlet?.activatedRouteData?.['animation'] ?? '*';
   }
 
@@ -38,7 +40,9 @@ export class AppComponent implements OnInit, OnDestroy {
     private languageService: LanguageService,
     private zone: NgZone,
     private toast: ToastService,
-    private projectModalService: ProjectModalService
+    private projectModalService: ProjectModalService,
+    private seo: SeoService,
+    private theme: ThemeService
   ) {
     // Initialize translations
     translate.addLangs(['en', 'es', 'fr']);
@@ -69,18 +73,10 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   private toggleTheme(): void {
-    const current = localStorage.getItem('theme') || 'dark';
-    const next = current === 'light' ? 'dark' : 'light';
-    document.documentElement.setAttribute('data-theme', next);
-    if (next === 'light') {
-      document.body.classList.add('light-theme');
-      document.body.classList.remove('dark-theme');
-    } else {
-      document.body.classList.add('dark-theme');
-      document.body.classList.remove('light-theme');
-    }
-    localStorage.setItem('theme', next);
-    const key = next === 'light' ? 'TOAST.THEME_LIGHT' : 'TOAST.THEME_DARK';
+    // Routed through ThemeService so the switcher's icon and label stay in
+    // sync. Writing localStorage and the DOM here is what desynced them.
+    this.theme.toggle();
+    const key = this.theme.current === 'light' ? 'TOAST.THEME_LIGHT' : 'TOAST.THEME_DARK';
     this.translate.get(key).subscribe(msg => this.toast.info(msg));
   }
 
@@ -101,15 +97,15 @@ export class AppComponent implements OnInit, OnDestroy {
       this.modalProject = project;
     });
 
-    // Mouse-follow glow (runs outside Angular for performance)
-    const glow = document.querySelector('.mouse-glow');
-    if (glow && window.matchMedia('(pointer: fine)').matches) {
+    // Cursor-following glow. Runs outside Angular and writes only a transform,
+    // so it never triggers layout on each move.
+    const glow = document.querySelector('.mouse-glow') as HTMLElement | null;
+    if (glow && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
       this.zone.runOutsideAngular(() => {
         this.mouseHandler = (e: MouseEvent) => {
-          (glow as HTMLElement).style.left = e.clientX + 'px';
-          (glow as HTMLElement).style.top = e.clientY + 'px';
+          glow.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
         };
-        window.addEventListener('mousemove', this.mouseHandler!);
+        window.addEventListener('mousemove', this.mouseHandler, { passive: true });
       });
     }
   }

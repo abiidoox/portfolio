@@ -1,44 +1,66 @@
-<footer class="footer">
-  <div class="footer-content">
-    <a routerLink="/" class="logo-mark" aria-label="Home">
-      <svg viewBox="0 0 40 40" width="36" height="36" aria-hidden="true">
-        <rect rx="10" width="40" height="40" fill="url(#fl-grad)"></rect>
-        <text x="20" y="27" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-weight="700" font-size="18" fill="#fff">AE</text>
-        <defs><linearGradient id="fl-grad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stop-color="#ff5e3a"></stop>
-          <stop offset="100%" stop-color="#38bdf8"></stop>
-        </linearGradient></defs>
-      </svg>
-    </a>
-    <nav class="footer-nav" aria-label="Footer">
-      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{ 'header.home' | translate }}</a>
-      <a routerLink="/projects" routerLinkActive="active">{{ 'header.projects' | translate }}</a>
-      <a routerLink="/skills" routerLinkActive="active">{{ 'header.skills' | translate }}</a>
-      <a routerLink="/resume" routerLinkActive="active">{{ 'header.resume' | translate }}</a>
-      <a routerLink="/contact" routerLinkActive="active">{{ 'header.contact' | translate }}</a>
-    </nav>
-    <div class="footer-social">
-      <a *ngFor="let link of socialLinks"
-         [href]="link.url"
-         target="_blank"
-         rel="noopener noreferrer"
-         class="social-link"
-         [attr.aria-label]="link.label">
-        <i [class]="link.icon"></i>
+<footer class="relative mt-8 border-t border-white/[0.07]">
+  <div class="lab-shell py-12 sm:py-14">
+
+    <div class="grid gap-10 md:grid-cols-[auto_1fr_auto] md:items-center md:gap-8">
+
+      <!-- Monogram -->
+      <a routerLink="/" class="group inline-flex items-center gap-3 self-start" [attr.aria-label]="'A11Y.NAV_HOME' | translate">
+        <span class="grid h-11 w-11 place-items-center rounded-xl bg-signal-sweep-deep font-display
+                     text-base font-bold text-white shadow-signal-glow transition-transform
+                     duration-500 ease-swift group-hover:scale-105">
+          AE
+        </span>
+        <span class="hidden sm:block">
+          <span class="block font-display text-sm font-semibold text-slate-200">Abderrazzaq El Abdouni</span>
+          <span class="mt-0.5 block font-mono text-[0.64rem] uppercase tracking-[0.16em] text-slate-600">
+            {{ 'ABOUT.ROLE' | translate }}
+          </span>
+        </span>
       </a>
-    </div>
-    <div class="footer-info">
-      <p class="copyright">
-        {{ 'FOOTER.COPYRIGHT' | translate:{ year: currentYear } }}
-      </p>
-      <p class="contact-email">
-        <a [href]="'mailto:elabdouni.abderrazzaq@gmail.com'">
-          elabdouni.abderrazzaq&#64;gmail.com
+
+      <!-- Nav. py-1.5 keeps every link at or above the 24px WCAG 2.2 target
+           minimum; the text alone measured 20px tall. -->
+      <nav class="-mx-2 flex flex-wrap gap-x-4 gap-y-1 md:justify-center" [attr.aria-label]="'A11Y.FOOTER' | translate">
+        <a *ngFor="let item of navItems"
+           [routerLink]="item.route"
+           routerLinkActive="text-signal"
+           [routerLinkActiveOptions]="{ exact: item.route === '/' }"
+           class="rounded-lg px-2 py-1.5 font-display text-sm text-slate-400 transition-colors
+                  duration-300 hover:bg-white/[0.05] hover:text-slate-100">
+          {{ item.label | translate }}
         </a>
-        <button class="copy-hint" [attr.aria-label]="'FOOTER.COPY_HINT' | translate" (click)="copyEmail()">
-          <i class="fas fa-copy"></i>
-        </button>
+      </nav>
+
+      <!-- Socials -->
+      <div class="flex gap-2.5 md:justify-end">
+        <a *ngFor="let link of socialLinks"
+           [href]="link.url"
+           target="_blank"
+           rel="noopener noreferrer"
+           [attr.aria-label]="link.label"
+           class="grid h-10 w-10 place-items-center rounded-xl border border-white/10 bg-white/[0.03]
+                  text-slate-400 transition-all duration-300 hover:-translate-y-1 hover:border-signal/50
+                  hover:bg-signal/10 hover:text-signal">
+          <i [class]="link.icon"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Divider + legal -->
+    <div class="mt-10 flex flex-col gap-4 border-t border-white/[0.06] pt-7 sm:flex-row
+                sm:items-center sm:justify-between">
+      <p class="font-mono text-[0.7rem] text-slate-600">
+        {{ 'FOOTER.COPYRIGHT' | translate: { year: currentYear } }}
       </p>
+
+      <button type="button" (click)="copyEmail()"
+              [attr.aria-label]="'FOOTER.COPY_HINT' | translate"
+              class="group -mx-2 inline-flex items-center gap-2 self-start rounded-lg px-2 py-1.5
+                     font-mono text-[0.72rem] text-slate-500 transition-colors duration-300
+                     hover:bg-white/[0.05] hover:text-signal sm:self-auto">
+        <span>elabdouni.abderrazzaq&#64;gmail.com</span>
+        <i class="fas fa-copy text-[0.68rem] transition-transform duration-300 group-hover:scale-110"></i>
+      </button>
     </div>
   </div>
-</footer> 
+</footer>

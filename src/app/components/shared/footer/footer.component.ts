@@ -4,14 +4,22 @@ import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-footer',
-  templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss']
+  templateUrl: './footer.component.html'
 })
 export class FooterComponent {
   currentYear = new Date().getFullYear();
-  socialLinks = [
+
+  readonly navItems = [
+    { route: '/', label: 'header.home' },
+    { route: '/projects', label: 'header.projects' },
+    { route: '/skills', label: 'header.skills' },
+    { route: '/resume', label: 'header.resume' },
+    { route: '/contact', label: 'header.contact' }
+  ];
+
+  readonly socialLinks = [
     { icon: 'fab fa-github', url: 'https://github.com/abiidoox', label: 'GitHub' },
-    { icon: 'fab fa-linkedin', url: 'https://www.linkedin.com/in/abderrazzaq-el-abdouni-28004019a', label: 'LinkedIn' },
+    { icon: 'fab fa-linkedin-in', url: 'https://www.linkedin.com/in/abderrazzaq-el-abdouni-28004019a', label: 'LinkedIn' }
   ];
 
   constructor(private toast: ToastService, private translate: TranslateService) {}
@@ -24,4 +32,4 @@ export class FooterComponent {
       this.translate.get('TOAST.EMAIL_COPY_FAILED').subscribe(msg => this.toast.error(msg));
     });
   }
-} 
+}

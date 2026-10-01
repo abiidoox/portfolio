@@ -1,260 +1,237 @@
-<div class="page-v2 resume-v2">
-    <header class="resume-head">
-      <span class="kicker-line" appScrollReveal data-reveal-direction="up">{{ 'RESUME.SUBTITLE' | translate }}</span>
-      <h1 class="display-title" appScrollReveal data-reveal-direction="up" data-delay="120">
-        <span class="text-gradient-animated">{{ 'RESUME.TITLE' | translate }}</span>
+<section class="lab-section pt-10 sm:pt-14">
+  <div class="lab-shell">
+
+    <!-- Header -->
+    <header class="mb-14 max-w-2xl">
+      <span class="lab-kicker" appScrollReveal data-reveal-direction="up">{{ 'RESUME.SUBTITLE' | translate }}</span>
+      <h1 class="lab-title mt-5" appScrollReveal data-reveal-direction="up" data-delay="100">
+        <span class="lab-gradient-text">{{ 'RESUME.TITLE' | translate }}</span>
       </h1>
-      <p class="resume-sub" appScrollReveal data-reveal-direction="up" data-delay="220">{{ 'RESUME.DESCRIPTION' | translate }}</p>
+      <p class="lab-lead mt-5 text-pretty" appScrollReveal data-reveal-direction="up" data-delay="200">
+        {{ 'RESUME.DESCRIPTION' | translate }}
+      </p>
     </header>
 
-    <div class="resume-content">
-      <!-- Personal Info Section -->
-      <div appScrollReveal data-reveal-direction="up" class="resume-section ">
-        <div class="personal-info">
-          <h1>{{ 'RESUME.PERSONAL_INFO.NAME' | translate }}</h1>
-          <p>{{ 'RESUME.PERSONAL_INFO.TITLE' | translate }}</p>
-          <div class="contact-details">
-            <p><i class="fas fa-envelope"></i> {{ 'RESUME.PERSONAL_INFO.EMAIL' | translate }}</p>
-            <p><i class="fas fa-phone"></i> {{ 'RESUME.PERSONAL_INFO.PHONE' | translate }}</p>
-            <p><i class="fas fa-location-dot"></i> {{ 'RESUME.PERSONAL_INFO.LOCATION' | translate }}</p>
+    <!-- ══════════ Identity card ══════════ -->
+    <div class="lab-panel mb-16 overflow-hidden rounded-3xl"
+         appScrollReveal data-reveal-direction="up">
+      <div class="relative flex flex-col gap-7 p-7 sm:flex-row sm:items-center sm:gap-9 sm:p-9">
+        <!-- Monogram -->
+        <div class="relative shrink-0 self-start sm:self-auto">
+          <div class="grid h-24 w-24 place-items-center rounded-3xl bg-signal-sweep-deep shadow-signal-glow sm:h-28 sm:w-28">
+            <span class="font-display text-3xl font-bold text-white sm:text-4xl">AE</span>
           </div>
         </div>
-      </div>
 
-      <!-- Experience Section -->
-      <div appScrollReveal data-reveal-direction="up" class="resume-section ">
-        <h3 class="section-title">{{ 'RESUME.EXPERIENCE' | translate }}</h3>
-        
-        <div class="timeline">
-          <!-- New ITEM6 -->
-          <div class="timeline-item">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content">
-              <h4>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM6.TITLE' | translate }}</h4>
-              <p class="timeline-date">{{ 'RESUME.EXPERIENCE_ITEMS.ITEM6.PERIOD' | translate }}</p>
-              <p class="timeline-subtitle">{{ 'RESUME.EXPERIENCE_ITEMS.ITEM6.SUBTITLE' | translate }}</p>
-              <ul>
-                <li>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM6.POINTS.POINT1' | translate }}</li>
-                <li>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM6.POINTS.POINT2' | translate }}</li>
-                <li>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM6.POINTS.POINT3' | translate }}</li>
-                <li>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM6.POINTS.POINT4' | translate }}</li>
-                <li>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM6.POINTS.POINT5' | translate }}</li>
-                <li>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM6.POINTS.POINT6' | translate }}</li>
-              </ul>
-              <p class="technologies">{{ 'RESUME.TECHNOLOGIES_USED' | translate }}: {{ 'RESUME.EXPERIENCE_ITEMS.ITEM6.TECHNOLOGIES' | translate }}</p>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content">
-              <h4>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM1.TITLE' | translate }}</h4>
-              <p class="timeline-date">{{ 'RESUME.EXPERIENCE_ITEMS.ITEM1.PERIOD' | translate }}</p>
-              <p class="timeline-subtitle">{{ 'RESUME.EXPERIENCE_ITEMS.ITEM1.SUBTITLE' | translate }}</p>
-              <ul>
-                <li>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM1.POINTS.POINT1' | translate }}</li>
-                <li>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM1.POINTS.POINT2' | translate }}</li>
-                <li>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM1.POINTS.POINT3' | translate }}</li>
-              </ul>
-              <p class="technologies">{{ 'RESUME.TECHNOLOGIES_USED' | translate }}: {{ 'RESUME.EXPERIENCE_ITEMS.ITEM1.TECHNOLOGIES' | translate }}</p>
-            </div>
-          </div>
-          
-          <div class="timeline-item">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content">
-              <h4>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM2.TITLE' | translate }}</h4>
-              <p class="timeline-date">{{ 'RESUME.EXPERIENCE_ITEMS.ITEM2.PERIOD' | translate }}</p>
-              <p class="timeline-subtitle">{{ 'RESUME.EXPERIENCE_ITEMS.ITEM2.SUBTITLE' | translate }}</p>
-              <ul>
-                <li>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM2.POINTS.POINT1' | translate }}</li>
-                <li>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM2.POINTS.POINT2' | translate }}</li>
-                <li>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM2.POINTS.POINT3' | translate }}</li>
-                <li>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM2.POINTS.POINT4' | translate }}</li>
-              </ul>
-              <p class="technologies">{{ 'RESUME.TECHNOLOGIES_USED' | translate }}: {{ 'RESUME.EXPERIENCE_ITEMS.ITEM2.TECHNOLOGIES' | translate }}</p>
-            </div>
-          </div>
-          
-          <div class="timeline-item">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content">
-              <h4>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM3.TITLE' | translate }}</h4>
-              <p class="timeline-date">{{ 'RESUME.EXPERIENCE_ITEMS.ITEM3.PERIOD' | translate }}</p>
-              <p class="timeline-subtitle">{{ 'RESUME.EXPERIENCE_ITEMS.ITEM3.SUBTITLE' | translate }}</p>
-              <ul>
-                <li>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM3.POINTS.POINT1' | translate }}</li>
-                <li>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM3.POINTS.POINT2' | translate }}</li>
-                <li>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM3.POINTS.POINT3' | translate }}</li>
-              </ul>
-              <p class="technologies">{{ 'RESUME.TECHNOLOGIES_USED' | translate }}: {{ 'RESUME.EXPERIENCE_ITEMS.ITEM3.TECHNOLOGIES' | translate }}</p>
-            </div>
-          </div>
-          
-          <div class="timeline-item">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content">
-              <h4>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM4.TITLE' | translate }}</h4>
-              <p class="timeline-date">{{ 'RESUME.EXPERIENCE_ITEMS.ITEM4.PERIOD' | translate }}</p>
-              <p class="timeline-subtitle">{{ 'RESUME.EXPERIENCE_ITEMS.ITEM4.SUBTITLE' | translate }}</p>
-              <ul>
-                <li>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM4.POINTS.POINT1' | translate }}</li>
-                <li>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM4.POINTS.POINT2' | translate }}</li>
-              </ul>
-              <p class="technologies">{{ 'RESUME.TECHNOLOGIES_USED' | translate }}: {{ 'RESUME.EXPERIENCE_ITEMS.ITEM4.TECHNOLOGIES' | translate }}</p>
-            </div>
-          </div>
-          
-          <div class="timeline-item">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content">
-              <h4>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM5.TITLE' | translate }}</h4>
-              <p class="timeline-date">{{ 'RESUME.EXPERIENCE_ITEMS.ITEM5.PERIOD' | translate }}</p>
-              <p class="timeline-subtitle">{{ 'RESUME.EXPERIENCE_ITEMS.ITEM5.SUBTITLE' | translate }}</p>
-              <ul>
-                <li>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM5.POINTS.POINT1' | translate }}</li>
-                <li>{{ 'RESUME.EXPERIENCE_ITEMS.ITEM5.POINTS.POINT2' | translate }}</li>
-              </ul>
-              <p class="technologies">{{ 'RESUME.TECHNOLOGIES_USED' | translate }}: {{ 'RESUME.EXPERIENCE_ITEMS.ITEM5.TECHNOLOGIES' | translate }}</p>
-            </div>
-          </div>
+        <!-- Profile image -->
+        <div class="hidden sm:block">
+          <img src="assets/me.jpg"
+               alt="{{ 'A11Y.PROFILE_PHOTO' | translate }}"
+               class="h-24 w-24 rounded-full border border-white/10 bg-white/[0.04] object-cover
+                      shadow-signal-glow transition-all duration-300 hover:-translate-y-0.5
+                      group-hover:border-signal/40"
+               width="96"
+               height="96"
+               loading="lazy">
+        </div>
 
-          
-        </div>
-      </div>
-      
-      <!-- Education Section -->
-      <div appScrollReveal data-reveal-direction="up" class="resume-section ">
-        <h3 class="section-title">{{ 'RESUME.EDUCATION' | translate }}</h3>
-        
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content">
-              <h4>{{ 'RESUME.EDUCATION_ITEMS.ITEM1.TITLE' | translate }}</h4>
-              <p class="timeline-date">{{ 'RESUME.EDUCATION_ITEMS.ITEM1.PERIOD' | translate }}</p>
-              <p class="timeline-subtitle">{{ 'RESUME.EDUCATION_ITEMS.ITEM1.INSTITUTION' | translate }}</p>
-            </div>
-          </div>
-          
-          <div class="timeline-item">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content">
-              <h4>{{ 'RESUME.EDUCATION_ITEMS.ITEM2.TITLE' | translate }}</h4>
-              <p class="timeline-date">{{ 'RESUME.EDUCATION_ITEMS.ITEM2.PERIOD' | translate }}</p>
-              <p class="timeline-subtitle">{{ 'RESUME.EDUCATION_ITEMS.ITEM2.INSTITUTION' | translate }}</p>
-            </div>
-          </div>
-          
-          <div class="timeline-item">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content">
-              <h4>{{ 'RESUME.EDUCATION_ITEMS.ITEM3.TITLE' | translate }}</h4>
-              <p class="timeline-date">{{ 'RESUME.EDUCATION_ITEMS.ITEM3.PERIOD' | translate }}</p>
-              <p class="timeline-subtitle">{{ 'RESUME.EDUCATION_ITEMS.ITEM3.INSTITUTION' | translate }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Skills Section -->
-      <div appScrollReveal data-reveal-direction="up" class="resume-section ">
-        <h3 class="section-title">{{ 'RESUME.SKILLS' | translate }}</h3>
-        
-        <div class="skills-container">
-          <div class="skill-category">
-            <h4>{{ 'RESUME.SKILLS_CATEGORIES.LANGUAGES' | translate }}</h4>
-            <div class="skills-list">
-              <span class="skill-tag">C</span>
-              <span class="skill-tag">C#</span>
-              <span class="skill-tag">Java</span>
-              <span class="skill-tag">Python</span>
-              <span class="skill-tag">R</span>
-              <span class="skill-tag">JavaScript</span>
-              <span class="skill-tag">HTML</span>
-              <span class="skill-tag">CSS</span>
-            </div>
-          </div>
-          
-          <div class="skill-category">
-            <h4>{{ 'RESUME.SKILLS_CATEGORIES.FRAMEWORKS' | translate }}</h4>
-            <div class="skills-list">
-              <span class="skill-tag">.NET Core</span>
-              <span class="skill-tag">JEE</span>
-              <span class="skill-tag">Spring Boot</span>
-              <span class="skill-tag">Bootstrap</span>
-              <span class="skill-tag">React</span>
-              <span class="skill-tag">Angular</span>
-              <span class="skill-tag">React Native</span>
-              <span class="skill-tag">FastAPI</span>
-            </div>
-          </div>
-          
-          <div class="skill-category">
-            <h4>{{ 'RESUME.SKILLS_CATEGORIES.DATABASES' | translate }}</h4>
-            <div class="skills-list">
-              <span class="skill-tag">SQL Server</span>
-              <span class="skill-tag">MySQL</span>
-              <span class="skill-tag">T-SQL</span>
-              <span class="skill-tag">PostgreSQL</span>
-              <span class="skill-tag">MongoDB</span>
-            </div>
-          </div>
-          
-          <div class="skill-category">
-            <h4>{{ 'RESUME.SKILLS_CATEGORIES.TOOLS' | translate }}</h4>
-            <div class="skills-list">
-              <span class="skill-tag">Git</span>
-              <span class="skill-tag">GitHub</span>
-              <span class="skill-tag">GitLab</span>
-              <span class="skill-tag">Docker</span>
-              <span class="skill-tag">Docker Compose</span>
-            </div>
-          </div>
-          
-          <div class="skill-category">
-            <h4>{{ 'RESUME.SKILLS_CATEGORIES.SOFT_SKILLS' | translate }}</h4>
-            <div class="skills-list">
-              <span class="skill-tag">{{ 'RESUME.SOFT_SKILLS.TEAMWORK' | translate }}</span>
-              <span class="skill-tag">{{ 'RESUME.SOFT_SKILLS.STRESS_MANAGEMENT' | translate }}</span>
-              <span class="skill-tag">{{ 'RESUME.SOFT_SKILLS.ADAPTABILITY' | translate }}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Languages Section -->
-      <div appScrollReveal data-reveal-direction="up" class="resume-section ">
-        <h3 class="section-title">{{ 'RESUME.LANGUAGES.TITLE' | translate }}</h3>
-        <div class="languages-list">
-          <div class="language-item">
-            <span class="language-name">{{ 'RESUME.LANGUAGES.ARABIC' | translate }}</span>
-          </div>
-          <div class="language-item">
-            <span class="language-name">{{ 'RESUME.LANGUAGES.FRENCH' | translate }}</span>
-          </div>
-          <div class="language-item">
-            <span class="language-name">{{ 'RESUME.LANGUAGES.ENGLISH' | translate }}</span>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Certifications Section -->
-      <div appScrollReveal data-reveal-direction="up" class="resume-section ">
-        <h3 class="section-title">{{ 'RESUME.CERTIFICATIONS.TITLE' | translate }}</h3>
-        <div class="certifications-list">
-          <div class="certification-item">
-            <span class="certification-name">{{ 'RESUME.CERTIFICATIONS.SCRUM' | translate }}</span>
+        <div class="min-w-0 flex-1">
+          <h2 class="font-display text-xl font-semibold uppercase tracking-wide sm:text-2xl">
+            {{ 'RESUME.PERSONAL_INFO.NAME' | translate }}
+          </h2>
+          <p class="mt-1.5 font-mono text-sm text-signal-soft">
+            {{ 'RESUME.PERSONAL_INFO.TITLE' | translate }}
+          </p>
+
+          <div class="mt-5 flex flex-wrap gap-x-6 gap-y-2.5 text-sm text-slate-400">
+            <a [href]="'mailto:' + 'RESUME.PERSONAL_INFO.EMAIL' | translate"
+               class="lab-underline -mx-2 inline-flex items-center gap-2 rounded-lg px-2 py-1.5
+                      transition-colors duration-300 hover:bg-white/[0.05] hover:text-ion">
+              <i class="fas fa-envelope text-ion"></i>
+              {{ 'RESUME.PERSONAL_INFO.EMAIL' | translate }}
+            </a>
+            <a [href]="'tel:' + ('RESUME.PERSONAL_INFO.PHONE' | translate)"
+               class="lab-underline -mx-2 inline-flex items-center gap-2 rounded-lg px-2 py-1.5
+                      transition-colors duration-300 hover:bg-white/[0.05] hover:text-ion">
+              <i class="fas fa-phone text-ion"></i>
+              {{ 'RESUME.PERSONAL_INFO.PHONE' | translate }}
+            </a>
+            <span class="inline-flex items-center gap-2">
+              <i class="fas fa-location-dot text-ion"></i>
+              {{ 'RESUME.PERSONAL_INFO.LOCATION' | translate }}
+            </span>
           </div>
         </div>
       </div>
     </div>
-    
-    <div class="download-section-v2" appScrollReveal data-reveal-direction="up">
-      <button (click)="downloadResume()" class="btn-v2 primary download-btn" appMagnetic>
-        <i class="fas fa-download"></i> {{ 'RESUME.DOWNLOAD' | translate }}
+
+    <!-- ══════════ Experience timeline ══════════ -->
+    <section class="mb-20">
+      <h2 class="mb-10 flex items-center gap-4 font-display text-display-sm font-semibold"
+          appScrollReveal data-reveal-direction="left">
+        <span class="grid h-9 w-9 place-items-center rounded-lg border border-signal/30 bg-signal/10 text-signal">
+          <i class="fas fa-briefcase text-sm"></i>
+        </span>
+        {{ 'RESUME.EXPERIENCE' | translate }}
+      </h2>
+
+      <ol class="relative ml-3 border-l border-white/[0.09] pl-8 sm:ml-4 sm:pl-10">
+        <li *ngFor="let e of experience; let i = index"
+            appScrollReveal data-reveal-direction="up" [attr.data-delay]="i * 70"
+            class="group relative pb-11 last:pb-0">
+
+          <!-- Node -->
+          <span class="absolute -left-[2.42rem] top-1.5 grid h-4 w-4 place-items-center rounded-full
+                       border-2 border-signal bg-ink-900 transition-all duration-400
+                       group-hover:scale-125 sm:-left-[2.92rem]">
+            <span class="h-1.5 w-1.5 rounded-full bg-signal"></span>
+          </span>
+
+          <article class="lab-panel rounded-2xl p-6 transition-all duration-500 ease-smooth
+                          hover:-translate-y-1 hover:border-signal/25 sm:p-7">
+            <header class="flex flex-wrap items-start justify-between gap-x-5 gap-y-2">
+              <h3 class="font-display text-lg font-semibold leading-snug text-balance">
+                {{ 'RESUME.EXPERIENCE_ITEMS.' + e.key + '.TITLE' | translate }}
+              </h3>
+              <span class="shrink-0 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1
+                           font-mono text-[0.66rem] tabular-nums text-slate-300">
+                {{ 'RESUME.EXPERIENCE_ITEMS.' + e.key + '.PERIOD' | translate }}
+              </span>
+            </header>
+
+            <p class="mt-2.5 font-mono text-[0.68rem] uppercase tracking-[0.14em] text-slate-500">
+              {{ 'RESUME.EXPERIENCE_ITEMS.' + e.key + '.SUBTITLE' | translate }}
+            </p>
+
+            <!-- Achievements -->
+            <ul class="mt-5 space-y-2.5">
+              <li *ngFor="let n of bulletIndexes(e.pointCount); let b = index"
+                  class="flex gap-3 text-sm leading-relaxed text-slate-400">
+                <span class="mt-[0.55em] h-1 w-1 shrink-0 rounded-full bg-ion/70"></span>
+                <span class="text-pretty">{{ pointKey(e.key, n) | translate }}</span>
+              </li>
+            </ul>
+
+            <!-- Technologies -->
+            <div class="mt-6 flex flex-wrap items-center gap-1.5 border-t border-white/[0.06] pt-5">
+              <span class="mr-1.5 font-mono text-[0.62rem] uppercase tracking-[0.16em] text-slate-600">
+                {{ 'RESUME.TECHNOLOGIES_USED' | translate }}
+              </span>
+              <ng-container *ngFor="let tech of splitTech(e.key)">
+                <span class="lab-tag">{{ tech }}</span>
+              </ng-container>
+            </div>
+          </article>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ══════════ Education ══════════ -->
+    <section class="mb-20">
+      <h2 class="mb-10 flex items-center gap-4 font-display text-display-sm font-semibold"
+          appScrollReveal data-reveal-direction="left">
+        <span class="grid h-9 w-9 place-items-center rounded-lg border border-ion/30 bg-ion/10 text-ion">
+          <i class="fas fa-graduation-cap text-sm"></i>
+        </span>
+        {{ 'RESUME.EDUCATION' | translate }}
+      </h2>
+
+      <div class="grid gap-5 md:grid-cols-3">
+        <article *ngFor="let e of education; let i = index"
+                 appScrollReveal data-reveal-direction="up" [attr.data-delay]="i * 90"
+                 class="lab-panel lab-glow-hover rounded-2xl p-6 transition-all duration-500 ease-smooth
+                        hover:-translate-y-1.5 hover:border-ion/25"
+                 (mousemove)="onGlowMove($event)">
+          <span class="font-mono text-[0.66rem] text-ion">0{{ i + 1 }}</span>
+          <h3 class="mt-3 font-display text-base font-semibold leading-snug text-balance">
+            {{ 'RESUME.EDUCATION_ITEMS.' + e.key + '.TITLE' | translate }}
+          </h3>
+          <p class="mt-3 text-sm leading-relaxed text-slate-400">
+            {{ 'RESUME.EDUCATION_ITEMS.' + e.key + '.INSTITUTION' | translate }}
+          </p>
+          <p class="mt-4 border-t border-white/[0.06] pt-4 font-mono text-[0.68rem] text-slate-500">
+            {{ 'RESUME.EDUCATION_ITEMS.' + e.key + '.PERIOD' | translate }}
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ══════════ Skills + soft skills ══════════ -->
+    <section class="mb-20 grid gap-6 lg:grid-cols-[1.35fr_1fr]">
+      <div class="lab-panel rounded-3xl p-7 sm:p-8" appScrollReveal data-reveal-direction="up">
+        <h2 class="mb-8 flex items-center gap-4 font-display text-display-sm font-semibold">
+          <span class="grid h-9 w-9 place-items-center rounded-lg border border-plasma/30 bg-plasma/10 text-plasma">
+            <i class="fas fa-code text-sm"></i>
+          </span>
+          {{ 'RESUME.SKILLS' | translate }}
+        </h2>
+
+        <div class="space-y-7">
+          <div *ngFor="let g of skillGroups">
+            <h3 class="mb-3 font-mono text-[0.64rem] uppercase tracking-[0.18em] text-slate-500">
+              {{ 'RESUME.SKILLS_CATEGORIES.' + g.categoryKey | translate }}
+            </h3>
+            <div class="flex flex-wrap gap-1.5">
+              <span *ngFor="let item of g.items" class="lab-tag">{{ item }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <!-- Soft skills -->
+        <div class="lab-panel rounded-3xl p-7 sm:p-8" appScrollReveal data-reveal-direction="up" data-delay="120">
+          <h2 class="mb-5 font-display text-display-sm font-semibold">
+            {{ 'RESUME.SKILLS_CATEGORIES.SOFT_SKILLS' | translate }}
+          </h2>
+          <ul class="space-y-2.5">
+            <li *ngFor="let k of softSkillKeys" class="flex items-center gap-2.5 text-sm text-slate-400">
+              <i class="fas fa-check text-[0.7rem] text-mint"></i>
+              {{ 'RESUME.SOFT_SKILLS.' + k | translate }}
+            </li>
+          </ul>
+        </div>
+
+        <!-- Languages -->
+        <div class="lab-panel rounded-3xl p-7 sm:p-8" appScrollReveal data-reveal-direction="up" data-delay="200">
+          <h2 class="mb-5 font-display text-display-sm font-semibold">
+            {{ 'RESUME.LANGUAGES.TITLE' | translate }}
+          </h2>
+          <ul class="space-y-2.5">
+            <li *ngFor="let k of languageKeys" class="flex items-center gap-2.5 text-sm text-slate-400">
+              <i class="fas fa-globe text-[0.7rem] text-ion"></i>
+              {{ 'RESUME.LANGUAGES.' + k | translate }}
+            </li>
+          </ul>
+        </div>
+
+        <!-- Certifications -->
+        <div class="lab-panel rounded-3xl p-7 sm:p-8" appScrollReveal data-reveal-direction="up" data-delay="280">
+          <h2 class="mb-5 font-display text-display-sm font-semibold">
+            {{ 'RESUME.CERTIFICATIONS.TITLE' | translate }}
+          </h2>
+          <ul class="space-y-2.5">
+            <li *ngFor="let k of certificationKeys"
+                class="flex items-center gap-2.5 text-sm text-slate-400">
+              <i class="fas fa-certificate text-[0.75rem] text-signal-soft"></i>
+              {{ 'RESUME.CERTIFICATIONS.' + k | translate }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ Download ══════════ -->
+    <div class="text-center" appScrollReveal data-reveal-direction="up">
+      <button type="button" (click)="downloadResume()" class="lab-btn lab-btn-primary" appMagnetic>
+        <i class="fas fa-download text-xs"></i>
+        <span>{{ 'RESUME.DOWNLOAD' | translate }}</span>
       </button>
-      <div class="download-error" *ngIf="error" role="alert">
-        <i class="fas fa-exclamation-circle"></i> {{ 'RESUME.DOWNLOAD_ERROR' | translate }}
-      </div>
+      <p *ngIf="error" role="alert"
+         class="mt-4 inline-flex items-center gap-2 text-sm text-signal">
+        <i class="fas fa-exclamation-circle"></i>
+        {{ 'RESUME.DOWNLOAD_ERROR' | translate }}
+      </p>
     </div>
-</div>
+  </div>
+</section>

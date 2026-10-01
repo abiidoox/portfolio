@@ -1,47 +1,89 @@
-<header class="header" [class.scrolled]="isScrolled">
-  <nav class="nav-container">
-    <a routerLink="/" class="logo-mark" aria-label="Home">
-      <svg viewBox="0 0 40 40" width="38" height="38" aria-hidden="true">
-        <rect rx="10" width="40" height="40" fill="url(#lm-grad)"></rect>
-        <text x="20" y="27" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-weight="700" font-size="18" fill="#fff">AE</text>
-        <defs><linearGradient id="lm-grad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stop-color="#ff5e3a"></stop>
-          <stop offset="100%" stop-color="#38bdf8"></stop>
-        </linearGradient></defs>
-      </svg>
+<header
+  class="fixed inset-x-0 top-0 z-[1000] transition-all duration-500 ease-smooth"
+  [class.lab-nav-scrolled]="isScrolled"
+  [class.lab-nav-open]="isMobileMenuOpen"
+>
+  <nav class="lab-shell flex h-[4.5rem] items-center justify-between gap-4" [attr.aria-label]="'A11Y.NAV_MAIN' | translate">
+    <!-- Brand -->
+    <a routerLink="/" class="group flex items-center gap-3" [attr.aria-label]="'A11Y.NAV_HOME' | translate" (click)="closeMobileMenu()">
+      <span class="relative grid h-10 w-10 shrink-0 place-items-center overflow-hidden rounded-xl
+                   bg-signal-sweep-deep shadow-signal-glow transition-transform duration-500
+                   ease-swift group-hover:scale-105">
+        <span class="font-display text-sm font-bold tracking-tight text-white">AE</span>
+        <span class="absolute inset-0 -translate-x-full bg-white/25 transition-transform
+                     duration-700 group-hover:translate-x-full"></span>
+      </span>
+      <span class="hidden flex-col leading-none sm:flex">
+        <span class="font-display text-[0.95rem] font-semibold tracking-tight">El Abdouni</span>
+        <span class="mt-0.5 font-mono text-[0.6rem] uppercase tracking-[0.2em] text-slate-400">Full-Stack</span>
+      </span>
     </a>
-<ul class="nav-links" #navLinks>
-      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="setActiveLink($event, 0)">{{ 'header.home' | translate }}</a></li>
-      <li><a routerLink="/projects" routerLinkActive="active" (click)="setActiveLink($event, 1)">{{ 'header.projects' | translate }}</a></li>
-      <li>
-        <a routerLink="/skills" routerLinkActive="active" (click)="setActiveLink($event, 2)">{{ 'header.skills' | translate }}</a>
+
+    <!-- Desktop links -->
+    <ul #navLinks class="hidden items-center gap-1 md:flex">
+      <li *ngFor="let item of navItems; let i = index">
+        <a
+          [routerLink]="item.path"
+          routerLinkActive="text-white"
+          [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+          [attr.data-active]="isActive(item.path) ? 'true' : 'false'"
+          (click)="onNavClick()"
+          class="lab-underline block rounded-lg px-4 py-2 font-display text-[0.86rem] font-medium
+                 text-slate-400 transition-colors duration-300 hover:text-white"
+        >
+          {{ item.label | translate }}
+        </a>
       </li>
-      <li>
-        <a routerLink="/resume" routerLinkActive="active" (click)="setActiveLink($event, 3)">{{ 'header.resume' | translate }}</a>
-      </li>
-      <li><a routerLink="/contact" routerLinkActive="active" (click)="setActiveLink($event, 4)">{{ 'header.contact' | translate }}</a></li>
-      <span class="nav-indicator" [style.transform]="'translateX(' + indicatorX + 'px) scaleX(' + indicatorScale + ')'" [style.width.px]="indicatorWidth"></span>
+      <!-- Sliding active indicator -->
+      <span
+        class="pointer-events-none absolute bottom-0 h-[2px] rounded-full bg-signal-sweep opacity-0
+               transition-all duration-500 ease-swift"
+        [style.transform]="'translateX(' + indicatorX + 'px)'"
+        [style.width.px]="indicatorWidth"
+        [style.opacity]="indicatorVisible ? 1 : 0"
+        aria-hidden="true"
+      ></span>
     </ul>
-    <div class="header-controls">
+
+    <!-- Controls -->
+    <div class="flex items-center gap-2">
       <app-theme-switcher></app-theme-switcher>
       <app-language-switcher></app-language-switcher>
-      <button class="mobile-menu-button" (click)="toggleMobileMenu()" [attr.aria-expanded]="isMobileMenuOpen" aria-label="Toggle mobile menu">
-        <i class="fas" [ngClass]="{'fa-bars': !isMobileMenuOpen, 'fa-times': isMobileMenuOpen}"></i>
+
+      <button
+        type="button"
+        (click)="toggleMobileMenu()"
+        [attr.aria-expanded]="isMobileMenuOpen"
+        aria-controls="mobile-menu"
+        class="grid h-10 w-10 place-items-center rounded-xl border border-white/10
+               text-slate-300 transition-colors duration-300 hover:border-signal/50 hover:text-signal md:hidden"
+      >
+        <span class="sr-only">{{ (isMobileMenuOpen ? 'A11Y.CLOSE_MENU' : 'A11Y.OPEN_MENU') | translate }}</span>
+        <i class="fas" [ngClass]="isMobileMenuOpen ? 'fa-xmark' : 'fa-bars'"></i>
       </button>
     </div>
   </nav>
-  <div class="mobile-menu" [class.open]="isMobileMenuOpen">
-    <div class="mobile-controls">
-      <app-theme-switcher></app-theme-switcher>
-      <app-language-switcher></app-language-switcher>
-    </div>
-    <ul class="nav-links">
-      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMobileMenu()">{{ 'header.home' | translate }}</a></li>
-      <li><a routerLink="/projects" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'header.projects' | translate }}</a></li>
-      <li><a routerLink="/skills" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'header.skills' | translate }}</a></li>
-      <li><a routerLink="/resume" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'header.resume' | translate }}</a></li>
-  
-      <li><a routerLink="/contact" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'header.contact' | translate }}</a></li>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    class="lab-mobile-menu overflow-hidden border-t border-white/5 md:hidden"
+    [class.is-open]="isMobileMenuOpen"
+  >
+    <ul class="lab-shell flex flex-col gap-1 py-5">
+      <li *ngFor="let item of navItems; let i = index">
+        <a
+          [routerLink]="item.path"
+          routerLinkActive="text-signal"
+          [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+          (click)="onMobileNavClick()"
+          class="flex items-center gap-3 rounded-xl px-4 py-3.5 font-display text-base
+                 text-slate-300 transition-all duration-300 hover:bg-white/[0.04]"
+        >
+          <span class="font-mono text-[0.65rem] text-slate-600">0{{ i + 1 }}</span>
+          <span>{{ item.label | translate }}</span>
+        </a>
+      </li>
     </ul>
   </div>
 </header>

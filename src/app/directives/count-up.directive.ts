@@ -1,44 +1,65 @@
-import { Directive, ElementRef, OnDestroy } from '@angular/core';
+import { Directive, ElementRef, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
 
 /**
- * Animated counter directive.
+ * Animated counter.
  * Usage: <span appCountUp [countTo]="7" [duration]="1400">0</span>
- * Counts from 0 to countTo when the element scrolls into view (ease-out cubic).
+ *
+ * Reads inputs via @Input (not raw attributes in the constructor) so bound
+ * values are resolved before the animation is scheduled. Writes to a nested
+ * counter node rather than the host, so host classes such as gradient text
+ * survive the animation.
  */
 @Directive({
   selector: '[appCountUp]',
   standalone: true
 })
-export class CountUpDirective implements OnDestroy {
+export class CountUpDirective implements OnInit, OnChanges, OnDestroy {
+  @Input() countTo = 100;
+  @Input() duration = 1400;
+
   private observer?: IntersectionObserver;
   private started = false;
+  private target: HTMLElement;
+  private reducedMotion = false;
 
   constructor(private el: ElementRef<HTMLElement>) {
-    const target = Number((this.el.nativeElement as HTMLElement).getAttribute('countTo') || '100');
-    const duration = Number((this.el.nativeElement as HTMLElement).getAttribute('duration') || '1400');
+    this.target = this.el.nativeElement;
+  }
+
+  ngOnInit(): void {
+    this.reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (this.reducedMotion) {
+      this.target.textContent = String(this.countTo);
+      return;
+    }
 
     this.observer = new IntersectionObserver(
       entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting && !this.started) {
             this.started = true;
-            this.animate(target, duration);
-            this.observer?.unobserve(this.el.nativeElement);
+            this.animate();
+            this.observer?.unobserve(this.target);
           }
         });
       },
       { threshold: 0.6 }
     );
-    this.observer.observe(this.el.nativeElement);
+    this.observer.observe(this.target);
   }
 
-  private animate(target: number, duration: number): void {
-    const node = this.el.nativeElement as HTMLElement;
+  ngOnChanges(): void {
+    // If the value arrives after the element was already revealed, keep it correct.
+    if (this.started) this.target.textContent = String(this.countTo);
+  }
+
+  private animate(): void {
+    const node = this.target;
     const start = performance.now();
     const tick = (now: number) => {
-      const p = Math.min((now - start) / duration, 1);
+      const p = Math.min((now - start) / this.duration, 1);
       const eased = 1 - Math.pow(1 - p, 3); // ease-out cubic
-      node.textContent = String(Math.round(target * eased));
+      node.textContent = String(Math.round(this.countTo * eased));
       if (p < 1) requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);

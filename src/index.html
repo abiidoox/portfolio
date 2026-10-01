@@ -25,41 +25,50 @@
   <meta name="twitter:description" content="Projects, skills, resume and contact.">
   <meta name="twitter:image" content="https://abderrazzaq-portfolio.netlify.app/assets/me.jpg">
 
-  <meta name="theme-color" content="#0f172a">
+  <meta name="theme-color" content="#080b12">
+
+  <!-- Applies the saved theme before first paint. Without this the app boots
+       dark and repaints light, which reads as a flash of the wrong theme. -->
+  <script>
+    (function () {
+      try {
+        var theme = localStorage.getItem('theme') === 'light' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+        // The body does not exist yet, so the class goes on <html> and the
+        // component keeps <body> in sync once Angular boots.
+        document.documentElement.classList.add(theme + '-theme');
+
+        // Also set language from localStorage if available (to prevent FOUC with language)
+        var savedLang = localStorage.getItem('language');
+        if (savedLang) {
+          document.documentElement.lang = savedLang;
+        }
+      } catch (e) { /* private mode: fall through to the dark default */ }
+    })();
+  </script>
+
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="alternate icon" type="image/x-icon" href="favicon.ico">
   <!-- Font Awesome for icons -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <!-- Google Fonts -->
+  <!-- Google Fonts: display + text + mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      line-height: 1.6;
-      color: #f8fafc;
-      background-color: #0f172a;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <app-root></app-root>
 
-  <!-- Netlify: static hidden form so Netlify detects the form at build time -->
-  <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+  <!-- Netlify: static hidden form so Netlify detects the form at build time.
+       Machine-only — the real form posts to this name from the Contact route.
+       aria-hidden keeps these duplicate controls out of the accessibility tree. -->
+  <form name="contact" netlify netlify-honeypot="bot-field" hidden aria-hidden="true">
     <input type="hidden" name="form-name" value="contact">
-    <input type="text" name="bot-field">
-    <input type="text" name="name">
-    <input type="email" name="email">
-    <textarea name="message"></textarea>
+    <input type="text" name="bot-field" tabindex="-1" autocomplete="off">
+    <input type="text" name="name" tabindex="-1">
+    <input type="email" name="email" tabindex="-1">
+    <textarea name="message" tabindex="-1"></textarea>
   </form>
 </body>
 </html>

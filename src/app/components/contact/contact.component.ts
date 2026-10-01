@@ -5,8 +5,7 @@ import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-contact',
-  templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.scss']
+  templateUrl: './contact.component.html'
 })
 export class ContactComponent implements OnInit, OnDestroy {
   contactForm: UntypedFormGroup;
@@ -14,6 +13,11 @@ export class ContactComponent implements OnInit, OnDestroy {
   success = false;
   error = false;
   isLoading = false;
+
+  readonly socials = [
+    { label: 'GitHub', url: 'https://github.com/abiidoox', icon: 'fab fa-github' },
+    { label: 'LinkedIn', url: 'https://www.linkedin.com/in/abderrazzaq-el-abdouni-28004019a', icon: 'fab fa-linkedin-in' }
+  ];
 
   constructor(
     private fb: UntypedFormBuilder,
@@ -38,6 +42,20 @@ export class ContactComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.langSub?.unsubscribe();
+  }
+
+  isInvalid(control: string): boolean {
+    const c = this.contactForm.get(control);
+    return !!c && c.invalid && (c.touched || this.submitted);
+  }
+
+  /**
+   * Builds a valid tel: URI. The displayed number is grouped for readability
+   * ("+212 653 539 113") but a URI may not contain those spaces, so everything
+   * except the leading + and the digits is dropped.
+   */
+  telHref(display: string): string {
+    return 'tel:' + (display || '').replace(/[^\d+]/g, '');
   }
 
   onSubmit(event?: Event) {

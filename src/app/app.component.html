@@ -1,17 +1,37 @@
+<a href="#main-content" class="skip-link">{{ 'NAV.SKIP_TO_CONTENT' | translate }}</a>
+
 <app-terminal-intro></app-terminal-intro>
 <app-scroll-progress></app-scroll-progress>
 <app-toast-container></app-toast-container>
-<div class="noise-overlay" aria-hidden="true"></div>
-<div class="mouse-glow" aria-hidden="true"></div>
-<app-particles-background></app-particles-background>
 
-<div class="app-container d-flex flex-column min-vh-100">
+<!-- Ambient laboratory backdrop: grid, glow, noise. Fixed + aria-hidden. -->
+<div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden" aria-hidden="true">
+  <!-- Base wash + radial glows. Uses the theme variable so light mode works. -->
+  <div class="lab-bg-base absolute inset-0"></div>
+  <div class="absolute -left-[18%] -top-[18%] h-[46rem] w-[46rem] rounded-full bg-signal/[0.07] blur-[130px]"></div>
+  <div class="absolute -right-[14%] top-[24%] h-[38rem] w-[38rem] rounded-full bg-ion/[0.06] blur-[130px]"></div>
+  <div class="absolute bottom-[-12%] left-[32%] h-[32rem] w-[32rem] rounded-full bg-plasma/[0.045] blur-[140px]"></div>
+
+  <!-- Drifting technical grid, masked to fade out downward -->
+  <div class="lab-grid-bg absolute inset-0 animate-grid-drift opacity-70
+              [mask-image:linear-gradient(to_bottom,black,transparent_85%)]"></div>
+
+  <!-- Film grain keeps large flat areas from banding -->
+  <div class="lab-noise absolute inset-0 opacity-[0.035]"></div>
+</div>
+
+<app-particles-background></app-particles-background>
+<div class="mouse-glow" aria-hidden="true"></div>
+
+<div class="relative flex min-h-screen flex-col">
   <app-header></app-header>
-  <main class="main-content container py-4">
-    <div class="route-wrap" [@routeAnimations]="prepareRoute(o)">
+
+  <main id="main-content" tabindex="-1" class="flex-1 pb-24">
+    <div [@routeAnimations]="prepareRoute(o)">
       <router-outlet #o="outlet"></router-outlet>
     </div>
   </main>
+
   <app-footer></app-footer>
   <app-back-to-top></app-back-to-top>
 </div>

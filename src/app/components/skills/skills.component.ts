@@ -1,99 +1,60 @@
 import { Component } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
-
-interface Skill {
-  name: string;
-  level: number;
-  icon: string;
-  category: string;
-  experience: string;
-  projects?: number;
-}
+import {
+  SKILLS,
+  SKILL_CATEGORY_ORDER,
+  Skill,
+  SkillCategory,
+  SkillGroup
+} from '../../data/skills.data';
 
 @Component({
   selector: 'app-skills',
-  templateUrl: './skills.component.html',
-  styleUrls: ['./skills.component.scss']
+  templateUrl: './skills.component.html'
 })
 export class SkillsComponent {
-  skills: Skill[] = [
-    // Languages
-    { name: 'C#', level: 90, icon: 'csharp', category: 'languages', experience: '3+', projects: 5 },
-    { name: 'Java', level: 85, icon: 'java', category: 'languages', experience: '3+', projects: 4 },
-    { name: 'Python', level: 80, icon: 'python', category: 'languages', experience: '2+', projects: 3 },
-    { name: 'JavaScript', level: 90, icon: 'javascript', category: 'languages', experience: '3+', projects: 8 },
-    { name: 'TypeScript', level: 85, icon: 'typescript', category: 'languages', experience: '2+', projects: 6 },
-    { name: 'HTML/CSS', level: 90, icon: 'html5', category: 'languages', experience: '3+', projects: 10 },
+  readonly skills: Skill[] = SKILLS;
+  readonly categoryOrder: SkillCategory[] = SKILL_CATEGORY_ORDER;
+  readonly categories: string[] = ['all', ...SKILL_CATEGORY_ORDER];
 
-    // Frameworks
-    { name: '.NET Core', level: 85, icon: 'dot-net', category: 'frameworks', experience: '2+', projects: 4 },
-    { name: 'Spring Boot', level: 80, icon: 'spring', category: 'frameworks', experience: '2+', projects: 3 },
-    { name: 'Angular', level: 90, icon: 'angularjs', category: 'frameworks', experience: '2+', projects: 6 },
-    { name: 'React', level: 85, icon: 'react', category: 'frameworks', experience: '1+', projects: 4 },
-    { name: 'FastAPI', level: 80, icon: 'python', category: 'frameworks', experience: '1+', projects: 2 },
-    { name: 'Django', level: 75, icon: 'django', category: 'frameworks', experience: '1+', projects: 2 },
+  selectedCategory = 'all';
 
-    // Databases
-    { name: 'SQL Server', level: 85, icon: 'microsoftsqlserver', category: 'databases', experience: '3+', projects: 5 },
-    { name: 'MySQL', level: 80, icon: 'mysql', category: 'databases', experience: '2+', projects: 4 },
-    { name: 'PostgreSQL', level: 80, icon: 'postgresql', category: 'databases', experience: '2+', projects: 3 },
-    { name: 'MongoDB', level: 75, icon: 'mongodb', category: 'databases', experience: '1+', projects: 2 },
+  get visibleGroups(): SkillGroup[] {
+    const list = this.selectedCategory === 'all'
+      ? this.skills
+      : this.skills.filter(s => s.category === this.selectedCategory);
 
-    // Tools & DevOps
-    { name: 'Git', level: 90, icon: 'git', category: 'tools', experience: '3+', projects: 15 },
-    { name: 'Docker', level: 85, icon: 'docker', category: 'tools', experience: '2+', projects: 6 },
-    { name: 'Jenkins', level: 75, icon: 'jenkins', category: 'tools', experience: '1+', projects: 3 },
-    { name: 'Azure DevOps', level: 80, icon: 'azure', category: 'tools', experience: '2+', projects: 4 }
-  ];
-
-  categories: string[] = ['all', 'languages', 'frameworks', 'databases', 'tools'];
-  selectedCategory: string = 'all';
-
-  constructor(
-    private translate: TranslateService
-  ) { }
-
-  get filteredSkills(): Skill[] {
-    if (this.selectedCategory === 'all') {
-      return this.skills;
-    }
-    return this.skills.filter(skill => skill.category === this.selectedCategory);
+    return this.categoryOrder
+      .map(category => ({
+        category,
+        items: list.filter(s => s.category === category)
+      }))
+      .filter(g => g.items.length > 0);
   }
 
-  getSkillIconClass(icon: string): string {
-    return `devicon-${icon}-plain colored`;
+  selectCategory(category: string): void {
+    this.selectedCategory = category;
   }
 
-  getSkillLevel(level: number): string {
-    if (level >= 90) return 'Expert';
-    if (level >= 80) return 'Advanced';
-    if (level >= 70) return 'Intermediate';
-    return 'Beginner';
+  countFor(category: string): number {
+    if (category === 'all') return this.skills.length;
+    return this.skills.filter(s => s.category === category).length;
   }
 
-  getCategoryIcon(category: string): string {
+  categoryIcon(category: string): string {
     switch (category) {
-      case 'all':
-        return 'fa-th-large';
-      case 'languages':
-        return 'fa-code';
-      case 'frameworks':
-        return 'fa-layer-group';
-      case 'databases':
-        return 'fa-database';
-      case 'tools':
-        return 'fa-tools';
-      default:
-        return 'fa-folder';
+      case 'languages': return 'fa-code';
+      case 'frameworks': return 'fa-layer-group';
+      case 'databases': return 'fa-database';
+      case 'tools': return 'fa-screwdriver-wrench';
+      case 'all': return 'fa-th-large';
+      default: return 'fa-folder';
     }
   }
 
-  formatExperience(experience: string): string {
-    if (!experience) return '';
-    const years = parseInt(experience);
-    if (isNaN(years)) return '';
-    return this.translate.instant(
-      years > 1 ? 'SKILLS.EXPERIENCE.YEARS' : 'SKILLS.EXPERIENCE.YEAR'
-    );
+  onGlowMove(e: MouseEvent): void {
+    const el = e.currentTarget as HTMLElement;
+    const rect = el.getBoundingClientRect();
+    el.style.setProperty('--mx', `${e.clientX - rect.left}px`);
+    el.style.setProperty('--my', `${e.clientY - rect.top}px`);
   }
-} 
+}

@@ -10,7 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
           <div class="terminal-dots">
             <span></span><span></span><span></span>
           </div>
-          <div class="terminal-title">~/portfolio — loading</div>
+          <div class="terminal-title">~/portfolio — {{ 'terminal.title' | translate }}</div>
         </div>
         <div class="terminal-body">
           <div class="terminal-line" *ngFor="let line of visibleLines">
@@ -132,16 +132,18 @@ export class TerminalIntroComponent implements OnInit, OnDestroy {
       'terminal.open',
       'terminal.ls',
       'terminal.cat',
-      'terminal.run'
+      'terminal.run',
+      'terminal.ready',
+      'terminal.welcome'
     ]).subscribe(t => {
       const o = (k: string, d: string) => (t[k] !== k ? t[k] : d);
       this.lines = [
         `${o('terminal.open', 'open')} career --profile=dev`,
         `${o('terminal.ls', 'ls')} projects/`,
         `${o('terminal.cat', 'cat')} skills.yaml`,
-        `${o('terminal.run', 'run')} $ npm run build`,
-        `✓ app ready`,
-        `Welcome, Abderrazzaq`,
+        `${o('terminal.run', 'run')} npm run build`,
+        `✓ ${o('terminal.ready', 'app ready')}`,
+        `${o('terminal.welcome', 'Welcome')}, Abderrazzaq`,
       ];
       this.start();
     });
@@ -156,14 +158,22 @@ export class TerminalIntroComponent implements OnInit, OnDestroy {
     this.zone.runOutsideAngular(() => {
       this.lineTimer = setInterval(() => {
         if (this.currentLine < this.lines.length) {
+          // The last two lines report a result, so they get the success colour.
+          // Indexed rather than matched on text, which would not survive
+          // translation.
+          const done = this.currentLine >= this.lines.length - 2;
           this.visibleLines = [...this.visibleLines, {
             text: this.lines[this.currentLine],
-            success: this.lines[this.currentLine].startsWith('✓') || this.lines[this.currentLine].startsWith('Welcome')
+            success: done
           }];
           this.currentLine++;
         } else {
           clearInterval(this.lineTimer);
-          setTimeout(() => (this.done = true), 200);
+          // Re-enter the zone: both intervals are cleared by now, so nothing
+          // else would trigger change detection and the `done` class (which
+          // is what removes the overlay from the page) would not be applied
+          // until an unrelated event happened to fire.
+          setTimeout(() => this.zone.run(() => (this.done = true)), 200);
         }
       }, 250);
 

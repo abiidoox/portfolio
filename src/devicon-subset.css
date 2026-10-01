@@ -1,0 +1,48 @@
+/*
+ * GENERATED FILE — do not edit by hand.
+ * Regenerate with: node tools/build-devicon-subset.mjs && python tools/subset-devicon.py
+ *
+ * A 26-glyph subset of the devicon icon font, replacing devicon.min.css.
+ * Same font, same codepoints, same rendering — 26 glyphs instead of ~2000,
+ * served as woff2 (a few KB) rather than as a 1.5 MB TrueType file.
+ */
+
+@font-face {
+  font-family: "devicon";
+  src: url("assets/fonts/devicon-subset.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  /* Icons inherit colour from the element, so there is no metric-compatible
+     fallback to swap to. block keeps the reserved box stable instead of
+     letting text reflow around tofu. */
+  font-display: block;
+}
+
+[class^=devicon-],[class*=" devicon-"]{font-family:"devicon" !important;speak:never;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+
+.devicon-angular-plain:before{content:"\E917"}
+.devicon-bootstrap-plain:before{content:"\E950"}
+.devicon-csharp-plain:before{content:"\E9A0"}
+.devicon-css3-plain:before{content:"\E9A1"}
+.devicon-django-plain:before{content:"\E9BD"}
+.devicon-docker-plain:before{content:"\E9C3"}
+.devicon-dotnetcore-plain:before{content:"\E9C9"}
+.devicon-entityframeworkcore-plain:before{content:"\ED96"}
+.devicon-fastapi-plain:before{content:"\E9EF"}
+.devicon-git-plain:before{content:"\EA2D"}
+.devicon-github-plain:before{content:"\EA29"}
+.devicon-gitlab-plain:before{content:"\EA2B"}
+.devicon-html5-plain:before{content:"\EA67"}
+.devicon-java-plain:before{content:"\EA7F"}
+.devicon-javascript-plain:before{content:"\EA81"}
+.devicon-microsoftsqlserver-plain:before{content:"\EAEA"}
+.devicon-mongodb-plain:before{content:"\EAF5"}
+.devicon-mysql-plain:before{content:"\EAFD"}
+.devicon-nodejs-plain:before{content:"\ED9E"}
+.devicon-postgresql-plain:before{content:"\EB79"}
+.devicon-postman-plain:before{content:"\EB7B"}
+.devicon-python-plain:before{content:"\EB9C"}
+.devicon-react-plain:before{content:"\EBBC"}
+.devicon-redis-plain:before{content:"\EBC8"}
+.devicon-spring-plain:before{content:"\EC16"}
+.devicon-typescript-plain:before{content:"\EC63"}
