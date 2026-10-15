@@ -29,6 +29,14 @@
     "COPY_EMAIL": "Copiar dirección de correo",
     "HINTS": "↑↓ navegar · ↵ abrir · esc cerrar"
   },
+  "GITHUB": {
+    "TITLE": "En directo desde GitHub",
+    "REPOS": "Repositorios públicos",
+    "LANGUAGES": "Lenguajes más usados",
+    "LAST_PUSH": "Último push",
+    "UPDATED": "Cifras obtenidas el {{date}} por un script de build, no a mano.",
+    "VIEW_PROFILE": "Ver perfil"
+  },
   "ABOUT": {
     "NAME": "Abderrazzaq El Abdouni",
     "LOCATION": "Rabat, Marruecos",

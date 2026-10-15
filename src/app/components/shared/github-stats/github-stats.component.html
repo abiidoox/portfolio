@@ -1,0 +1,69 @@
+<section class="pb-4">
+  <div class="lab-shell">
+    <div class="lab-panel rounded-3xl px-7 py-7 sm:px-9"
+         appScrollReveal data-reveal-direction="up">
+
+      <!-- Header -->
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <h2 class="flex items-center gap-3">
+          <i class="fab fa-github text-lg text-slate-300" aria-hidden="true"></i>
+          <span class="font-mono text-[0.68rem] uppercase tracking-[0.28em] text-slate-500">
+            {{ 'GITHUB.TITLE' | translate }}
+          </span>
+        </h2>
+        <a [href]="profileUrl" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 font-mono text-[0.68rem] text-slate-400
+                  transition-colors duration-200 hover:text-signal">
+          <span>{{ 'GITHUB.VIEW_PROFILE' | translate }}</span>
+          <i class="fas fa-arrow-up-right-from-square text-[0.62rem]" aria-hidden="true"></i>
+        </a>
+      </div>
+
+      <!-- Figures -->
+      <div class="mt-7 grid gap-7 sm:grid-cols-3">
+        <div>
+          <p class="font-mono text-[0.64rem] uppercase tracking-[0.18em] text-slate-500">
+            {{ 'GITHUB.REPOS' | translate }}
+          </p>
+          <p class="mt-1.5 font-display text-3xl font-bold tabular-nums">
+            <span appCountUp [countTo]="stats.publicRepos" class="lab-gradient-text">0</span>
+          </p>
+        </div>
+
+        <div>
+          <p class="font-mono text-[0.64rem] uppercase tracking-[0.18em] text-slate-500">
+            {{ 'GITHUB.LANGUAGES' | translate }}
+          </p>
+          <div class="mt-2 flex flex-wrap gap-1.5">
+            @for (language of stats.languages; track language.name) {
+              <span class="lab-tag">
+                {{ language.name }}
+                <span class="ml-1 text-slate-500">{{ language.count }}</span>
+              </span>
+            }
+          </div>
+        </div>
+
+        <div>
+          <p class="font-mono text-[0.64rem] uppercase tracking-[0.18em] text-slate-500">
+            {{ 'GITHUB.LAST_PUSH' | translate }}
+          </p>
+          @if (stats.latestPush) {
+            <p class="mt-1.5 truncate text-sm text-slate-300">
+              <a [href]="repoUrl(latestPushRepo)" target="_blank" rel="noopener noreferrer"
+                 class="font-mono text-[0.82rem] text-slate-300 transition-colors duration-200 hover:text-signal">
+                {{ latestPushRepo }}
+              </a>
+              <span class="ml-2 font-mono text-[0.7rem] text-slate-500">{{ latestPushDate }}</span>
+            </p>
+          }
+        </div>
+      </div>
+
+      <!-- Provenance: the numbers say when they were taken. -->
+      <p class="mt-7 border-t border-white/[0.06] pt-4 font-mono text-[0.62rem] text-slate-600">
+        {{ 'GITHUB.UPDATED' | translate: { date: updatedDate } }}
+      </p>
+    </div>
+  </div>
+</section>

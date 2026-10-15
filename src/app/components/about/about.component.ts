@@ -9,6 +9,7 @@ import { RouterLink } from '@angular/router';
 import { MagneticDirective } from '../../directives/magnetic.directive';
 import { NgClass } from '@angular/common';
 import { CountUpDirective } from '../../directives/count-up.directive';
+import { GithubStatsComponent } from '../shared/github-stats/github-stats.component';
 
 const EMAIL = 'elabdouni.abderrazzaq@gmail.com';
 const REDUCED_MOTION = '(prefers-reduced-motion: reduce)';
@@ -42,7 +43,7 @@ interface CommitLine {
     selector: 'app-about',
     templateUrl: './about.component.html',
     changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [SplitTextDirective, ScrollRevealDirective, RouterLink, MagneticDirective, NgClass, CountUpDirective, TranslatePipe]
+    imports: [SplitTextDirective, ScrollRevealDirective, RouterLink, MagneticDirective, NgClass, CountUpDirective, TranslatePipe, GithubStatsComponent]
 })
 export class AboutComponent {
   private elRef = inject(ElementRef);
