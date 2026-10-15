@@ -71,7 +71,12 @@ import { TranslateService, TranslatePipe } from '@ngx-translate/core';
       font-family: 'JetBrains Mono', 'Fira Code', monospace;
       font-size: 1rem;
       color: #e6edf3;
-      min-height: 200px;
+      /* Sized to the finished run (7 line rows + progress bar, measured at
+         349px on a 16px root) so the centred window never grows while lines
+         type in. The growth moved the window ~74px up the viewport and cost
+         ~0.10 CLS on every first visit. rem keeps it correct if the user
+         scales the default font size. */
+      min-height: 21.875rem;
       display: flex; flex-direction: column;
     }
     .terminal-line { display: flex; align-items: flex-start; gap: 10px; margin: 6px 0; animation: line-in .3s ease both; }
