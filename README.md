@@ -5,7 +5,7 @@ Angular single-page app with Tailwind CSS, three locales (en, fr, es) and Netlif
 
 ## Stack
 
-- Angular 17.3, TypeScript 5.4
+- Angular 22.2, TypeScript 6.0
 - Tailwind CSS 3.4 + PostCSS
 - `@ngx-translate/core` with dictionaries in `src/assets/i18n/`
 - Font Awesome and Google Fonts via CDN (`src/index.html`)
@@ -13,7 +13,7 @@ Angular single-page app with Tailwind CSS, three locales (en, fr, es) and Netlif
 
 ## Requirements
 
-- Node.js 18.19+ or 20.9+ (Angular 17 supported range; Node 22 works but is outside it)
+- Node.js 20.19+, 22.12+ or 24+ (Angular 22 supported range)
 - npm 9+
 - Google Chrome for the headless audit scripts
 
@@ -34,8 +34,8 @@ npm run build                                          # development build
 npm run build:prod                                     # production build to dist/portfolio-website/browser
 npm run watch                                          # development build in watch mode
 npm run lint                                           # ESLint (TypeScript + Angular templates)
-npm test                                               # unit tests (Karma + Jasmine, watch mode)
-npm test -- --watch=false --browsers=ChromeHeadless    # one-shot headless test run
+npm test                                               # unit tests (Vitest, watch mode)
+npm test -- --watch=false                              # one-shot test run
 ```
 
 ## Audit tools

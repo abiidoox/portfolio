@@ -24,7 +24,7 @@ jobs:
         run: npm run audit:keys
 
       - name: Unit tests
-        run: npm test -- --watch=false --browsers=ChromeHeadless
+        run: npm test -- --watch=false
 
       - name: Production build
         run: npm run build:prod
