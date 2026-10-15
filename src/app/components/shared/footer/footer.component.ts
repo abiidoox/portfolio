@@ -3,8 +3,9 @@ import { ToastService } from '../../../services/toast.service';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-footer',
-  templateUrl: './footer.component.html'
+    selector: 'app-footer',
+    templateUrl: './footer.component.html',
+    standalone: false
 })
 export class FooterComponent {
   currentYear = new Date().getFullYear();

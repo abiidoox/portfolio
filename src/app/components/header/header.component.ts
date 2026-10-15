@@ -11,8 +11,9 @@ interface NavItem {
 }
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html'
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    standalone: false
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   isMobileMenuOpen = false;

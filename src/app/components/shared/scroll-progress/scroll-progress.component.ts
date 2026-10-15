@@ -1,9 +1,9 @@
 import { Component, HostListener, NgZone, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-scroll-progress',
-  template: `<div class="scroll-progress" aria-hidden="true"><i></i></div>`,
-  styles: [`
+    selector: 'app-scroll-progress',
+    template: `<div class="scroll-progress" aria-hidden="true"><i></i></div>`,
+    styles: [`
     :host { position: fixed; top: 0; left: 0; right: 0; z-index: 2005; pointer-events: none; }
     .scroll-progress {
       position: relative;
@@ -15,7 +15,8 @@ import { Component, HostListener, NgZone, OnDestroy, OnInit } from '@angular/cor
       background-size: 200% 100%;
       will-change: transform;
     }
-  `]
+  `],
+    standalone: false
 })
 export class ScrollProgressComponent implements OnInit, OnDestroy {
   private el!: HTMLElement;

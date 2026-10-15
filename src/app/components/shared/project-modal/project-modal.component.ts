@@ -16,8 +16,9 @@ export interface ProjectModalData {
 }
 
 @Component({
-  selector: 'app-project-modal',
-  templateUrl: './project-modal.component.html'
+    selector: 'app-project-modal',
+    templateUrl: './project-modal.component.html',
+    standalone: false
 })
 export class ProjectModalComponent implements AfterViewInit {
   @Input() project: ProjectModalData | null = null;

@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { ToastService } from '../../../services/toast.service';
 
 @Component({
-  selector: 'app-toast-container',
-  template: `
+    selector: 'app-toast-container',
+    template: `
     <div class="toast-container" aria-live="polite" aria-atomic="true">
       <div *ngFor="let toast of toastService.toasts$ | async" class="toast" [ngClass]="toast.type">
         <i class="toast-icon" [ngClass]="getIconClass(toast.type)"></i>
@@ -12,7 +12,7 @@ import { ToastService } from '../../../services/toast.service';
       </div>
     </div>
   `,
-  styles: [`
+    styles: [`
     .toast-container {
       position: fixed;
       bottom: 24px;
@@ -73,7 +73,8 @@ import { ToastService } from '../../../services/toast.service';
     @media (prefers-reduced-motion: reduce) {
       .toast, .toast-progress { animation-duration: 0.01ms; }
     }
-  `]
+  `],
+    standalone: false
 })
 export class ToastContainerComponent {
   constructor(public toastService: ToastService) {}

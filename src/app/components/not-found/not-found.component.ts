@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-not-found',
-  templateUrl: './not-found.component.html'
+    selector: 'app-not-found',
+    templateUrl: './not-found.component.html',
+    standalone: false
 })
 export class NotFoundComponent {
   constructor(private router: Router) {}

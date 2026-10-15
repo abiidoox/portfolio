@@ -8,8 +8,9 @@ import {
 } from '../../data/skills.data';
 
 @Component({
-  selector: 'app-skills',
-  templateUrl: './skills.component.html'
+    selector: 'app-skills',
+    templateUrl: './skills.component.html',
+    standalone: false
 })
 export class SkillsComponent {
   readonly skills: Skill[] = SKILLS;

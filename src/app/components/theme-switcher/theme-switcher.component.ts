@@ -4,8 +4,9 @@ import { Subscription } from 'rxjs';
 import { Theme, ThemeService } from '../../services/theme.service';
 
 @Component({
-  selector: 'app-theme-switcher',
-  templateUrl: './theme-switcher.component.html'
+    selector: 'app-theme-switcher',
+    templateUrl: './theme-switcher.component.html',
+    standalone: false
 })
 export class ThemeSwitcherComponent implements OnInit, OnDestroy {
   currentTheme: Theme = 'dark';

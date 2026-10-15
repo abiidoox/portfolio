@@ -10,22 +10,23 @@ import { ProjectModalData } from './components/shared/project-modal/project-moda
 import { trigger, transition, style, animate, query } from '@angular/animations';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  animations: [
-    trigger('routeAnimations', [
-      transition('* <=> *', [
-        query(':leave', [
-          style({ opacity: 1 }),
-          animate('180ms ease-out', style({ opacity: 0, transform: 'translateY(-12px)' }))
-        ], { optional: true }),
-        query(':enter', [
-          style({ opacity: 0, transform: 'translateY(24px)' }),
-          animate('520ms 160ms cubic-bezier(.22,1,.36,1)', style({ opacity: 1, transform: 'none' }))
-        ], { optional: true })
-      ])
-    ])
-  ]
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    animations: [
+        trigger('routeAnimations', [
+            transition('* <=> *', [
+                query(':leave', [
+                    style({ opacity: 1 }),
+                    animate('180ms ease-out', style({ opacity: 0, transform: 'translateY(-12px)' }))
+                ], { optional: true }),
+                query(':enter', [
+                    style({ opacity: 0, transform: 'translateY(24px)' }),
+                    animate('520ms 160ms cubic-bezier(.22,1,.36,1)', style({ opacity: 1, transform: 'none' }))
+                ], { optional: true })
+            ])
+        ])
+    ],
+    standalone: false
 })
 export class AppComponent implements OnInit, OnDestroy {
   private mouseHandler?: (e: MouseEvent) => void;

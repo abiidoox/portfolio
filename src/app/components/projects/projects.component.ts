@@ -17,8 +17,9 @@ interface DisplayProject {
 }
 
 @Component({
-  selector: 'app-projects',
-  templateUrl: './projects.component.html'
+    selector: 'app-projects',
+    templateUrl: './projects.component.html',
+    standalone: false
 })
 export class ProjectsComponent implements OnInit, OnDestroy {
   /** Canonical filter order; only categories present in the data are shown. */

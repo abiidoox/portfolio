@@ -8,12 +8,13 @@ interface Particle {
 }
 
 @Component({
-  selector: 'app-particles-background',
-  template: '<canvas #canvas aria-hidden="true"></canvas>',
-  styles: [`
+    selector: 'app-particles-background',
+    template: '<canvas #canvas aria-hidden="true"></canvas>',
+    styles: [`
     :host { display: block; }
     canvas { width: 100%; height: 100%; display: block; }
-  `]
+  `],
+    standalone: false
 })
 export class ParticlesBackgroundComponent implements OnInit, OnDestroy {
   @ViewChild('canvas', { static: true }) canvasRef!: ElementRef<HTMLCanvasElement>;

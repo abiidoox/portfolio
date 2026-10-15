@@ -8,8 +8,9 @@ import {
 } from '../../data/resume.data';
 
 @Component({
-  selector: 'app-resume',
-  templateUrl: './resume.component.html'
+    selector: 'app-resume',
+    templateUrl: './resume.component.html',
+    standalone: false
 })
 export class ResumeComponent implements OnDestroy {
   readonly experience: ExperienceEntry[] = EXPERIENCE;

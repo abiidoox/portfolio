@@ -4,8 +4,9 @@ import { LanguageService } from '../../services/language.service';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-contact',
-  templateUrl: './contact.component.html'
+    selector: 'app-contact',
+    templateUrl: './contact.component.html',
+    standalone: false
 })
 export class ContactComponent implements OnInit, OnDestroy {
   contactForm: UntypedFormGroup;

@@ -1,8 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-back-to-top',
-  template: `
+    selector: 'app-back-to-top',
+    template: `
     <button
       class="btt"
       [class.visible]="visible"
@@ -16,7 +16,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
       <i class="fas fa-arrow-up"></i>
     </button>
   `,
-  styles: [`
+    styles: [`
     :host { position: fixed; bottom: 26px; right: 26px; z-index: 1200; }
     .btt {
       position: relative;
@@ -71,7 +71,8 @@ import { Component, HostListener, OnInit } from '@angular/core';
     @media (prefers-reduced-motion: reduce) {
       .btt { transition: opacity .2s ease; }
     }
-  `]
+  `],
+    standalone: false
 })
 export class BackToTopComponent implements OnInit {
   visible = false;

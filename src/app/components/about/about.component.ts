@@ -33,8 +33,9 @@ interface CommitLine {
 }
 
 @Component({
-  selector: 'app-about',
-  templateUrl: './about.component.html'
+    selector: 'app-about',
+    templateUrl: './about.component.html',
+    standalone: false
 })
 export class AboutComponent {
   emailCopied = false;

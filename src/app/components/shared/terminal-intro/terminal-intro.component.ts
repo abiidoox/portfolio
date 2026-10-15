@@ -2,8 +2,8 @@ import { Component, NgZone, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-terminal-intro',
-  template: `
+    selector: 'app-terminal-intro',
+    template: `
     <div class="terminal-intro" [class.done]="done" aria-hidden="true">
       <div class="terminal-window">
         <div class="terminal-header">
@@ -29,7 +29,7 @@ import { TranslateService } from '@ngx-translate/core';
       </div>
     </div>
   `,
-  styles: [`
+    styles: [`
     .terminal-intro {
       position: fixed; inset: 0; z-index: 10000;
       background: radial-gradient(circle at 50% 50%, #161b22 0%, #0d1117 70%);
@@ -114,7 +114,8 @@ import { TranslateService } from '@ngx-translate/core';
       .terminal-window { animation: none; }
       .cursor { animation: none; }
     }
-  `]
+  `],
+    standalone: false
 })
 export class TerminalIntroComponent implements OnInit, OnDestroy {
   visibleLines: Array<{ text: string; success: boolean }> = [];
