@@ -10,6 +10,13 @@ export class SplitTextDirective implements AfterViewInit {
   private platformId = inject(PLATFORM_ID);
   private ngZone = inject(NgZone);
 
+  /**
+   * The first instance to run after app start belongs to the initial paint:
+   * its prerendered text is already on screen, so it must not be hidden again.
+   * Instances created later (route navigations, language changes) animate.
+   */
+  private static booted = false;
+
 
   ngAfterViewInit(): void {
     if (!isPlatformBrowser(this.platformId)) return;
@@ -18,11 +25,19 @@ export class SplitTextDirective implements AfterViewInit {
     el.dataset['splitDone'] = 'true';
 
     const mode = el.dataset['splitMode'] || 'word';
+    const isInitialPaint = !SplitTextDirective.booted;
+    SplitTextDirective.booted = true;
 
     this.ngZone.runOutsideAngular(() => {
       requestAnimationFrame(() => {
         this.split(el, mode);
-        this.revealWhenVisible(el);
+        if (isInitialPaint) {
+          // Reveal in the same frame as the split: the browser never paints
+          // the hidden spans, so there is no flash on load.
+          el.classList.add('is-revealed');
+        } else {
+          this.revealWhenVisible(el);
+        }
         this.watchForAngularReinsert(el, mode);
       });
     });

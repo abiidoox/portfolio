@@ -1,10 +1,11 @@
-import { Component, NgZone, OnDestroy, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, HostBinding, NgZone, OnDestroy, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-terminal-intro',
     template: `
-    <div class="terminal-intro" [class.done]="done" aria-hidden="true">
+    @if (!removed) {
+    <div class="terminal-intro" [class.done]="done" (click)="skip()">
       <div class="terminal-window">
         <div class="terminal-header">
           <div class="terminal-dots">
@@ -30,16 +31,17 @@ import { TranslateService, TranslatePipe } from '@ngx-translate/core';
         </div>
       </div>
     </div>
+    }
     `,
     styles: [`
     .terminal-intro {
       position: fixed; inset: 0; z-index: 10000;
       background: radial-gradient(circle at 50% 50%, #161b22 0%, #0d1117 70%);
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      transition: opacity 0.6s ease, clip-path 0.8s cubic-bezier(.76,0,.24,1);
+      transition: opacity 0.6s ease, clip-path 0.8s cubic-bezier(.76,0,.24,1), visibility 0s 0.8s;
       clip-path: inset(0 0 0 0);
     }
-    .terminal-intro.done { opacity: 0; pointer-events: none; clip-path: inset(0 0 100% 0); display: none; }
+    .terminal-intro.done { opacity: 0; pointer-events: none; visibility: hidden; clip-path: inset(0 0 100% 0); }
     .terminal-window {
       width: min(620px, 90vw);
       box-shadow: 0 24px 80px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.04);
@@ -112,7 +114,6 @@ import { TranslateService, TranslatePipe } from '@ngx-translate/core';
       font-size: 0.85rem; color: #8b949e; min-width: 46px; text-align: right;
     }
     @media (prefers-reduced-motion: reduce) {
-      .terminal-intro { display: flex; }
       .terminal-window { animation: none; }
       .cursor { animation: none; }
     }
@@ -124,13 +125,19 @@ export class TerminalIntroComponent implements OnInit, OnDestroy {
   private zone = inject(NgZone);
   private translate = inject(TranslateService);
 
+  /** Decorative overlay: hidden from assistive tech at the host level. */
+  @HostBinding('attr.aria-hidden') readonly ariaHidden = 'true';
+
   visibleLines: Array<{ text: string; success: boolean }> = [];
   progress = 0;
   done = false;
+  /** Set once the exit transition has played; removes the overlay from the DOM. */
+  removed = false;
   private lines: string[] = [];
   private currentLine = 0;
   private lineTimer?: ReturnType<typeof setInterval>;
   private progressTimer?: ReturnType<typeof setInterval>;
+  private finishTimer?: ReturnType<typeof setTimeout>;
 
   ngOnInit(): void {
     this.translate.get([
@@ -157,6 +164,31 @@ export class TerminalIntroComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     clearInterval(this.lineTimer);
     clearInterval(this.progressTimer);
+    clearTimeout(this.finishTimer);
+  }
+
+  /**
+   * A click/tap anywhere skips the intro. Without this the overlay swallows
+   * every click for the first ~2s: the header looks unresponsive right after
+   * load.
+   */
+  skip(): void {
+    if (this.done) return;
+    clearInterval(this.lineTimer);
+    clearInterval(this.progressTimer);
+    this.finish();
+  }
+
+  /**
+   * Ends the intro: the overlay fades out, then leaves the DOM entirely so no
+   * idle full-screen layer is left behind.
+   */
+  private finish(): void {
+    this.zone.run(() => {
+      this.done = true;
+      // Slightly longer than the 0.8s exit transition (opacity/clip-path).
+      this.finishTimer = setTimeout(() => this.zone.run(() => (this.removed = true)), 900);
+    });
   }
 
   private start(): void {
@@ -178,7 +210,7 @@ export class TerminalIntroComponent implements OnInit, OnDestroy {
           // else would trigger change detection and the `done` class (which
           // is what removes the overlay from the page) would not be applied
           // until an unrelated event happened to fire.
-          setTimeout(() => this.zone.run(() => (this.done = true)), 200);
+          setTimeout(() => this.finish(), 200);
         }
       }, 250);
 

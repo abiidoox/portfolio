@@ -17,13 +17,18 @@ export class ScrollRevealDirective implements OnInit, OnDestroy {
   private observer?: IntersectionObserver;
 
   ngOnInit(): void {
-    if (!isPlatformBrowser(this.platformId)) return;
     const node = this.el.nativeElement as HTMLElement;
     // delay read from attribute to stay NgModule-friendly
     const delay = Number(node.getAttribute('data-delay')) || 0;
     const direction = this.attr('reveal-direction') || 'up';
 
+    // Applied on the server too: the prerendered HTML starts hidden, so the
+    // first paint never flashes the fully visible page before hydration
+    // re-hides it to run the reveal animation.
     node.classList.add('sr-init', `sr-${direction}`);
+
+    if (!isPlatformBrowser(this.platformId)) return;
+
     if (delay) {
       node.style.transitionDelay = `${delay}ms`;
     }
