@@ -82,6 +82,9 @@ export class ThemeService implements OnDestroy {
     document.documentElement.setAttribute('data-theme', theme);
     document.body.classList.toggle('light-theme', theme === 'light');
     document.body.classList.toggle('dark-theme', theme === 'dark');
+    // Keep the browser's own chrome in step with the page surface.
+    const themeColor = document.querySelector('meta[name="theme-color"]');
+    if (themeColor) themeColor.setAttribute('content', theme === 'light' ? '#f4f6fa' : '#080b12');
     try {
       localStorage.setItem(STORAGE_KEY, theme);
     } catch {

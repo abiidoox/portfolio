@@ -1,7 +1,7 @@
 <div class="fixed inset-0 z-[2000] overflow-y-auto overscroll-contain p-4 sm:p-6">
   <!-- Backdrop -->
   <div
-    class="fixed inset-0 bg-ink-950/85 backdrop-blur-md animate-fade-in"
+    class="lab-veil fixed inset-0 bg-ink-950/85 backdrop-blur-md"
     (click)="close()"
     aria-hidden="true"
   ></div>
@@ -12,7 +12,7 @@
       role="dialog"
       aria-modal="true"
       aria-labelledby="pm-title"
-      class="lab-panel w-full animate-scale-in overflow-hidden rounded-3xl"
+      class="lab-panel lab-rise w-full overflow-hidden rounded-3xl"
       >
       <!-- Visual band -->
       <div class="relative h-32 overflow-hidden border-b border-white/[0.06] sm:h-40">
@@ -26,7 +26,8 @@
         <button type="button" (click)="close()"
                 class="pm-close absolute right-4 top-4 z-20 grid h-10 w-10 place-items-center
                        rounded-full border border-white/15 bg-black/30 text-slate-200 backdrop-blur-sm
-                       transition-all duration-300 hover:rotate-90 hover:border-signal hover:bg-signal hover:text-white"
+                       transition-[transform,border-color,background-color,color] duration-300
+                       hover:rotate-90 hover:border-signal hover:bg-signal hover:text-white"
           [attr.aria-label]="'A11Y.MODAL_CLOSE' | translate">
           <i class="fas fa-xmark"></i>
         </button>

@@ -35,7 +35,7 @@
       @for (group of visibleGroups; track group.category; let g = $index) {
         <article
           appScrollReveal data-reveal-direction="up" [attr.data-delay]="g * 90"
-          class="lab-panel lab-glow-hover overflow-hidden rounded-3xl transition-all duration-500
+          class="lab-panel lab-glow-hover overflow-hidden rounded-3xl transition-colors duration-500
                  ease-smooth hover:border-signal/25"
           (mousemove)="onGlowMove($event)"
           >
@@ -67,13 +67,14 @@
                   type="button"
                   (click)="viewProjects(s, $event)"
                   class="group flex items-center gap-3 rounded-2xl border border-white/[0.07]
-                         bg-white/[0.02] px-4 py-3 text-left transition-all duration-400 ease-smooth
+                         bg-white/[0.02] px-4 py-3 text-left
+                         transition-[transform,border-color,background-color] duration-300 ease-smooth
                          hover:-translate-y-1 hover:border-signal/40 hover:bg-signal/[0.05]"
                   [style.transition-delay.ms]="i * 35"
                   [attr.aria-label]="'A11Y.VIEW_SKILL_PROJECTS' | translate: { skill: s.name }"
                   >
                   <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-white/[0.04]
-                               transition-colors duration-400 group-hover:bg-signal/10">
+                               transition-colors duration-300 group-hover:bg-signal/10">
                     <i class="text-base" [class]="s.icon"></i>
                   </span>
                   <span class="flex flex-col leading-tight">
@@ -88,7 +89,8 @@
               } @else {
                 <div
                   class="group flex items-center gap-3 rounded-2xl border border-white/[0.07]
-                         bg-white/[0.02] px-4 py-3 transition-all duration-400 ease-smooth"
+                         bg-white/[0.02] px-4 py-3
+                         transition-[transform,border-color,background-color] duration-300 ease-smooth"
                   [style.transition-delay.ms]="i * 35"
                   >
                   <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-white/[0.04]">

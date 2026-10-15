@@ -342,7 +342,7 @@
     "NAME_MINLENGTH": "Name must be at least 2 characters",
     "MESSAGE_MINLENGTH": "Message must be at least 10 characters",
     "SEND": "Send Message",
-    "SENDING": "Sending...",
+    "SENDING": "Sending…",
     "SUCCESS": "Your message has been sent successfully!",
     "ERROR": "An error occurred while sending your message. Please try again.",
     "FORM_TITLE": "Send a message",

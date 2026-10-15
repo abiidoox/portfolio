@@ -63,6 +63,10 @@ export class CommandPaletteComponent {
   private toast = inject(ToastService);
   private platformId = inject(PLATFORM_ID);
 
+  /** Mac users press ⌘K; the cheatsheet must match their keyboard. */
+  readonly isMac = isPlatformBrowser(this.platformId) &&
+    /mac/i.test(navigator.platform || '');
+
   readonly palette = inject(CommandPaletteService);
 
   /** Recent picks, most recent first; ids stay valid even if items move. */

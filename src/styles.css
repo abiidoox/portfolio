@@ -18,11 +18,16 @@
     --lab-muted: #94a3b8;
     --signal: #ff5e3a;
     --ion: #38bdf8;
+    /* Keyboard focus ring; deepened on light surfaces below. */
+    --focus-ring: #38bdf8;
   }
 
   /* Matched on <html> as well as <body>: the pre-paint script in index.html can
-     only set a class on the root element, which has no <body> yet. */
+     only set a class on the root element, which has no <body> yet. The
+     data-theme attribute is how the runtime ThemeService marks the root; it is
+     listed here so the root's color-scheme flips with the theme too. */
   html.light-theme,
+  html[data-theme='light'],
   body.light-theme {
     --lab-bg: #f4f6fa;
     --lab-surface: #ffffff;
@@ -31,6 +36,9 @@
     --lab-line-strong: rgba(15, 23, 42, 0.18);
     --lab-text: #0f172a;
     --lab-muted: #55637a;
+    color-scheme: light;
+    /* #38bdf8 is only 1.9:1 on paper; the deep ion holds 3.9:1 as a ring. */
+    --focus-ring: #0284c7;
   }
 
   html {
@@ -38,6 +46,12 @@
     /* Header offset for in-page anchor scrolling */
     scroll-padding-top: 6rem;
     -webkit-text-size-adjust: 100%;
+    /* Native controls, scrollbars and autofill follow the page theme. */
+    color-scheme: dark;
+    /* Our press states replace the grey tap flash, and double-tap zoom is off
+       so taps land without the ~300ms delay. Pinch zoom stays enabled. */
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
 
   body {
@@ -55,7 +69,7 @@
 
   /* Visible, high-contrast focus ring for keyboard users only. */
   :focus-visible {
-    outline: 2px solid var(--ion);
+    outline: 2px solid var(--focus-ring);
     outline-offset: 3px;
     border-radius: 4px;
   }
@@ -176,6 +190,7 @@ body.light-theme .bg-white\/\[0\.06\] { background-color: rgba(15, 23, 42, 0.04)
   .lab-lead {
     @apply max-w-2xl text-base leading-relaxed sm:text-lg;
     color: var(--lab-muted);
+    text-wrap: pretty;
   }
 
   /* Primary panel surface: thin border, subtle inner highlight, no heavy glass */
@@ -216,10 +231,11 @@ body.light-theme .bg-white\/\[0\.06\] { background-color: rgba(15, 23, 42, 0.04)
     @apply relative inline-flex select-none items-center justify-center gap-2.5
            overflow-hidden rounded-full px-6 py-3.5 font-display text-sm font-semibold
            transition-[transform,color,background-color,border-color,box-shadow]
-           duration-300 ease-smooth will-change-transform;
+           duration-200 ease-smooth;
   }
   .lab-btn:focus-visible { outline-offset: 4px; }
   .lab-btn:active { transform: scale(0.97); }
+  .lab-btn:disabled { @apply pointer-events-none opacity-60; }
 
   .lab-btn-primary {
     @apply text-white shadow-signal-glow;
@@ -248,6 +264,15 @@ body.light-theme .bg-white\/\[0\.06\] { background-color: rgba(15, 23, 42, 0.04)
       background-color: rgba(255, 94, 58, 0.09);
     }
   }
+
+  /* Header chrome icon buttons (palette trigger, theme, language, burger).
+     One shared press feel across all four: quick, subtle, compositor-only. */
+  .lab-icon-btn {
+    transition-property: transform, border-color, color, background-color;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .lab-icon-btn:active { transform: scale(0.94); }
 
   /* Light theme needs its own accent ramp. The neon set is tuned for ink
      surfaces and only reaches 1.5:1 to 3.2:1 on paper, so every accent used
@@ -301,9 +326,12 @@ body.light-theme .bg-white\/\[0\.06\] { background-color: rgba(15, 23, 42, 0.04)
   /* Filter pill */
   .lab-pill {
     @apply inline-flex items-center gap-2 rounded-full border px-4 py-2 font-display
-           text-[0.8rem] font-medium transition-all duration-300 ease-smooth;
+           text-[0.8rem] font-medium;
     border-color: var(--lab-line);
     color: var(--lab-muted);
+    transition-property: transform, border-color, color, background-color, box-shadow;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
   }
   @media (hover: hover) {
     .lab-pill:hover {
@@ -336,6 +364,29 @@ body.light-theme .bg-white\/\[0\.06\] { background-color: rgba(15, 23, 42, 0.04)
     .lab-underline:not([data-active='true']):hover::after {
       @apply scale-x-100;
     }
+  }
+
+  /* Anchored popover entrance (language dropdown): quick, origin-aware,
+     decelerating. The command palette deliberately stays instant — it is
+     keyboard-initiated and opened far more often. */
+  .lab-pop {
+    transform-origin: top right;
+    animation: lab-pop 160ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  @keyframes lab-pop {
+    from { opacity: 0; transform: scale(0.96) translate3d(0, -4px, 0); }
+  }
+
+  /* Modal veil and panel: a modal is a focus change, not a scene change, so
+     both run faster than the generic entrance keyframes (which stay at
+     0.5-0.6s for first-paint choreography). */
+  .lab-veil { animation: lab-veil 240ms ease-out both; }
+  @keyframes lab-veil {
+    from { opacity: 0; }
+  }
+  .lab-rise { animation: lab-rise 260ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+  @keyframes lab-rise {
+    from { opacity: 0; transform: scale(0.96) translate3d(0, 12px, 0); }
   }
 
   /* ============================================================
@@ -428,7 +479,10 @@ body.light-theme .bg-white\/\[0\.06\] { background-color: rgba(15, 23, 42, 0.04)
    The appScrollReveal directive toggles .sr-init / .sr-in.
    ============================================================ */
 @layer utilities {
-  .sr-init { opacity: 0; will-change: opacity, transform; }
+  .sr-init { opacity: 0; }
+  /* Hint the compositor only while the reveal is still pending: a page of
+     permanently promoted layers costs memory for no gain. */
+  .sr-init:not(.sr-in) { will-change: opacity, transform; }
   .sr-init.sr-up { transform: translate3d(0, 30px, 0); }
   .sr-init.sr-down { transform: translate3d(0, -30px, 0); }
   .sr-init.sr-left { transform: translate3d(-36px, 0, 0); }
@@ -530,8 +584,10 @@ body.light-theme .bg-white\/\[0\.06\] { background-color: rgba(15, 23, 42, 0.04)
     background-color: color-mix(in srgb, var(--lab-bg) 72%, transparent);
     backdrop-filter: blur(16px) saturate(150%);
     -webkit-backdrop-filter: blur(16px) saturate(150%);
-    border-bottom: 1px solid var(--lab-line);
-    box-shadow: 0 12px 40px -24px rgba(0, 0, 0, 0.9);
+    /* Hairline as an inset shadow rather than a border: appearing and
+       disappearing borders resize the box; shadows only paint. */
+    box-shadow: 0 -1px 0 0 var(--lab-line) inset,
+                0 12px 40px -24px rgba(0, 0, 0, 0.9);
   }
   body.light-theme .lab-nav-scrolled {
     background-color: rgba(255, 255, 255, 0.78);
@@ -544,15 +600,23 @@ body.light-theme .bg-white\/\[0\.06\] { background-color: rgba(15, 23, 42, 0.04)
   .lab-mobile-menu {
     max-height: 0;
     opacity: 0;
+    /* Collapsed menus must leave the tab order too, or keyboard users land
+       on invisible links. visibility flips after the collapse finishes. */
+    visibility: hidden;
     background-color: color-mix(in srgb, var(--lab-bg) 94%, transparent);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
     transition: max-height 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-                opacity 0.3s ease;
+                opacity 0.3s ease,
+                visibility 0s linear 0.45s;
   }
   .lab-mobile-menu.is-open {
     max-height: 32rem;
     opacity: 1;
+    visibility: visible;
+    transition: max-height 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.3s ease,
+                visibility 0s;
   }
 
   /* ---- Hero terminal: floating tech chips ----
@@ -642,10 +706,12 @@ body.light-theme .bg-white\/\[0\.06\] { background-color: rgba(15, 23, 42, 0.04)
     transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
                 box-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .lab-plate-stack:hover .lab-mount {
-    transform: rotate(0deg);
-    box-shadow: 0 54px 98px -34px rgba(0, 0, 0, 0.92),
-                0 1px 0 0 rgba(255, 255, 255, 0.07) inset;
+  @media (hover: hover) and (pointer: fine) {
+    .lab-plate-stack:hover .lab-mount {
+      transform: rotate(0deg);
+      box-shadow: 0 54px 98px -34px rgba(0, 0, 0, 0.92),
+                  0 1px 0 0 rgba(255, 255, 255, 0.07) inset;
+    }
   }
   body.light-theme .lab-mount {
     box-shadow: 0 30px 60px -30px rgba(15, 23, 42, 0.34),
@@ -683,8 +749,10 @@ body.light-theme .bg-white\/\[0\.06\] { background-color: rgba(15, 23, 42, 0.04)
   }
   /* On hover the haloes drift apart, so the stack gains depth rather than
      the portrait changing. */
-  .lab-plate-stack:hover .lab-halo-warm { transform: translate3d(-28px, 24px, 0); opacity: 0.88; }
-  .lab-plate-stack:hover .lab-halo-cool { transform: translate3d(30px, -20px, 0); opacity: 0.76; }
+  @media (hover: hover) and (pointer: fine) {
+    .lab-plate-stack:hover .lab-halo-warm { transform: translate3d(-28px, 24px, 0); opacity: 0.88; }
+    .lab-plate-stack:hover .lab-halo-cool { transform: translate3d(30px, -20px, 0); opacity: 0.76; }
+  }
 
   /* Light surfaces swallow a wash, so the haloes carry more weight there to
      stay legible against paper. */
@@ -716,7 +784,9 @@ body.light-theme .bg-white\/\[0\.06\] { background-color: rgba(15, 23, 42, 0.04)
   .lab-plate-stack {
     transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .lab-plate-stack:hover { transform: translate3d(0, -3px, 0); }
+  @media (hover: hover) and (pointer: fine) {
+    .lab-plate-stack:hover { transform: translate3d(0, -3px, 0); }
+  }
 
   /* A whisper of a vignette to settle the edges. No colour cast and no
      blend mode, so skin tones render exactly as photographed. */
@@ -738,9 +808,11 @@ body.light-theme .bg-white\/\[0\.06\] { background-color: rgba(15, 23, 42, 0.04)
     transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
                 filter 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .lab-plate-stack:hover .lab-plate-photo {
-    transform: scale(1.02);
-    filter: contrast(1.05) saturate(1.06);
+  @media (hover: hover) and (pointer: fine) {
+    .lab-plate-stack:hover .lab-plate-photo {
+      transform: scale(1.02);
+      filter: contrast(1.05) saturate(1.06);
+    }
   }
 
   /* Caption plate: offset, mono, and counter-rotated so the type stays level
@@ -868,6 +940,48 @@ body.light-theme .bg-white\/\[0\.06\] { background-color: rgba(15, 23, 42, 0.04)
      is the sole looping motion on it. Hover-driven separation is a pointer
      affordance, not an animation, so it stays. */
   .lab-portrait-glow { animation: none !important; }
+}
+
+/* ============================================================
+   ACCESSIBILITY — REDUCED TRANSPARENCY
+   Translucency is a hierarchy device, not a requirement: when it
+   is hard to read, chrome turns opaque instead of disappearing.
+   ============================================================ */
+@media (prefers-reduced-transparency: reduce) {
+  .lab-nav-scrolled,
+  .lab-mobile-menu {
+    background-color: var(--lab-bg);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .lab-panel,
+  .lab-plate-caption { background-color: var(--lab-surface); }
+  .lab-dark-panel { background-color: rgba(11, 15, 24, 0.99); }
+  .lab-panel,
+  .lab-dark-panel,
+  .lab-plate-caption {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+/* ============================================================
+   ACCESSIBILITY — MORE CONTRAST
+   Stronger hairlines when the user asks for more separation.
+   ============================================================ */
+@media (prefers-contrast: more) {
+  :root {
+    --lab-line: rgba(148, 163, 184, 0.34);
+    --lab-line-strong: rgba(148, 163, 184, 0.55);
+  }
+  html.light-theme,
+  html[data-theme='light'],
+  body.light-theme {
+    --lab-line: rgba(15, 23, 42, 0.3);
+    --lab-line-strong: rgba(15, 23, 42, 0.46);
+  }
+  .lab-panel,
+  .lab-tag { border-color: var(--lab-line-strong); }
 }
 
 /* ============================================================

@@ -74,20 +74,20 @@ ambient   — the seven tech chips drift around the console
           <a href="https://github.com/abiidoox" target="_blank" rel="noopener noreferrer"
             [attr.aria-label]="'A11Y.GITHUB' | translate"
              class="group grid h-11 w-11 place-items-center rounded-xl border border-white/10
-                    text-slate-400 transition-all duration-300 hover:-translate-y-0.5
+                    text-slate-400 transition-[transform,border-color,color] duration-300 hover:-translate-y-0.5
                     hover:border-signal/50 hover:text-signal">
             <i class="fab fa-github"></i>
           </a>
           <a href="https://www.linkedin.com/in/abderrazzaq-el-abdouni-28004019a" target="_blank"
             rel="noopener noreferrer" [attr.aria-label]="'A11Y.LINKEDIN' | translate"
              class="group grid h-11 w-11 place-items-center rounded-xl border border-white/10
-                    text-slate-400 transition-all duration-300 hover:-translate-y-0.5
+                    text-slate-400 transition-[transform,border-color,color] duration-300 hover:-translate-y-0.5
                     hover:border-ion/50 hover:text-ion">
             <i class="fab fa-linkedin-in"></i>
           </a>
           <button type="button" (click)="copyEmail()" [attr.aria-label]="'FOOTER.COPY_HINT' | translate"
                   class="group grid h-11 w-11 place-items-center rounded-xl border border-white/10
-                         text-slate-400 transition-all duration-300 hover:-translate-y-0.5
+                         text-slate-400 transition-[transform,border-color,color] duration-300 hover:-translate-y-0.5
                          hover:border-plasma/50 hover:text-plasma">
             <i class="fas" [ngClass]="emailCopied ? 'fa-check' : 'fa-envelope'"></i>
           </button>

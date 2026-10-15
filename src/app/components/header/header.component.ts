@@ -30,6 +30,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isMobileMenuOpen = false;
   isScrolled = false;
 
+  /** Mac users press ⌘K; everyone else Ctrl K. The server renders Ctrl. */
+  readonly isMac = isPlatformBrowser(this.platformId) &&
+    /mac/i.test(navigator.platform || '');
+
   navItems: NavItem[] = [
     { path: '/', key: 'header.home', label: 'Home' },
     { path: '/projects', key: 'header.projects', label: 'Projects' },

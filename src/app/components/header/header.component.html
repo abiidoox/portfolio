@@ -1,5 +1,5 @@
 <header
-  class="fixed inset-x-0 top-0 z-[1000] transition-all duration-500 ease-smooth"
+  class="fixed inset-x-0 top-0 z-[1000] transition-[background-color,box-shadow] duration-500 ease-smooth"
   [class.lab-nav-scrolled]="isScrolled"
   [class.lab-nav-open]="isMobileMenuOpen"
   >
@@ -39,7 +39,7 @@
       <!-- Sliding active indicator -->
       <span
         class="pointer-events-none absolute bottom-0 h-[2px] rounded-full bg-signal-sweep opacity-0
-               transition-all duration-500 ease-swift"
+               transition-[transform,width,opacity] duration-500 ease-swift"
         [style.transform]="'translateX(' + indicatorX + 'px)'"
         [style.width.px]="indicatorWidth"
         [style.opacity]="indicatorVisible ? 1 : 0"
@@ -53,11 +53,11 @@
         type="button"
         (click)="openPalette()"
         [attr.aria-label]="'PALETTE.OPEN_LABEL' | translate"
-        class="hidden h-10 items-center gap-2 rounded-xl border border-white/10 px-3
-               text-slate-400 transition-colors duration-300 hover:border-signal/50
+        class="lab-icon-btn hidden h-10 items-center gap-2 rounded-xl border border-white/10 px-3
+               text-slate-400 hover:border-signal/50
                hover:text-signal lg:flex">
         <i class="fas fa-magnifying-glass text-xs" aria-hidden="true"></i>
-        <kbd class="font-mono text-[0.62rem] tracking-wide">Ctrl K</kbd>
+        <kbd class="font-mono text-[0.62rem] tracking-wide">{{ isMac ? '⌘' : 'Ctrl' }}&nbsp;K</kbd>
       </button>
 
       <app-theme-switcher />
@@ -68,8 +68,8 @@
         (click)="toggleMobileMenu()"
         [attr.aria-expanded]="isMobileMenuOpen"
         aria-controls="mobile-menu"
-        class="grid h-10 w-10 place-items-center rounded-xl border border-white/10
-               text-slate-300 transition-colors duration-300 hover:border-signal/50 hover:text-signal lg:hidden"
+        class="lab-icon-btn grid h-10 w-10 place-items-center rounded-xl border border-white/10
+               text-slate-300 hover:border-signal/50 hover:text-signal lg:hidden"
         >
         <span class="sr-only">{{ (isMobileMenuOpen ? 'A11Y.CLOSE_MENU' : 'A11Y.OPEN_MENU') | translate }}</span>
         <i class="fas" [ngClass]="isMobileMenuOpen ? 'fa-xmark' : 'fa-bars'"></i>
@@ -92,7 +92,7 @@
             [routerLinkActiveOptions]="{ exact: item.path === '/' }"
             (click)="onMobileNavClick()"
           class="flex items-center gap-3 rounded-xl px-4 py-3.5 font-display text-base
-                 text-slate-300 transition-all duration-300 hover:bg-white/[0.04]"
+                 text-slate-300 transition-colors duration-200 hover:bg-white/[0.04]"
             >
             <span class="font-mono text-[0.65rem] text-slate-600">0{{ i + 1 }}</span>
             <span>{{ item.label | translate }}</span>

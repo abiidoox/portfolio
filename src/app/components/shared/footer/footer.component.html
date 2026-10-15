@@ -42,7 +42,8 @@
             rel="noopener noreferrer"
             [attr.aria-label]="link.label"
            class="grid h-10 w-10 place-items-center rounded-xl border border-white/10 bg-white/[0.03]
-                  text-slate-400 transition-all duration-300 hover:-translate-y-1 hover:border-signal/50
+                  text-slate-400 transition-[transform,border-color,background-color,color] duration-300
+                  hover:-translate-y-1 hover:border-signal/50
                   hover:bg-signal/10 hover:text-signal">
             <i [class]="link.icon"></i>
           </a>

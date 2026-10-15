@@ -28,11 +28,11 @@
           <img src="assets/me.webp"
             alt="{{ 'A11Y.PROFILE_PHOTO' | translate }}"
                class="h-24 w-24 rounded-full border border-white/10 bg-white/[0.04] object-cover
-                      shadow-signal-glow transition-all duration-300 hover:-translate-y-0.5
+                      shadow-signal-glow transition-[transform,border-color] duration-300 hover:-translate-y-0.5
                       group-hover:border-signal/40"
             width="96"
             height="96"
-            loading="lazy">
+            loading="eager" fetchpriority="high" decoding="async">
         </div>
 
         <div class="min-w-0 flex-1">
@@ -82,11 +82,11 @@
             class="group relative pb-11 last:pb-0">
             <!-- Node -->
           <span class="absolute -left-[2.42rem] top-1.5 grid h-4 w-4 place-items-center rounded-full
-                       border-2 border-signal bg-ink-900 transition-all duration-400
+                       border-2 border-signal bg-ink-900 transition-transform duration-300
                        group-hover:scale-125 sm:-left-[2.92rem]">
               <span class="h-1.5 w-1.5 rounded-full bg-signal"></span>
             </span>
-          <article class="lab-panel rounded-2xl p-6 transition-all duration-500 ease-smooth
+          <article class="lab-panel rounded-2xl p-6 transition-[transform,border-color] duration-500 ease-smooth
                           hover:-translate-y-1 hover:border-signal/25 sm:p-7">
               <header class="flex flex-wrap items-start justify-between gap-x-5 gap-y-2">
                 <h3 class="font-display text-lg font-semibold leading-snug text-balance">
@@ -139,7 +139,7 @@
         @for (e of education; track e; let i = $index) {
           <article
             appScrollReveal data-reveal-direction="up" [attr.data-delay]="i * 90"
-                 class="lab-panel lab-glow-hover rounded-2xl p-6 transition-all duration-500 ease-smooth
+                 class="lab-panel lab-glow-hover rounded-2xl p-6 transition-[transform,border-color] duration-500 ease-smooth
                         hover:-translate-y-1.5 hover:border-ion/25"
             (mousemove)="onGlowMove($event)">
             <span class="font-mono text-[0.66rem] text-ion">0{{ i + 1 }}</span>

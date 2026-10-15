@@ -92,7 +92,7 @@
         <article
           appScrollReveal data-reveal-direction="up" [attr.data-delay]="(i % 2) * 120"
         class="lab-panel lab-glow-hover group relative flex flex-col overflow-hidden rounded-3xl
-               transition-all duration-500 ease-smooth hover:-translate-y-1.5 hover:shadow-lift"
+               transition-[transform,box-shadow] duration-500 ease-smooth hover:-translate-y-1.5 hover:shadow-lift"
           (mousemove)="onGlowMove($event)"
           >
           <!-- Visual band: category glyph on a technical grid -->
@@ -103,7 +103,7 @@
             [ngClass]="'bg-gradient-to-br ' + gradientFor(p.category)"></div>
             <!-- Glyph -->
             <div class="absolute inset-0 grid place-items-center">
-            <span class="text-6xl text-white/[0.10] transition-all duration-700 ease-swift
+            <span class="text-6xl text-white/[0.10] transition-[transform,color] duration-700 ease-swift
                          group-hover:scale-110 group-hover:text-white/[0.18] sm:text-7xl">
                 <i class="fas" [ngClass]="categoryIcon(p.category)"></i>
               </span>
@@ -174,8 +174,9 @@
                 <a
                   [href]="link.url" target="_blank" rel="noopener noreferrer"
                class="ml-auto inline-flex items-center gap-2 rounded-full border border-white/10
-                      px-3.5 py-1.5 font-mono text-[0.68rem] text-slate-400 transition-all
-                      duration-300 hover:-translate-y-0.5 hover:border-signal/50 hover:text-signal">
+                      px-3.5 py-1.5 font-mono text-[0.68rem] text-slate-400
+                      transition-[transform,border-color,color] duration-300
+                      hover:-translate-y-0.5 hover:border-signal/50 hover:text-signal">
                   <i [class]="link.icon"></i>
                   <span>{{ link.labelKey | translate }}</span>
                 </a>

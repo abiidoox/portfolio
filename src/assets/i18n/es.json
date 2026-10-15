@@ -418,7 +418,7 @@
     "NAME_MINLENGTH": "El nombre debe tener al menos 2 caracteres",
     "MESSAGE_MINLENGTH": "El mensaje debe tener al menos 10 caracteres",
     "SEND": "Enviar Mensaje",
-    "SENDING": "Enviando...",
+    "SENDING": "Enviando…",
     "SUCCESS": "¡Tu mensaje ha sido enviado con éxito!",
     "ERROR": "Ha ocurrido un error al enviar tu mensaje. Por favor, inténtalo de nuevo.",
     "FORM_TITLE": "Envíe un mensaje",

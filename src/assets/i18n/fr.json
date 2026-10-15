@@ -342,7 +342,7 @@
     "NAME_MINLENGTH": "Le nom doit contenir au moins 2 caractères",
     "MESSAGE_MINLENGTH": "Le message doit contenir au moins 10 caractères",
     "SEND": "Envoyer le Message",
-    "SENDING": "Envoi en cours...",
+    "SENDING": "Envoi en cours…",
     "SUCCESS": "Votre message a été envoyé avec succès !",
     "ERROR": "Une erreur s'est produite lors de l'envoi de votre message. Veuillez réessayer.",
     "FORM_TITLE": "Envoyez un message",
