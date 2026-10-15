@@ -317,8 +317,9 @@ body.light-theme .bg-white\/\[0\.06\] { background-color: rgba(15, 23, 42, 0.04)
            transition-transform duration-300 ease-smooth;
     background: linear-gradient(90deg, var(--signal), var(--ion));
   }
-  .lab-underline:hover::after,
-  .lab-underline[data-active='true']::after {
+  /* Hover underline only. The active header link is already marked by its
+     sliding indicator, so painting both double-underlines the selected item. */
+  .lab-underline:not([data-active='true']):hover::after {
     @apply scale-x-100;
   }
 
