@@ -194,6 +194,12 @@
     "FILTER_TECH": "Technologie : {{tech}}",
     "CLEAR_FILTER": "Effacer le filtre",
     "VIEW_CASE_STUDY": "Lire l'étude de cas",
+    "SEARCH_LABEL": "Rechercher des projets",
+    "SEARCH_PLACEHOLDER": "Rechercher par nom ou technologie...",
+    "SORT_LABEL": "Trier les projets",
+    "SORT_NEWEST": "Plus récents d'abord",
+    "SORT_OLDEST": "Plus anciens d'abord",
+    "SORT_AZ": "Nom, A à Z",
     "META_DESCRIPTION": "Portfolio de projets d'Abderrazzaq El Abdouni présentant des applications web, des applications mobiles, des systèmes d'IA, des solutions IoT et des logiciels de bureau.",
     "OG_DESCRIPTION": "Consultez les projets détaillés d'Abderrazzaq El Abdouni incluant des assistants IA chat, des systèmes de reconnaissance faciale, des systèmes de gestion de planning, et plus encore.",
     "GITHUB_PROFILE": "Profil GitHub"

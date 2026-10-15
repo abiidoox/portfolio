@@ -13,33 +13,77 @@
     </header>
 
     <!-- Filters -->
-    <div class="mb-12 flex flex-wrap items-center gap-2.5"
-      appScrollReveal data-reveal-direction="up" data-delay="280"
-      role="group" [attr.aria-label]="'A11Y.FILTER_PROJECTS' | translate">
-      @for (c of categories; track c) {
-        <button
-          type="button"
-          class="lab-pill"
-          [attr.aria-pressed]="selectedCategory === c"
-          (click)="filterProjects(c)"
-          >
-          <span>{{ 'PROJECTS.CATEGORIES.' + c.toUpperCase() | translate }}</span>
-          <span class="font-mono text-[0.62rem] opacity-55">{{ countFor(c) }}</span>
-        </button>
-      }
+    <div class="mb-12"
+      appScrollReveal data-reveal-direction="up" data-delay="280">
 
-      <!-- Active technology filter arriving from the skills page -->
-      @if (techFilter) {
-        <div class="lab-pill border-signal/40 bg-signal/[0.07] text-signal-soft">
-          <i class="fas fa-filter text-[0.7rem]"></i>
-          <span>{{ 'PROJECTS.FILTER_TECH' | translate: { tech: techFilter } }}</span>
-          <button type="button" (click)="clearTech()"
-            class="-mr-1.5 ml-1 grid h-6 w-6 place-items-center rounded-full transition-colors duration-200 hover:bg-white/10 hover:text-white"
-            [attr.aria-label]="'PROJECTS.CLEAR_FILTER' | translate">
-            <i class="fas fa-xmark text-[0.7rem]"></i>
+      <!-- Category pills -->
+      <div class="flex flex-wrap items-center gap-2.5"
+        role="group" [attr.aria-label]="'A11Y.FILTER_PROJECTS' | translate">
+        @for (c of categories; track c) {
+          <button
+            type="button"
+            class="lab-pill"
+            [attr.aria-pressed]="selectedCategory === c"
+            (click)="filterProjects(c)"
+            >
+            <span>{{ 'PROJECTS.CATEGORIES.' + c.toUpperCase() | translate }}</span>
+            <span class="font-mono text-[0.62rem] opacity-55">{{ countFor(c) }}</span>
           </button>
+        }
+
+        <!-- Active technology filter arriving from the skills page -->
+        @if (techFilter) {
+          <div class="lab-pill border-signal/40 bg-signal/[0.07] text-signal-soft">
+            <i class="fas fa-filter text-[0.7rem]"></i>
+            <span>{{ 'PROJECTS.FILTER_TECH' | translate: { tech: techFilter } }}</span>
+            <button type="button" (click)="clearTech()"
+              class="-mr-1.5 ml-1 grid h-6 w-6 place-items-center rounded-full transition-colors duration-200 hover:bg-white/10 hover:text-white"
+              [attr.aria-label]="'PROJECTS.CLEAR_FILTER' | translate">
+              <i class="fas fa-xmark text-[0.7rem]"></i>
+            </button>
+          </div>
+        }
+      </div>
+
+      <!-- Search + sort -->
+      <div class="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center">
+        <div class="relative w-full sm:max-w-sm">
+          <i class="fas fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-xs text-slate-500"
+             aria-hidden="true"></i>
+          <input
+            type="search"
+            autocomplete="off"
+            spellcheck="false"
+            [value]="searchQuery"
+            (input)="onSearchInput($event)"
+            [attr.aria-label]="'PROJECTS.SEARCH_LABEL' | translate"
+            [attr.placeholder]="'PROJECTS.SEARCH_PLACEHOLDER' | translate"
+            class="lab-input h-11 !py-0 pl-10 pr-11 text-[0.9rem]">
+          @if (searchQuery) {
+            <button type="button" (click)="clearSearch()"
+              class="absolute right-3 top-1/2 grid h-7 w-7 -translate-y-1/2 place-items-center rounded-full
+                     text-slate-500 transition-colors duration-200 hover:bg-white/10 hover:text-white"
+              [attr.aria-label]="'PROJECTS.CLEAR_FILTER' | translate">
+              <i class="fas fa-xmark text-xs" aria-hidden="true"></i>
+            </button>
+          }
         </div>
-      }
+
+        <div class="relative w-full sm:ml-auto sm:w-auto">
+          <label class="sr-only" for="projects-sort">{{ 'PROJECTS.SORT_LABEL' | translate }}</label>
+          <select
+            id="projects-sort"
+            [value]="sortKey"
+            (change)="onSortChange($event)"
+            class="lab-input h-11 w-full !py-0 pl-4 pr-10 font-mono text-[0.8rem] sm:w-auto">
+            <option value="newest">{{ 'PROJECTS.SORT_NEWEST' | translate }}</option>
+            <option value="oldest">{{ 'PROJECTS.SORT_OLDEST' | translate }}</option>
+            <option value="az">{{ 'PROJECTS.SORT_AZ' | translate }}</option>
+          </select>
+          <i class="fas fa-chevron-down pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[0.65rem] text-slate-500"
+             aria-hidden="true"></i>
+        </div>
+      </div>
     </div>
 
     <!-- Project grid -->
@@ -147,8 +191,8 @@
       <div class="lab-panel rounded-3xl px-8 py-16 text-center">
         <i class="fas fa-folder-open text-2xl text-slate-600"></i>
         <p class="mt-4 text-slate-400">{{ 'PROJECTS.NO_RESULTS' | translate }}</p>
-        @if (techFilter) {
-          <button type="button" (click)="clearTech()" class="lab-btn lab-btn-ghost mt-6">
+        @if (hasActiveFilters) {
+          <button type="button" (click)="clearAll()" class="lab-btn lab-btn-ghost mt-6">
             <i class="fas fa-filter-circle-xmark text-xs"></i>
             <span>{{ 'PROJECTS.CLEAR_FILTER' | translate }}</span>
           </button>

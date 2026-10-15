@@ -40,6 +40,12 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   /** Technology filter arriving from the skills page (?tech=Angular). */
   techFilter: string | null = null;
 
+  /** Free-text search across title, description and stack. */
+  searchQuery = '';
+
+  /** Grid order; newest first matches the archive feel of the rest of the page. */
+  sortKey: 'newest' | 'oldest' | 'az' = 'newest';
+
   projects: DisplayProject[] = [];
   filteredProjects: DisplayProject[] = [];
 
@@ -48,7 +54,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
    * with nothing behind it — a tab that filters to an empty grid is a dead end.
    */
   get categories(): string[] {
-    const present = new Set(this.techFiltered().map(p => p.category));
+    const present = new Set(this.baseList().map(p => p.category));
     return ['all', ...ProjectsComponent.CATEGORY_ORDER.filter(c => present.has(c))];
   }
 
@@ -117,18 +123,73 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     this.applyFilters();
   }
 
-  /** Projects matching the active technology filter (category ignored). */
-  private techFiltered(): DisplayProject[] {
-    if (!this.techFilter) return this.projects;
-    const needle = this.techFilter.toLowerCase();
-    return this.projects.filter(p => p.technologies.some(t => t.toLowerCase() === needle));
+  /**
+   * Everything the grid is looking at before the category tab: the technology
+   * filter and the free-text query. Tab counts and the tab list derive from it,
+   * so a tab never offers a destination with nothing behind it.
+   */
+  private baseList(): DisplayProject[] {
+    let list = this.projects;
+
+    if (this.techFilter) {
+      const needle = this.techFilter.toLowerCase();
+      list = list.filter(p => p.technologies.some(t => t.toLowerCase() === needle));
+    }
+
+    const query = this.searchQuery.trim().toLowerCase();
+    if (query) {
+      list = list.filter(p =>
+        `${p.title} ${p.description} ${p.technologies.join(' ')}`.toLowerCase().includes(query));
+    }
+
+    return list;
   }
 
   private applyFilters(): void {
-    const list = this.techFiltered();
-    this.filteredProjects = this.selectedCategory === 'all'
-      ? list
-      : list.filter(p => p.category === this.selectedCategory);
+    const list = this.baseList().filter(
+      p => this.selectedCategory === 'all' || p.category === this.selectedCategory);
+    this.filteredProjects = this.sortBy(list);
+  }
+
+  private sortBy(list: DisplayProject[]): DisplayProject[] {
+    const sorted = [...list];
+    switch (this.sortKey) {
+      case 'oldest':
+        return sorted.sort((a, b) => Number(a.date) - Number(b.date));
+      case 'az':
+        return sorted.sort((a, b) =>
+          a.title.localeCompare(b.title, this.translate.getCurrentLang() || 'en'));
+      default:
+        return sorted.sort((a, b) => Number(b.date) - Number(a.date));
+    }
+  }
+
+  onSearchInput(event: Event): void {
+    this.searchQuery = (event.target as HTMLInputElement).value;
+    this.applyFilters();
+  }
+
+  onSortChange(event: Event): void {
+    this.sortKey = (event.target as HTMLSelectElement).value as 'newest' | 'oldest' | 'az';
+    this.applyFilters();
+  }
+
+  clearSearch(): void {
+    this.searchQuery = '';
+    this.applyFilters();
+  }
+
+  /** One button that undoes every filter at once, reachable from the empty state. */
+  clearAll(): void {
+    this.searchQuery = '';
+    this.techFilter = null;
+    this.selectedCategory = 'all';
+    this.syncTechParam(null);
+    this.applyFilters();
+  }
+
+  get hasActiveFilters(): boolean {
+    return !!this.searchQuery || !!this.techFilter || this.selectedCategory !== 'all';
   }
 
   /** Card tags are links too: click a technology to see what shipped with it. */
@@ -154,7 +215,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   }
 
   countFor(category: string): number {
-    const list = this.techFiltered();
+    const list = this.baseList();
     return category === 'all'
       ? list.length
       : list.filter(p => p.category === category).length;

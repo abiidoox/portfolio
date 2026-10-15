@@ -194,6 +194,12 @@
     "FILTER_TECH": "Technology: {{tech}}",
     "CLEAR_FILTER": "Clear filter",
     "VIEW_CASE_STUDY": "Read the case study",
+    "SEARCH_LABEL": "Search projects",
+    "SEARCH_PLACEHOLDER": "Search by name or technology...",
+    "SORT_LABEL": "Sort projects",
+    "SORT_NEWEST": "Newest first",
+    "SORT_OLDEST": "Oldest first",
+    "SORT_AZ": "Name, A to Z",
     "META_DESCRIPTION": "Projects portfolio of Abderrazzaq El Abdouni featuring web applications, mobile apps, AI systems, IoT solutions, and desktop software.",
     "OG_DESCRIPTION": "View detailed projects by Abderrazzaq El Abdouni including AI chat assistants, face recognition systems, schedule management, and more.",
     "GITHUB_PROFILE": "GitHub profile"
