@@ -5,7 +5,16 @@
     "MESSAGE": "The page you are looking for doesn't exist or it might have been moved.",
     "BACK_HOME": "Back to Home",
     "META_DESCRIPTION": "The requested page could not be found on Abderrazzaq El Abdouni's portfolio website.",
-    "OG_DESCRIPTION": "Page not found - the content you're looking for doesn't exist on this portfolio site."
+    "OG_DESCRIPTION": "Page not found - the content you're looking for doesn't exist on this portfolio site.",
+    "CMD": {
+      "PANEL": "visitor@portfolio:~",
+      "WELCOME": "Shell ready. Type \"help\" and press Enter.",
+      "HELP": "commands: home, projects, skills, resume, contact, theme, whoami, clear",
+      "UNKNOWN": "command not found: {{cmd}} (try \"help\")",
+      "OPENING": "opening {{route}} ...",
+      "THEME_OK": "theme set to {{theme}}",
+      "INPUT_LABEL": "Terminal command input"
+    }
   },
   "ABOUT": {
     "NAME": "Abderrazzaq El Abdouni",

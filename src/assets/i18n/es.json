@@ -5,7 +5,16 @@
     "MESSAGE": "La página que buscas no existe o ha sido movida.",
     "BACK_HOME": "Volver a Inicio",
     "META_DESCRIPTION": "La página solicitada no se encontró en el sitio web de portafolio de Abderrazzaq El Abdouni.",
-    "OG_DESCRIPTION": "Página no encontrada - el contenido que buscas no existe en este sitio de portafolio."
+    "OG_DESCRIPTION": "Página no encontrada - el contenido que buscas no existe en este sitio de portafolio.",
+    "CMD": {
+      "PANEL": "visitante@portfolio:~",
+      "WELCOME": "Shell listo. Escribe \"help\" y pulsa Enter.",
+      "HELP": "comandos: home, projects, skills, resume, contact, theme, whoami, clear",
+      "UNKNOWN": "comando no encontrado: {{cmd}} (prueba \"help\")",
+      "OPENING": "abriendo {{route}} ...",
+      "THEME_OK": "tema cambiado a {{theme}}",
+      "INPUT_LABEL": "Entrada de comandos del terminal"
+    }
   },
   "ABOUT": {
     "NAME": "Abderrazzaq El Abdouni",
