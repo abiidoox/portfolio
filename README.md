@@ -114,7 +114,7 @@ After adding or renaming a project, run `npm run audit:keys`.
 
 Netlify builds with `netlify.toml`: `npm run build:prod`, publish folder `dist/portfolio-website/browser`,
 SPA fallback via `src/_redirects`, caching and security headers via `src/_headers`.
-The canonical URL lives in `src/assets/sitemap.xml`, `src/assets/robots.txt`
+The canonical URL lives in `src/sitemap.xml`, `src/robots.txt`
 and `src/app/services/seo.service.ts`.
 
 The CV served on the resume page is `src/assets/Abderrazzaq_El_Abdouni_CV.pdf`.
