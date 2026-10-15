@@ -8,6 +8,7 @@ const LABELS: Record<string, string> = {
   'header.home': 'Home',
   'header.projects': 'Projects',
   'header.skills': 'Skills',
+  'header.notes': 'Notes',
   'header.resume': 'Resume',
   'header.contact': 'Contact'
 };
@@ -49,7 +50,7 @@ describe('HeaderComponent', () => {
     component.ngOnInit();
 
     expect(component.navItems.map(i => i.label))
-      .toEqual(['Home', 'Projects', 'Skills', 'Resume', 'Contact']);
+      .toEqual(['Home', 'Projects', 'Skills', 'Notes', 'Resume', 'Contact']);
 
     LABELS['header.home'] = 'Accueil';
     langChange.next({});
