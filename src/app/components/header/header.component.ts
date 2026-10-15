@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { ThemeSwitcherComponent } from '../theme-switcher/theme-switcher.component';
 import { LanguageSwitcherComponent } from '../language-switcher/language-switcher.component';
 import { NgClass, isPlatformBrowser } from '@angular/common';
+import { CommandPaletteService } from '../../services/command-palette.service';
 
 
 interface NavItem {
@@ -24,6 +25,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private translateService = inject(TranslateService);
   private router = inject(Router);
   private platformId = inject(PLATFORM_ID);
+  private commandPalette = inject(CommandPaletteService);
 
   isMobileMenuOpen = false;
   isScrolled = false;
@@ -115,6 +117,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   closeMobileMenu(): void {
     this.isMobileMenuOpen = false;
+  }
+
+  openPalette(): void {
+    this.closeMobileMenu();
+    this.commandPalette.open();
   }
 
   private updateIndicator(): void {

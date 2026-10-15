@@ -16,6 +16,7 @@ import { ToastContainerComponent } from './components/shared/toast-container/toa
 import { ParticlesBackgroundComponent } from './components/shared/particles-background/particles-background.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { BackToTopComponent } from './components/shared/back-to-top/back-to-top.component';
+import { CommandPaletteComponent } from './components/shared/command-palette/command-palette.component';
 
 @Component({
     selector: 'app-root',
@@ -35,7 +36,7 @@ import { BackToTopComponent } from './components/shared/back-to-top/back-to-top.
         ])
     ],
     changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [TerminalIntroComponent, ScrollProgressComponent, ToastContainerComponent, ParticlesBackgroundComponent, RouterOutlet, FooterComponent, BackToTopComponent, HeaderComponent, ProjectModalComponent, TranslatePipe]
+    imports: [TerminalIntroComponent, ScrollProgressComponent, ToastContainerComponent, ParticlesBackgroundComponent, RouterOutlet, FooterComponent, BackToTopComponent, HeaderComponent, ProjectModalComponent, CommandPaletteComponent, TranslatePipe]
 })
 export class AppComponent implements OnInit, OnDestroy {
   private translate = inject(TranslateService);

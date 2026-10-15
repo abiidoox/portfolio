@@ -49,6 +49,17 @@
 
     <!-- Controls -->
     <div class="flex items-center gap-2">
+      <button
+        type="button"
+        (click)="openPalette()"
+        [attr.aria-label]="'PALETTE.OPEN_LABEL' | translate"
+        class="hidden h-10 items-center gap-2 rounded-xl border border-white/10 px-3
+               text-slate-400 transition-colors duration-300 hover:border-signal/50
+               hover:text-signal md:flex">
+        <i class="fas fa-magnifying-glass text-xs" aria-hidden="true"></i>
+        <kbd class="font-mono text-[0.62rem] tracking-wide">Ctrl K</kbd>
+      </button>
+
       <app-theme-switcher />
       <app-language-switcher />
 

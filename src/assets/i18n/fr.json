@@ -16,6 +16,19 @@
       "INPUT_LABEL": "Saisie de commande du terminal"
     }
   },
+  "PALETTE": {
+    "OPEN_LABEL": "Ouvrir la palette de commandes (Ctrl+K)",
+    "PLACEHOLDER": "Rechercher pages, projets, actions...",
+    "GROUP_PAGES": "Pages",
+    "GROUP_PROJECTS": "Projets",
+    "GROUP_ACTIONS": "Actions",
+    "GROUP_LINKS": "Liens",
+    "NO_RESULTS": "Aucun résultat pour « {{query}} »",
+    "THEME_TO_DARK": "Passer au thème sombre",
+    "THEME_TO_LIGHT": "Passer au thème clair",
+    "COPY_EMAIL": "Copier l'adresse e-mail",
+    "HINTS": "↑↓ naviguer · ↵ ouvrir · échap fermer"
+  },
   "ABOUT": {
     "NAME": "Abderrazzaq El Abdouni",
     "LOCATION": "Rabat, Maroc",
