@@ -948,8 +948,13 @@ body.light-theme .bg-white\/\[0\.06\] { background-color: rgba(15, 23, 42, 0.04)
    fixed view-transition-name so only the page body animates;
    entrance and exit share one path, and the exit runs faster.
    ============================================================ */
-app-header { view-transition-name: site-header; }
-app-footer { view-transition-name: site-footer; }
+/* The name belongs on the inner fixed element, never on the static Angular
+   host: a view-transition-name creates a stacking context, and on the host it
+   trapped the fixed header below later page content, so header clicks hit the
+   page underneath. */
+app-header > header { view-transition-name: site-header; }
+app-footer > footer { view-transition-name: site-footer; }
+/* The ambient canvas host is itself the fixed element, so it takes the name. */
 app-particles-background { view-transition-name: site-ambient; }
 
 @media (prefers-reduced-motion: no-preference) {
