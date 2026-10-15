@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild, NgZone, OnDestroy } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, NgZone, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 
 interface Particle {
   x: number;
@@ -14,6 +14,7 @@ interface Particle {
     :host { display: block; }
     canvas { width: 100%; height: 100%; display: block; }
   `],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ParticlesBackgroundComponent implements OnInit, OnDestroy {

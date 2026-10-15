@@ -1,4 +1,4 @@
-import { Component, HostListener, NgZone, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, NgZone, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
     selector: 'app-scroll-progress',
@@ -16,6 +16,7 @@ import { Component, HostListener, NgZone, OnDestroy, OnInit } from '@angular/cor
       will-change: transform;
     }
   `],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ScrollProgressComponent implements OnInit, OnDestroy {

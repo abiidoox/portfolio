@@ -1,6 +1,7 @@
 import {
   Component, HostListener, Input, Output, EventEmitter,
-  ElementRef, AfterViewInit, NgZone
+  ElementRef, AfterViewInit, NgZone,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -18,6 +19,7 @@ export interface ProjectModalData {
 @Component({
     selector: 'app-project-modal',
     templateUrl: './project-modal.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ProjectModalComponent implements AfterViewInit {

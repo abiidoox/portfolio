@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone, OnDestroy, HostListener } from '@angular/core';
+import { Component, OnInit, NgZone, OnDestroy, HostListener, ChangeDetectionStrategy } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageService } from './services/language.service';
 import { ToastService } from './services/toast.service';
@@ -26,6 +26,7 @@ import { trigger, transition, style, animate, query } from '@angular/animations'
             ])
         ])
     ],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class AppComponent implements OnInit, OnDestroy {

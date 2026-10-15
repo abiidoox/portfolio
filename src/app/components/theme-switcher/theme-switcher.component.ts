@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { Theme, ThemeService } from '../../services/theme.service';
@@ -6,6 +6,7 @@ import { Theme, ThemeService } from '../../services/theme.service';
 @Component({
     selector: 'app-theme-switcher',
     templateUrl: './theme-switcher.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ThemeSwitcherComponent implements OnInit, OnDestroy {

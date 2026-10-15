@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
     selector: 'app-back-to-top',
@@ -72,6 +72,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
       .btt { transition: opacity .2s ease; }
     }
   `],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class BackToTopComponent implements OnInit {

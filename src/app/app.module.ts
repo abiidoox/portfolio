@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderModule } from './components/header/header.module';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 import { provideTranslateService, TranslatePipe } from '@ngx-translate/core';
 import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FormsModule } from '@angular/forms';
@@ -46,5 +46,5 @@ import { ProjectModalModule } from './components/shared/project-modal/project-mo
         ScrollRevealDirective,
         CountUpDirective,
         ProjectModalModule,
-        TranslatePipe], providers: [ToastService, provideHttpClient(withInterceptorsFromDi()), provideTranslateService({ fallbackLang: 'en' }), provideTranslateHttpLoader({ prefix: './assets/i18n/', suffix: '.json' })] })
+        TranslatePipe], providers: [ToastService, provideHttpClient(withXhr(), withInterceptorsFromDi()), provideTranslateService({ fallbackLang: 'en' }), provideTranslateHttpLoader({ prefix: './assets/i18n/', suffix: '.json' })] })
 export class AppModule { }

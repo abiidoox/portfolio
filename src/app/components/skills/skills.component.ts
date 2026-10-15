@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {
   SKILLS,
   SKILL_CATEGORY_ORDER,
@@ -10,6 +10,7 @@ import {
 @Component({
     selector: 'app-skills',
     templateUrl: './skills.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class SkillsComponent {

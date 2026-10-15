@@ -1,4 +1,4 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component, ElementRef, ChangeDetectionStrategy } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastService } from '../../services/toast.service';
 import { PROJECTS } from '../../data/projects.data';
@@ -35,6 +35,7 @@ interface CommitLine {
 @Component({
     selector: 'app-about',
     templateUrl: './about.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class AboutComponent {

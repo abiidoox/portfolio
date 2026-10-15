@@ -5,7 +5,8 @@ import {
   OnDestroy,
   OnInit,
   ViewChildren,
-  QueryList
+  QueryList,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageService, Language } from '../../services/language.service';
@@ -21,6 +22,7 @@ interface LanguageOption {
 @Component({
     selector: 'app-language-switcher',
     templateUrl: './language-switcher.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class LanguageSwitcherComponent implements OnInit, OnDestroy {

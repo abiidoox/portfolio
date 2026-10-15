@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ProjectModalService } from '../../services/project-modal.service';
 import { PROJECTS, Project } from '../../data/projects.data';
@@ -19,6 +19,7 @@ interface DisplayProject {
 @Component({
     selector: 'app-projects',
     templateUrl: './projects.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ProjectsComponent implements OnInit, OnDestroy {

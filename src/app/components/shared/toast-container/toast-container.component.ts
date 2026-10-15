@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ToastService } from '../../../services/toast.service';
 
 @Component({
@@ -76,6 +76,7 @@ import { ToastService } from '../../../services/toast.service';
       .toast, .toast-progress { animation-duration: 0.01ms; }
     }
   `],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ToastContainerComponent {
