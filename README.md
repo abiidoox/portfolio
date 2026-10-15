@@ -37,7 +37,25 @@ npm run watch                                          # development build in wa
 npm run lint                                           # ESLint (TypeScript + Angular templates)
 npm test                                               # unit tests (Vitest, watch mode)
 npm test -- --watch=false                              # one-shot test run
+npm run og:build                                       # regenerate 1200x630 OG cards (needs Chrome)
+npm run data:github                                    # refresh src/app/data/github-stats.ts
 ```
+
+## Pages and features
+
+- Case studies: every project has a prerendered deep-dive at `/projects/<slug>`
+  (context, what was built, outcome, stack). Copy lives in
+  `PROJECTS.<KEY>.CONTEXT` / `PROJECTS.<KEY>.OUTCOME`; the rest resolves from the
+  existing project keys.
+- Command palette: `Ctrl+K` / `Cmd+K` opens navigation, projects, theme, language
+  and email actions. There is also a trigger button in the header.
+- Interactive 404: the not-found page accepts `help`, `home`, `projects`,
+  `skills`, `resume`, `contact`, `theme`, `whoami` and `clear`.
+- Live GitHub strip on the about page. Numbers are snapshotted at build time by
+  `npm run data:github` — the browser never calls the GitHub API.
+- OG images: `npm run og:build` renders `src/assets/og/*.png` (1200x630, one per
+  route and per project). `SeoService` points each page's `og:image` at its card.
+  Re-run after changing a project title or adding a route.
 
 ## Audit tools
 
@@ -75,12 +93,13 @@ Edit the `CHROME` constant in `tools/*.cjs` if Chrome lives elsewhere.
 ## Project structure
 
 ```
-src/app/components   feature components (about, projects, skills, resume, contact) + shared/*
-src/app/services     theme, language, SEO, toast, modal services
+src/app/components   feature components (about, projects, project-detail, skills, resume, contact) + shared/*
+src/app/services     theme, language, SEO, toast, modal, command-palette services
 src/app/directives   scroll reveal, split text, magnetic, count up
-src/app/data         projects, skills and resume datasets
+src/app/data         projects, skills and resume datasets + generated github-stats.ts
 src/assets/i18n      en.json, fr.json, es.json
-tools/               headless audit scripts, icon-font subset builders, font fetcher
+src/assets/og        1200x630 social cards, one per route and per project
+tools/               headless audit scripts, icon-font subset builders, font fetcher, OG builder
 ```
 
 ## Icons and fonts
@@ -108,6 +127,7 @@ The subsetters need `pip install fonttools brotli`.
 Project cards and the project modal resolve titles at runtime from
 `PROJECTS.<KEY>.TITLE`, `PROJECTS.<KEY>.DESCRIPTION` and `PROJECTS.<KEY>.LONG_DESCRIPTION`
 using the keys declared in `src/app/data/projects.data.ts`.
+Case-study pages additionally use `PROJECTS.<KEY>.CONTEXT` and `PROJECTS.<KEY>.OUTCOME`.
 After adding or renaming a project, run `npm run audit:keys`.
 
 ## Deployment
