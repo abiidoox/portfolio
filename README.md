@@ -31,7 +31,7 @@ Dev server runs on `http://localhost:4200/`.
 ```bash
 npm start                                              # dev server
 npm run build                                          # development build
-npm run build:prod                                     # production build to dist/portfolio-website
+npm run build:prod                                     # production build to dist/portfolio-website/browser
 npm run watch                                          # development build in watch mode
 npm run lint                                           # ESLint (TypeScript + Angular templates)
 npm test                                               # unit tests (Karma + Jasmine, watch mode)
@@ -91,7 +91,7 @@ After adding or renaming a project, run `npm run audit:keys`.
 
 ## Deployment
 
-Netlify builds with `netlify.toml`: `npm run build:prod`, publish folder `dist/portfolio-website`,
+Netlify builds with `netlify.toml`: `npm run build:prod`, publish folder `dist/portfolio-website/browser`,
 SPA fallback via `src/_redirects`. The canonical URL lives in `src/assets/sitemap.xml`,
 `src/assets/robots.txt` and `src/app/services/seo.service.ts`.
 
