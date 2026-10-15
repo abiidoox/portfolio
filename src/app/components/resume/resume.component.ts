@@ -74,6 +74,14 @@ export class ResumeComponent implements OnDestroy {
     el.style.setProperty('--my', `${e.clientY - rect.top}px`);
   }
 
+  /**
+   * The print stylesheet turns the page into a clean ink-on-paper CV, so the
+   * browser's own Save-as-PDF works without a server-rendered file.
+   */
+  printResume(): void {
+    window.print();
+  }
+
   downloadResume(): void {
     const filePath = 'assets/Abderrazzaq_El_Abdouni_CV.pdf';
     const fileName = 'Abderrazzaq_El_Abdouni_CV.pdf';

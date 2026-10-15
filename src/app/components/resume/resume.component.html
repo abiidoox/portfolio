@@ -234,10 +234,16 @@
 
     <!-- ══════════ Download ══════════ -->
     <div class="text-center" appScrollReveal data-reveal-direction="up">
-      <button type="button" (click)="downloadResume()" class="lab-btn lab-btn-primary" appMagnetic>
-        <i class="fas fa-download text-xs"></i>
-        <span>{{ 'RESUME.DOWNLOAD' | translate }}</span>
-      </button>
+      <div class="flex flex-wrap items-center justify-center gap-3 print:hidden">
+        <button type="button" (click)="downloadResume()" class="lab-btn lab-btn-primary" appMagnetic>
+          <i class="fas fa-download text-xs"></i>
+          <span>{{ 'RESUME.DOWNLOAD' | translate }}</span>
+        </button>
+        <button type="button" (click)="printResume()" class="lab-btn lab-btn-ghost">
+          <i class="fas fa-print text-xs"></i>
+          <span>{{ 'RESUME.PRINT' | translate }}</span>
+        </button>
+      </div>
       @if (error) {
         <p role="alert"
           class="mt-4 inline-flex items-center gap-2 text-sm text-signal">

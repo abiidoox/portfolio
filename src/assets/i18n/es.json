@@ -285,6 +285,7 @@
     "SUBTITLE": "Experiencia Profesional",
     "DESCRIPTION": "Un resumen de mi experiencia profesional, educación y habilidades",
     "DOWNLOAD": "Descargar PDF",
+    "PRINT": "Imprimir / Guardar como PDF",
     "DOWNLOAD_ERROR": "Error al descargar el CV. Por favor, inténtalo de nuevo.",
     "EXPERIENCE": "EXPERIENCIA PROFESIONAL",
     "EDUCATION": "EDUCACIÓN",

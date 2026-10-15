@@ -869,3 +869,74 @@ body.light-theme .bg-white\/\[0\.06\] { background-color: rgba(15, 23, 42, 0.04)
      affordance, not an animation, so it stays. */
   .lab-portrait-glow { animation: none !important; }
 }
+
+/* ============================================================
+   PRINT
+   The resume is the printable page: chrome disappears, an
+   ink-on-paper palette replaces both themes, and reveal-animated
+   nodes print fully visible even if the visitor never scrolled
+   to them.
+   ============================================================ */
+@media print {
+  @page { margin: 12mm; }
+
+  body {
+    background: #fff !important;
+    color: #0f172a !important;
+  }
+
+  /* Application chrome never reaches paper. */
+  app-header,
+  app-footer,
+  app-back-to-top,
+  app-scroll-progress,
+  app-particles-background,
+  app-command-palette,
+  app-terminal-intro,
+  app-toast-container {
+    display: none !important;
+  }
+
+  /* Reveal-animated nodes must not stay hidden. */
+  .sr-init { opacity: 1 !important; transform: none !important; }
+
+  /* Surfaces become flat bordered panels. */
+  .lab-panel,
+  .lab-dark-panel,
+  .lab-terminal {
+    background: #fff !important;
+    border-color: #cbd5e1 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+  }
+
+  /* Alpha-white utilities are tuned for dark glass and read wrong on
+     paper; the attribute selectors catch every Tailwind alpha utility. */
+  [class*="border-white/"] { border-color: #cbd5e1 !important; }
+  [class*="bg-white/"] { background-color: #f1f5f9 !important; }
+
+  .text-slate-300,
+  .text-slate-400,
+  .text-slate-500,
+  .text-slate-600 { color: #334155 !important; }
+  .text-white { color: #0f172a !important; }
+
+  /* The gradient headline flattens to plain ink. */
+  .lab-gradient-text {
+    background: none !important;
+    -webkit-text-fill-color: #0f172a !important;
+    color: #0f172a !important;
+  }
+
+  .lab-tag {
+    border-color: #cbd5e1 !important;
+    color: #334155 !important;
+    background: #f8fafc !important;
+  }
+
+  /* Keep single cards whole across page breaks. */
+  .lab-panel { break-inside: avoid; }
+
+  /* Decorative grid texture costs ink and adds no meaning. */
+  .lab-grid-bg { display: none !important; }
+}

@@ -209,6 +209,7 @@
     "SUBTITLE": "Professional Experience",
     "DESCRIPTION": "A summary of my professional experience, education, and skills",
     "DOWNLOAD": "Download PDF",
+    "PRINT": "Print / Save as PDF",
     "DOWNLOAD_ERROR": "Failed to download CV. Please try again.",
     "EXPERIENCE": "PROFESSIONAL EXPERIENCE",
     "EDUCATION": "EDUCATION",
