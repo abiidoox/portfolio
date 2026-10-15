@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about.component';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
 import { CountUpDirective } from '../../directives/count-up.directive';
 import { MagneticDirective } from '../../directives/magnetic.directive';
@@ -16,7 +16,7 @@ const routes: Routes = [
   declarations: [AboutComponent],
   imports: [
     CommonModule,
-    TranslateModule,
+    TranslatePipe,
     RouterModule.forChild(routes),
     ScrollRevealDirective,
     CountUpDirective,

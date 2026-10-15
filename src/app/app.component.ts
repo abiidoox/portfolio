@@ -46,7 +46,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ) {
     // Initialize translations
     translate.addLangs(['en', 'es', 'fr']);
-    translate.setDefaultLang('en');
+    translate.setFallbackLang('en');
   }
 
   @HostListener('document:keydown', ['$event'])

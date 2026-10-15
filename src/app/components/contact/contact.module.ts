@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { ContactComponent } from './contact.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { MagneticDirective } from '../../directives/magnetic.directive';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
 
@@ -18,7 +18,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
-    TranslateModule,
+    TranslatePipe,
     MagneticDirective
   ]
 })

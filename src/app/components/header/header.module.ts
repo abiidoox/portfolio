@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { HeaderComponent } from './header.component';
 import { ThemeSwitcherModule } from '../theme-switcher/theme-switcher.module';
 import { LanguageSwitcherModule } from '../language-switcher/language-switcher.module';
@@ -13,7 +13,7 @@ import { LanguageSwitcherModule } from '../language-switcher/language-switcher.m
   imports: [
     CommonModule,
     RouterModule,
-    TranslateModule.forChild(),
+    TranslatePipe,
     ThemeSwitcherModule,
     LanguageSwitcherModule
   ],

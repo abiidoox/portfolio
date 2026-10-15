@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { ProjectsComponent } from './projects.component';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
 import { SplitTextDirective } from '../../directives/split-text.directive';
 import { ProjectModalModule } from '../../components/shared/project-modal/project-modal.module';
@@ -16,7 +16,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    TranslateModule,
+    TranslatePipe,
     ScrollRevealDirective,
     SplitTextDirective,
     ProjectModalModule

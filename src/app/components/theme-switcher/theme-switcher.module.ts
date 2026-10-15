@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { ThemeSwitcherComponent } from './theme-switcher.component';
 
 @NgModule({
@@ -9,7 +9,7 @@ import { ThemeSwitcherComponent } from './theme-switcher.component';
   ],
   imports: [
     CommonModule,
-    TranslateModule
+    TranslatePipe
   ],
   exports: [
     ThemeSwitcherComponent

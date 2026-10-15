@@ -4,9 +4,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderModule } from './components/header/header.module';
-import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideTranslateService, TranslatePipe } from '@ngx-translate/core';
+import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FormsModule } from '@angular/forms';
 import { ThemeSwitcherModule } from './components/theme-switcher/theme-switcher.module';
 import { LanguageSwitcherModule } from './components/language-switcher/language-switcher.module';
@@ -24,11 +24,6 @@ import { ToastService } from './services/toast.service';
 import { ScrollRevealDirective } from './directives/scroll-reveal.directive';
 import { CountUpDirective } from './directives/count-up.directive';
 import { ProjectModalModule } from './components/shared/project-modal/project-modal.module';
-
-// Factory function for TranslateHttpLoader
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
 
 @NgModule({ declarations: [
         AppComponent,
@@ -51,11 +46,5 @@ export function HttpLoaderFactory(http: HttpClient) {
         ScrollRevealDirective,
         CountUpDirective,
         ProjectModalModule,
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: HttpLoaderFactory,
-                deps: [HttpClient]
-            }
-        })], providers: [ToastService, provideHttpClient(withInterceptorsFromDi())] })
+        TranslatePipe], providers: [ToastService, provideHttpClient(withInterceptorsFromDi()), provideTranslateService({ fallbackLang: 'en' }), provideTranslateHttpLoader({ prefix: './assets/i18n/', suffix: '.json' })] })
 export class AppModule { }

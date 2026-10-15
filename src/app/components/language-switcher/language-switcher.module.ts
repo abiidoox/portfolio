@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { LanguageSwitcherComponent } from './language-switcher.component';
 
 @NgModule({
@@ -9,7 +9,7 @@ import { LanguageSwitcherComponent } from './language-switcher.component';
   ],
   imports: [
     CommonModule,
-    TranslateModule
+    TranslatePipe
   ],
   exports: [
     LanguageSwitcherComponent
