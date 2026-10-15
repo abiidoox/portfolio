@@ -1,35 +1,98 @@
-# PortfolioWebsite
+# Portfolio Website
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.11.
+Personal portfolio of Abderrazzaq El Abdouni, full-stack developer.
+Angular single-page app with Tailwind CSS, three locales (en, fr, es) and Netlify hosting.
 
-## Development server
+## Stack
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Angular 17.3, TypeScript 5.4
+- Tailwind CSS 3.4 + PostCSS
+- `@ngx-translate/core` with dictionaries in `src/assets/i18n/`
+- Font Awesome and Google Fonts via CDN (`src/index.html`)
+- Netlify deployment (`netlify.toml`)
 
-## Code scaffolding
+## Requirements
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Node.js 18.19+ or 20.9+ (Angular 17 supported range; Node 22 works but is outside it)
+- npm 9+
+- Google Chrome for the headless audit scripts
 
-## Build
+## Setup
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+npm install
+npm start
+```
 
-## Running unit tests
+Dev server runs on `http://localhost:4200/`.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Scripts
 
-## Running end-to-end tests
+```bash
+npm start                                              # dev server
+npm run build                                          # development build
+npm run build:prod                                     # production build to dist/portfolio-website
+npm run watch                                          # development build in watch mode
+npm run lint                                           # ESLint (TypeScript + Angular templates)
+npm test                                               # unit tests (Karma + Jasmine, watch mode)
+npm test -- --watch=false --browsers=ChromeHeadless    # one-shot headless test run
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Audit tools
 
-## Further help
+The `tools/` folder contains a headless UI audit suite driven by the Chrome DevTools Protocol.
+Run the dev server on port 4210 first:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+npx ng serve --port 4210
+```
 
-## Deployment checklist
+Then, in a second terminal:
 
-- Ensure `environment.prod.ts` is configured for your host (API endpoints, tracking IDs).
-- Run `npm run build:prod` to generate the `dist/` folder.
-- Serve the `dist/portfolio-website` folder from your static host (Netlify, Vercel, GitHub Pages, S3 + CloudFront, etc.).
-- Verify assets like `assets/cv.pdf` are present in `dist/` after build.
-- Remove any remaining debug logging and do not commit secrets.
+```bash
+npm run audit:verify        # every route x 6 viewports: console errors, overflow, raw i18n keys
+npm run audit:a11y          # accessibility checks
+npm run audit:contrast      # colour contrast
+npm run audit:layout        # layout / overflow
+npm run audit:mobile        # mobile viewports
+npm run audit:theme         # light and dark theme
+npm run audit:motion        # reduced motion behaviour
+npm run audit:icons         # icon fonts
+npm run audit:interactive   # interactive states
+npm run audit:overflow      # horizontal overflow
+```
+
+`npm run audit:keys` audits translation keys and needs no server:
+
+```bash
+npm run audit:keys          # fails on keys missing from en/fr/es
+```
+
+The audit scripts expect Chrome at `C:/Program Files/Google/Chrome/Application/chrome.exe`.
+Edit the `CHROME` constant in `tools/*.cjs` if Chrome lives elsewhere.
+
+## Project structure
+
+```
+src/app/components   feature components (about, projects, skills, resume, contact) + shared/*
+src/app/services     theme, language, SEO, toast, modal services
+src/app/directives   scroll reveal, split text, magnetic, count up
+src/app/data         projects, skills and resume datasets
+src/assets/i18n      en.json, fr.json, es.json
+tools/               headless audit scripts, devicon subset builder
+```
+
+## Internationalization
+
+Project cards and the project modal resolve titles at runtime from
+`PROJECTS.<KEY>.TITLE`, `PROJECTS.<KEY>.DESCRIPTION` and `PROJECTS.<KEY>.LONG_DESCRIPTION`
+using the keys declared in `src/app/data/projects.data.ts`.
+After adding or renaming a project, run `npm run audit:keys`.
+
+## Deployment
+
+Netlify builds with `netlify.toml`: `npm run build:prod`, publish folder `dist/portfolio-website`,
+SPA fallback via `src/_redirects`. The canonical URL lives in `src/assets/sitemap.xml`,
+`src/assets/robots.txt` and `src/app/services/seo.service.ts`.
+
+The CV served on the resume page is `src/assets/Abderrazzaq_El_Abdouni_CV.pdf`.

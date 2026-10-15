@@ -73,7 +73,7 @@ export class ContactComponent implements OnInit, OnDestroy {
 
       // Prepare data for Netlify Forms: URL-encoded body including form-name
       const formValue = this.contactForm.value;
-      const data: { [k: string]: any } = { 'form-name': 'contact', ...formValue };
+      const data: Record<string, string> = { 'form-name': 'contact', ...formValue };
       const body = Object.keys(data)
         .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
         .join('&');

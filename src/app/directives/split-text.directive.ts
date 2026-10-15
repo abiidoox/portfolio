@@ -8,7 +8,7 @@ import { isPlatformBrowser } from '@angular/common';
 export class SplitTextDirective implements AfterViewInit {
   constructor(
     private elementRef: ElementRef,
-    @Inject(PLATFORM_ID) private platformId: Object,
+    @Inject(PLATFORM_ID) private platformId: object,
     private ngZone: NgZone
   ) {}
 

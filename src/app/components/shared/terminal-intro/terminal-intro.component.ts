@@ -122,8 +122,8 @@ export class TerminalIntroComponent implements OnInit, OnDestroy {
   done = false;
   private lines: string[] = [];
   private currentLine = 0;
-  private lineTimer: any;
-  private progressTimer: any;
+  private lineTimer?: ReturnType<typeof setInterval>;
+  private progressTimer?: ReturnType<typeof setInterval>;
 
   constructor(private zone: NgZone, private translate: TranslateService) {}
 

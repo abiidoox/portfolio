@@ -1,4 +1,4 @@
-import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-back-to-top',
@@ -73,7 +73,7 @@ import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
     }
   `]
 })
-export class BackToTopComponent implements OnInit, OnDestroy {
+export class BackToTopComponent implements OnInit {
   visible = false;
   progress = 94;
 
@@ -82,8 +82,6 @@ export class BackToTopComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.update();
   }
-
-  ngOnDestroy(): void {}
 
   @HostListener('window:scroll')
   update(): void {

@@ -12,7 +12,6 @@ const REDUCED_MOTION = '(prefers-reduced-motion: reduce)';
  * freelance), so the span is derived from that date rather than guessed.
  */
 const FIRST_ROLE = { year: 2021, month: 6 };
-const CURRENT_YEAR = new Date().getFullYear();
 
 interface StatItem {
   value: number;

@@ -121,13 +121,7 @@ export class LanguageSwitcherComponent implements OnInit, OnDestroy {
       case 'Enter':
       case ' ':
         event.preventDefault();
-        const focusedButton = this.optionButtons?.toArray().find(b => b.nativeElement === document.activeElement);
-        if (focusedButton) {
-          const index = this.optionButtons?.toArray().indexOf(focusedButton) ?? -1;
-          if (index >= 0 && index < this.languages.length) {
-            this.switchLanguage(this.languages[index].code);
-          }
-        }
+        this.activateFocusedOption();
         break;
       case 'Escape':
         event.preventDefault();
@@ -144,6 +138,14 @@ export class LanguageSwitcherComponent implements OnInit, OnDestroy {
   private focusedIndex(): number {
     const idx = this.optionButtons?.toArray().findIndex(b => b.nativeElement === document.activeElement) ?? -1;
     return idx;
+  }
+
+  /** Activates the option that currently holds focus (Enter/Space). */
+  private activateFocusedOption(): void {
+    const index = this.focusedIndex();
+    if (index >= 0 && index < this.languages.length) {
+      this.switchLanguage(this.languages[index].code);
+    }
   }
 
   private focusIndex(index: number): void {
