@@ -1,4 +1,5 @@
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable, OnDestroy, inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { BehaviorSubject } from 'rxjs';
 
 export type Theme = 'light' | 'dark';
@@ -16,17 +17,22 @@ const STORAGE_KEY = 'theme';
  */
 @Injectable({ providedIn: 'root' })
 export class ThemeService implements OnDestroy {
+  private platformId = inject(PLATFORM_ID);
+
   private readonly themeSubject: BehaviorSubject<Theme>;
   readonly theme$;
 
   constructor() {
     this.themeSubject = new BehaviorSubject<Theme>(this.readStoredTheme());
     this.theme$ = this.themeSubject.asObservable();
-    this.apply(this.themeSubject.value);
 
-    // Adopt theme changes made in another tab. The `storage` event only fires
-    // in *other* tabs, so applying it here cannot echo back and loop.
-    window.addEventListener('storage', this.onStorage);
+    if (isPlatformBrowser(this.platformId)) {
+      this.apply(this.themeSubject.value);
+
+      // Adopt theme changes made in another tab. The `storage` event only fires
+      // in *other* tabs, so applying it here cannot echo back and loop.
+      window.addEventListener('storage', this.onStorage);
+    }
   }
 
   get current(): Theme {
@@ -49,7 +55,9 @@ export class ThemeService implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    window.removeEventListener('storage', this.onStorage);
+    if (isPlatformBrowser(this.platformId)) {
+      window.removeEventListener('storage', this.onStorage);
+    }
   }
 
   private onStorage = (event: StorageEvent): void => {
@@ -63,12 +71,14 @@ export class ThemeService implements OnDestroy {
     try {
       return localStorage.getItem(STORAGE_KEY) === 'light' ? 'light' : 'dark';
     } catch {
-      // Private browsing modes can throw on access rather than return null.
+      // Private browsing modes (and the server during prerendering) can throw
+      // on access rather than return null.
       return 'dark';
     }
   }
 
   private apply(theme: Theme): void {
+    if (!isPlatformBrowser(this.platformId)) return;
     document.documentElement.setAttribute('data-theme', theme);
     document.body.classList.toggle('light-theme', theme === 'light');
     document.body.classList.toggle('dark-theme', theme === 'dark');

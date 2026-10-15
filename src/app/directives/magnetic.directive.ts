@@ -1,4 +1,5 @@
-import { Directive, ElementRef, HostListener, NgZone, OnDestroy, OnInit, inject } from '@angular/core';
+import { Directive, ElementRef, HostListener, NgZone, OnDestroy, OnInit, inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Directive({
   selector: '[appMagnetic]',
@@ -7,6 +8,7 @@ import { Directive, ElementRef, HostListener, NgZone, OnDestroy, OnInit, inject 
 export class MagneticDirective implements OnInit, OnDestroy {
   private elementRef = inject(ElementRef);
   private zone = inject(NgZone);
+  private platformId = inject(PLATFORM_ID);
 
   private el!: HTMLElement;
   private strength = 0.35;
@@ -19,6 +21,7 @@ export class MagneticDirective implements OnInit, OnDestroy {
   private reducedMotion = false;
 
   ngOnInit(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
     this.el = this.elementRef.nativeElement;
     this.reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     this.zone.runOutsideAngular(() => this.animate());

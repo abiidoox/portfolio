@@ -19,7 +19,8 @@
     "audit:interactive": "node tools/check-interactive.cjs",
     "audit:overflow": "node tools/overflow.cjs",
     "lint": "ng lint",
-    "test": "ng test"
+    "test": "ng test",
+    "serve:ssr:portfolio-website": "node dist/portfolio-website/server/server.mjs"
   },
   "private": true,
   "dependencies": {
@@ -30,9 +31,12 @@
     "@angular/forms": "^22.2.3",
     "@angular/platform-browser": "^22.2.3",
     "@angular/platform-browser-dynamic": "^22.2.3",
+    "@angular/platform-server": "^22.2.3",
     "@angular/router": "^22.2.3",
+    "@angular/ssr": "^22.2.2",
     "@ngx-translate/core": "^18.0.0",
     "@ngx-translate/http-loader": "^18.0.0",
+    "express": "^5.1.0",
     "rxjs": "^7.8.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.1"
@@ -45,6 +49,8 @@
     "@angular/build": "^22.2.2",
     "@angular/cli": "^22.2.2",
     "@angular/compiler-cli": "^22.2.3",
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.12.0",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
     "autoprefixer": "^10.6.1",

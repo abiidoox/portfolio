@@ -1,4 +1,5 @@
-import { Component, HostListener, NgZone, OnDestroy, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, HostListener, NgZone, OnDestroy, OnInit, ChangeDetectionStrategy, inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
     selector: 'app-scroll-progress',
@@ -20,6 +21,7 @@ import { Component, HostListener, NgZone, OnDestroy, OnInit, ChangeDetectionStra
 })
 export class ScrollProgressComponent implements OnInit, OnDestroy {
   private zone = inject(NgZone);
+  private platformId = inject(PLATFORM_ID);
 
   private el!: HTMLElement;
   private rafId = 0;
@@ -27,6 +29,7 @@ export class ScrollProgressComponent implements OnInit, OnDestroy {
   private current = 0;
 
   ngOnInit(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
     this.el = document.querySelector('.scroll-progress')!;
     this.update();
     this.zone.runOutsideAngular(() => this.animate());

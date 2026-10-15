@@ -1,4 +1,5 @@
-import { Directive, ElementRef, OnDestroy, OnInit, inject } from '@angular/core';
+import { Directive, ElementRef, OnDestroy, OnInit, inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 /**
  * Scroll reveal directive.
@@ -11,10 +12,12 @@ import { Directive, ElementRef, OnDestroy, OnInit, inject } from '@angular/core'
 })
 export class ScrollRevealDirective implements OnInit, OnDestroy {
   private el = inject<ElementRef<HTMLElement>>(ElementRef);
+  private platformId = inject(PLATFORM_ID);
 
   private observer?: IntersectionObserver;
 
   ngOnInit(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
     const node = this.el.nativeElement as HTMLElement;
     // delay read from attribute to stay NgModule-friendly
     const delay = Number(node.getAttribute('data-delay')) || 0;

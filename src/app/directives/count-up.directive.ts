@@ -1,4 +1,5 @@
-import { Directive, ElementRef, Input, OnChanges, OnDestroy, OnInit, inject } from '@angular/core';
+import { Directive, ElementRef, Input, OnChanges, OnDestroy, OnInit, inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 /**
  * Animated counter.
@@ -15,6 +16,7 @@ import { Directive, ElementRef, Input, OnChanges, OnDestroy, OnInit, inject } fr
 })
 export class CountUpDirective implements OnInit, OnChanges, OnDestroy {
   private el = inject<ElementRef<HTMLElement>>(ElementRef);
+  private platformId = inject(PLATFORM_ID);
 
   @Input() countTo = 100;
   @Input() duration = 1400;
@@ -29,6 +31,7 @@ export class CountUpDirective implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnInit(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
     this.reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (this.reducedMotion) {
       this.target.textContent = String(this.countTo);

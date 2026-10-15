@@ -1,4 +1,5 @@
-import { Component, ElementRef, OnInit, ViewChild, NgZone, OnDestroy, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, NgZone, OnDestroy, ChangeDetectionStrategy, inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 interface Particle {
   x: number;
@@ -18,6 +19,7 @@ interface Particle {
 })
 export class ParticlesBackgroundComponent implements OnInit, OnDestroy {
   private zone = inject(NgZone);
+  private platformId = inject(PLATFORM_ID);
 
   @ViewChild('canvas', { static: true }) canvasRef!: ElementRef<HTMLCanvasElement>;
 
@@ -30,6 +32,8 @@ export class ParticlesBackgroundComponent implements OnInit, OnDestroy {
   private reducedMotion = false;
 
   ngOnInit(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+
     this.reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const canvas = this.canvasRef.nativeElement;
@@ -61,6 +65,7 @@ export class ParticlesBackgroundComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
     cancelAnimationFrame(this.rafId);
     window.removeEventListener('resize', this.resizeHandler);
     window.removeEventListener('mousemove', this.onMouse);

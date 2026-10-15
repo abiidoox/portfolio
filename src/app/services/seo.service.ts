@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, inject, DOCUMENT } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { Router, ActivatedRoute, NavigationEnd, Data } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -18,6 +18,7 @@ export class SeoService {
   private meta = inject(Meta);
   private translate = inject(TranslateService);
   private languageService = inject(LanguageService);
+  private doc = inject(DOCUMENT);
 
   constructor() {
     // Route changes and language changes both have to refresh the head tags.
@@ -53,12 +54,12 @@ export class SeoService {
 
   private setLink(rel: string, href: string, hreflang?: string): void {
     const selector = `link[rel="${rel}"]${hreflang ? `[hreflang="${hreflang}"]` : ':not([hreflang])'}`;
-    let el = document.head.querySelector<HTMLLinkElement>(selector);
+    let el = this.doc.head.querySelector<HTMLLinkElement>(selector);
     if (!el) {
-      el = document.createElement('link');
+      el = this.doc.createElement('link');
       el.rel = rel;
       if (hreflang) el.hreflang = hreflang;
-      document.head.appendChild(el);
+      this.doc.head.appendChild(el);
     }
     el.href = href;
   }
@@ -91,7 +92,7 @@ export class SeoService {
     // honest hreflang is a self-reference plus x-default. Pointing alternate
     // languages at the same URL would claim distinct documents that don't exist.
     this.setLink('canonical', url);
-    document.head.querySelectorAll('link[rel="alternate"]').forEach(l => l.remove());
+    this.doc.head.querySelectorAll('link[rel="alternate"]').forEach(l => l.remove());
     this.setLink('alternate', url, lang);
     this.setLink('alternate', url, 'x-default');
   }

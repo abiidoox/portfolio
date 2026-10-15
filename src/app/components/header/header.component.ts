@@ -1,11 +1,11 @@
-import { Component, OnInit, OnDestroy, HostListener, ViewChild, ElementRef, ChangeDetectionStrategy, inject, forwardRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener, ViewChild, ElementRef, ChangeDetectionStrategy, inject, PLATFORM_ID, forwardRef } from '@angular/core';
 import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 import { Router, NavigationEnd, RouterLink, RouterLinkActive } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { ThemeSwitcherComponent } from '../theme-switcher/theme-switcher.component';
 import { LanguageSwitcherComponent } from '../language-switcher/language-switcher.component';
-import { NgClass } from '@angular/common';
+import { NgClass, isPlatformBrowser } from '@angular/common';
 
 
 interface NavItem {
@@ -23,6 +23,7 @@ interface NavItem {
 export class HeaderComponent implements OnInit, OnDestroy {
   private translateService = inject(TranslateService);
   private router = inject(Router);
+  private platformId = inject(PLATFORM_ID);
 
   isMobileMenuOpen = false;
   isScrolled = false;
@@ -117,6 +118,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   private updateIndicator(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
     const list = this.navLinks?.nativeElement;
     if (!list) return;
     const activeLink = list.querySelector<HTMLAnchorElement>('a[data-active="true"]');

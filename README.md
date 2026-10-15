@@ -8,6 +8,7 @@ Angular single-page app with Tailwind CSS, three locales (en, fr, es) and Netlif
 - Angular 22.2, TypeScript 6.0
 - Tailwind CSS 3.4 + PostCSS
 - `@ngx-translate/core` with dictionaries in `src/assets/i18n/`
+- Prerendering (SSG): every route ships pre-rendered HTML via `@angular/ssr` (`outputMode: static`)
 - Font Awesome and Google Fonts via CDN (`src/index.html`)
 - Netlify deployment (`netlify.toml`)
 

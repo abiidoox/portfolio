@@ -1,4 +1,5 @@
-import { Component, OnInit, NgZone, OnDestroy, HostListener, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, OnInit, NgZone, OnDestroy, HostListener, ChangeDetectionStrategy, inject, PLATFORM_ID, DOCUMENT } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 import { LanguageService } from './services/language.service';
 import { ToastService } from './services/toast.service';
@@ -44,6 +45,8 @@ export class AppComponent implements OnInit, OnDestroy {
   private projectModalService = inject(ProjectModalService);
   private seo = inject(SeoService);
   private theme = inject(ThemeService);
+  private platformId = inject(PLATFORM_ID);
+  private doc = inject(DOCUMENT);
 
   private mouseHandler?: (e: MouseEvent) => void;
   modalProject: ProjectModalData | null = null;
@@ -101,16 +104,18 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.languageService.currentLanguage$.subscribe(lang => {
-      document.documentElement.lang = lang;
+      this.doc.documentElement.lang = lang;
     });
 
     this.projectModalService.project$.subscribe(project => {
       this.modalProject = project;
     });
 
+    if (!isPlatformBrowser(this.platformId)) return;
+
     // Cursor-following glow. Runs outside Angular and writes only a transform,
     // so it never triggers layout on each move.
-    const glow = document.querySelector('.mouse-glow') as HTMLElement | null;
+    const glow = this.doc.querySelector('.mouse-glow') as HTMLElement | null;
     if (glow && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
       this.zone.runOutsideAngular(() => {
         this.mouseHandler = (e: MouseEvent) => {
