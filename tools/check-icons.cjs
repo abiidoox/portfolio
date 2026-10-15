@@ -85,7 +85,7 @@ const serverUp = spawnSync(process.execPath, ['-e',
 if (!serverUp) {
   console.log('  \u00b7 dev server not on :4210 \u2014 skipping runtime checks (start "npm start -- --port 4210")');
 } else {
-  const cdp = spawnSync(process.execPath, [path.join(require('os').tmpdir(), 'probe-icons.cjs')], { encoding: 'utf8', timeout: 180000 });
+  const cdp = spawnSync(process.execPath, [path.join(__dirname, 'probe-icons.cjs')], { encoding: 'utf8', timeout: 180000 });
   const out = (cdp.stdout || '') + (cdp.stderr || '');
   console.log(out.trim());
 

@@ -73,6 +73,8 @@ const AUDIT = `(() => {
 
   // 2. invisible but present sections (has content, no box)
   for (const sec of document.querySelectorAll('section, app-root > *')) {
+    // Decorative layers (fixed overlays, etc.) are aria-hidden by design.
+    if (sec.getAttribute('aria-hidden') === 'true') continue;
     const r = sec.getBoundingClientRect();
     const hasText = (sec.innerText || '').trim().length > 0;
     if (hasText && r.height < 4) out.invisible.push(sec.tagName + '.' + (sec.className || '').toString().split(' ')[0] + ' h=' + Math.round(r.height));
