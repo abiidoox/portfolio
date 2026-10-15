@@ -16,6 +16,45 @@
       "INPUT_LABEL": "Saisie de commande du terminal"
     }
   },
+  "NOTES": {
+    "KICKER": "Notes d'ingénierie",
+    "TITLE": "Notes",
+    "SUBTITLE": "De courts billets sur la fabrication de ce portfolio - les outils, les compromis et les petites décisions derrière.",
+    "META_DESCRIPTION": "Notes d'ingénierie sur la fabrication de ce portfolio : cartes sociales hors ligne, données compilées et une 404 qui répond.",
+    "OG_DESCRIPTION": "De courts billets sur les outils et les compromis derrière ce portfolio.",
+    "READING_TIME": "{{minutes}} min de lecture",
+    "BACK": "Toutes les notes",
+    "SEO_SUFFIX": "Note",
+    "ITEMS": {
+      "TERMINAL_404": {
+        "TITLE": "Pourquoi la page 404 est un terminal qui accepte des commandes",
+        "SUMMARY": "La plupart des 404 sont des impasses. La mienne vous tend une invite de commandes : tapez help ou whoami et la page répond.",
+        "BODY": [
+          "La 404 est la seule page que personne ne prévoit de visiter, ce qui en fait l'endroit le moins cher pour marquer les esprits. Mon cahier des charges : rester honnête sur l'erreur, puis offrir autre chose que le bouton retour.",
+          "La page vous tend une invite de commandes. Elle accepte un petit ensemble - help, theme, whoami, clear, et les sections du site - et répond sur place. help affiche le mode d'emploi, projects, skills, resume et contact naviguent vers de vraies pages, theme bascule le thème, whoami répond avec le nom et le rôle. Aucune sortie factice, aucune impasse.",
+          "Cela colle aussi à la voix du site : ce portfolio se présente comme un laboratoire numérique, alors une page d'erreur qui ressemble à un shell est une pièce de plus dans le musée. Si une faute de frappe vous amène ici, vous pouvez toujours taper help et être accueilli poliment."
+        ]
+      },
+      "OG_HEADLESS": {
+        "TITLE": "Générer les cartes sociales hors ligne avec Chrome headless",
+        "SUMMARY": "Chaque carte de partage de ce site est un PNG généré à la compilation : aucun service de capture, aucune dépendance à l'exécution.",
+        "BODY": [
+          "Chaque route et chaque projet du site a sa propre carte de partage 1200 par 630, et aucune ne vient d'un service de capture d'écran. tools/build-og.cjs construit un gabarit HTML assorti au design du site, puis pilote Chrome headless via le protocole DevTools pour le photographier.",
+          "Le script lance Chrome avec un port de débogage distant, navigue vers le gabarit une fois par carte avec un identifiant dans l'URL, attend le chargement des polices web, et capture un PNG. L'ensemble se génère en moins d'une minute, et les images sont versionnées : le déploiement n'a jamais besoin d'un navigateur.",
+          "Travailler hors ligne garde aussi les cartes honnêtes : elles utilisent les mêmes polices et la même palette que le site, et aucun service tiers ne peut changer leur apparence le mois prochain. Ajouter une page, c'est une commande - npm run og:build - et le reste est automatique."
+        ]
+      },
+      "GITHUB_SNAPSHOT": {
+        "TITLE": "Une bande GitHub qui n'appelle jamais l'API GitHub",
+        "SUMMARY": "La page à propos affiche les stats de mes dépôts, pourtant le navigateur ne parle à aucun tiers. Un instantané compilé fait la requête.",
+        "BODY": [
+          "La page à propos affiche mes dépôts publics, mais le navigateur ne parle jamais à github.com. tools/fetch-github.cjs interroge l'API GitHub une seule fois, à la compilation, écrit la réponse dans un fichier TypeScript, et l'application l'importe comme n'importe quelle donnée.",
+          "Le compromis élimine trois problèmes d'un coup. Pas d'appel d'API, donc pas de limite de débit pour les visiteurs, pas de clé d'API dans le code client, et pas de chargement qui attend un tiers. La bande s'affiche instantanément et figure déjà dans le HTML pré-rendu avant que le moindre JavaScript ne s'exécute.",
+          "Le prix, c'est la fraîcheur : les chiffres ne bougent que lorsque je relance npm run data:github et que je versionne le résultat. Pour un portfolio qui change une fois par mois, un instantané est la bonne résolution. C'est aussi un petit rappel : le moment de la compilation est souvent l'endroit le moins cher pour travailler."
+        ]
+      }
+    }
+  },
   "PALETTE": {
     "OPEN_LABEL": "Ouvrir la palette de commandes (Ctrl+K)",
     "PLACEHOLDER": "Rechercher pages, projets, actions...",
@@ -353,6 +392,7 @@
     "home": "Accueil",
     "skills": "Compétences",
     "projects": "Projets",
+    "notes": "Notes",
     "resume": "CV",
     "contact": "Contact"
   },

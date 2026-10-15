@@ -30,6 +30,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://abderrazzaq-portfolio.netlify.app/notes</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://abderrazzaq-portfolio.netlify.app/projects/ai-chat</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
@@ -71,6 +76,21 @@
   </url>
   <url>
     <loc>https://abderrazzaq-portfolio.netlify.app/projects/optician-order-stock</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://abderrazzaq-portfolio.netlify.app/notes/terminal-404</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://abderrazzaq-portfolio.netlify.app/notes/og-headless</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://abderrazzaq-portfolio.netlify.app/notes/github-snapshot</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>

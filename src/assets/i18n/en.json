@@ -16,6 +16,45 @@
       "INPUT_LABEL": "Terminal command input"
     }
   },
+  "NOTES": {
+    "KICKER": "Engineering notes",
+    "TITLE": "Notes",
+    "SUBTITLE": "Short write-ups on how this portfolio is built - the tools, the tradeoffs and the small decisions behind it.",
+    "META_DESCRIPTION": "Short engineering notes on how this portfolio is built: offline social cards, build-time data and a 404 that answers back.",
+    "OG_DESCRIPTION": "Short write-ups on the tools and tradeoffs behind this portfolio.",
+    "READING_TIME": "{{minutes}} min read",
+    "BACK": "All notes",
+    "SEO_SUFFIX": "Note",
+    "ITEMS": {
+      "TERMINAL_404": {
+        "TITLE": "Why the 404 page is a terminal that takes commands",
+        "SUMMARY": "Most 404s are a dead end. Mine hands you a shell prompt instead: type help or whoami and the page answers.",
+        "BODY": [
+          "A 404 is the one page nobody plans to visit, which makes it the cheapest place to be memorable. The brief I set myself: be honest about the error, then give visitors something to do that is not pressing back.",
+          "The page hands you a shell prompt. It takes a small command set - help, theme, whoami, clear, and the site's own sections - and answers in place. help prints the manual, projects, skills, resume and contact navigate to the real pages, theme flips the lights, whoami answers with the name and role. No fake output, no dead ends.",
+          "It also fits the site's voice: this portfolio presents itself as a digital laboratory, so an error page that reads like a shell is one more exhibit. If a typo brings you here, you can at least type help and be greeted politely."
+        ]
+      },
+      "OG_HEADLESS": {
+        "TITLE": "Rendering social cards offline with headless Chrome",
+        "SUMMARY": "Every share card on this site is a PNG rendered at build time: no screenshot service, no runtime dependency.",
+        "BODY": [
+          "Every route and every project on this site has its own 1200 by 630 share card, and none of them come from a screenshot service. tools/build-og.cjs builds an HTML template that matches the site's design, then drives headless Chrome over the DevTools protocol to photograph it.",
+          "The script launches Chrome with a remote debugging port, navigates to the template once per card with a slug in the query string, waits for the webfonts to finish loading, and captures a PNG. The whole set renders in under a minute, and the images are committed, so deploys never need a browser.",
+          "Working offline also keeps the cards honest: they use the same fonts and palette as the site, and no third-party service can change how they look next month. Adding a new page is one command - npm run og:build - and the rest is automatic."
+        ]
+      },
+      "GITHUB_SNAPSHOT": {
+        "TITLE": "A GitHub strip that never calls the GitHub API",
+        "SUMMARY": "The about page shows repo stats, yet the browser talks to no third party. A build-time snapshot does the fetching.",
+        "BODY": [
+          "The about page shows my public repositories, but the browser never talks to github.com. tools/fetch-github.cjs queries the GitHub API once at build time, writes the answer to a TypeScript file, and the app imports that file like any other data.",
+          "The trade removes three problems at once. No API call means no rate limit for visitors, no API key near client code, and no spinner that waits on a third party. The strip renders instantly and is already in the prerendered HTML before any JavaScript loads.",
+          "The cost is freshness: the numbers move only when I rerun npm run data:github and commit the result. For a portfolio that changes once a month, a snapshot is the right resolution. It is also a small reminder that build time is usually the cheapest place to do work."
+        ]
+      }
+    }
+  },
   "PALETTE": {
     "OPEN_LABEL": "Open command palette (Ctrl+K)",
     "PLACEHOLDER": "Search pages, projects, actions...",
@@ -353,6 +392,7 @@
     "home": "Home",
     "skills": "Skills",
     "projects": "Projects",
+    "notes": "Notes",
     "resume": "Resume",
     "contact": "Contact"
   },

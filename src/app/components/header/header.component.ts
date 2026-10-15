@@ -34,6 +34,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     { path: '/', key: 'header.home', label: 'Home' },
     { path: '/projects', key: 'header.projects', label: 'Projects' },
     { path: '/skills', key: 'header.skills', label: 'Skills' },
+    { path: '/notes', key: 'header.notes', label: 'Notes' },
     { path: '/resume', key: 'header.resume', label: 'Resume' },
     { path: '/contact', key: 'header.contact', label: 'Contact' }
   ];

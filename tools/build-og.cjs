@@ -41,6 +41,19 @@ const { PROJECTS } = (() => {
   return { PROJECTS: projects };
 })();
 
+const NOTES = (() => {
+  const file = path.join(ROOT, 'src', 'app', 'data', 'notes.data.ts');
+  if (!fs.existsSync(file)) return [];
+  const src = fs.readFileSync(file, 'utf8');
+  const notes = [];
+  const re = /key: '([^']+)'[\s\S]*?date: '([^']+)'[\s\S]*?fallbackTitle: '([^']+)'[\s\S]*?fallbackSummary: '([^']+)'/g;
+  let m;
+  while ((m = re.exec(src))) {
+    notes.push({ key: m[1], date: m[2], title: m[3], summary: m[4] });
+  }
+  return notes;
+})();
+
 const slugify = key => key.toLowerCase().replace(/_/g, '-');
 
 const CARDS = {
@@ -88,6 +101,22 @@ for (const p of PROJECTS) {
     title: p.title,
     sub: p.technologies.slice(0, 5).join(' \u00b7 '),
     footLeft: p.category.toUpperCase() + ' \u00b7 ' + p.date
+  };
+}
+
+CARDS['notes'] = {
+  kicker: 'Portfolio',
+  title: 'Notes',
+  sub: 'Short write-ups on how this site is built: tools, tradeoffs, small decisions.',
+  footLeft: 'Engineering notes'
+};
+
+for (const n of NOTES) {
+  CARDS['note-' + slugify(n.key)] = {
+    kicker: 'Engineering note',
+    title: n.title,
+    sub: n.summary,
+    footLeft: n.date
   };
 }
 

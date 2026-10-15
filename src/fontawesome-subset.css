@@ -2,8 +2,8 @@
  * GENERATED FILE — do not edit by hand.
  * Regenerate with: node tools/build-fontawesome-subset.cjs && python tools/subset-fontawesome.py
  *
- * A 48-glyph subset of Font Awesome Free 6.5.2 (solid + brands), replacing the
- * cdnjs all.min.css. Same codepoints, same rendering — 48 glyphs instead of
+ * A 59-glyph subset of Font Awesome Free 6.5.2 (solid + brands), replacing the
+ * cdnjs all.min.css. Same codepoints, same rendering — 59 glyphs instead of
  * ~2000, served from two local woff2 files (a few KB each) instead of ~400 KB
  * of CDN webfonts, and no external stylesheet for the prerenderer to fetch.
  * Legacy FA5 aliases are included because the codepoints are read from the
@@ -62,13 +62,16 @@
 .fa-arrow-up:before{content:"\F062"}
 .fa-arrow-up-right-from-square:before{content:"\F08E"}
 .fa-bars:before{content:"\F0C9"}
+.fa-book-open:before{content:"\F518"}
 .fa-brain:before{content:"\F5DC"}
 .fa-briefcase:before{content:"\F0B1"}
 .fa-certificate:before{content:"\F0A3"}
 .fa-check:before{content:"\F00C"}
 .fa-check-circle:before{content:"\F058"}
+.fa-chevron-down:before{content:"\F078"}
 .fa-circle-check:before{content:"\F058"}
 .fa-circle-exclamation:before{content:"\F06A"}
+.fa-circle-half-stroke:before{content:"\F042"}
 .fa-circle-notch:before{content:"\F1CE"}
 .fa-cloud:before{content:"\F0C2"}
 .fa-code:before{content:"\F121"}
@@ -81,6 +84,9 @@
 .fa-download:before{content:"\F019"}
 .fa-envelope:before{content:"\F0E0"}
 .fa-exclamation-circle:before{content:"\F06A"}
+.fa-file-lines:before{content:"\F15C"}
+.fa-filter:before{content:"\F0B0"}
+.fa-filter-circle-xmark:before{content:"\E17B"}
 .fa-flag:before{content:"\F024"}
 .fa-flag-usa:before{content:"\F74D"}
 .fa-folder:before{content:"\F07B"}
@@ -88,15 +94,20 @@
 .fa-github:before{content:"\F09B"}
 .fa-globe:before{content:"\F0AC"}
 .fa-graduation-cap:before{content:"\F19D"}
+.fa-house:before{content:"\F015"}
 .fa-info-circle:before{content:"\F05A"}
+.fa-language:before{content:"\F1AB"}
 .fa-layer-group:before{content:"\F5FD"}
 .fa-linkedin-in:before{content:"\F0E1"}
 .fa-location-dot:before{content:"\F3C5"}
+.fa-magnifying-glass:before{content:"\F002"}
 .fa-microchip:before{content:"\F2DB"}
 .fa-mobile-screen-button:before{content:"\F3CD"}
 .fa-moon:before{content:"\F186"}
 .fa-paper-plane:before{content:"\F1D8"}
+.fa-pen-nib:before{content:"\F5AD"}
 .fa-phone:before{content:"\F095"}
+.fa-print:before{content:"\F02F"}
 .fa-python:before{content:"\F3E2"}
 .fa-react:before{content:"\F41B"}
 .fa-screwdriver-wrench:before{content:"\F7D9"}

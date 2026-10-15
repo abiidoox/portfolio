@@ -51,6 +51,31 @@ export const routes: Routes = [
     }
   },
   {
+    path: 'notes',
+    loadComponent: () => import('./components/notes/notes.component').then(m => m.NotesComponent),
+    data: {
+      animation: 'notes',
+      title: 'NOTES.TITLE',
+      meta: [
+        { name: 'description', content: 'NOTES.META_DESCRIPTION' },
+        { property: 'og:description', content: 'NOTES.OG_DESCRIPTION' }
+      ]
+    }
+  },
+  {
+    // Runtime copy is published via SeoService.setOverride by the component.
+    path: 'notes/:key',
+    loadComponent: () => import('./components/note-detail/note-detail.component').then(m => m.NoteDetailComponent),
+    data: {
+      animation: 'notes',
+      title: 'NOTES.TITLE',
+      meta: [
+        { name: 'description', content: 'NOTES.META_DESCRIPTION' },
+        { property: 'og:description', content: 'NOTES.OG_DESCRIPTION' }
+      ]
+    }
+  },
+  {
     path: 'resume',
     loadComponent: () => import('./components/resume/resume.component').then(m => m.ResumeComponent),
     data: {
