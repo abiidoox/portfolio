@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, inject } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 import { ProjectModalService } from '../../services/project-modal.service';
 import { PROJECTS, Project } from '../../data/projects.data';
@@ -27,11 +28,16 @@ interface DisplayProject {
 export class ProjectsComponent implements OnInit, OnDestroy {
   private translate = inject(TranslateService);
   private projectModalService = inject(ProjectModalService);
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
 
   /** Canonical filter order; only categories present in the data are shown. */
   private static readonly CATEGORY_ORDER = ['web', 'mobile', 'ai', 'iot', 'desktop'];
 
   selectedCategory = 'all';
+
+  /** Technology filter arriving from the skills page (?tech=Angular). */
+  techFilter: string | null = null;
 
   projects: DisplayProject[] = [];
   filteredProjects: DisplayProject[] = [];
@@ -41,13 +47,15 @@ export class ProjectsComponent implements OnInit, OnDestroy {
    * with nothing behind it — a tab that filters to an empty grid is a dead end.
    */
   get categories(): string[] {
-    const present = new Set(this.projects.map(p => p.category));
+    const present = new Set(this.techFiltered().map(p => p.category));
     return ['all', ...ProjectsComponent.CATEGORY_ORDER.filter(c => present.has(c))];
   }
 
   private langSub?: Subscription;
 
   ngOnInit(): void {
+    this.techFilter = this.route.snapshot.queryParamMap.get('tech');
+
     this.projects = PROJECTS
       .slice()
       .sort((a, b) => Number(b.date) - Number(a.date))
@@ -104,15 +112,50 @@ export class ProjectsComponent implements OnInit, OnDestroy {
 
   filterProjects(category: string): void {
     this.selectedCategory = category;
-    this.filteredProjects = category === 'all'
-      ? this.projects
-      : this.projects.filter(p => p.category === category);
+    this.applyFilters();
+  }
+
+  /** Projects matching the active technology filter (category ignored). */
+  private techFiltered(): DisplayProject[] {
+    if (!this.techFilter) return this.projects;
+    const needle = this.techFilter.toLowerCase();
+    return this.projects.filter(p => p.technologies.some(t => t.toLowerCase() === needle));
+  }
+
+  private applyFilters(): void {
+    const list = this.techFiltered();
+    this.filteredProjects = this.selectedCategory === 'all'
+      ? list
+      : list.filter(p => p.category === this.selectedCategory);
+  }
+
+  /** Card tags are links too: click a technology to see what shipped with it. */
+  filterByTech(tech: string): void {
+    this.techFilter = tech;
+    this.selectedCategory = 'all';
+    this.syncTechParam(tech);
+    this.applyFilters();
+  }
+
+  clearTech(): void {
+    this.techFilter = null;
+    this.syncTechParam(null);
+    this.applyFilters();
+  }
+
+  private syncTechParam(tech: string | null): void {
+    this.router.navigate([], {
+      queryParams: { tech },
+      queryParamsHandling: 'merge',
+      replaceUrl: true
+    });
   }
 
   countFor(category: string): number {
+    const list = this.techFiltered();
     return category === 'all'
-      ? this.projects.length
-      : this.projects.filter(p => p.category === category).length;
+      ? list.length
+      : list.filter(p => p.category === category).length;
   }
 
   openModal(project: DisplayProject): void {

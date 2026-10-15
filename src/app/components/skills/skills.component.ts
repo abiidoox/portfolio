@@ -1,11 +1,14 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   SKILLS,
   SKILL_CATEGORY_ORDER,
   Skill,
   SkillCategory,
-  SkillGroup
+  SkillGroup,
+  projectCountForSkill
 } from '../../data/skills.data';
+import { PROJECTS } from '../../data/projects.data';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
 import { NgClass } from '@angular/common';
 import { TranslatePipe } from '@ngx-translate/core';
@@ -17,11 +20,28 @@ import { TranslatePipe } from '@ngx-translate/core';
     imports: [ScrollRevealDirective, NgClass, TranslatePipe]
 })
 export class SkillsComponent {
+  private router = inject(Router);
+
   readonly skills: Skill[] = SKILLS;
   readonly categoryOrder: SkillCategory[] = SKILL_CATEGORY_ORDER;
   readonly categories: string[] = ['all', ...SKILL_CATEGORY_ORDER];
 
   selectedCategory = 'all';
+
+  /** Project counts are derived once; the dataset is static. */
+  private readonly projectCounts = new Map(
+    SKILLS.map(s => [s.name, projectCountForSkill(s.name, PROJECTS)])
+  );
+
+  projectCountFor(skill: Skill): number {
+    return this.projectCounts.get(skill.name) ?? 0;
+  }
+
+  /** Jump to the projects page pre-filtered to this technology. */
+  viewProjects(skill: Skill, event: Event): void {
+    event.stopPropagation();
+    this.router.navigate(['/projects'], { queryParams: { tech: skill.name } });
+  }
 
   get visibleGroups(): SkillGroup[] {
     const list = this.selectedCategory === 'all'

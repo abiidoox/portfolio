@@ -154,6 +154,8 @@
     "PORTFOLIO_LABEL": "Portafolio",
     "FEATURED": "Destacado",
     "NO_RESULTS": "No hay proyectos en esta categoría.",
+    "FILTER_TECH": "Tecnología: {{tech}}",
+    "CLEAR_FILTER": "Borrar filtro",
     "META_DESCRIPTION": "Portafolio de proyectos de Abderrazzaq El Abdouni que presenta aplicaciones web, apps móviles, sistemas de IA, soluciones IoT y software de escritorio.",
     "OG_DESCRIPTION": "Visualiza los proyectos detallados de Abderrazzaq El Abdouni incluyendo asistentes de chat IA, sistemas de reconocimiento facial, sistemas de gestión de programación, y más.",
     "GITHUB_PROFILE": "Perfil de GitHub"
@@ -202,6 +204,7 @@
       }
     },
     "ITEMS_SUFFIX": "tecnologías",
+    "PROJECT_COUNT": "{{count}} proyectos",
     "NO_RESULTS": "No hay habilidades en esta categoría.",
     "META_DESCRIPTION": "Inventario de habilidades técnicas de Abderrazzaq El Abdouni incluyendo lenguajes de programación, frameworks, bases de datos y herramientas de desarrollo.",
     "OG_DESCRIPTION": "Explora la lista completa de habilidades de Abderrazzaq El Abdouni que incluye C#, Java, Python, Angular, React, SQL Server, MongoDB, Docker y más.",
@@ -346,7 +349,8 @@
   },
   "FOOTER": {
     "COPYRIGHT": "© {{year}} Abderrazzaq El Abdouni. Todos los derechos reservados.",
-    "COPY_HINT": "Hacer clic para copiar"
+    "COPY_HINT": "Hacer clic para copiar",
+    "TIME_LABEL": "Rabat"
   },
   "TOAST": {
     "EMAIL_COPIED": "¡Email copiado al portapapeles!",
@@ -363,11 +367,13 @@
     "BACK_TO_TOP": "Volver arriba",
     "FILTER_PROJECTS": "Filtrar proyectos por categoría",
     "FILTER_SKILLS": "Filtrar habilidades por categoría",
+    "VIEW_SKILL_PROJECTS": "Ver proyectos que usan {{skill}}",
     "FOOTER": "Pie de página",
     "GITHUB": "Perfil de GitHub",
     "LINKEDIN": "Perfil de LinkedIn",
     "MODAL_CLOSE": "Cerrar los detalles del proyecto",
     "NAV_HOME": "Abderrazzaq El Abdouni — inicio",
+    "LOCAL_TIME": "Hora local en Rabat, Marruecos",
     "NAV_MAIN": "Navegación principal",
     "SELECT_LANGUAGE": "Seleccionar idioma",
     "PROFILE_PHOTO": "Retrato de Abderrazzaq El Abdouni",

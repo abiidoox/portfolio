@@ -88,11 +88,17 @@
           {{ 'CONTACT.FORM_TITLE' | translate }}
         </h2>
 
-        <!-- Honeypot: real bots fill this, humans never see it. -->
-        <input type="text" name="bot-field" tabindex="-1" autocomplete="off"
-          class="absolute h-0 w-0 opacity-0" aria-hidden="true">
+        <!-- Netlify Forms: the prerendered HTML registers the form at deploy time,
+             and onSubmit() posts the same field names back to "/". -->
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit($event)" novalidate
+              name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+              class="min-w-0 space-y-5">
+          <input type="hidden" name="form-name" value="contact">
 
-        <form [formGroup]="contactForm" (ngSubmit)="onSubmit($event)" novalidate class="min-w-0 space-y-5">
+          <!-- Honeypot: real bots fill this, humans never see it. -->
+          <p class="absolute h-0 w-0 overflow-hidden opacity-0" aria-hidden="true">
+            <label>Do not fill this field: <input name="bot-field" type="text" tabindex="-1" autocomplete="off"></label>
+          </p>
 
           <!-- Name -->
           <div>
@@ -101,6 +107,7 @@
             </label>
             <input
               id="contact-name" type="text" formControlName="name"
+              name="name"
               autocomplete="name"
               [placeholder]="'CONTACT.NAME_PLACEHOLDER' | translate"
               class="lab-input"
@@ -126,6 +133,7 @@
             </label>
             <input
               id="contact-email" type="email" formControlName="email"
+              name="email"
               autocomplete="email"
               [placeholder]="'CONTACT.EMAIL_PLACEHOLDER' | translate"
               class="lab-input"
@@ -151,6 +159,7 @@
             </label>
             <textarea
               id="contact-message" rows="5" formControlName="message"
+              name="message"
               [placeholder]="'CONTACT.MESSAGE_PLACEHOLDER' | translate"
               class="lab-input resize-y"
               [class.lab-input-error]="isInvalid('message')"

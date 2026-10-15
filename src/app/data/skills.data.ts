@@ -83,3 +83,13 @@ export const SKILL_COUNT: number = SKILLS.length;
 export function skillsIn(category: SkillCategory): Skill[] {
   return SKILLS.filter(s => s.category === category);
 }
+
+/**
+ * The stack strings shipped by projects, so a skill can point at the work
+ * that proves it. Exact, case-insensitive match: "Angular" links, ".NET 7"
+ * (no project uses that exact string) does not invent a link.
+ */
+export function projectCountForSkill(skillName: string, projects: { technologies: string[] }[]): number {
+  const needle = skillName.toLowerCase();
+  return projects.filter(p => p.technologies.some(t => t.toLowerCase() === needle)).length;
+}

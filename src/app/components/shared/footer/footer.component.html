@@ -57,6 +57,18 @@
         {{ 'FOOTER.COPYRIGHT' | translate: { year: currentYear } }}
       </p>
 
+      <!-- Local time at home. Lets a recruiter see whether it is a reasonable
+           hour to reach out before they write. -->
+      <p class="inline-flex items-center gap-2 font-mono text-[0.7rem] text-slate-600">
+        <span class="relative flex h-1.5 w-1.5 shrink-0">
+          <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-mint/70 motion-reduce:hidden"></span>
+          <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-mint"></span>
+        </span>
+        <span>{{ 'FOOTER.TIME_LABEL' | translate }}</span>
+        <span aria-hidden="true">·</span>
+        <time class="tabular-nums text-slate-500" [attr.aria-label]="'A11Y.LOCAL_TIME' | translate">{{ localTime() }}</time>
+      </p>
+
       <button type="button" (click)="copyEmail()"
         [attr.aria-label]="'FOOTER.COPY_HINT' | translate"
               class="group -mx-2 inline-flex items-center gap-2 self-start rounded-lg px-2 py-1.5
