@@ -1,0 +1,38 @@
+# Netlify response headers.
+# Hashed build output (main-*.js, styles-*.css, chunk-*.js) can be cached
+# forever because the name changes with the content. Everything else
+# revalidates so a deploy shows up immediately.
+# Docs: https://docs.netlify.com/routing/headers/
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Subset icon fonts and web fonts have stable filenames, so they skip
+# revalidation for a day but pick up regenerated fonts the next day.
+/assets/fonts/*
+  Cache-Control: public, max-age=86400
+
+# CSS-referenced fonts are emitted from src/fonts.css and the subset css with
+# a content hash in the name (media/fa-solid-subset-XXXX.woff2), so they can
+# be cached forever.
+/media/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Translation JSON is fetched at runtime and can change without a rename.
+/assets/i18n/*
+  Cache-Control: public, max-age=3600

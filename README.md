@@ -9,7 +9,7 @@ Angular single-page app with Tailwind CSS, three locales (en, fr, es) and Netlif
 - Tailwind CSS 3.4 + PostCSS
 - `@ngx-translate/core` with dictionaries in `src/assets/i18n/`
 - Prerendering (SSG): every route ships pre-rendered HTML via `@angular/ssr` (`outputMode: static`)
-- Font Awesome and Google Fonts via CDN (`src/index.html`)
+- Font Awesome + devicon subsets and Inter / Space Grotesk / JetBrains Mono, self-hosted (no CDN)
 - Netlify deployment (`netlify.toml`)
 
 ## Requirements
@@ -58,7 +58,7 @@ npm run audit:layout        # layout / overflow
 npm run audit:mobile        # mobile viewports
 npm run audit:theme         # light and dark theme
 npm run audit:motion        # reduced motion behaviour
-npm run audit:icons         # icon fonts
+npm run audit:icons         # icon fonts + no third-party requests
 npm run audit:interactive   # interactive states
 npm run audit:overflow      # horizontal overflow
 ```
@@ -80,8 +80,28 @@ src/app/services     theme, language, SEO, toast, modal services
 src/app/directives   scroll reveal, split text, magnetic, count up
 src/app/data         projects, skills and resume datasets
 src/assets/i18n      en.json, fr.json, es.json
-tools/               headless audit scripts, devicon subset builder
+tools/               headless audit scripts, icon-font subset builders, font fetcher
 ```
+
+## Icons and fonts
+
+Nothing loads from a CDN — icon fonts and web fonts are self-hosted subsets,
+bundled through `angular.json` (`src/*-subset.css`, `src/fonts.css`).
+Regenerate after the related source changes, then run `npm run audit:icons`
+(it fails when a subset is stale):
+
+```bash
+# after adding/removing an fa-* icon class (any template or TS file)
+node tools/build-fontawesome-subset.cjs && python tools/subset-fontawesome.py
+
+# after editing src/app/data/skills.data.ts
+node tools/build-devicon-subset.cjs && python tools/subset-devicon.py
+
+# only when a family or weight is added to src/styles.css
+node tools/fetch-google-fonts.cjs
+```
+
+The subsetters need `pip install fonttools brotli`.
 
 ## Internationalization
 
@@ -93,7 +113,8 @@ After adding or renaming a project, run `npm run audit:keys`.
 ## Deployment
 
 Netlify builds with `netlify.toml`: `npm run build:prod`, publish folder `dist/portfolio-website/browser`,
-SPA fallback via `src/_redirects`. The canonical URL lives in `src/assets/sitemap.xml`,
-`src/assets/robots.txt` and `src/app/services/seo.service.ts`.
+SPA fallback via `src/_redirects`, caching and security headers via `src/_headers`.
+The canonical URL lives in `src/assets/sitemap.xml`, `src/assets/robots.txt`
+and `src/app/services/seo.service.ts`.
 
 The CV served on the resume page is `src/assets/Abderrazzaq_El_Abdouni_CV.pdf`.

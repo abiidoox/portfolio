@@ -53,10 +53,13 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/_redirects"
+              "src/_redirects",
+              "src/_headers"
             ],
             "styles": [
               "src/devicon-subset.css",
+              "src/fontawesome-subset.css",
+              "src/fonts.css",
               "src/styles.css"
             ],
             "browser": "src/main.ts",
