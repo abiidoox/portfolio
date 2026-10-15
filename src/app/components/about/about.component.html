@@ -1,16 +1,16 @@
 <!-- ══════════════════════════════════════════════════════════════════════
-     HOME — "LABORATORY DOSSIER"
-     An editorial composition rather than a stacked profile card.
+HOME — "LABORATORY DOSSIER"
+An editorial composition rather than a stacked profile card.
 
-     Motion personality: Premium — zero overshoot, one signature easing
-     (cubic-bezier(0.22, 1, 0.36, 1)), one entrance pattern (rise + fade,
-     decelerate), durations 120 / 320 / 700ms.
+Motion personality: Premium — zero overshoot, one signature easing
+(cubic-bezier(0.22, 1, 0.36, 1)), one entrance pattern (rise + fade,
+decelerate), durations 120 / 320 / 700ms.
 
-     Three motion layers on the masthead plate:
-       primary   — the plate settles in, then straightens on hover
-       secondary — the aperture ring rotates and the light sweep passes
-       ambient   — the seven tech chips drift around the console
-     ══════════════════════════════════════════════════════════════════ -->
+Three motion layers on the masthead plate:
+primary   — the plate settles in, then straightens on hover
+secondary — the aperture ring rotates and the light sweep passes
+ambient   — the seven tech chips drift around the console
+══════════════════════════════════════════════════════════════════ -->
 
 <!-- ══════════ 01 — MASTHEAD ══════════ -->
 <section class="relative overflow-hidden pb-16 pt-28 sm:pt-32 lg:pb-24 lg:pt-40">
@@ -45,7 +45,7 @@
         </h1>
 
         <!-- A rule that draws itself under the name, offset from the left edge
-             so it reads as a printed measure rather than a centred flourish. -->
+        so it reads as a printed measure rather than a centred flourish. -->
         <div class="lab-rule mt-6 h-px w-full max-w-sm bg-signal-sweep" appScrollReveal></div>
 
         <div class="mt-6 flex flex-wrap gap-x-3 gap-y-2 font-mono text-sm sm:text-base">
@@ -72,14 +72,14 @@
         <div class="mt-10 flex items-center gap-4">
           <span class="h-px w-8 bg-white/10"></span>
           <a href="https://github.com/abiidoox" target="_blank" rel="noopener noreferrer"
-             [attr.aria-label]="'A11Y.GITHUB' | translate"
+            [attr.aria-label]="'A11Y.GITHUB' | translate"
              class="group grid h-11 w-11 place-items-center rounded-xl border border-white/10
                     text-slate-400 transition-all duration-300 hover:-translate-y-0.5
                     hover:border-signal/50 hover:text-signal">
             <i class="fab fa-github"></i>
           </a>
           <a href="https://www.linkedin.com/in/abderrazzaq-el-abdouni-28004019a" target="_blank"
-             rel="noopener noreferrer" [attr.aria-label]="'A11Y.LINKEDIN' | translate"
+            rel="noopener noreferrer" [attr.aria-label]="'A11Y.LINKEDIN' | translate"
              class="group grid h-11 w-11 place-items-center rounded-xl border border-white/10
                     text-slate-400 transition-all duration-300 hover:-translate-y-0.5
                     hover:border-ion/50 hover:text-ion">
@@ -95,16 +95,16 @@
       </div>
 
       <!-- ── The plate ──
-           All the expression lives AROUND the portrait, never on it, so the
-           photo stays sharp and true to life. Outside in: the ambient glow,
-           two blurred hue-shifted echoes of the same photo for depth, and
-           the mount that insets the portrait with a border gap. -->
+      All the expression lives AROUND the portrait, never on it, so the
+      photo stays sharp and true to life. Outside in: the ambient glow,
+      two blurred hue-shifted echoes of the same photo for depth, and
+      the mount that insets the portrait with a border gap. -->
       <div class="flex justify-center py-10 lg:py-14">
         <div class="relative w-full max-w-[19rem] sm:max-w-sm lg:max-w-none">
 
           <!-- Ambient layer: one wide, slow glow. -->
           <div class="lab-portrait-glow pointer-events-none absolute -inset-12 rounded-full"
-               aria-hidden="true"></div>
+          aria-hidden="true"></div>
 
           <div class="lab-plate-stack group relative">
             <!-- Secondary layer: two offset washes of brand light. -->
@@ -115,10 +115,10 @@
             <div class="lab-mount">
               <figure class="lab-plate aspect-[4/5]">
                 <img src="assets/me.jpg"
-                     [alt]="'A11Y.PROFILE_PHOTO' | translate"
-                     class="lab-plate-photo h-full w-full object-cover"
-                     width="360" height="450"
-                     loading="eager" decoding="async">
+                  [alt]="'A11Y.PROFILE_PHOTO' | translate"
+                  class="lab-plate-photo h-full w-full object-cover"
+                  width="360" height="450"
+                  loading="eager" decoding="async">
 
                 <div class="lab-plate-wash pointer-events-none absolute inset-0" aria-hidden="true"></div>
               </figure>
@@ -135,10 +135,10 @@
 </section>
 
 <!-- ══════════ 02 — LEDGER ══════════
-     The three figures are presented as an editorial ledger strip — a
-     labelled row ruled top and bottom — rather than three equal cards.
-     Each cell owns a hairline that draws in on reveal, staggered so the
-     row resolves left to right. -->
+The three figures are presented as an editorial ledger strip — a
+labelled row ruled top and bottom — rather than three equal cards.
+Each cell owns a hairline that draws in on reveal, staggered so the
+row resolves left to right. -->
 <section class="pb-4">
   <div class="lab-shell">
     <div class="lab-ledger grid grid-cols-1 sm:grid-cols-[0.85fr_repeat(3,1fr)]">
@@ -149,26 +149,28 @@
         </span>
       </div>
 
-      <div *ngFor="let s of stats"
-           appScrollReveal data-reveal-direction="up"
-           class="group relative px-7 py-7 sm:px-6 sm:py-9">
-        <div class="font-display text-4xl font-bold tabular-nums sm:text-5xl">
-          <span appCountUp [countTo]="s.value" class="lab-gradient-text">0</span>
+      @for (s of stats; track s) {
+        <div
+          appScrollReveal data-reveal-direction="up"
+          class="group relative px-7 py-7 sm:px-6 sm:py-9">
+          <div class="font-display text-4xl font-bold tabular-nums sm:text-5xl">
+            <span appCountUp [countTo]="s.value" class="lab-gradient-text">0</span>
+          </div>
+          <p class="mt-2 font-mono text-[0.64rem] uppercase leading-relaxed tracking-[0.18em] text-slate-500">
+            {{ s.label | translate }}
+          </p>
+          <span class="lab-rule absolute inset-x-6 bottom-0 h-px bg-signal-sweep"></span>
         </div>
-        <p class="mt-2 font-mono text-[0.64rem] uppercase leading-relaxed tracking-[0.18em] text-slate-500">
-          {{ s.label | translate }}
-        </p>
-        <span class="lab-rule absolute inset-x-6 bottom-0 h-px bg-signal-sweep"></span>
-      </div>
+      }
     </div>
   </div>
 </section>
 
 <!-- ══════════ 03 — CONSOLE ══════════
-     The terminal becomes a full-width instrument rather than a sidebar
-     box, and its output splits into two columns on wide screens so the
-     stack and the commit log can be read side by side. The seven tech
-     chips keep their existing float slots and timings. -->
+The terminal becomes a full-width instrument rather than a sidebar
+box, and its output splits into two columns on wide screens so the
+stack and the commit log can be read side by side. The seven tech
+chips keep their existing float slots and timings. -->
 <section class="lab-section relative pb-28 pt-32 lg:pb-32 lg:pt-40">
   <div class="lab-shell">
     <div class="mb-14 flex flex-wrap items-end justify-between gap-6">
@@ -192,8 +194,8 @@
       <div class="pointer-events-none absolute inset-x-6 top-0 -z-10 h-24 rounded-[2rem] bg-signal/[0.05] blur-3xl"></div>
 
       <div class="lab-panel lab-terminal lab-glow-hover overflow-hidden rounded-3xl"
-           (mousemove)="onGlowMove($event); onTerminalMove($event)"
-           (mouseleave)="onTerminalLeave($event)">
+        (mousemove)="onGlowMove($event); onTerminalMove($event)"
+        (mouseleave)="onTerminalLeave($event)">
         <div class="flex items-center gap-3 border-b border-white/[0.07] bg-white/[0.02] px-4 py-3">
           <div class="flex gap-1.5" aria-hidden="true">
             <span class="h-2.5 w-2.5 rounded-full bg-[#ff5f57]"></span>
@@ -220,11 +222,13 @@
               <span class="text-slate-300">cat stack.json</span>
             </div>
             <ul class="space-y-1.5 pl-[1.15rem]">
-              <li *ngFor="let s of stackSummary" class="flex items-start gap-2.5">
-                <span class="text-ion">"{{ s.label | translate }}"</span>
-                <span class="text-slate-600">:</span>
-                <span class="text-slate-400">{{ s.value | translate }}</span>
-              </li>
+              @for (s of stackSummary; track s) {
+                <li class="flex items-start gap-2.5">
+                  <span class="text-ion">"{{ s.label | translate }}"</span>
+                  <span class="text-slate-600">:</span>
+                  <span class="text-slate-400">{{ s.value | translate }}</span>
+                </li>
+              }
             </ul>
           </div>
 
@@ -234,10 +238,12 @@
               <span class="text-slate-300">git log --oneline</span>
             </div>
             <ul class="space-y-1 pl-[1.15rem] text-slate-500">
-              <li *ngFor="let c of commitLines">
-                <span class="text-mint">{{ c.hash }}</span>
-                <span class="text-slate-600"> · </span>{{ c.msg }}
-              </li>
+              @for (c of commitLines; track c) {
+                <li>
+                  <span class="text-mint">{{ c.hash }}</span>
+                  <span class="text-slate-600"> · </span>{{ c.msg }}
+                </li>
+              }
             </ul>
 
             <div class="flex items-center gap-2.5 pt-2">
@@ -304,10 +310,10 @@
 </section>
 
 <!-- ══════════ 04 — PRACTICE ══════════
-     The four focus areas are no longer four identical cards. They read as
-     a set of ruled entries: an oversized ghost numeral, the discipline,
-     and the sentence describing it. Hovering fills the numeral and grows
-     an accent bar from the left edge. -->
+The four focus areas are no longer four identical cards. They read as
+a set of ruled entries: an oversized ghost numeral, the discipline,
+and the sentence describing it. Hovering fills the numeral and grows
+an accent bar from the left edge. -->
 <section class="lab-section">
   <div class="lab-shell">
     <div class="mb-14 flex flex-wrap items-end justify-between gap-6">
@@ -329,32 +335,31 @@
     </div>
 
     <div class="border-t border-white/[0.06]">
-      <article
-        *ngFor="let f of focusAreas; let i = index"
-        appScrollReveal data-reveal-direction="up"
-        [attr.data-delay]="i * 80"
+      @for (f of focusAreas; track f; let i = $index) {
+        <article
+          appScrollReveal data-reveal-direction="up"
+          [attr.data-delay]="i * 80"
         class="lab-practice-row group grid grid-cols-[auto_1fr] items-center gap-x-6 gap-y-3
                border-b border-white/[0.06] py-7 pl-5 pr-2 sm:gap-x-10 sm:py-8 lg:grid-cols-[auto_minmax(0,1fr)_minmax(0,1.15fr)]"
-      >
-        <span class="lab-ghost-num font-display text-5xl font-bold tabular-nums sm:text-6xl lg:text-7xl">
-          0{{ i + 1 }}
-        </span>
-
-        <div class="flex items-center gap-4">
+          >
+          <span class="lab-ghost-num font-display text-5xl font-bold tabular-nums sm:text-6xl lg:text-7xl">
+            0{{ i + 1 }}
+          </span>
+          <div class="flex items-center gap-4">
           <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-white/10
                        bg-white/[0.06] text-ion transition-colors duration-500 ease-smooth
                        group-hover:text-signal">
-            <i class="fas text-base" [ngClass]="f.icon"></i>
-          </span>
-          <h3 class="font-display text-lg font-semibold sm:text-xl">
-            {{ 'ABOUT.CURRENT_FOCUS.' + f.key + '.TITLE' | translate }}
-          </h3>
-        </div>
-
-        <p class="col-start-2 max-w-xl text-sm leading-relaxed text-slate-400 lg:col-start-3">
-          {{ 'ABOUT.CURRENT_FOCUS.' + f.key + '.DESCRIPTION' | translate }}
-        </p>
-      </article>
+              <i class="fas text-base" [ngClass]="f.icon"></i>
+            </span>
+            <h3 class="font-display text-lg font-semibold sm:text-xl">
+              {{ 'ABOUT.CURRENT_FOCUS.' + f.key + '.TITLE' | translate }}
+            </h3>
+          </div>
+          <p class="col-start-2 max-w-xl text-sm leading-relaxed text-slate-400 lg:col-start-3">
+            {{ 'ABOUT.CURRENT_FOCUS.' + f.key + '.DESCRIPTION' | translate }}
+          </p>
+        </article>
+      }
     </div>
   </div>
 </section>

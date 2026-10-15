@@ -19,30 +19,34 @@
       </a>
 
       <!-- Nav. py-1.5 keeps every link at or above the 24px WCAG 2.2 target
-           minimum; the text alone measured 20px tall. -->
+      minimum; the text alone measured 20px tall. -->
       <nav class="-mx-2 flex flex-wrap gap-x-4 gap-y-1 md:justify-center" [attr.aria-label]="'A11Y.FOOTER' | translate">
-        <a *ngFor="let item of navItems"
-           [routerLink]="item.route"
-           routerLinkActive="text-signal"
-           [routerLinkActiveOptions]="{ exact: item.route === '/' }"
+        @for (item of navItems; track item) {
+          <a
+            [routerLink]="item.route"
+            routerLinkActive="text-signal"
+            [routerLinkActiveOptions]="{ exact: item.route === '/' }"
            class="rounded-lg px-2 py-1.5 font-display text-sm text-slate-400 transition-colors
                   duration-300 hover:bg-white/[0.05] hover:text-slate-100">
-          {{ item.label | translate }}
-        </a>
+            {{ item.label | translate }}
+          </a>
+        }
       </nav>
 
       <!-- Socials -->
       <div class="flex gap-2.5 md:justify-end">
-        <a *ngFor="let link of socialLinks"
-           [href]="link.url"
-           target="_blank"
-           rel="noopener noreferrer"
-           [attr.aria-label]="link.label"
+        @for (link of socialLinks; track link) {
+          <a
+            [href]="link.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            [attr.aria-label]="link.label"
            class="grid h-10 w-10 place-items-center rounded-xl border border-white/10 bg-white/[0.03]
                   text-slate-400 transition-all duration-300 hover:-translate-y-1 hover:border-signal/50
                   hover:bg-signal/10 hover:text-signal">
-          <i [class]="link.icon"></i>
-        </a>
+            <i [class]="link.icon"></i>
+          </a>
+        }
       </div>
     </div>
 
@@ -54,7 +58,7 @@
       </p>
 
       <button type="button" (click)="copyEmail()"
-              [attr.aria-label]="'FOOTER.COPY_HINT' | translate"
+        [attr.aria-label]="'FOOTER.COPY_HINT' | translate"
               class="group -mx-2 inline-flex items-center gap-2 self-start rounded-lg px-2 py-1.5
                      font-mono text-[0.72rem] text-slate-500 transition-colors duration-300
                      hover:bg-white/[0.05] hover:text-signal sm:self-auto">

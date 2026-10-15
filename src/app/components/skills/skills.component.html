@@ -14,30 +14,31 @@
 
     <!-- Category filters -->
     <div class="mb-12 flex flex-wrap gap-2.5"
-         appScrollReveal data-reveal-direction="up" data-delay="280"
-         role="group" [attr.aria-label]="'A11Y.FILTER_SKILLS' | translate">
-      <button
-        *ngFor="let c of categories"
-        type="button"
-        class="lab-pill"
-        [attr.aria-pressed]="selectedCategory === c"
-        (click)="selectCategory(c)"
-      >
-        <i class="fas text-[0.7rem]" [ngClass]="categoryIcon(c)"></i>
-        <span>{{ 'SKILLS.CATEGORIES.' + c.toUpperCase() | translate }}</span>
-        <span class="font-mono text-[0.62rem] opacity-55">{{ countFor(c) }}</span>
-      </button>
+      appScrollReveal data-reveal-direction="up" data-delay="280"
+      role="group" [attr.aria-label]="'A11Y.FILTER_SKILLS' | translate">
+      @for (c of categories; track c) {
+        <button
+          type="button"
+          class="lab-pill"
+          [attr.aria-pressed]="selectedCategory === c"
+          (click)="selectCategory(c)"
+          >
+          <i class="fas text-[0.7rem]" [ngClass]="categoryIcon(c)"></i>
+          <span>{{ 'SKILLS.CATEGORIES.' + c.toUpperCase() | translate }}</span>
+          <span class="font-mono text-[0.62rem] opacity-55">{{ countFor(c) }}</span>
+        </button>
+      }
     </div>
 
     <!-- Ecosystem grid: one panel per category, items inside -->
     <div class="space-y-6">
-      <ng-container *ngFor="let group of visibleGroups; let g = index">
+      @for (group of visibleGroups; track group; let g = $index) {
         <article
           appScrollReveal data-reveal-direction="up" [attr.data-delay]="g * 90"
           class="lab-panel lab-glow-hover overflow-hidden rounded-3xl transition-all duration-500
                  ease-smooth hover:border-signal/25"
           (mousemove)="onGlowMove($event)"
-        >
+          >
           <!-- Category header -->
           <header class="flex flex-wrap items-center justify-between gap-4 border-b border-white/[0.06] px-6 py-5 sm:px-8">
             <div class="flex items-center gap-3.5">
@@ -54,40 +55,41 @@
                 </p>
               </div>
             </div>
-
             <!-- Category accent rule -->
             <span class="hidden h-px flex-1 bg-gradient-to-r from-signal/40 to-transparent sm:block"></span>
           </header>
-
           <!-- Item chips -->
           <div class="flex flex-wrap gap-2.5 p-6 sm:p-8">
-            <div
-              *ngFor="let s of group.items; let i = index"
+            @for (s of group.items; track s; let i = $index) {
+              <div
               class="group flex items-center gap-3 rounded-2xl border border-white/[0.07]
                      bg-white/[0.02] px-4 py-3 transition-all duration-400 ease-smooth
                      hover:-translate-y-1 hover:border-signal/40 hover:bg-signal/[0.05]"
-              [style.transition-delay.ms]="i * 35"
-            >
+                [style.transition-delay.ms]="i * 35"
+                >
               <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-white/[0.04]
                            transition-colors duration-400 group-hover:bg-signal/10">
-                <i class="text-base" [class]="s.icon"></i>
-              </span>
-              <span class="flex flex-col leading-tight">
+                  <i class="text-base" [class]="s.icon"></i>
+                </span>
+                <span class="flex flex-col leading-tight">
                 <span class="font-display text-sm font-medium text-slate-200 transition-colors
                              duration-300 group-hover:text-white">{{ s.name }}</span>
-              </span>
-            </div>
+                </span>
+              </div>
+            }
           </div>
         </article>
-      </ng-container>
+      }
     </div>
 
     <!-- Empty state -->
-    <div *ngIf="visibleGroups.length === 0"
-         class="lab-panel rounded-3xl px-8 py-16 text-center">
-      <i class="fas fa-folder-open text-2xl text-slate-600"></i>
-      <p class="mt-4 text-slate-400">{{ 'SKILLS.NO_RESULTS' | translate }}</p>
-    </div>
+    @if (visibleGroups.length === 0) {
+      <div
+        class="lab-panel rounded-3xl px-8 py-16 text-center">
+        <i class="fas fa-folder-open text-2xl text-slate-600"></i>
+        <p class="mt-4 text-slate-400">{{ 'SKILLS.NO_RESULTS' | translate }}</p>
+      </div>
+    }
 
   </div>
 </section>

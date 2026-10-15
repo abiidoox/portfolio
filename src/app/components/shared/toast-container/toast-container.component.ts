@@ -5,13 +5,15 @@ import { ToastService } from '../../../services/toast.service';
     selector: 'app-toast-container',
     template: `
     <div class="toast-container" aria-live="polite" aria-atomic="true">
-      <div *ngFor="let toast of toastService.toasts$ | async" class="toast" [ngClass]="toast.type">
-        <i class="toast-icon" [ngClass]="getIconClass(toast.type)"></i>
-        <span class="toast-message">{{ toast.message }}</span>
-        <div class="toast-progress" [style.animation-duration.ms]="3000"></div>
-      </div>
+      @for (toast of toastService.toasts$ | async; track toast) {
+        <div class="toast" [ngClass]="toast.type">
+          <i class="toast-icon" [ngClass]="getIconClass(toast.type)"></i>
+          <span class="toast-message">{{ toast.message }}</span>
+          <div class="toast-progress" [style.animation-duration.ms]="3000"></div>
+        </div>
+      }
     </div>
-  `,
+    `,
     styles: [`
     .toast-container {
       position: fixed;

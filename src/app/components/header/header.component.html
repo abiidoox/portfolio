@@ -2,7 +2,7 @@
   class="fixed inset-x-0 top-0 z-[1000] transition-all duration-500 ease-smooth"
   [class.lab-nav-scrolled]="isScrolled"
   [class.lab-nav-open]="isMobileMenuOpen"
->
+  >
   <nav class="lab-shell flex h-[4.5rem] items-center justify-between gap-4" [attr.aria-label]="'A11Y.NAV_MAIN' | translate">
     <!-- Brand -->
     <a routerLink="/" class="group flex items-center gap-3" [attr.aria-label]="'A11Y.NAV_HOME' | translate" (click)="closeMobileMenu()">
@@ -21,19 +21,21 @@
 
     <!-- Desktop links -->
     <ul #navLinks class="hidden items-center gap-1 md:flex">
-      <li *ngFor="let item of navItems; let i = index">
-        <a
-          [routerLink]="item.path"
-          routerLinkActive="text-white"
-          [routerLinkActiveOptions]="{ exact: item.path === '/' }"
-          [attr.data-active]="isActive(item.path) ? 'true' : 'false'"
-          (click)="onNavClick()"
+      @for (item of navItems; track item; let i = $index) {
+        <li>
+          <a
+            [routerLink]="item.path"
+            routerLinkActive="text-white"
+            [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+            [attr.data-active]="isActive(item.path) ? 'true' : 'false'"
+            (click)="onNavClick()"
           class="lab-underline block rounded-lg px-4 py-2 font-display text-[0.86rem] font-medium
                  text-slate-400 transition-colors duration-300 hover:text-white"
-        >
-          {{ item.label | translate }}
-        </a>
-      </li>
+            >
+            {{ item.label | translate }}
+          </a>
+        </li>
+      }
       <!-- Sliding active indicator -->
       <span
         class="pointer-events-none absolute bottom-0 h-[2px] rounded-full bg-signal-sweep opacity-0
@@ -57,7 +59,7 @@
         aria-controls="mobile-menu"
         class="grid h-10 w-10 place-items-center rounded-xl border border-white/10
                text-slate-300 transition-colors duration-300 hover:border-signal/50 hover:text-signal md:hidden"
-      >
+        >
         <span class="sr-only">{{ (isMobileMenuOpen ? 'A11Y.CLOSE_MENU' : 'A11Y.OPEN_MENU') | translate }}</span>
         <i class="fas" [ngClass]="isMobileMenuOpen ? 'fa-xmark' : 'fa-bars'"></i>
       </button>
@@ -69,21 +71,23 @@
     id="mobile-menu"
     class="lab-mobile-menu overflow-hidden border-t border-white/5 md:hidden"
     [class.is-open]="isMobileMenuOpen"
-  >
+    >
     <ul class="lab-shell flex flex-col gap-1 py-5">
-      <li *ngFor="let item of navItems; let i = index">
-        <a
-          [routerLink]="item.path"
-          routerLinkActive="text-signal"
-          [routerLinkActiveOptions]="{ exact: item.path === '/' }"
-          (click)="onMobileNavClick()"
+      @for (item of navItems; track item; let i = $index) {
+        <li>
+          <a
+            [routerLink]="item.path"
+            routerLinkActive="text-signal"
+            [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+            (click)="onMobileNavClick()"
           class="flex items-center gap-3 rounded-xl px-4 py-3.5 font-display text-base
                  text-slate-300 transition-all duration-300 hover:bg-white/[0.04]"
-        >
-          <span class="font-mono text-[0.65rem] text-slate-600">0{{ i + 1 }}</span>
-          <span>{{ item.label | translate }}</span>
-        </a>
-      </li>
+            >
+            <span class="font-mono text-[0.65rem] text-slate-600">0{{ i + 1 }}</span>
+            <span>{{ item.label | translate }}</span>
+          </a>
+        </li>
+      }
     </ul>
   </div>
 </header>

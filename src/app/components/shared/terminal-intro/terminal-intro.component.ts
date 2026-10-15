@@ -13,10 +13,12 @@ import { TranslateService } from '@ngx-translate/core';
           <div class="terminal-title">~/portfolio — {{ 'terminal.title' | translate }}</div>
         </div>
         <div class="terminal-body">
-          <div class="terminal-line" *ngFor="let line of visibleLines">
-            <span class="prompt">$</span>
-            <span class="command" [class.success]="line.success">{{ line.text }}</span>
-          </div>
+          @for (line of visibleLines; track line) {
+            <div class="terminal-line">
+              <span class="prompt">$</span>
+              <span class="command" [class.success]="line.success">{{ line.text }}</span>
+            </div>
+          }
           <div class="terminal-line cursor-line">
             <span class="prompt">$</span>
             <span class="cursor"></span>
@@ -28,7 +30,7 @@ import { TranslateService } from '@ngx-translate/core';
         </div>
       </div>
     </div>
-  `,
+    `,
     styles: [`
     .terminal-intro {
       position: fixed; inset: 0; z-index: 10000;

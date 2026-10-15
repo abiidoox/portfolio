@@ -53,14 +53,16 @@
 
           <!-- Socials -->
           <div class="mt-7 flex gap-2.5 border-t border-white/[0.06] pt-6">
-            <a *ngFor="let s of socials"
-               [href]="s.url" target="_blank" rel="noopener noreferrer"
-               [attr.aria-label]="s.label"
+            @for (s of socials; track s) {
+              <a
+                [href]="s.url" target="_blank" rel="noopener noreferrer"
+                [attr.aria-label]="s.label"
                class="grid h-10 w-10 place-items-center rounded-xl border border-white/10 bg-white/[0.03]
                       text-slate-400 transition-all duration-300 hover:-translate-y-1 hover:border-signal/50
                       hover:bg-signal/10 hover:text-signal">
-              <i [class]="s.icon"></i>
-            </a>
+                <i [class]="s.icon"></i>
+              </a>
+            }
           </div>
         </div>
 
@@ -88,7 +90,7 @@
 
         <!-- Honeypot: real bots fill this, humans never see it. -->
         <input type="text" name="bot-field" tabindex="-1" autocomplete="off"
-               class="absolute h-0 w-0 opacity-0" aria-hidden="true">
+          class="absolute h-0 w-0 opacity-0" aria-hidden="true">
 
         <form [formGroup]="contactForm" (ngSubmit)="onSubmit($event)" novalidate class="min-w-0 space-y-5">
 
@@ -105,13 +107,16 @@
               [class.lab-input-error]="isInvalid('name')"
               [attr.aria-invalid]="isInvalid('name')"
               [attr.aria-describedby]="isInvalid('name') ? 'contact-name-error' : null"
-            >
-            <p *ngIf="isInvalid('name')" id="contact-name-error" class="lab-error" role="alert">
-              <ng-container *ngIf="contactForm.get('name')?.errors?.['required']; else nameShort">
-                {{ 'CONTACT.NAME_REQUIRED' | translate }}
-              </ng-container>
-              <ng-template #nameShort>{{ 'CONTACT.NAME_MINLENGTH' | translate }}</ng-template>
-            </p>
+              >
+            @if (isInvalid('name')) {
+              <p id="contact-name-error" class="lab-error" role="alert">
+                @if (contactForm.get('name')?.errors?.['required']) {
+                  {{ 'CONTACT.NAME_REQUIRED' | translate }}
+                } @else {
+                  {{ 'CONTACT.NAME_MINLENGTH' | translate }}
+                }
+              </p>
+            }
           </div>
 
           <!-- Email -->
@@ -127,13 +132,16 @@
               [class.lab-input-error]="isInvalid('email')"
               [attr.aria-invalid]="isInvalid('email')"
               [attr.aria-describedby]="isInvalid('email') ? 'contact-email-error' : null"
-            >
-            <p *ngIf="isInvalid('email')" id="contact-email-error" class="lab-error" role="alert">
-              <ng-container *ngIf="contactForm.get('email')?.errors?.['required']; else emailInvalid">
-                {{ 'CONTACT.EMAIL_REQUIRED' | translate }}
-              </ng-container>
-              <ng-template #emailInvalid>{{ 'CONTACT.EMAIL_INVALID' | translate }}</ng-template>
-            </p>
+              >
+            @if (isInvalid('email')) {
+              <p id="contact-email-error" class="lab-error" role="alert">
+                @if (contactForm.get('email')?.errors?.['required']) {
+                  {{ 'CONTACT.EMAIL_REQUIRED' | translate }}
+                } @else {
+                  {{ 'CONTACT.EMAIL_INVALID' | translate }}
+                }
+              </p>
+            }
           </div>
 
           <!-- Message -->
@@ -149,36 +157,42 @@
               [attr.aria-invalid]="isInvalid('message')"
               [attr.aria-describedby]="isInvalid('message') ? 'contact-message-error' : null"
             ></textarea>
-            <p *ngIf="isInvalid('message')" id="contact-message-error" class="lab-error" role="alert">
-              <ng-container *ngIf="contactForm.get('message')?.errors?.['required']; else msgShort">
-                {{ 'CONTACT.MESSAGE_REQUIRED' | translate }}
-              </ng-container>
-              <ng-template #msgShort>{{ 'CONTACT.MESSAGE_MINLENGTH' | translate }}</ng-template>
-            </p>
+            @if (isInvalid('message')) {
+              <p id="contact-message-error" class="lab-error" role="alert">
+                @if (contactForm.get('message')?.errors?.['required']) {
+                  {{ 'CONTACT.MESSAGE_REQUIRED' | translate }}
+                } @else {
+                  {{ 'CONTACT.MESSAGE_MINLENGTH' | translate }}
+                }
+              </p>
+            }
           </div>
 
           <!-- Status -->
-          <p *ngIf="success" role="status"
-             class="flex items-center gap-2.5 rounded-xl border border-mint/30 bg-mint/10 px-4 py-3 text-sm text-mint">
-            <i class="fas fa-circle-check"></i>
-            {{ 'CONTACT.SUCCESS' | translate }}
-          </p>
-          <p *ngIf="error" role="alert"
-             class="flex items-center gap-2.5 rounded-xl border border-signal/30 bg-signal/10 px-4 py-3 text-sm text-signal">
-            <i class="fas fa-circle-exclamation"></i>
-            {{ 'CONTACT.ERROR' | translate }}
-          </p>
+          @if (success) {
+            <p role="status"
+              class="flex items-center gap-2.5 rounded-xl border border-mint/30 bg-mint/10 px-4 py-3 text-sm text-mint">
+              <i class="fas fa-circle-check"></i>
+              {{ 'CONTACT.SUCCESS' | translate }}
+            </p>
+          }
+          @if (error) {
+            <p role="alert"
+              class="flex items-center gap-2.5 rounded-xl border border-signal/30 bg-signal/10 px-4 py-3 text-sm text-signal">
+              <i class="fas fa-circle-exclamation"></i>
+              {{ 'CONTACT.ERROR' | translate }}
+            </p>
+          }
 
           <!-- Submit -->
           <button type="submit" class="lab-btn lab-btn-primary w-full justify-center" [disabled]="isLoading" appMagnetic>
-            <ng-container *ngIf="!isLoading; else sending">
+            @if (!isLoading) {
               <i class="fas fa-paper-plane text-xs"></i>
               <span>{{ 'CONTACT.SEND' | translate }}</span>
-            </ng-container>
-            <ng-template #sending>
+            } @else {
               <i class="fas fa-circle-notch animate-spin text-xs"></i>
               <span>{{ 'CONTACT.SENDING' | translate }}</span>
-            </ng-template>
+            }
           </button>
         </form>
       </div>

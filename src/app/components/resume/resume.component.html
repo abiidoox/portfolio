@@ -14,7 +14,7 @@
 
     <!-- ══════════ Identity card ══════════ -->
     <div class="lab-panel mb-16 overflow-hidden rounded-3xl"
-         appScrollReveal data-reveal-direction="up">
+      appScrollReveal data-reveal-direction="up">
       <div class="relative flex flex-col gap-7 p-7 sm:flex-row sm:items-center sm:gap-9 sm:p-9">
         <!-- Monogram -->
         <div class="relative shrink-0 self-start sm:self-auto">
@@ -26,13 +26,13 @@
         <!-- Profile image -->
         <div class="hidden sm:block">
           <img src="assets/me.jpg"
-               alt="{{ 'A11Y.PROFILE_PHOTO' | translate }}"
+            alt="{{ 'A11Y.PROFILE_PHOTO' | translate }}"
                class="h-24 w-24 rounded-full border border-white/10 bg-white/[0.04] object-cover
                       shadow-signal-glow transition-all duration-300 hover:-translate-y-0.5
                       group-hover:border-signal/40"
-               width="96"
-               height="96"
-               loading="lazy">
+            width="96"
+            height="96"
+            loading="lazy">
         </div>
 
         <div class="min-w-0 flex-1">
@@ -68,7 +68,7 @@
     <!-- ══════════ Experience timeline ══════════ -->
     <section class="mb-20">
       <h2 class="mb-10 flex items-center gap-4 font-display text-display-sm font-semibold"
-          appScrollReveal data-reveal-direction="left">
+        appScrollReveal data-reveal-direction="left">
         <span class="grid h-9 w-9 place-items-center rounded-lg border border-signal/30 bg-signal/10 text-signal">
           <i class="fas fa-briefcase text-sm"></i>
         </span>
@@ -76,60 +76,59 @@
       </h2>
 
       <ol class="relative ml-3 border-l border-white/[0.09] pl-8 sm:ml-4 sm:pl-10">
-        <li *ngFor="let e of experience; let i = index"
+        @for (e of experience; track e; let i = $index) {
+          <li
             appScrollReveal data-reveal-direction="up" [attr.data-delay]="i * 70"
             class="group relative pb-11 last:pb-0">
-
-          <!-- Node -->
+            <!-- Node -->
           <span class="absolute -left-[2.42rem] top-1.5 grid h-4 w-4 place-items-center rounded-full
                        border-2 border-signal bg-ink-900 transition-all duration-400
                        group-hover:scale-125 sm:-left-[2.92rem]">
-            <span class="h-1.5 w-1.5 rounded-full bg-signal"></span>
-          </span>
-
+              <span class="h-1.5 w-1.5 rounded-full bg-signal"></span>
+            </span>
           <article class="lab-panel rounded-2xl p-6 transition-all duration-500 ease-smooth
                           hover:-translate-y-1 hover:border-signal/25 sm:p-7">
-            <header class="flex flex-wrap items-start justify-between gap-x-5 gap-y-2">
-              <h3 class="font-display text-lg font-semibold leading-snug text-balance">
-                {{ 'RESUME.EXPERIENCE_ITEMS.' + e.key + '.TITLE' | translate }}
-              </h3>
+              <header class="flex flex-wrap items-start justify-between gap-x-5 gap-y-2">
+                <h3 class="font-display text-lg font-semibold leading-snug text-balance">
+                  {{ 'RESUME.EXPERIENCE_ITEMS.' + e.key + '.TITLE' | translate }}
+                </h3>
               <span class="shrink-0 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1
                            font-mono text-[0.66rem] tabular-nums text-slate-300">
-                {{ 'RESUME.EXPERIENCE_ITEMS.' + e.key + '.PERIOD' | translate }}
-              </span>
-            </header>
-
-            <p class="mt-2.5 font-mono text-[0.68rem] uppercase tracking-[0.14em] text-slate-500">
-              {{ 'RESUME.EXPERIENCE_ITEMS.' + e.key + '.SUBTITLE' | translate }}
-            </p>
-
-            <!-- Achievements -->
-            <ul class="mt-5 space-y-2.5">
-              <li *ngFor="let n of bulletIndexes(e.pointCount); let b = index"
-                  class="flex gap-3 text-sm leading-relaxed text-slate-400">
-                <span class="mt-[0.55em] h-1 w-1 shrink-0 rounded-full bg-ion/70"></span>
-                <span class="text-pretty">{{ pointKey(e.key, n) | translate }}</span>
-              </li>
-            </ul>
-
-            <!-- Technologies -->
-            <div class="mt-6 flex flex-wrap items-center gap-1.5 border-t border-white/[0.06] pt-5">
-              <span class="mr-1.5 font-mono text-[0.62rem] uppercase tracking-[0.16em] text-slate-600">
-                {{ 'RESUME.TECHNOLOGIES_USED' | translate }}
-              </span>
-              <ng-container *ngFor="let tech of splitTech(e.key)">
-                <span class="lab-tag">{{ tech }}</span>
-              </ng-container>
-            </div>
-          </article>
-        </li>
+                  {{ 'RESUME.EXPERIENCE_ITEMS.' + e.key + '.PERIOD' | translate }}
+                </span>
+              </header>
+              <p class="mt-2.5 font-mono text-[0.68rem] uppercase tracking-[0.14em] text-slate-500">
+                {{ 'RESUME.EXPERIENCE_ITEMS.' + e.key + '.SUBTITLE' | translate }}
+              </p>
+              <!-- Achievements -->
+              <ul class="mt-5 space-y-2.5">
+                @for (n of bulletIndexes(e.pointCount); track n; let b = $index) {
+                  <li
+                    class="flex gap-3 text-sm leading-relaxed text-slate-400">
+                    <span class="mt-[0.55em] h-1 w-1 shrink-0 rounded-full bg-ion/70"></span>
+                    <span class="text-pretty">{{ pointKey(e.key, n) | translate }}</span>
+                  </li>
+                }
+              </ul>
+              <!-- Technologies -->
+              <div class="mt-6 flex flex-wrap items-center gap-1.5 border-t border-white/[0.06] pt-5">
+                <span class="mr-1.5 font-mono text-[0.62rem] uppercase tracking-[0.16em] text-slate-600">
+                  {{ 'RESUME.TECHNOLOGIES_USED' | translate }}
+                </span>
+                @for (tech of splitTech(e.key); track tech) {
+                  <span class="lab-tag">{{ tech }}</span>
+                }
+              </div>
+            </article>
+          </li>
+        }
       </ol>
     </section>
 
     <!-- ══════════ Education ══════════ -->
     <section class="mb-20">
       <h2 class="mb-10 flex items-center gap-4 font-display text-display-sm font-semibold"
-          appScrollReveal data-reveal-direction="left">
+        appScrollReveal data-reveal-direction="left">
         <span class="grid h-9 w-9 place-items-center rounded-lg border border-ion/30 bg-ion/10 text-ion">
           <i class="fas fa-graduation-cap text-sm"></i>
         </span>
@@ -137,22 +136,24 @@
       </h2>
 
       <div class="grid gap-5 md:grid-cols-3">
-        <article *ngFor="let e of education; let i = index"
-                 appScrollReveal data-reveal-direction="up" [attr.data-delay]="i * 90"
+        @for (e of education; track e; let i = $index) {
+          <article
+            appScrollReveal data-reveal-direction="up" [attr.data-delay]="i * 90"
                  class="lab-panel lab-glow-hover rounded-2xl p-6 transition-all duration-500 ease-smooth
                         hover:-translate-y-1.5 hover:border-ion/25"
-                 (mousemove)="onGlowMove($event)">
-          <span class="font-mono text-[0.66rem] text-ion">0{{ i + 1 }}</span>
-          <h3 class="mt-3 font-display text-base font-semibold leading-snug text-balance">
-            {{ 'RESUME.EDUCATION_ITEMS.' + e.key + '.TITLE' | translate }}
-          </h3>
-          <p class="mt-3 text-sm leading-relaxed text-slate-400">
-            {{ 'RESUME.EDUCATION_ITEMS.' + e.key + '.INSTITUTION' | translate }}
-          </p>
-          <p class="mt-4 border-t border-white/[0.06] pt-4 font-mono text-[0.68rem] text-slate-500">
-            {{ 'RESUME.EDUCATION_ITEMS.' + e.key + '.PERIOD' | translate }}
-          </p>
-        </article>
+            (mousemove)="onGlowMove($event)">
+            <span class="font-mono text-[0.66rem] text-ion">0{{ i + 1 }}</span>
+            <h3 class="mt-3 font-display text-base font-semibold leading-snug text-balance">
+              {{ 'RESUME.EDUCATION_ITEMS.' + e.key + '.TITLE' | translate }}
+            </h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-400">
+              {{ 'RESUME.EDUCATION_ITEMS.' + e.key + '.INSTITUTION' | translate }}
+            </p>
+            <p class="mt-4 border-t border-white/[0.06] pt-4 font-mono text-[0.68rem] text-slate-500">
+              {{ 'RESUME.EDUCATION_ITEMS.' + e.key + '.PERIOD' | translate }}
+            </p>
+          </article>
+        }
       </div>
     </section>
 
@@ -167,14 +168,18 @@
         </h2>
 
         <div class="space-y-7">
-          <div *ngFor="let g of skillGroups">
-            <h3 class="mb-3 font-mono text-[0.64rem] uppercase tracking-[0.18em] text-slate-500">
-              {{ 'RESUME.SKILLS_CATEGORIES.' + g.categoryKey | translate }}
-            </h3>
-            <div class="flex flex-wrap gap-1.5">
-              <span *ngFor="let item of g.items" class="lab-tag">{{ item }}</span>
+          @for (g of skillGroups; track g) {
+            <div>
+              <h3 class="mb-3 font-mono text-[0.64rem] uppercase tracking-[0.18em] text-slate-500">
+                {{ 'RESUME.SKILLS_CATEGORIES.' + g.categoryKey | translate }}
+              </h3>
+              <div class="flex flex-wrap gap-1.5">
+                @for (item of g.items; track item) {
+                  <span class="lab-tag">{{ item }}</span>
+                }
+              </div>
             </div>
-          </div>
+          }
         </div>
       </div>
 
@@ -185,10 +190,12 @@
             {{ 'RESUME.SKILLS_CATEGORIES.SOFT_SKILLS' | translate }}
           </h2>
           <ul class="space-y-2.5">
-            <li *ngFor="let k of softSkillKeys" class="flex items-center gap-2.5 text-sm text-slate-400">
-              <i class="fas fa-check text-[0.7rem] text-mint"></i>
-              {{ 'RESUME.SOFT_SKILLS.' + k | translate }}
-            </li>
+            @for (k of softSkillKeys; track k) {
+              <li class="flex items-center gap-2.5 text-sm text-slate-400">
+                <i class="fas fa-check text-[0.7rem] text-mint"></i>
+                {{ 'RESUME.SOFT_SKILLS.' + k | translate }}
+              </li>
+            }
           </ul>
         </div>
 
@@ -198,10 +205,12 @@
             {{ 'RESUME.LANGUAGES.TITLE' | translate }}
           </h2>
           <ul class="space-y-2.5">
-            <li *ngFor="let k of languageKeys" class="flex items-center gap-2.5 text-sm text-slate-400">
-              <i class="fas fa-globe text-[0.7rem] text-ion"></i>
-              {{ 'RESUME.LANGUAGES.' + k | translate }}
-            </li>
+            @for (k of languageKeys; track k) {
+              <li class="flex items-center gap-2.5 text-sm text-slate-400">
+                <i class="fas fa-globe text-[0.7rem] text-ion"></i>
+                {{ 'RESUME.LANGUAGES.' + k | translate }}
+              </li>
+            }
           </ul>
         </div>
 
@@ -211,11 +220,13 @@
             {{ 'RESUME.CERTIFICATIONS.TITLE' | translate }}
           </h2>
           <ul class="space-y-2.5">
-            <li *ngFor="let k of certificationKeys"
+            @for (k of certificationKeys; track k) {
+              <li
                 class="flex items-center gap-2.5 text-sm text-slate-400">
-              <i class="fas fa-certificate text-[0.75rem] text-signal-soft"></i>
-              {{ 'RESUME.CERTIFICATIONS.' + k | translate }}
-            </li>
+                <i class="fas fa-certificate text-[0.75rem] text-signal-soft"></i>
+                {{ 'RESUME.CERTIFICATIONS.' + k | translate }}
+              </li>
+            }
           </ul>
         </div>
       </div>
@@ -227,11 +238,13 @@
         <i class="fas fa-download text-xs"></i>
         <span>{{ 'RESUME.DOWNLOAD' | translate }}</span>
       </button>
-      <p *ngIf="error" role="alert"
-         class="mt-4 inline-flex items-center gap-2 text-sm text-signal">
-        <i class="fas fa-exclamation-circle"></i>
-        {{ 'RESUME.DOWNLOAD_ERROR' | translate }}
-      </p>
+      @if (error) {
+        <p role="alert"
+          class="mt-4 inline-flex items-center gap-2 text-sm text-signal">
+          <i class="fas fa-exclamation-circle"></i>
+          {{ 'RESUME.DOWNLOAD_ERROR' | translate }}
+        </p>
+      }
     </div>
   </div>
 </section>

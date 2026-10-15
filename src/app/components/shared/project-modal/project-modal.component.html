@@ -13,21 +13,21 @@
       aria-modal="true"
       aria-labelledby="pm-title"
       class="lab-panel w-full animate-scale-in overflow-hidden rounded-3xl"
-    >
+      >
       <!-- Visual band -->
       <div class="relative h-32 overflow-hidden border-b border-white/[0.06] sm:h-40">
         <div class="lab-grid-bg absolute inset-0 opacity-40"></div>
         <div class="absolute inset-0 bg-gradient-to-br" [ngClass]="gradientFor(project?.category || '')"></div>
         <div class="absolute inset-0 grid place-items-center">
           <i class="fas text-5xl text-white/[0.14] sm:text-6xl"
-             [ngClass]="categoryIcon(project?.category || '')"></i>
+          [ngClass]="categoryIcon(project?.category || '')"></i>
         </div>
 
         <button type="button" (click)="close()"
                 class="pm-close absolute right-4 top-4 z-20 grid h-10 w-10 place-items-center
                        rounded-full border border-white/15 bg-black/30 text-slate-200 backdrop-blur-sm
                        transition-all duration-300 hover:rotate-90 hover:border-signal hover:bg-signal hover:text-white"
-                [attr.aria-label]="'A11Y.MODAL_CLOSE' | translate">
+          [attr.aria-label]="'A11Y.MODAL_CLOSE' | translate">
           <i class="fas fa-xmark"></i>
         </button>
       </div>
@@ -39,14 +39,18 @@
                        font-mono text-[0.62rem] uppercase tracking-[0.14em] text-slate-300">
             {{ getCategoryLabel() }}
           </span>
-          <span *ngIf="project?.date" class="font-mono text-[0.68rem] text-slate-500">
-            {{ project?.date }}
-          </span>
-          <span *ngIf="project?.featured"
+          @if (project?.date) {
+            <span class="font-mono text-[0.68rem] text-slate-500">
+              {{ project?.date }}
+            </span>
+          }
+          @if (project?.featured) {
+            <span
                 class="rounded-full border border-signal/30 bg-signal/10 px-2.5 py-1
                        font-mono text-[0.6rem] uppercase tracking-[0.12em] text-signal-soft">
-            {{ 'PROJECTS.FEATURED' | translate }}
-          </span>
+              {{ 'PROJECTS.FEATURED' | translate }}
+            </span>
+          }
         </div>
 
         <h2 id="pm-title" class="mt-4 font-display text-2xl font-semibold leading-snug text-balance sm:text-3xl">
@@ -58,25 +62,33 @@
         </p>
 
         <!-- Technologies -->
-        <div *ngIf="project?.technologies?.length" class="mt-8">
-          <h3 class="mb-3.5 font-mono text-[0.66rem] uppercase tracking-[0.2em] text-slate-500">
-            {{ 'PROJECTS.TECHNOLOGIES' | translate }}
-          </h3>
-          <div class="flex flex-wrap gap-2">
-            <span *ngFor="let tech of project?.technologies" class="lab-tag">{{ tech }}</span>
+        @if (project?.technologies?.length) {
+          <div class="mt-8">
+            <h3 class="mb-3.5 font-mono text-[0.66rem] uppercase tracking-[0.2em] text-slate-500">
+              {{ 'PROJECTS.TECHNOLOGIES' | translate }}
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              @for (tech of project?.technologies; track tech) {
+                <span class="lab-tag">{{ tech }}</span>
+              }
+            </div>
           </div>
-        </div>
+        }
 
         <!-- Links -->
-        <div *ngIf="project?.links?.length" class="mt-8 flex flex-wrap gap-3 border-t border-white/[0.07] pt-6">
-          <a *ngFor="let link of project?.links"
-             [href]="link.url" target="_blank" rel="noopener noreferrer"
-             class="lab-btn lab-btn-ghost !px-5 !py-2.5 !text-[0.82rem]">
-            <i [class]="link.icon"></i>
-            <span>{{ link.labelKey | translate }}</span>
-            <i class="fas fa-arrow-up-right-from-square text-[0.65rem] opacity-60"></i>
-          </a>
-        </div>
+        @if (project?.links?.length) {
+          <div class="mt-8 flex flex-wrap gap-3 border-t border-white/[0.07] pt-6">
+            @for (link of project?.links; track link) {
+              <a
+                [href]="link.url" target="_blank" rel="noopener noreferrer"
+                class="lab-btn lab-btn-ghost !px-5 !py-2.5 !text-[0.82rem]">
+                <i [class]="link.icon"></i>
+                <span>{{ link.labelKey | translate }}</span>
+                <i class="fas fa-arrow-up-right-from-square text-[0.65rem] opacity-60"></i>
+              </a>
+            }
+          </div>
+        }
       </div>
     </div>
   </div>

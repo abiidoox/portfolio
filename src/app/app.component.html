@@ -36,8 +36,9 @@
   <app-back-to-top></app-back-to-top>
 </div>
 
-<app-project-modal
-  *ngIf="modalProject"
-  [project]="modalProject"
-  (closeRequest)="closeModal()">
-</app-project-modal>
+@if (modalProject) {
+  <app-project-modal
+    [project]="modalProject"
+    (closeRequest)="closeModal()">
+  </app-project-modal>
+}
