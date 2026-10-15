@@ -1,13 +1,20 @@
 import { Component, OnInit, NgZone, OnDestroy, HostListener, ChangeDetectionStrategy, inject } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 import { LanguageService } from './services/language.service';
 import { ToastService } from './services/toast.service';
 import { ProjectModalService } from './services/project-modal.service';
 import { SeoService } from './services/seo.service';
 import { ThemeService } from './services/theme.service';
 import { RouterOutlet } from '@angular/router';
-import { ProjectModalData } from './components/shared/project-modal/project-modal.component';
+import { ProjectModalData, ProjectModalComponent } from './components/shared/project-modal/project-modal.component';
+import { HeaderComponent } from './components/header/header.component';
 import { trigger, transition, style, animate, query } from '@angular/animations';
+import { TerminalIntroComponent } from './components/shared/terminal-intro/terminal-intro.component';
+import { ScrollProgressComponent } from './components/shared/scroll-progress/scroll-progress.component';
+import { ToastContainerComponent } from './components/shared/toast-container/toast-container.component';
+import { ParticlesBackgroundComponent } from './components/shared/particles-background/particles-background.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
+import { BackToTopComponent } from './components/shared/back-to-top/back-to-top.component';
 
 @Component({
     selector: 'app-root',
@@ -27,7 +34,7 @@ import { trigger, transition, style, animate, query } from '@angular/animations'
         ])
     ],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [TerminalIntroComponent, ScrollProgressComponent, ToastContainerComponent, ParticlesBackgroundComponent, RouterOutlet, FooterComponent, BackToTopComponent, HeaderComponent, ProjectModalComponent, TranslatePipe]
 })
 export class AppComponent implements OnInit, OnDestroy {
   private translate = inject(TranslateService);

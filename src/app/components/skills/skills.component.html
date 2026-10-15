@@ -32,7 +32,7 @@
 
     <!-- Ecosystem grid: one panel per category, items inside -->
     <div class="space-y-6">
-      @for (group of visibleGroups; track group; let g = $index) {
+      @for (group of visibleGroups; track group.category; let g = $index) {
         <article
           appScrollReveal data-reveal-direction="up" [attr.data-delay]="g * 90"
           class="lab-panel lab-glow-hover overflow-hidden rounded-3xl transition-all duration-500
@@ -60,7 +60,7 @@
           </header>
           <!-- Item chips -->
           <div class="flex flex-wrap gap-2.5 p-6 sm:p-8">
-            @for (s of group.items; track s; let i = $index) {
+            @for (s of group.items; track s.name; let i = $index) {
               <div
               class="group flex items-center gap-3 rounded-2xl border border-white/[0.07]
                      bg-white/[0.02] px-4 py-3 transition-all duration-400 ease-smooth

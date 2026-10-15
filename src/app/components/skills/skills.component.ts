@@ -6,12 +6,15 @@ import {
   SkillCategory,
   SkillGroup
 } from '../../data/skills.data';
+import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
+import { NgClass } from '@angular/common';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-skills',
     templateUrl: './skills.component.html',
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [ScrollRevealDirective, NgClass, TranslatePipe]
 })
 export class SkillsComponent {
   readonly skills: Skill[] = SKILLS;

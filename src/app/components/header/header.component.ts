@@ -1,8 +1,12 @@
-import { Component, OnInit, OnDestroy, HostListener, ViewChild, ElementRef, ChangeDetectionStrategy, inject } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Component, OnInit, OnDestroy, HostListener, ViewChild, ElementRef, ChangeDetectionStrategy, inject, forwardRef } from '@angular/core';
+import { TranslateService, TranslatePipe } from '@ngx-translate/core';
+import { Router, NavigationEnd, RouterLink, RouterLinkActive } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
+import { ThemeSwitcherComponent } from '../theme-switcher/theme-switcher.component';
+import { LanguageSwitcherComponent } from '../language-switcher/language-switcher.component';
+import { NgClass } from '@angular/common';
+
 
 interface NavItem {
   path: string;
@@ -14,7 +18,7 @@ interface NavItem {
     selector: 'app-header',
     templateUrl: './header.component.html',
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [RouterLink, RouterLinkActive, ThemeSwitcherComponent, LanguageSwitcherComponent, NgClass, forwardRef(() => HeaderComponent), TranslatePipe]
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   private translateService = inject(TranslateService);

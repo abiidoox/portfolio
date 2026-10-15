@@ -1,8 +1,10 @@
 import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, inject } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 import { ProjectModalService } from '../../services/project-modal.service';
 import { PROJECTS, Project } from '../../data/projects.data';
 import { Subscription, forkJoin } from 'rxjs';
+import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
+import { NgClass } from '@angular/common';
 
 interface DisplayProject {
   key: string;
@@ -20,7 +22,7 @@ interface DisplayProject {
     selector: 'app-projects',
     templateUrl: './projects.component.html',
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [ScrollRevealDirective, NgClass, TranslatePipe]
 })
 export class ProjectsComponent implements OnInit, OnDestroy {
   private translate = inject(TranslateService);

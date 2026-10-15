@@ -1,5 +1,7 @@
-import { Component, HostListener, Input, Output, EventEmitter, ElementRef, AfterViewInit, NgZone, ChangeDetectionStrategy, inject } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { Component, HostListener, Input, Output, EventEmitter, ElementRef, AfterViewInit, NgZone, ChangeDetectionStrategy, inject, forwardRef } from '@angular/core';
+import { TranslateService, TranslatePipe } from '@ngx-translate/core';
+import { NgClass } from '@angular/common';
+
 
 export interface ProjectModalData {
   title: string;
@@ -16,7 +18,7 @@ export interface ProjectModalData {
     selector: 'app-project-modal',
     templateUrl: './project-modal.component.html',
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [NgClass, forwardRef(() => ProjectModalComponent), TranslatePipe]
 })
 export class ProjectModalComponent implements AfterViewInit {
   private translate = inject(TranslateService);

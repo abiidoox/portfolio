@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-back-to-top',
@@ -73,7 +74,7 @@ import { Component, HostListener, OnInit, ChangeDetectionStrategy } from '@angul
     }
   `],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [TranslatePipe]
 })
 export class BackToTopComponent implements OnInit {
   visible = false;

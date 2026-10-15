@@ -16,8 +16,7 @@ import { Component, HostListener, NgZone, OnDestroy, OnInit, ChangeDetectionStra
       will-change: transform;
     }
   `],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ScrollProgressComponent implements OnInit, OnDestroy {
   private zone = inject(NgZone);

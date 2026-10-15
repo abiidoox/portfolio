@@ -1,13 +1,16 @@
 import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, inject } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { LanguageService } from '../../services/language.service';
 import { Subscription } from 'rxjs';
+import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
+import { MagneticDirective } from '../../directives/magnetic.directive';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-contact',
     templateUrl: './contact.component.html',
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [ScrollRevealDirective, ReactiveFormsModule, MagneticDirective, TranslatePipe]
 })
 export class ContactComponent implements OnInit, OnDestroy {
   private fb = inject(UntypedFormBuilder);

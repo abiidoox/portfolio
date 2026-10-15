@@ -1,5 +1,5 @@
 import { Component, NgZone, OnDestroy, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-terminal-intro',
@@ -118,7 +118,7 @@ import { TranslateService } from '@ngx-translate/core';
     }
   `],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [TranslatePipe]
 })
 export class TerminalIntroComponent implements OnInit, OnDestroy {
   private zone = inject(NgZone);

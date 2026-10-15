@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { ToastService } from '../../../services/toast.service';
+import { NgClass, AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'app-toast-container',
@@ -77,7 +78,7 @@ import { ToastService } from '../../../services/toast.service';
     }
   `],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [NgClass, AsyncPipe]
 })
 export class ToastContainerComponent {
   toastService = inject(ToastService);

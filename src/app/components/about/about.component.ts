@@ -1,8 +1,14 @@
 import { Component, ElementRef, ChangeDetectionStrategy, inject } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 import { ToastService } from '../../services/toast.service';
 import { PROJECTS } from '../../data/projects.data';
 import { SKILL_COUNT } from '../../data/skills.data';
+import { SplitTextDirective } from '../../directives/split-text.directive';
+import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
+import { RouterLink } from '@angular/router';
+import { MagneticDirective } from '../../directives/magnetic.directive';
+import { NgClass } from '@angular/common';
+import { CountUpDirective } from '../../directives/count-up.directive';
 
 const EMAIL = 'elabdouni.abderrazzaq@gmail.com';
 const REDUCED_MOTION = '(prefers-reduced-motion: reduce)';
@@ -36,7 +42,7 @@ interface CommitLine {
     selector: 'app-about',
     templateUrl: './about.component.html',
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [SplitTextDirective, ScrollRevealDirective, RouterLink, MagneticDirective, NgClass, CountUpDirective, TranslatePipe]
 })
 export class AboutComponent {
   private elRef = inject(ElementRef);

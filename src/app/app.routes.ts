@@ -1,12 +1,9 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { SkillsComponent } from './components/skills/skills.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
+import { Routes } from '@angular/router';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./components/about/about.module').then(m => m.AboutModule),
+    loadComponent: () => import('./components/about/about.component').then(m => m.AboutComponent),
     data: {
       animation: 'about',
       title: 'ABOUT.TITLE',
@@ -18,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'about',
-    loadChildren: () => import('./components/about/about.module').then(m => m.AboutModule),
+    loadComponent: () => import('./components/about/about.component').then(m => m.AboutComponent),
     data: {
       animation: 'about',
       title: 'ABOUT.TITLE',
@@ -30,7 +27,7 @@ const routes: Routes = [
   },
   {
     path: 'projects',
-    loadChildren: () => import('./components/projects/projects.module').then(m => m.ProjectsModule),
+    loadComponent: () => import('./components/projects/projects.component').then(m => m.ProjectsComponent),
     data: {
       animation: 'projects',
       title: 'PROJECTS.TITLE',
@@ -42,7 +39,7 @@ const routes: Routes = [
   },
   {
     path: 'resume',
-    loadChildren: () => import('./components/resume/resume.module').then(m => m.ResumeModule),
+    loadComponent: () => import('./components/resume/resume.component').then(m => m.ResumeComponent),
     data: {
       animation: 'resume',
       title: 'RESUME.TITLE',
@@ -54,7 +51,7 @@ const routes: Routes = [
   },
   {
     path: 'contact',
-    loadChildren: () => import('./components/contact/contact.module').then(m => m.ContactModule),
+    loadComponent: () => import('./components/contact/contact.component').then(m => m.ContactComponent),
     data: {
       animation: 'contact',
       title: 'CONTACT.TITLE',
@@ -66,7 +63,7 @@ const routes: Routes = [
   },
   {
     path: 'skills',
-    component: SkillsComponent,
+    loadComponent: () => import('./components/skills/skills.component').then(m => m.SkillsComponent),
     data: {
       animation: 'skills',
       title: 'SKILLS.TITLE',
@@ -78,7 +75,7 @@ const routes: Routes = [
   },
   {
     path: '404',
-    component: NotFoundComponent,
+    loadComponent: () => import('./components/not-found/not-found.component').then(m => m.NotFoundComponent),
     data: {
       animation: '404',
       title: 'NOT_FOUND.TITLE',
@@ -90,9 +87,3 @@ const routes: Routes = [
   },
   { path: '**', redirectTo: '404' }
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }

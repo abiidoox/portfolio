@@ -1,17 +1,19 @@
 import { Component, OnDestroy, ChangeDetectionStrategy, inject } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import {
   EXPERIENCE, EDUCATION, SKILL_GROUPS, pointKey,
   SOFT_SKILL_KEYS, LANGUAGE_KEYS, CERTIFICATION_KEYS,
   ExperienceEntry, EducationEntry, SkillTagGroup
 } from '../../data/resume.data';
+import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
+import { MagneticDirective } from '../../directives/magnetic.directive';
 
 @Component({
     selector: 'app-resume',
     templateUrl: './resume.component.html',
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [ScrollRevealDirective, MagneticDirective, TranslatePipe]
 })
 export class ResumeComponent implements OnDestroy {
   private translate = inject(TranslateService);

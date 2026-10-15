@@ -6,8 +6,7 @@ import { Theme, ThemeService } from '../../services/theme.service';
 @Component({
     selector: 'app-theme-switcher',
     templateUrl: './theme-switcher.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ThemeSwitcherComponent implements OnInit, OnDestroy {
   private translate = inject(TranslateService);

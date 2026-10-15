@@ -14,8 +14,7 @@ interface Particle {
     :host { display: block; }
     canvas { width: 100%; height: 100%; display: block; }
   `],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ParticlesBackgroundComponent implements OnInit, OnDestroy {
   private zone = inject(NgZone);
