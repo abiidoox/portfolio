@@ -87,7 +87,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   @HostListener('window:resize')
   onResize(): void {
-    if (window.innerWidth > 768) this.closeMobileMenu();
+    // Matches the lg breakpoint where the desktop nav replaces the burger.
+    if (window.innerWidth >= 1024) this.closeMobileMenu();
     setTimeout(() => this.updateIndicator(), 0);
   }
 
