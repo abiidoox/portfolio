@@ -236,11 +236,11 @@
     <div class="text-center" appScrollReveal data-reveal-direction="up">
       <div class="flex flex-wrap items-center justify-center gap-3 print:hidden">
         <button type="button" (click)="downloadResume()" class="lab-btn lab-btn-primary" appMagnetic>
-          <i class="fas fa-download text-xs"></i>
+          <i class="fas fa-download text-xs" aria-hidden="true"></i>
           <span>{{ 'RESUME.DOWNLOAD' | translate }}</span>
         </button>
         <button type="button" (click)="printResume()" class="lab-btn lab-btn-ghost">
-          <i class="fas fa-print text-xs"></i>
+          <i class="fas fa-print text-xs" aria-hidden="true"></i>
           <span>{{ 'RESUME.PRINT' | translate }}</span>
         </button>
       </div>

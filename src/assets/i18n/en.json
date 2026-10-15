@@ -57,7 +57,7 @@
   },
   "PALETTE": {
     "OPEN_LABEL": "Open command palette (Ctrl+K)",
-    "PLACEHOLDER": "Search pages, projects, actions...",
+    "PLACEHOLDER": "Search pages, projects, actions…",
     "GROUP_PAGES": "Pages",
     "GROUP_PROJECTS": "Projects",
     "GROUP_ACTIONS": "Actions",
@@ -241,7 +241,7 @@
     "CLEAR_FILTER": "Clear filter",
     "VIEW_CASE_STUDY": "Read the case study",
     "SEARCH_LABEL": "Search projects",
-    "SEARCH_PLACEHOLDER": "Search by name or technology...",
+    "SEARCH_PLACEHOLDER": "Search by name or technology…",
     "SORT_LABEL": "Sort projects",
     "SORT_NEWEST": "Newest first",
     "SORT_OLDEST": "Oldest first",

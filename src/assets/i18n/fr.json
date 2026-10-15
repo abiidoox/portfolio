@@ -57,7 +57,7 @@
   },
   "PALETTE": {
     "OPEN_LABEL": "Ouvrir la palette de commandes (Ctrl+K)",
-    "PLACEHOLDER": "Rechercher pages, projets, actions...",
+    "PLACEHOLDER": "Rechercher pages, projets, actions…",
     "GROUP_PAGES": "Pages",
     "GROUP_PROJECTS": "Projets",
     "GROUP_ACTIONS": "Actions",
@@ -241,7 +241,7 @@
     "CLEAR_FILTER": "Effacer le filtre",
     "VIEW_CASE_STUDY": "Lire l'étude de cas",
     "SEARCH_LABEL": "Rechercher des projets",
-    "SEARCH_PLACEHOLDER": "Rechercher par nom ou technologie...",
+    "SEARCH_PLACEHOLDER": "Rechercher par nom ou technologie…",
     "SORT_LABEL": "Trier les projets",
     "SORT_NEWEST": "Plus récents d'abord",
     "SORT_OLDEST": "Plus anciens d'abord",
