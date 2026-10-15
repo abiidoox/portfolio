@@ -2,8 +2,8 @@
  * GENERATED FILE — do not edit by hand.
  * Regenerate with: node tools/build-fontawesome-subset.cjs && python tools/subset-fontawesome.py
  *
- * A 59-glyph subset of Font Awesome Free 6.5.2 (solid + brands), replacing the
- * cdnjs all.min.css. Same codepoints, same rendering — 59 glyphs instead of
+ * A 58-glyph subset of Font Awesome Free 6.5.2 (solid + brands), replacing the
+ * cdnjs all.min.css. Same codepoints, same rendering — 58 glyphs instead of
  * ~2000, served from two local woff2 files (a few KB each) instead of ~400 KB
  * of CDN webfonts, and no external stylesheet for the prerenderer to fetch.
  * Legacy FA5 aliases are included because the codepoints are read from the
@@ -105,7 +105,6 @@
 .fa-mobile-screen-button:before{content:"\F3CD"}
 .fa-moon:before{content:"\F186"}
 .fa-paper-plane:before{content:"\F1D8"}
-.fa-pen-nib:before{content:"\F5AD"}
 .fa-phone:before{content:"\F095"}
 .fa-print:before{content:"\F02F"}
 .fa-python:before{content:"\F3E2"}

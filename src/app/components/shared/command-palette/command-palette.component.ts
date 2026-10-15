@@ -305,7 +305,6 @@ export class CommandPaletteComponent {
       { key: 'header.home', path: '/', icon: 'fas fa-house', aliases: 'home start about main' },
       { key: 'header.projects', path: '/projects', icon: 'fas fa-diagram-project', aliases: 'projects work portfolio case study' },
       { key: 'header.skills', path: '/skills', icon: 'fas fa-layer-group', aliases: 'skills stack technologies tools' },
-      { key: 'header.notes', path: '/notes', icon: 'fas fa-pen-nib', aliases: 'notes writing articles blog engineering' },
       { key: 'header.resume', path: '/resume', icon: 'fas fa-file-lines', aliases: 'resume cv experience education' },
       { key: 'header.contact', path: '/contact', icon: 'fas fa-paper-plane', aliases: 'contact email hire message' }
     ];

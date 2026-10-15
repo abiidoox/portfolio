@@ -16,45 +16,6 @@
       "INPUT_LABEL": "Entrada de comandos del terminal"
     }
   },
-  "NOTES": {
-    "KICKER": "Notas de ingeniería",
-    "TITLE": "Notas",
-    "SUBTITLE": "Escritos breves sobre cómo se construye este portafolio: las herramientas, las decisiones y sus compromisos.",
-    "META_DESCRIPTION": "Notas de ingeniería sobre cómo se construye este portafolio: tarjetas sociales sin conexión, datos compilados y un 404 que responde.",
-    "OG_DESCRIPTION": "Escritos breves sobre las herramientas y los compromisos detrás de este portafolio.",
-    "READING_TIME": "{{minutes}} min de lectura",
-    "BACK": "Todas las notas",
-    "SEO_SUFFIX": "Nota",
-    "ITEMS": {
-      "TERMINAL_404": {
-        "TITLE": "Por qué la página 404 es un terminal que acepta comandos",
-        "SUMMARY": "La mayoría de los 404 son callejones sin salida. El mío te ofrece un indicador de comandos: escribe help o whoami y la página responde.",
-        "BODY": [
-          "El 404 es la única página que nadie planea visitar, lo que la convierte en el lugar más barato para resultar memorable. Mi premisa: ser honesto sobre el error y luego dar al visitante algo que hacer que no sea pulsar atrás.",
-          "La página te entrega un indicador de comandos. Acepta un conjunto pequeño - help, theme, whoami, clear y las secciones del sitio - y responde en el sitio. help imprime el manual, projects, skills, resume y contact navegan a páginas reales, theme cambia el tema y whoami responde con el nombre y el rol. Sin salidas falsas, sin callejones sin salida.",
-          "También encaja con la voz del sitio: este portafolio se presenta como un laboratorio digital, así que una página de error que parece un shell es una pieza más del museo. Si un error tipográfico te trajo aquí, al menos puedes escribir help y te recibirán con educación."
-        ]
-      },
-      "OG_HEADLESS": {
-        "TITLE": "Renderizar tarjetas sociales sin conexión con Chrome headless",
-        "SUMMARY": "Cada tarjeta para compartir de este sitio es un PNG renderizado al compilar: sin servicio de capturas, sin dependencia en tiempo de ejecución.",
-        "BODY": [
-          "Cada ruta y cada proyecto del sitio tiene su propia tarjeta 1200 por 630, y ninguna viene de un servicio de capturas. tools/build-og.cjs construye una plantilla HTML que imita el diseño del sitio y luego maneja Chrome headless por el protocolo DevTools para fotografiarla.",
-          "El script lanza Chrome con un puerto de depuración remota, navega a la plantilla una vez por tarjeta con un identificador en la URL, espera a que las fuentes web terminen de cargar y captura un PNG. Todo el conjunto se renderiza en menos de un minuto, y las imágenes quedan versionadas, así que el despliegue nunca necesita un navegador.",
-          "Trabajar sin conexión también mantiene las tarjetas honestas: usan las mismas fuentes y la misma paleta que el sitio, y ningún servicio externo puede cambiar su aspecto el mes que viene. Añadir una página es un comando - npm run og:build - y el resto es automático."
-        ]
-      },
-      "GITHUB_SNAPSHOT": {
-        "TITLE": "Una franja de GitHub que nunca llama a la API de GitHub",
-        "SUMMARY": "La página «acerca de» muestra estadísticas de mis repos, pero el navegador no habla con terceros. Una instantánea de compilación hace la consulta.",
-        "BODY": [
-          "La página «acerca de» muestra mis repositorios públicos, pero el navegador nunca habla con github.com. tools/fetch-github.cjs consulta la API de GitHub una vez, en tiempo de compilación, escribe la respuesta en un archivo TypeScript, y la aplicación lo importa como cualquier otro dato.",
-          "El intercambio elimina tres problemas a la vez. Sin llamada a la API no hay límite de peticiones para los visitantes, no hay clave de API cerca del código cliente y no hay rueda de carga esperando a un tercero. La franja se muestra al instante y ya está en el HTML prerrenderizado antes de que se cargue JavaScript alguno.",
-          "El precio es la frescura: los números solo cambian cuando vuelvo a ejecutar npm run data:github y confirmo el resultado. Para un portafolio que cambia una vez al mes, una instantánea es la resolución adecuada. Es también un recordatorio: el tiempo de compilación suele ser el lugar más barato para hacer el trabajo."
-        ]
-      }
-    }
-  },
   "PALETTE": {
     "OPEN_LABEL": "Abrir la paleta de comandos (Ctrl+K)",
     "PLACEHOLDER": "Buscar páginas, proyectos, acciones…",
@@ -148,7 +109,6 @@
     "home": "Inicio",
     "skills": "Habilidades",
     "projects": "Proyectos",
-    "notes": "Notas",
     "resume": "Currículum",
     "contact": "Contacto"
   },

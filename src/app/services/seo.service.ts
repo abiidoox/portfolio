@@ -20,7 +20,6 @@ const OG_IMAGE_BY_ROUTE: Record<string, string> = {
   '/skills': 'assets/og/skills.png',
   '/resume': 'assets/og/resume.png',
   '/contact': 'assets/og/contact.png',
-  '/notes': 'assets/og/notes.png',
   '/404': 'assets/og/404.png'
 };
 
@@ -29,11 +28,6 @@ function ogImageFor(path: string): string {
   if (path.startsWith(prefix)) {
     const slug = path.slice(prefix.length).replace(/\/+$/, '');
     if (slug) return `assets/og/project-${slug}.png`;
-  }
-  const notePrefix = '/notes/';
-  if (path.startsWith(notePrefix)) {
-    const slug = path.slice(notePrefix.length).replace(/\/+$/, '');
-    if (slug) return `assets/og/note-${slug}.png`;
   }
   return OG_IMAGE_BY_ROUTE[path] ?? 'assets/og/home.png';
 }
@@ -151,7 +145,7 @@ export class SeoService {
   }
 
   /**
-   * Pages that carry their own structured data (case studies, notes) publish
+   * Pages that carry their own structured data (case studies) publish
    * it with the override; it is swapped in and removed with the override so
    * nothing leaks onto the next route. The static Person block in index.html
    * is separate and always present.
