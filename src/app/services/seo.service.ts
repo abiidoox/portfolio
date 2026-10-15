@@ -31,6 +31,18 @@ export class SeoService {
     ).subscribe(() => this.apply());
   }
 
+  /** Case-study pages publish their runtime copy here; see setOverride(). */
+  private override: Data | null = null;
+
+  /**
+   * Case-study pages resolve translated copy from data at runtime (route data
+   * is static), so they publish ready strings here. Pass null when leaving.
+   */
+  setOverride(data: Data | null): void {
+    this.override = data;
+    this.apply();
+  }
+
   /** Route data for the deepest activated route, which is where lazy routes put it. */
   private deepestData(): Data {
     let route = this.route.snapshot;
@@ -46,10 +58,11 @@ export class SeoService {
     return value === key ? '' : value;
   }
 
-  private metaContent(data: Data, field: 'name' | 'property', value: string): string {
+  private metaContent(data: Data, field: 'name' | 'property', value: string, literal = false): string {
     const entries = (data['meta'] ?? []) as { name?: string; property?: string; content: string }[];
     const match = entries.find(e => e[field] === value);
-    return this.text(match?.content);
+    if (!match) return '';
+    return literal ? match.content : this.text(match.content);
   }
 
   private setLink(rel: string, href: string, hreflang?: string): void {
@@ -65,18 +78,19 @@ export class SeoService {
   }
 
   private apply(): void {
-    const data = this.deepestData();
+    const override = this.override;
+    const data = override ?? this.deepestData();
     const lang = this.languageService.getCurrentLanguage();
     const url = SITE + (ALIASES[this.router.url.split(/[?#]/)[0]] ?? this.router.url.split(/[?#]/)[0]);
 
-    const routeTitle = this.text(data['title']);
+    const routeTitle = override ? String(data['title'] ?? '') : this.text(data['title']);
     const fullTitle = routeTitle
       ? `${routeTitle} — Abderrazzaq El Abdouni`
       : 'Abderrazzaq El Abdouni — Full-Stack Developer';
 
-    const description = this.metaContent(data, 'name', 'description')
+    const description = this.metaContent(data, 'name', 'description', !!override)
       || this.text('SEO.DEFAULT_DESCRIPTION');
-    const ogDescription = this.metaContent(data, 'property', 'og:description') || description;
+    const ogDescription = this.metaContent(data, 'property', 'og:description', !!override) || description;
 
     this.title.setTitle(fullTitle);
     this.meta.updateTag({ name: 'description', content: description });

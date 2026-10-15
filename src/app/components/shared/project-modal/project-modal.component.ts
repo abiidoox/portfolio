@@ -1,9 +1,13 @@
 import { Component, HostListener, Input, Output, EventEmitter, ElementRef, AfterViewInit, NgZone, ChangeDetectionStrategy, inject, forwardRef } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 import { NgClass } from '@angular/common';
+import { slugifyKey } from '../../../data/projects.data';
 
 
 export interface ProjectModalData {
+  /** Project key (e.g. AI_CHAT); used to link into the case-study page. */
+  key?: string;
   title: string;
   description: string;
   longDescription?: string;
@@ -18,7 +22,7 @@ export interface ProjectModalData {
     selector: 'app-project-modal',
     templateUrl: './project-modal.component.html',
     changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [NgClass, forwardRef(() => ProjectModalComponent), TranslatePipe]
+    imports: [NgClass, forwardRef(() => ProjectModalComponent), TranslatePipe, RouterLink]
 })
 export class ProjectModalComponent implements AfterViewInit {
   private translate = inject(TranslateService);
@@ -73,6 +77,11 @@ export class ProjectModalComponent implements AfterViewInit {
   getCategoryLabel(): string {
     if (!this.project?.category) return '';
     return this.translate.instant('PROJECTS.CATEGORIES.' + this.project.category.toUpperCase());
+  }
+
+  /** Route into the full case-study page, when the opener passed the key. */
+  get caseStudyRoute(): string[] | null {
+    return this.project?.key ? ['/projects', slugifyKey(this.project.key)] : null;
   }
 
   categoryIcon(category: string): string {

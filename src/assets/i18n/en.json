@@ -92,53 +92,87 @@
     "AI_CHAT": {
       "TITLE": "AI Chat Assistant",
       "DESCRIPTION": "A conversational AI assistant built with FastAPI and TinyLlama",
+      "CONTEXT": "Running a private assistant normally means paying per token to a hosted API and sending every conversation through someone else's servers.",
+      "OUTCOME": "A one-command Docker deployment where the backend streams tokens as they are generated and the React client renders them live, with chat history kept on the user's own machine.",
       "LONG_DESCRIPTION": "Built a full-stack conversational AI assistant from the ground up, powered by the TinyLlama language model served through a high-performance FastAPI backend with Server-Sent Events (SSE) for real-time streaming responses. The architecture separates inference from the web layer, allowing the LLM to generate tokens incrementally while the frontend renders them as they arrive. The React.js single-page application features a modern chat interface with real-time message rendering, persistent chat history stored in local storage, full Markdown support for rich text formatting, and syntax-highlighted code blocks. Authentication and session management ensure conversation privacy. The entire stack — backend API, LLM inference service, and React frontend — is fully containerized using Docker and Docker Compose, enabling one-command deployment and horizontal scaling across environments."
     },
     "FACE_RECOGNITION": {
       "TITLE": "Smart Face Recognition System",
       "DESCRIPTION": "An IoT-based facial recognition system using ESP32-S3, Django, and React Native",
+      "CONTEXT": "Recognition demos usually stop at the model; the hard part is getting a camera feed from a microcontroller to a browser and a phone reliably.",
+      "OUTCOME": "A complete pipeline from ESP32-S3 capture to Django, SCRFD detection and ResNet embeddings, with a React Native viewer and real-time alerts when a known face appears.",
       "LONG_DESCRIPTION": "Designed and built a complete IoT-based facial recognition pipeline spanning hardware, backend, and mobile layers. An ESP32-S3 camera module captures video and streams it over RTSP to a Django backend server, where FFmpeg converts the raw stream to HLS for browser-compatible playback. On the server side, face detection is handled by SCRFD while ResNet generates high-dimensional face embeddings for identity matching against an enrolled users database stored in PostgreSQL with Redis caching for low-latency lookups. A React Native mobile application provides a live camera feed viewer, enrollment workflow with photo capture, and real-time push notifications when a recognized face is detected. The system runs on Ubuntu 22.04 with Supervisor managing all services, and uses WebSocket connections for instant status updates between the server and mobile client."
     },
     "SCHEDULE_SYSTEM": {
       "TITLE": "Schedule Management System",
       "DESCRIPTION": "A comprehensive schedule management system developed with ASP.NET and SQL Server",
+      "CONTEXT": "Timetable generation is a constraint problem: rooms, instructors and student groups overlap in ways a spreadsheet cannot police.",
+      "OUTCOME": "A drag-and-drop planner that detects conflicts across rooms, instructors and groups automatically, with iCal export and room utilization reporting.",
       "LONG_DESCRIPTION": "Developed a comprehensive schedule management system tailored for academic institutions using ASP.NET MVC with Entity Framework and SQL Server. The application solves the complex problem of timetable generation by implementing constraint-based conflict detection that automatically identifies scheduling overlaps across rooms, instructors, and student groups. Administrators can create, modify, and publish schedules through an intuitive drag-and-drop interface, while instructors receive automated email reminders for upcoming classes. Role-based access control separates permissions between administrators, instructors, and department heads, each with customized dashboard views. Calendar views can be exported to iCal format for integration with external calendar applications, and the reporting module generates utilization statistics for rooms and faculty workload analysis."
     },
     "SPAM_DETECTION": {
       "TITLE": "Email Spam Detection Model",
       "DESCRIPTION": "A machine learning model to classify emails as spam or legitimate",
+      "CONTEXT": "Classic machine learning before deep learning: the goal was to understand every stage of a text pipeline instead of hiding it behind one library call.",
+      "OUTCOME": "Two classifiers trained and compared with stratified cross-validation, ROC curves and feature importance rankings, with the best one serialized for inference.",
       "LONG_DESCRIPTION": "Built an end-to-end machine learning pipeline for email spam classification, covering every stage from raw data ingestion to model evaluation. The preprocessing pipeline handles tokenization, lowercasing, stopword removal, punctuation stripping, and lemmatization to normalize email text. Feature extraction uses TF-IDF vectorization with bigram support to capture contextual word patterns, reducing high-dimensional text into sparse numerical representations. Two classifiers — K-Nearest Neighbors and Decision Tree — were trained and evaluated using stratified k-fold cross-validation, with metrics including precision, recall, F1-score, and confusion matrix analysis. The best-performing model was serialized with pickle for inference, and the entire experiment was tracked in a Jupyter notebook with visualized ROC curves and feature importance rankings to identify the most discriminative spam indicators."
     },
     "EMPLOYMENT_PLATFORM": {
       "TITLE": "Integrated Web Platform for Job and Internship Offers",
       "DESCRIPTION": "A web platform dedicated to job and internship offers using web scraping",
+      "CONTEXT": "Job listings are fragmented across sites; the project set out to unify scraped offers into one searchable catalogue.",
+      "OUTCOME": "Spring Boot scrapers feeding a single normalized MySQL schema, an Angular search with saved alerts and Chart.js dashboards of market trends.",
       "LONG_DESCRIPTION": "Designed and developed a full-stack web platform that aggregates job and internship listings from multiple sources using automated web scraping. The Spring Boot backend employs Selenium WebDriver with headless Chrome to scrape listings from Indeed and Rekrute, applying data normalization pipelines to standardize job titles, company names, locations, and salary ranges into a unified MySQL schema. Security is handled through Spring Security with role-based authentication and JWT token management. The Angular frontend offers advanced search with multi-criteria filtering (location, contract type, experience level), saved search alerts, bookmarked listings, and a personalized recommendation engine based on user preferences and browsing history. Chart.js analytics dashboards visualize market trends, salary distributions, and application statistics to help job seekers make informed decisions."
     },
     "SCHOOL_MANAGEMENT_APP": {
       "TITLE": "School Management Application",
       "DESCRIPTION": "A complete and user-friendly school management application",
+      "CONTEXT": "Schools still run on paper: enrollment, attendance and report cards each live in a different drawer.",
+      "OUTCOME": "The full student lifecycle in one place — enrollment, attendance, weighted grading and printable report cards — with role-scoped views for staff and teachers.",
       "LONG_DESCRIPTION": "A full-featured school management web application built with ASP.NET Web Forms, HTML, CSS, JavaScript, and SQL Server, designed to digitize administrative and academic workflows for educational institutions. The platform handles the complete student lifecycle from enrollment through graduation, including registration with class assignment, daily attendance tracking with calendar views, continuous assessment and exam grade management with weighted averages, and automated report card generation with printable PDF export. Administrators access a centralized dashboard with real-time analytics showing enrollment trends, attendance rates, and academic performance distributions. Teachers have role-scoped views for managing their assigned classes, inputting grades, and recording absences. The system enforces role-based access control to ensure data privacy and operational separation between administrative staff and teaching faculty."
     },
     "SCHOOL_MANAGEMENT_APP_2": {
       "TITLE": "School Management Desktop App",
       "DESCRIPTION": "A Java Swing desktop application for managing school records",
+      "CONTEXT": "Some institutions cannot rely on the internet at all; this version was built to work offline.",
+      "OUTCOME": "A Java Swing client on MySQL with CSV import and export, print-ready report cards and a backup and restore utility.",
       "LONG_DESCRIPTION": "Developed a Java Swing desktop application for offline school management, designed for institutions without reliable internet access. The application connects to a MySQL database backend and provides a tabbed interface covering student registration with demographic profiles, daily attendance logging, continuous assessment and exam grading with configurable weight distributions, and automated report card generation. Data import and export features allow bulk operations via CSV files, enabling administrators to migrate existing records or generate summary spreadsheets. The reporting module produces print-ready PDF report cards with school branding, configurable grading scales, and class ranking calculations. Built with the MVC pattern for maintainability, the application includes input validation, error handling, and a data backup/restore utility to protect against data loss."
     },
     "OPTICIAN_ORDER_STOCK": {
       "TITLE": "Order and Stock Management Application for Opticians",
       "DESCRIPTION": "Software for managing orders and inventory in an optical store",
+      "CONTEXT": "An optician's counter mixes prescriptions, stock and supplier orders; the shop needed software that follows the real retail workflow.",
+      "OUTCOME": "Inventory with barcode scanning, purchase orders, prescription records with expiry monitoring, a point of sale with receipt printing and low-stock alerts.",
       "LONG_DESCRIPTION": "Built a comprehensive desktop application for optical store management using C# with Windows Forms and T-SQL stored procedures on Microsoft SQL Server. The system manages the complete retail operations workflow: inventory tracking with real-time stock levels and barcode scanning, supplier order placement with purchase order generation and delivery tracking, customer prescription records with lens specifications and expiry monitoring, point-of-sale transactions with receipt printing and payment processing, and automated low-stock alerts triggered by configurable threshold rules. The reporting module generates exportable Excel and PDF reports covering sales performance, inventory valuation, supplier lead times, and customer prescription analytics. Role-based access separates cashier, optician, and manager permissions, with audit logging tracking all critical operations."
     },
     "COMPANY_DOMICILIATION": {
       "TITLE": "Company Domiciliation Management Platform",
       "DESCRIPTION": "Web platform for complete management of company domiciliation",
+      "CONTEXT": "Companies often need a legal address without renting an office, and the provider has to manage subscriptions, renewals and paperwork at scale.",
+      "OUTCOME": "Online subscription and payment, a client dashboard for renewals, contract management with DocuSign signatures and multi-channel reminders, on a Spring Boot and Angular stack.",
       "LONG_DESCRIPTION": "A full-stack web platform for managing company domiciliation services, enabling businesses to establish legal addresses and receive administrative support without maintaining a physical office. Built with Spring Boot on the backend and Angular on the frontend, the platform features online subscription workflows with plan selection and payment integration, a comprehensive client dashboard showing active services and upcoming renewals, contract and document management with digital signature capabilities using DocuSign API integration, and a multi-channel notification system (email, SMS, in-app) for service updates and deadline reminders. Security is enforced through Spring Security with JWT authentication, role-based access control separating client, agent, and admin permissions, and MySQL backing all transactional data with full audit trail logging."
+    },
+    "CASE_STUDY": {
+      "BACK": "All projects",
+      "CONTEXT_TITLE": "Context",
+      "BUILD_TITLE": "What I built",
+      "OUTCOME_TITLE": "Outcome",
+      "STACK_TITLE": "Stack",
+      "PREVIOUS": "Previous",
+      "NEXT": "Next",
+      "SEO_SUFFIX": "Case study",
+      "META_YEAR": "Year",
+      "META_CATEGORY": "Category",
+      "CTA_TITLE": "Building something similar?",
+      "CTA_TEXT": "If this kind of work is what you need, the contact page is the next step.",
+      "CTA_BUTTON": "Get in touch"
     },
     "PORTFOLIO_LABEL": "Portfolio",
     "FEATURED": "Featured",
     "NO_RESULTS": "No projects in this category.",
     "FILTER_TECH": "Technology: {{tech}}",
     "CLEAR_FILTER": "Clear filter",
+    "VIEW_CASE_STUDY": "Read the case study",
     "META_DESCRIPTION": "Projects portfolio of Abderrazzaq El Abdouni featuring web applications, mobile apps, AI systems, IoT solutions, and desktop software.",
     "OG_DESCRIPTION": "View detailed projects by Abderrazzaq El Abdouni including AI chat assistants, face recognition systems, schedule management, and more.",
     "GITHUB_PROFILE": "GitHub profile"

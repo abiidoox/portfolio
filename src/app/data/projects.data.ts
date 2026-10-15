@@ -26,6 +26,39 @@ export interface Project {
 
 const GITHUB = 'https://github.com/abiidoox';
 
+/** URL slug for a project key: 'AI_CHAT' -> 'ai-chat'. */
+export function slugifyKey(key: string): string {
+  return key.toLowerCase().replace(/_/g, '-');
+}
+
+/** The route segment for a project's case study: /projects/<slug>. */
+export function projectSlug(project: Project): string {
+  return slugifyKey(project.key);
+}
+
+export function findProjectBySlug(slug: string): Project | undefined {
+  const needle = slug.toLowerCase();
+  return PROJECTS.find(p => projectSlug(p) === needle);
+}
+
+export function adjacentProjects(key: string): { prev?: Project; next?: Project } {
+  const index = PROJECTS_BY_DATE.findIndex(p => p.key === key);
+  if (index === -1) return {};
+  return {
+    prev: index > 0 ? PROJECTS_BY_DATE[index - 1] : undefined,
+    next: index < PROJECTS_BY_DATE.length - 1 ? PROJECTS_BY_DATE[index + 1] : undefined
+  };
+}
+
+/** Case-study section keys, derived from the title key so they cannot drift. */
+export function contextKeyFor(project: Project): string {
+  return project.titleKey.replace(/\.TITLE$/, '.CONTEXT');
+}
+
+export function outcomeKeyFor(project: Project): string {
+  return project.titleKey.replace(/\.TITLE$/, '.OUTCOME');
+}
+
 export const PROJECTS: Project[] = [
   {
     key: 'AI_CHAT',
@@ -144,3 +177,8 @@ export const PROJECTS: Project[] = [
     date: '2021'
   }
 ];
+
+/** The same order the projects grid uses: newest first. */
+export const PROJECTS_BY_DATE: Project[] = PROJECTS
+  .slice()
+  .sort((a, b) => Number(b.date) - Number(a.date));

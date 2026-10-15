@@ -85,10 +85,12 @@
           <!-- Body -->
           <div class="flex flex-1 flex-col p-6 sm:p-7">
             <div class="flex items-start justify-between gap-3">
-            <h2 class="font-display text-xl font-semibold leading-snug text-balance
-                       transition-colors duration-300 group-hover:text-white">
+            <h2 class="font-display text-xl font-semibold leading-snug text-balance">
+              <a [routerLink]="['/projects', p.slug]"
+                 class="transition-colors duration-300 group-hover:text-white focus-visible:text-white">
                 {{ p.title }}
-              </h2>
+              </a>
+            </h2>
               @if (p.featured) {
                 <span
                   class="shrink-0 rounded-full border border-signal/30 bg-signal/10 px-2.5 py-1

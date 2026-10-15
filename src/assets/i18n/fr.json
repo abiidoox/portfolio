@@ -92,53 +92,87 @@
     "AI_CHAT": {
       "TITLE": "Assistant IA Conversationnel",
       "DESCRIPTION": "Un assistant IA conversationnel construit avec FastAPI et TinyLlama",
+      "CONTEXT": "Faire tourner un assistant privé implique généralement de payer à l'usage une API hébergée et d'envoyer ses conversations sur des serveurs tiers.",
+      "OUTCOME": "Un déploiement Docker en une commande : le backend diffuse les tokens au fil de leur génération et le client React les affiche en direct, l'historique restant sur la machine de l'utilisateur.",
       "LONG_DESCRIPTION": "Construit un assistant conversationnel IA full-stack de A à Z, propulsé par le modèle de langage TinyLlama servi via un backend haute performance FastAPI avec Server-Sent Events (SSE) pour le streaming temps réel des réponses. L'architecture sépare l'inférence du web, permettant au LLM de générer les tokens de manière incrémentale tandis que le frontend les rend au fur et à mesure. L'application React.js single-page propose une interface de chat moderne avec rendu en temps réel, historique des conversations persistant stocké en local storage, support Markdown complet pour le formatage riche et blocs de code avec syntaxe colorisée. L'authentification et la gestion des sessions garantissent la confidentialité des échanges. L'ensemble de la pile — API backend, service d'inférence LLM et frontend React — est entièrement conteneurisé avec Docker et Docker Compose, permettant un déploiement en une commande et un scaling horizontal."
     },
     "FACE_RECOGNITION": {
       "TITLE": "Système Intelligent de Reconnaissance Faciale",
       "DESCRIPTION": "Un système de reconnaissance faciale basé sur l’IoT utilisant ESP32-S3, Django et React Native",
+      "CONTEXT": "Les démos de reconnaissance s'arrêtent souvent au modèle ; le vrai défi est d'acheminer un flux caméra d'un microcontrôleur vers un navigateur et un téléphone, de façon fiable.",
+      "OUTCOME": "Une chaîne complète, de la capture ESP32-S3 au backend Django avec détection SCRFD et embeddings ResNet, plus un client React Native et des alertes en temps réel.",
       "LONG_DESCRIPTION": "Conception et développement d'un pipeline complet de reconnaissance faciale IoT couvrant le matériel, le backend et le mobile. Un module caméra ESP32-S3 capture la vidéo et la diffuse via RTSP vers un serveur backend Django, où FFmpeg convertit le flux brut en HLS pour une lecture compatible navigateur. Côté serveur, la détection faciale est gérée par SCRFD tandis que ResNet génère des embeddings faciaux de haute dimension pour la correspondance d'identité contre une base de données d'utilisateurs enregistrés stockée dans PostgreSQL avec mise en cache Redis pour des recherches à faible latence. L'application mobile React Native fournit un visualiseur de flux caméra en direct, un workflow d'inscription avec capture photo et des notifications push en temps réel lorsqu'un visage reconnu est détecté. Le système tourne sur Ubuntu 22.04 avec Supervisor gérant tous les services, et utilise des connexions WebSocket pour les mises à jour instantanées entre le serveur et le client mobile."
     },
     "SCHEDULE_SYSTEM": {
       "TITLE": "Système de Gestion des Emplois du Temps",
       "DESCRIPTION": "Un système complet de gestion des emplois du temps développé avec ASP.NET et SQL Server",
+      "CONTEXT": "La génération d'emplois du temps est un problème de contraintes : salles, enseignants et groupes se chevauchent d'une façon qu'un tableur ne peut pas surveiller.",
+      "OUTCOME": "Un planificateur en glisser-déposer avec détection automatique des conflits entre salles, enseignants et groupes, export iCal et rapports d'utilisation.",
       "LONG_DESCRIPTION": "Développement d'un système de gestion des emplois du temps complet pour les institutions académiques avec ASP.NET MVC, Entity Framework et SQL Server. L'application résout le problème complexe de la génération d'emplois du temps en implémentant une détection de conflits basée sur des contraintes identifiant automatiquement les chevauchements entre salles, enseignants et groupes d'étudiants. Les administrateurs peuvent créer, modifier et publier les plannings via une interface intuitive glisser-déposer, tandis que les enseignants reçoivent des rappels automatiques par email pour les cours à venir. Le contrôle d'accès basé sur les rôles sépare les permissions entre administrateurs, enseignants et chefs de département, chacun avec des vues de tableau de bord personnalisées. Les vues calendrier peuvent être exportées au format iCal pour l'intégration avec des applications calendrier externes, et le module de reporting génère des statistiques d'utilisation des salles et d'analyse de la charge enseignante."
     },
     "SPAM_DETECTION": {
       "TITLE": "Modèle de Détection de Spam par E-mail",
       "DESCRIPTION": "Un modèle d’apprentissage automatique pour classer les e-mails comme spam ou légitimes",
+      "CONTEXT": "Du machine learning classique avant le deep learning : l'objectif était de comprendre chaque étape d'un pipeline de texte plutôt que de la masquer derrière un appel de bibliothèque.",
+      "OUTCOME": "Deux classifieurs entraînés et comparés en validation croisée stratifiée, courbes ROC et importance des variables à l'appui, le meilleur sérialisé pour l'inférence.",
       "LONG_DESCRIPTION": "Construction d'un pipeline de machine learning de bout en bout pour la classification de courriels en spam ou légitimes, couvrant chaque étape de l'ingestion des données brutes à l'évaluation du modèle. Le pipeline de prétraitement gère la tokenisation, la conversion en minuscules, la suppression des mots vides, la ponctuation et la lemmatisation pour normaliser le texte. L'extraction de caractéristiques utilise la vectorisation TF-IDF avec support bigramme pour capturer les patterns contextuels de mots, réduisant le texte haute dimension en représentations numériques creuses. Deux classificateurs — K-Plus Proches Voisins et Arbre de Décision — ont été entraînés et évalués avec validation croisée stratifiée k-fold, avec des métriques incluant précision, rappel, F1-score et analyse de matrice de confusion. Le meilleur modèle a été sérialisé avec pickle pour l'inférence, et l'expérience complète suivie dans un notebook Jupyter avec courbes ROC et classement de l'importance des caractéristiques."
     },
     "EMPLOYMENT_PLATFORM": {
       "TITLE": "Plateforme Web Intégrée d’Offres d’Emploi et de Stages",
       "DESCRIPTION": "Une plateforme web dédiée aux offres d’emploi et de stages utilisant le web scraping",
+      "CONTEXT": "Les offres d'emploi sont fragmentées entre les sites ; le projet visait à réunir les annonces collectées dans un seul catalogue consultable.",
+      "OUTCOME": "Des scrapers Spring Boot alimentant un schéma MySQL unifié, une recherche Angular avec alertes sauvegardées et des tableaux de bord Chart.js sur les tendances du marché.",
       "LONG_DESCRIPTION": "Conception et développement d'une plateforme web full-stack agrégant des offres d'emploi et de stage à partir de multiples sources via le web scraping automatisé. Le backend Spring Boot utilise Selenium WebDriver avec Chrome headless pour scraper les annonces d'Indeed et Rekrute, appliquant des pipelines de normalisation pour standardiser les titres d'emploi, noms d'entreprises, localisations et fourchettes salariales dans un schéma MySQL unifié. La sécurité est gérée par Spring Security avec authentification basée sur les rôles et gestion de tokens JWT. Le frontend Angular offre une recherche avancée avec filtrage multi-critères (localisation, type de contrat, niveau d'expérience), des alertes de recherche sauvegardées, des annonces en favoris et un moteur de recommandation personnalisé basé sur les préférences et l'historique de navigation. Les tableaux de bord analytiques Chart.js visualisent les tendances du marché, les distributions salariales et les statistiques de candidature."
     },
     "SCHOOL_MANAGEMENT_APP": {
       "TITLE": "Application de Gestion Scolaire",
       "DESCRIPTION": "Une application de gestion scolaire complète et conviviale",
+      "CONTEXT": "L'école tournait encore au papier : inscriptions, présences et bulletins vivaient chacun dans un tiroir différent.",
+      "OUTCOME": "Tout le cycle de vie de l'élève au même endroit — inscription, présences, notes pondérées et bulletins imprimables — avec des vues par rôle pour l'administration et les enseignants.",
       "LONG_DESCRIPTION": "Application web complète de gestion scolaire construite avec ASP.NET Web Forms, HTML, CSS, JavaScript et SQL Server, conçue pour numériser les workflows administratifs et académiques des institutions éducatives. La plateforme gère le cycle de vie complet de l'élève de l'inscription à la sortie, incluant l'enregistrement avec affectation de classe, le suivi des présences quotidiennes avec vues calendrier, la gestion continue des évaluations et notes d'examens avec moyennes pondérées, et la génération automatique de bulletins avec export PDF imprimable. Les administrateurs accèdent à un tableau de bord centralisé avec analyses en temps réel montrant les tendances d'inscription, les taux de présence et les distributions de performance académique. Les enseignants disposent de vues scoped par rôle pour gérer leurs classes, saisir les notes et enregistrer les absences. Le système applique un contrôle d'accès basé sur les rôles pour garantir la confidentialité des données."
     },
     "SCHOOL_MANAGEMENT_APP_2": {
       "TITLE": "Application de Bureau de Gestion Scolaire",
       "DESCRIPTION": "Une application de bureau Java Swing pour la gestion des dossiers scolaires",
+      "CONTEXT": "Certains établissements ne peuvent pas dépendre d'une connexion internet ; cette version a été conçue pour fonctionner hors ligne.",
+      "OUTCOME": "Un client Java Swing sur MySQL avec import et export CSV, bulletins prêts à imprimer et utilitaire de sauvegarde et restauration.",
       "LONG_DESCRIPTION": "Développement d'une application de bureau Java Swing pour la gestion scolaire hors ligne, conçue pour les institutions sans accès internet fiable. L'application se connecte à une base MySQL et propose une interface à onglets couvrant l'enregistrement des élèves avec profils démographiques, la saisie journalière des présences, la notation continue et les examens avec distributions de pondération configurables, et la génération automatique de bulletins. Les fonctionnalités d'import/export permettent des opérations en masse via fichiers CSV. Le module de reporting produit des bulletins PDF imprimables avec identité visuelle de l'école, barèmes configurables et calculs de classement. Construite avec le pattern MVC pour la maintenabilité, l'application inclut validation des données, gestion des erreurs et un utilitaire de sauvegarde/restauration."
     },
     "OPTICIAN_ORDER_STOCK": {
       "TITLE": "Application de Gestion des Commandes et du Stock pour Opticiens",
       "DESCRIPTION": "Logiciel de gestion des commandes et de l’inventaire d’un magasin d’optique",
+      "CONTEXT": "Le comptoir d'un opticien mélange ordonnances, stock et commandes fournisseurs ; la boutique avait besoin d'un logiciel qui suive le vrai flux de travail.",
+      "OUTCOME": "Gestion de stock avec code-barres, commandes fournisseurs, dossiers de prescription avec suivi d'expiration, caisse avec impression de reçus et alertes de stock bas.",
       "LONG_DESCRIPTION": "Développement d'une application de bureau complète pour la gestion de magasin d'optique avec C# Windows Forms et procédures stockées T-SQL sur Microsoft SQL Server. Le système gère le workflow complet des opérations de vente au détail : suivi des stocks en temps réel avec niveaux de stock et lecture de codes-barres, placement de commandes fournisseurs avec génération de bons de commande et suivi des livrables, dossiers de prescriptions clients avec spécifications de lentilles et surveillance des dates d'expiration, transactions point de vente avec impression de reçus et traitement des paiements, et alertes automatiques de stock bas déclenchées par des règles de seuil configurables. Le module de reporting génère des rapports Excel et PDF exportables couvrant performance commerciale, valorisation des stocks, délais de livraison fournisseurs et analyses de prescriptions clients."
     },
     "COMPANY_DOMICILIATION": {
       "TITLE": "Plateforme de Gestion de Domiciliation d’Entreprises",
       "DESCRIPTION": "Plateforme web pour la gestion complète de la domiciliation d’entreprises",
+      "CONTEXT": "Les entreprises ont souvent besoin d'une adresse légale sans louer de bureau, et le prestataire doit gérer abonnements, renouvellements et documents à grande échelle.",
+      "OUTCOME": "Souscription et paiement en ligne, tableau de bord client des renouvellements, gestion contractuelle avec signature DocuSign et rappels multicanal, sur une stack Spring Boot et Angular.",
       "LONG_DESCRIPTION": "Plateforme web full-stack pour la gestion des services de domiciliation d'entreprises, permettant aux sociétés d'établir des adresses légales et de recevoir un support administratif sans maintenir un bureau physique. Construite avec Spring Boot en backend et Angular en frontend, la plateforme comprend des workflows d'abonnement en ligne avec sélection de plans et intégration de paiement, un tableau de bord client complet affichant les services actifs et les prochaines rénovations, la gestion de contrats et documents avec capacités de signature numérique via intégration DocuSign API, et un système de notification multi-canal (email, SMS, in-app) pour les mises à jour de services et rappels d'échéances. La sécurité est assurée par Spring Security avec authentification JWT, contrôle d'accès par rôles séparant les permissions client/agent/admin, et MySQL soutenant toutes les données transactionnelles avec journalisation complète d'audit."
+    },
+    "CASE_STUDY": {
+      "BACK": "Tous les projets",
+      "CONTEXT_TITLE": "Contexte",
+      "BUILD_TITLE": "Ce que j'ai construit",
+      "OUTCOME_TITLE": "Résultat",
+      "STACK_TITLE": "Stack technique",
+      "PREVIOUS": "Précédent",
+      "NEXT": "Suivant",
+      "SEO_SUFFIX": "Étude de cas",
+      "META_YEAR": "Année",
+      "META_CATEGORY": "Catégorie",
+      "CTA_TITLE": "Un projet similaire en tête ?",
+      "CTA_TEXT": "Si ce travail correspond à ce dont vous avez besoin, la page contact est l'étape suivante.",
+      "CTA_BUTTON": "Me contacter"
     },
     "PORTFOLIO_LABEL": "Portfolio",
     "FEATURED": "À la une",
     "NO_RESULTS": "Aucun projet dans cette catégorie.",
     "FILTER_TECH": "Technologie : {{tech}}",
     "CLEAR_FILTER": "Effacer le filtre",
+    "VIEW_CASE_STUDY": "Lire l'étude de cas",
     "META_DESCRIPTION": "Portfolio de projets d'Abderrazzaq El Abdouni présentant des applications web, des applications mobiles, des systèmes d'IA, des solutions IoT et des logiciels de bureau.",
     "OG_DESCRIPTION": "Consultez les projets détaillés d'Abderrazzaq El Abdouni incluant des assistants IA chat, des systèmes de reconnaissance faciale, des systèmes de gestion de planning, et plus encore.",
     "GITHUB_PROFILE": "Profil GitHub"

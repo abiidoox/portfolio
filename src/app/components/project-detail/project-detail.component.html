@@ -1,0 +1,152 @@
+<section class="lab-section pt-10 sm:pt-14">
+  <div class="lab-shell">
+    @if (view(); as v) {
+
+      <!-- Breadcrumb -->
+      <nav appScrollReveal data-reveal-direction="up">
+        <a routerLink="/projects"
+           class="inline-flex items-center gap-2 font-mono text-[0.68rem] uppercase tracking-[0.18em]
+                  text-slate-500 transition-colors duration-200 hover:text-signal">
+          <i class="fas fa-arrow-left text-[0.7rem]"></i>
+          <span>{{ 'PROJECTS.CASE_STUDY.BACK' | translate }}</span>
+        </a>
+      </nav>
+
+      <!-- Header -->
+      <header class="mt-7 max-w-3xl">
+        <div class="flex flex-wrap items-center gap-3"
+             appScrollReveal data-reveal-direction="up" data-delay="80">
+          <span class="rounded-full border border-white/12 bg-white/[0.04] px-3 py-1
+                       font-mono text-[0.62rem] uppercase tracking-[0.14em] text-slate-300">
+            {{ 'PROJECTS.CATEGORIES.' + v.category.toUpperCase() | translate }}
+          </span>
+          <span class="font-mono text-[0.68rem] text-slate-500">{{ v.date }}</span>
+          @if (v.featured) {
+            <span class="rounded-full border border-signal/30 bg-signal/10 px-2.5 py-1
+                         font-mono text-[0.6rem] uppercase tracking-[0.12em] text-signal-soft">
+              {{ 'PROJECTS.FEATURED' | translate }}
+            </span>
+          }
+        </div>
+
+        <h1 class="lab-title mt-5" appScrollReveal data-reveal-direction="up" data-delay="140">
+          <span class="lab-gradient-text">{{ v.title }}</span>
+        </h1>
+        <p class="lab-lead mt-5 text-pretty" appScrollReveal data-reveal-direction="up" data-delay="200">
+          {{ v.description }}
+        </p>
+      </header>
+
+      <!-- Body -->
+      <div class="mt-14 grid gap-10 lg:grid-cols-[minmax(0,1fr)_290px]">
+
+        <!-- Narrative -->
+        <div class="min-w-0 space-y-12">
+          <section appScrollReveal data-reveal-direction="up">
+            <h2 class="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-slate-500">
+              {{ 'PROJECTS.CASE_STUDY.CONTEXT_TITLE' | translate }}
+            </h2>
+            <p class="mt-4 text-[0.95rem] leading-relaxed text-slate-300 text-pretty">{{ v.context }}</p>
+          </section>
+
+          <section appScrollReveal data-reveal-direction="up">
+            <h2 class="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-slate-500">
+              {{ 'PROJECTS.CASE_STUDY.BUILD_TITLE' | translate }}
+            </h2>
+            <p class="mt-4 text-[0.95rem] leading-relaxed text-slate-400 text-pretty">{{ v.longDescription }}</p>
+          </section>
+
+          <section appScrollReveal data-reveal-direction="up">
+            <h2 class="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-slate-500">
+              {{ 'PROJECTS.CASE_STUDY.OUTCOME_TITLE' | translate }}
+            </h2>
+            <p class="mt-4 text-[0.95rem] leading-relaxed text-slate-300 text-pretty">{{ v.outcome }}</p>
+          </section>
+        </div>
+
+        <!-- Rail -->
+        <aside class="min-w-0 space-y-6 lg:sticky lg:top-24 lg:self-start">
+
+          <!-- Stack; each chip leads back to the filtered project grid. -->
+          <div class="lab-panel rounded-3xl p-6">
+            <h2 class="mb-4 font-mono text-[0.66rem] uppercase tracking-[0.2em] text-slate-500">
+              {{ 'PROJECTS.CASE_STUDY.STACK_TITLE' | translate }}
+            </h2>
+            <div class="flex flex-wrap gap-2">
+              @for (tech of v.technologies; track tech) {
+                <a [routerLink]="['/projects']" [queryParams]="{ tech: tech }"
+                   class="lab-tag transition-colors duration-200 hover:border-signal/50 hover:text-signal">
+                  {{ tech }}
+                </a>
+              }
+            </div>
+          </div>
+
+          <!-- External links -->
+          @if (v.links?.length) {
+            <div class="lab-panel rounded-3xl p-6">
+              <div class="flex flex-col gap-3">
+                @for (link of v.links; track link) {
+                  <a [href]="link.url" target="_blank" rel="noopener noreferrer"
+                     class="lab-btn lab-btn-ghost !px-5 !py-2.5 !text-[0.82rem]">
+                    <i [class]="link.icon"></i>
+                    <span>{{ link.labelKey | translate }}</span>
+                    <i class="fas fa-arrow-up-right-from-square text-[0.65rem] opacity-60"></i>
+                  </a>
+                }
+              </div>
+            </div>
+          }
+
+          <!-- Previous / next -->
+          @if (v.prev || v.next) {
+            <nav class="lab-panel overflow-hidden rounded-3xl">
+              @if (v.prev) {
+                <a [routerLink]="['/projects', v.prev.slug]"
+                   class="group block px-6 py-5 transition-colors duration-200 hover:bg-white/[0.04]">
+                  <span class="font-mono text-[0.62rem] uppercase tracking-[0.18em] text-slate-500">
+                    <i class="fas fa-arrow-left mr-1.5 text-[0.65rem]"></i>{{ 'PROJECTS.CASE_STUDY.PREVIOUS' | translate }}
+                  </span>
+                  <span class="mt-1.5 block font-display text-sm font-medium text-slate-200
+                               transition-colors duration-200 group-hover:text-signal">
+                    {{ v.prev.title }}
+                  </span>
+                </a>
+              }
+              @if (v.prev && v.next) {
+                <div class="border-t border-white/[0.06]"></div>
+              }
+              @if (v.next) {
+                <a [routerLink]="['/projects', v.next.slug]"
+                   class="group block px-6 py-5 text-right transition-colors duration-200 hover:bg-white/[0.04]">
+                  <span class="font-mono text-[0.62rem] uppercase tracking-[0.18em] text-slate-500">
+                    {{ 'PROJECTS.CASE_STUDY.NEXT' | translate }}<i class="fas fa-arrow-right ml-1.5 text-[0.65rem]"></i>
+                  </span>
+                  <span class="mt-1.5 block font-display text-sm font-medium text-slate-200
+                               transition-colors duration-200 group-hover:text-signal">
+                    {{ v.next.title }}
+                  </span>
+                </a>
+              }
+            </nav>
+          }
+        </aside>
+      </div>
+
+      <!-- CTA -->
+      <div class="lab-panel mt-16 rounded-3xl p-8 text-center sm:p-10"
+           appScrollReveal data-reveal-direction="up">
+        <h2 class="font-display text-display-sm font-semibold">
+          {{ 'PROJECTS.CASE_STUDY.CTA_TITLE' | translate }}
+        </h2>
+        <p class="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-slate-400 text-pretty">
+          {{ 'PROJECTS.CASE_STUDY.CTA_TEXT' | translate }}
+        </p>
+        <a routerLink="/contact" class="lab-btn lab-btn-primary mt-7">
+          <i class="fas fa-paper-plane text-xs"></i>
+          <span>{{ 'PROJECTS.CASE_STUDY.CTA_BUTTON' | translate }}</span>
+        </a>
+      </div>
+    }
+  </div>
+</section>

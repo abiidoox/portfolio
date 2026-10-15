@@ -1,14 +1,15 @@
 import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, inject } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 import { ProjectModalService } from '../../services/project-modal.service';
-import { PROJECTS, Project } from '../../data/projects.data';
+import { PROJECTS, Project, projectSlug } from '../../data/projects.data';
 import { Subscription, forkJoin } from 'rxjs';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
 import { NgClass } from '@angular/common';
 
 interface DisplayProject {
   key: string;
+  slug: string;
   title: string;
   description: string;
   longDescription: string;
@@ -23,7 +24,7 @@ interface DisplayProject {
     selector: 'app-projects',
     templateUrl: './projects.component.html',
     changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [ScrollRevealDirective, NgClass, TranslatePipe]
+    imports: [ScrollRevealDirective, NgClass, TranslatePipe, RouterLink]
 })
 export class ProjectsComponent implements OnInit, OnDestroy {
   private translate = inject(TranslateService);
@@ -61,6 +62,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
       .sort((a, b) => Number(b.date) - Number(a.date))
       .map(p => ({
         key: p.key,
+        slug: projectSlug(p),
         title: p.fallbackTitle,
         description: p.fallbackDescription,
         longDescription: '',

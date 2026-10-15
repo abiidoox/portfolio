@@ -38,6 +38,19 @@ export const routes: Routes = [
     }
   },
   {
+    // Runtime copy is published via SeoService.setOverride by the component.
+    path: 'projects/:key',
+    loadComponent: () => import('./components/project-detail/project-detail.component').then(m => m.ProjectDetailComponent),
+    data: {
+      animation: 'projects',
+      title: 'PROJECTS.TITLE',
+      meta: [
+        { name: 'description', content: 'PROJECTS.META_DESCRIPTION' },
+        { property: 'og:description', content: 'PROJECTS.OG_DESCRIPTION' }
+      ]
+    }
+  },
+  {
     path: 'resume',
     loadComponent: () => import('./components/resume/resume.component').then(m => m.ResumeComponent),
     data: {
