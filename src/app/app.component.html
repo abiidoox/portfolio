@@ -1,8 +1,8 @@
 <a href="#main-content" class="skip-link">{{ 'NAV.SKIP_TO_CONTENT' | translate }}</a>
 
-<app-terminal-intro></app-terminal-intro>
-<app-scroll-progress></app-scroll-progress>
-<app-toast-container></app-toast-container>
+<app-terminal-intro />
+<app-scroll-progress />
+<app-toast-container />
 
 <!-- Ambient laboratory backdrop: grid, glow, noise. Fixed + aria-hidden. -->
 <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden" aria-hidden="true">
@@ -20,25 +20,23 @@
   <div class="lab-noise absolute inset-0 opacity-[0.035]"></div>
 </div>
 
-<app-particles-background></app-particles-background>
+<app-particles-background />
 <div class="mouse-glow" aria-hidden="true"></div>
 
 <div class="relative flex min-h-screen flex-col">
-  <app-header></app-header>
+  <app-header />
 
   <main id="main-content" tabindex="-1" class="flex-1 pb-24">
     <div [@routeAnimations]="prepareRoute(o)">
-      <router-outlet #o="outlet"></router-outlet>
+      <router-outlet #o="outlet" />
     </div>
   </main>
 
-  <app-footer></app-footer>
-  <app-back-to-top></app-back-to-top>
+  <app-footer />
+  <app-back-to-top />
 </div>
 
 @if (modalProject) {
-  <app-project-modal
-    [project]="modalProject"
-    (closeRequest)="closeModal()">
-  </app-project-modal>
+  <app-project-modal [project]="modalProject"
+    (closeRequest)="closeModal()" />
 }
