@@ -56,7 +56,11 @@ export class LanguageSwitcherComponent implements OnInit, OnDestroy {
   }
 
   toggleDropdown(): void {
-    this.isDropdownOpen ? this.closeDropdown() : this.openDropdown();
+    if (this.isDropdownOpen) {
+      this.closeDropdown();
+    } else {
+      this.openDropdown();
+    }
   }
 
   openDropdown(): void {

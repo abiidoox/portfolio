@@ -5,7 +5,7 @@ import { TranslateService, TranslatePipe } from '@ngx-translate/core';
     selector: 'app-terminal-intro',
     template: `
     @if (!removed) {
-    <div class="terminal-intro" [class.done]="done" (click)="skip()">
+    <div class="terminal-intro" [class.done]="done" aria-hidden="true" (click)="skip()">
       <div class="terminal-window">
         <div class="terminal-header">
           <div class="terminal-dots">
@@ -133,7 +133,7 @@ export class TerminalIntroComponent implements OnInit, OnDestroy {
   /** Decorative overlay: hidden from assistive tech at the host level. */
   @HostBinding('attr.aria-hidden') readonly ariaHidden = 'true';
 
-  visibleLines: Array<{ text: string; success: boolean }> = [];
+  visibleLines: { text: string; success: boolean }[] = [];
   progress = 0;
   done = false;
   /** Set once the exit transition has played; removes the overlay from the DOM. */

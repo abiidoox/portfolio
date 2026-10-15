@@ -47,7 +47,7 @@ export class SeoService {
   }
 
   private metaContent(data: Data, field: 'name' | 'property', value: string): string {
-    const entries = (data['meta'] ?? []) as Array<{ name?: string; property?: string; content: string }>;
+    const entries = (data['meta'] ?? []) as { name?: string; property?: string; content: string }[];
     const match = entries.find(e => e[field] === value);
     return this.text(match?.content);
   }

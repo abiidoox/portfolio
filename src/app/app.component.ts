@@ -95,7 +95,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   private cycleLanguage(): void {
-    const order: Array<'en' | 'fr' | 'es'> = ['en', 'fr', 'es'];
+    const order: ('en' | 'fr' | 'es')[] = ['en', 'fr', 'es'];
     const current = this.languageService.getCurrentLanguage();
     const next = order[(order.indexOf(current) + 1) % order.length];
     this.languageService.setLanguage(next);

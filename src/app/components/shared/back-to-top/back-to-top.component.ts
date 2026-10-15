@@ -83,8 +83,6 @@ export class BackToTopComponent implements OnInit {
   visible = false;
   progress = 94;
 
-  constructor() {}
-
   ngOnInit(): void {
     if (!isPlatformBrowser(this.platformId)) return;
     this.update();
