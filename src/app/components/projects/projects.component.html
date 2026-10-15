@@ -31,7 +31,7 @@
 
     <!-- Project grid -->
     <div class="grid gap-6 lg:grid-cols-2">
-      @for (p of filteredProjects; track p; let i = $index) {
+      @for (p of filteredProjects; track p.key; let i = $index) {
         <article
           appScrollReveal data-reveal-direction="up" [attr.data-delay]="(i % 2) * 120"
         class="lab-panel lab-glow-hover group relative flex flex-col overflow-hidden rounded-3xl

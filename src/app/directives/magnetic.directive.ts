@@ -28,6 +28,7 @@ export class MagneticDirective implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
     cancelAnimationFrame(this.rafId);
   }
 
