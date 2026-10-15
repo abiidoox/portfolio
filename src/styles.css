@@ -207,13 +207,16 @@ body.light-theme .bg-white\/\[0\.06\] { background-color: rgba(15, 23, 42, 0.04)
       transparent 62%
     );
   }
-  .lab-glow-hover:hover::after { opacity: 1; }
+  @media (hover: hover) and (pointer: fine) {
+    .lab-glow-hover:hover::after { opacity: 1; }
+  }
 
   /* Primary CTA */
   .lab-btn {
     @apply relative inline-flex select-none items-center justify-center gap-2.5
            overflow-hidden rounded-full px-6 py-3.5 font-display text-sm font-semibold
-           transition-all duration-300 ease-smooth will-change-transform;
+           transition-[transform,color,background-color,border-color,box-shadow]
+           duration-300 ease-smooth will-change-transform;
   }
   .lab-btn:focus-visible { outline-offset: 4px; }
   .lab-btn:active { transform: scale(0.97); }
@@ -228,8 +231,10 @@ body.light-theme .bg-white\/\[0\.06\] { background-color: rgba(15, 23, 42, 0.04)
     background: linear-gradient(100deg, transparent 20%, rgba(255, 255, 255, 0.32) 50%, transparent 80%);
     transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .lab-btn-primary:hover::before { @apply translate-x-full; }
-  .lab-btn-primary:hover { @apply -translate-y-0.5; }
+  @media (hover: hover) {
+    .lab-btn-primary:hover::before { @apply translate-x-full; }
+    .lab-btn-primary:hover { @apply -translate-y-0.5; }
+  }
 
   .lab-btn-ghost {
     border: 1px solid var(--lab-line-strong);
@@ -237,9 +242,11 @@ body.light-theme .bg-white\/\[0\.06\] { background-color: rgba(15, 23, 42, 0.04)
     color: var(--lab-text);
   }
   body.light-theme .lab-btn-ghost { @apply text-ink-900; }
-  .lab-btn-ghost:hover {
-    @apply -translate-y-0.5 border-signal/60 text-signal;
-    background-color: rgba(255, 94, 58, 0.09);
+  @media (hover: hover) {
+    .lab-btn-ghost:hover {
+      @apply -translate-y-0.5 border-signal/60 text-signal;
+      background-color: rgba(255, 94, 58, 0.09);
+    }
   }
 
   /* Light theme needs its own accent ramp. The neon set is tuned for ink
@@ -282,11 +289,14 @@ body.light-theme .bg-white\/\[0\.06\] { background-color: rgba(15, 23, 42, 0.04)
     border-color: var(--lab-line);
     color: var(--lab-muted);
   }
-  .lab-tag:hover {
-    border-color: rgba(255, 94, 58, 0.5);
-    color: var(--signal);
-    background-color: rgba(255, 94, 58, 0.08);
+  @media (hover: hover) {
+    .lab-tag:hover {
+      border-color: rgba(255, 94, 58, 0.5);
+      color: var(--signal);
+      background-color: rgba(255, 94, 58, 0.08);
+    }
   }
+  .lab-tag:active { transform: scale(0.97); }
 
   /* Filter pill */
   .lab-pill {
@@ -295,11 +305,14 @@ body.light-theme .bg-white\/\[0\.06\] { background-color: rgba(15, 23, 42, 0.04)
     border-color: var(--lab-line);
     color: var(--lab-muted);
   }
-  .lab-pill:hover {
-    @apply -translate-y-0.5;
-    border-color: var(--lab-line-strong);
-    color: var(--lab-text);
+  @media (hover: hover) {
+    .lab-pill:hover {
+      @apply -translate-y-0.5;
+      border-color: var(--lab-line-strong);
+      color: var(--lab-text);
+    }
   }
+  .lab-pill:active { transform: scale(0.98); }
   .lab-pill[aria-pressed='true'] {
     @apply text-white;
     border-color: transparent;
@@ -319,8 +332,10 @@ body.light-theme .bg-white\/\[0\.06\] { background-color: rgba(15, 23, 42, 0.04)
   }
   /* Hover underline only. The active header link is already marked by its
      sliding indicator, so painting both double-underlines the selected item. */
-  .lab-underline:not([data-active='true']):hover::after {
-    @apply scale-x-100;
+  @media (hover: hover) {
+    .lab-underline:not([data-active='true']):hover::after {
+      @apply scale-x-100;
+    }
   }
 
   /* ============================================================
@@ -785,12 +800,14 @@ body.light-theme .bg-white\/\[0\.06\] { background-color: rgba(15, 23, 42, 0.04)
     transform-origin: center;
     transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .lab-practice-row:hover::before,
   .lab-practice-row:focus-within::before { transform: scaleY(1); }
-  .lab-practice-row:hover { background-color: rgba(255, 94, 58, 0.045); }
-  .lab-practice-row:hover .lab-ghost-num {
-    color: rgba(255, 94, 58, 0.16);
-    -webkit-text-stroke-color: transparent;
+  @media (hover: hover) {
+    .lab-practice-row:hover::before { transform: scaleY(1); }
+    .lab-practice-row:hover { background-color: rgba(255, 94, 58, 0.045); }
+    .lab-practice-row:hover .lab-ghost-num {
+      color: rgba(255, 94, 58, 0.16);
+      -webkit-text-stroke-color: transparent;
+    }
   }
 
   /* Section index rule: a short gradient tick that anchors each kicker. */

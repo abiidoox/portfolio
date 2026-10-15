@@ -2,6 +2,11 @@
 module.exports = {
   content: ['./src/**/*.{html,ts}'],
   darkMode: 'class',
+  // Hover styles only on devices that actually have a pointer: on touch they
+  // otherwise stick after a tap until something else is touched.
+  future: {
+    hoverOnlyWhenSupported: true
+  },
   theme: {
     extend: {
       colors: {
