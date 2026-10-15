@@ -10,8 +10,15 @@ import {
   outcomeKeyFor,
   projectSlug
 } from '../../data/projects.data';
-import { SeoService } from '../../services/seo.service';
+import { SeoService, SITE } from '../../services/seo.service';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
+
+/** schema.org applicationCategory per project category. */
+const APPLICATION_CATEGORY: Record<string, string> = {
+  web: 'WebApplication',
+  mobile: 'MobileApplication',
+  desktop: 'DesktopApplication'
+};
 
 interface CaseStudyView {
   slug: string;
@@ -116,12 +123,28 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
       });
 
       const suffix = this.translate.instant('PROJECTS.CASE_STUDY.SEO_SUFFIX');
+      const slug = projectSlug(project);
       this.seo.setOverride({
         title: `${resolvedTitle} — ${suffix}`,
         meta: [
           { name: 'description', content: resolvedDescription },
           { property: 'og:description', content: resolvedDescription }
-        ]
+        ],
+        jsonLd: {
+          '@context': 'https://schema.org',
+          '@type': 'SoftwareApplication',
+          name: resolvedTitle,
+          description: resolvedDescription,
+          applicationCategory: APPLICATION_CATEGORY[project.category] ?? 'SoftwareApplication',
+          datePublished: project.date,
+          image: `${SITE}/assets/og/project-${slug}.png`,
+          url: `${SITE}/projects/${slug}`,
+          author: {
+            '@type': 'Person',
+            name: 'Abderrazzaq El Abdouni',
+            url: SITE
+          }
+        }
       });
     });
   }

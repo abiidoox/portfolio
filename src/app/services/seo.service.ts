@@ -5,7 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { filter, merge } from 'rxjs';
 import { LanguageService, Language } from './language.service';
 
-const SITE = 'https://abderrazzaq-portfolio.netlify.app';
+export const SITE = 'https://abderrazzaq-portfolio.netlify.app';
 const OG_LOCALE: Record<Language, string> = { en: 'en_US', fr: 'fr_FR', es: 'es_ES' };
 /** '' and '/about' render the same About page, so they share one canonical. */
 const ALIASES: Record<string, string> = { '': '/', '/about': '/' };
@@ -140,5 +140,26 @@ export class SeoService {
     this.doc.head.querySelectorAll('link[rel="alternate"]').forEach(l => l.remove());
     this.setLink('alternate', url, lang);
     this.setLink('alternate', url, 'x-default');
+
+    this.setJsonLd(override?.['jsonLd'] as Record<string, unknown> | undefined);
+  }
+
+  /**
+   * Pages that carry their own structured data (case studies, notes) publish
+   * it with the override; it is swapped in and removed with the override so
+   * nothing leaks onto the next route. The static Person block in index.html
+   * is separate and always present.
+   */
+  private setJsonLd(schema: Record<string, unknown> | undefined): void {
+    const existing = this.doc.getElementById('seo-jsonld');
+    if (!schema) {
+      existing?.remove();
+      return;
+    }
+    const script = (existing ?? this.doc.createElement('script')) as HTMLScriptElement;
+    script.id = 'seo-jsonld';
+    script.setAttribute('type', 'application/ld+json');
+    script.textContent = JSON.stringify(schema);
+    if (!existing) this.doc.head.appendChild(script);
   }
 }

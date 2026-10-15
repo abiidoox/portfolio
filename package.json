@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build:prod": "ng build --configuration=production",
     "og:build": "node tools/build-og.cjs",
+    "seo:build": "node tools/build-seo.cjs",
     "data:github": "node tools/fetch-github.cjs",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
