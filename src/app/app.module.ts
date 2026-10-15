@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderModule } from './components/header/header.module';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FormsModule } from '@angular/forms';
@@ -30,39 +30,32 @@ export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    SkillsComponent,
-    NotFoundComponent,
-    FooterComponent,
-    ParticlesBackgroundComponent,
-    ScrollProgressComponent,
-    BackToTopComponent,
-    TerminalIntroComponent,
-    ToastContainerComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    HeaderModule,
-    HttpClientModule,
-    FormsModule,
-    ThemeSwitcherModule,
-    LanguageSwitcherModule,
-    ScrollRevealDirective,
-    CountUpDirective,
-    ProjectModalModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    })
-  ],
-  providers: [ToastService],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        SkillsComponent,
+        NotFoundComponent,
+        FooterComponent,
+        ParticlesBackgroundComponent,
+        ScrollProgressComponent,
+        BackToTopComponent,
+        TerminalIntroComponent,
+        ToastContainerComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        HeaderModule,
+        FormsModule,
+        ThemeSwitcherModule,
+        LanguageSwitcherModule,
+        ScrollRevealDirective,
+        CountUpDirective,
+        ProjectModalModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        })], providers: [ToastService, provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
