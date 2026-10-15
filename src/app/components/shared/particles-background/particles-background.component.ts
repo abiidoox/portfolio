@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild, NgZone, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, NgZone, OnDestroy, ChangeDetectionStrategy, inject } from '@angular/core';
 
 interface Particle {
   x: number;
@@ -18,6 +18,8 @@ interface Particle {
     standalone: false
 })
 export class ParticlesBackgroundComponent implements OnInit, OnDestroy {
+  private zone = inject(NgZone);
+
   @ViewChild('canvas', { static: true }) canvasRef!: ElementRef<HTMLCanvasElement>;
 
   private ctx!: CanvasRenderingContext2D;
@@ -27,8 +29,6 @@ export class ParticlesBackgroundComponent implements OnInit, OnDestroy {
   private resizeHandler = () => this.resize();
   private paused = false;
   private reducedMotion = false;
-
-  constructor(private zone: NgZone) {}
 
   ngOnInit(): void {
     this.reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

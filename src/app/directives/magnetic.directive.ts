@@ -1,10 +1,13 @@
-import { Directive, ElementRef, HostListener, NgZone, OnDestroy, OnInit } from '@angular/core';
+import { Directive, ElementRef, HostListener, NgZone, OnDestroy, OnInit, inject } from '@angular/core';
 
 @Directive({
   selector: '[appMagnetic]',
   standalone: true
 })
 export class MagneticDirective implements OnInit, OnDestroy {
+  private elementRef = inject(ElementRef);
+  private zone = inject(NgZone);
+
   private el!: HTMLElement;
   private strength = 0.35;
   private rafId = 0;
@@ -14,8 +17,6 @@ export class MagneticDirective implements OnInit, OnDestroy {
   private targetY = 0;
   private active = false;
   private reducedMotion = false;
-
-  constructor(private elementRef: ElementRef, private zone: NgZone) {}
 
   ngOnInit(): void {
     this.el = this.elementRef.nativeElement;

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ProjectModalService } from '../../services/project-modal.service';
 import { PROJECTS, Project } from '../../data/projects.data';
@@ -23,6 +23,9 @@ interface DisplayProject {
     standalone: false
 })
 export class ProjectsComponent implements OnInit, OnDestroy {
+  private translate = inject(TranslateService);
+  private projectModalService = inject(ProjectModalService);
+
   /** Canonical filter order; only categories present in the data are shown. */
   private static readonly CATEGORY_ORDER = ['web', 'mobile', 'ai', 'iot', 'desktop'];
 
@@ -41,11 +44,6 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   }
 
   private langSub?: Subscription;
-
-  constructor(
-    private translate: TranslateService,
-    private projectModalService: ProjectModalService
-  ) {}
 
   ngOnInit(): void {
     this.projects = PROJECTS

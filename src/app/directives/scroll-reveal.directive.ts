@@ -1,4 +1,4 @@
-import { Directive, ElementRef, OnDestroy, OnInit } from '@angular/core';
+import { Directive, ElementRef, OnDestroy, OnInit, inject } from '@angular/core';
 
 /**
  * Scroll reveal directive.
@@ -10,9 +10,9 @@ import { Directive, ElementRef, OnDestroy, OnInit } from '@angular/core';
   standalone: true
 })
 export class ScrollRevealDirective implements OnInit, OnDestroy {
-  private observer?: IntersectionObserver;
+  private el = inject<ElementRef<HTMLElement>>(ElementRef);
 
-  constructor(private el: ElementRef<HTMLElement>) {}
+  private observer?: IntersectionObserver;
 
   ngOnInit(): void {
     const node = this.el.nativeElement as HTMLElement;

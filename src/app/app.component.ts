@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone, OnDestroy, HostListener, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, NgZone, OnDestroy, HostListener, ChangeDetectionStrategy, inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageService } from './services/language.service';
 import { ToastService } from './services/toast.service';
@@ -30,6 +30,14 @@ import { trigger, transition, style, animate, query } from '@angular/animations'
     standalone: false
 })
 export class AppComponent implements OnInit, OnDestroy {
+  private translate = inject(TranslateService);
+  private languageService = inject(LanguageService);
+  private zone = inject(NgZone);
+  private toast = inject(ToastService);
+  private projectModalService = inject(ProjectModalService);
+  private seo = inject(SeoService);
+  private theme = inject(ThemeService);
+
   private mouseHandler?: (e: MouseEvent) => void;
   modalProject: ProjectModalData | null = null;
 
@@ -37,15 +45,9 @@ export class AppComponent implements OnInit, OnDestroy {
     return outlet?.activatedRouteData?.['animation'] ?? '*';
   }
 
-  constructor(
-    private translate: TranslateService,
-    private languageService: LanguageService,
-    private zone: NgZone,
-    private toast: ToastService,
-    private projectModalService: ProjectModalService,
-    private seo: SeoService,
-    private theme: ThemeService
-  ) {
+  constructor() {
+    const translate = this.translate;
+
     // Initialize translations
     translate.addLangs(['en', 'es', 'fr']);
     translate.setFallbackLang('en');

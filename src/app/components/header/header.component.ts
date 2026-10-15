@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, HostListener, ViewChild, ElementRef, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener, ViewChild, ElementRef, ChangeDetectionStrategy, inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
@@ -17,6 +17,9 @@ interface NavItem {
     standalone: false
 })
 export class HeaderComponent implements OnInit, OnDestroy {
+  private translateService = inject(TranslateService);
+  private router = inject(Router);
+
   isMobileMenuOpen = false;
   isScrolled = false;
 
@@ -36,8 +39,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   @ViewChild('navLinks') navLinks?: ElementRef<HTMLUListElement>;
 
   private subs: Subscription[] = [];
-
-  constructor(private translateService: TranslateService, private router: Router) {}
 
   ngOnInit(): void {
     this.loadLabels();

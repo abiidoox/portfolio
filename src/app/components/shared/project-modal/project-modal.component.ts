@@ -1,8 +1,4 @@
-import {
-  Component, HostListener, Input, Output, EventEmitter,
-  ElementRef, AfterViewInit, NgZone,
-  ChangeDetectionStrategy
-} from '@angular/core';
+import { Component, HostListener, Input, Output, EventEmitter, ElementRef, AfterViewInit, NgZone, ChangeDetectionStrategy, inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 export interface ProjectModalData {
@@ -23,16 +19,14 @@ export interface ProjectModalData {
     standalone: false
 })
 export class ProjectModalComponent implements AfterViewInit {
+  private translate = inject(TranslateService);
+  private elRef = inject<ElementRef<HTMLElement>>(ElementRef);
+  private zone = inject(NgZone);
+
   @Input() project: ProjectModalData | null = null;
   @Output() closeRequest = new EventEmitter<void>();
 
   private previouslyFocused: HTMLElement | null = null;
-
-  constructor(
-    private translate: TranslateService,
-    private elRef: ElementRef<HTMLElement>,
-    private zone: NgZone
-  ) {}
 
   ngAfterViewInit(): void {
     // Remember the trigger so focus can be restored on close.

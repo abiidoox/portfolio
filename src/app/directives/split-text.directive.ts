@@ -1,4 +1,4 @@
-import { AfterViewInit, Directive, ElementRef, Inject, NgZone, PLATFORM_ID } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, NgZone, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
 @Directive({
@@ -6,11 +6,10 @@ import { isPlatformBrowser } from '@angular/common';
   standalone: true
 })
 export class SplitTextDirective implements AfterViewInit {
-  constructor(
-    private elementRef: ElementRef,
-    @Inject(PLATFORM_ID) private platformId: object,
-    private ngZone: NgZone
-  ) {}
+  private elementRef = inject(ElementRef);
+  private platformId = inject(PLATFORM_ID);
+  private ngZone = inject(NgZone);
+
 
   ngAfterViewInit(): void {
     if (!isPlatformBrowser(this.platformId)) return;

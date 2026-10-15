@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { Theme, ThemeService } from '../../services/theme.service';
@@ -10,11 +10,12 @@ import { Theme, ThemeService } from '../../services/theme.service';
     standalone: false
 })
 export class ThemeSwitcherComponent implements OnInit, OnDestroy {
+  private translate = inject(TranslateService);
+  private theme = inject(ThemeService);
+
   currentTheme: Theme = 'dark';
 
   private sub?: Subscription;
-
-  constructor(private translate: TranslateService, private theme: ThemeService) {}
 
   ngOnInit(): void {
     // The switcher no longer owns theme state, it mirrors it. This is what

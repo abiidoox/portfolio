@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { LanguageService } from '../../services/language.service';
 import { Subscription } from 'rxjs';
@@ -10,6 +10,9 @@ import { Subscription } from 'rxjs';
     standalone: false
 })
 export class ContactComponent implements OnInit, OnDestroy {
+  private fb = inject(UntypedFormBuilder);
+  private languageService = inject(LanguageService);
+
   contactForm: UntypedFormGroup;
   submitted = false;
   success = false;
@@ -21,10 +24,7 @@ export class ContactComponent implements OnInit, OnDestroy {
     { label: 'LinkedIn', url: 'https://www.linkedin.com/in/abderrazzaq-el-abdouni-28004019a', icon: 'fab fa-linkedin-in' }
   ];
 
-  constructor(
-    private fb: UntypedFormBuilder,
-    private languageService: LanguageService
-  ) {
+  constructor() {
     this.contactForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],

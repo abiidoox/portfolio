@@ -1,13 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  HostListener,
-  OnDestroy,
-  OnInit,
-  ViewChildren,
-  QueryList,
-  ChangeDetectionStrategy
-} from '@angular/core';
+import { Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChildren, QueryList, ChangeDetectionStrategy, inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageService, Language } from '../../services/language.service';
 import { Subscription } from 'rxjs';
@@ -26,6 +17,10 @@ interface LanguageOption {
     standalone: false
 })
 export class LanguageSwitcherComponent implements OnInit, OnDestroy {
+  private el = inject<ElementRef<HTMLElement>>(ElementRef);
+  private translate = inject(TranslateService);
+  private languageService = inject(LanguageService);
+
   readonly languages: LanguageOption[] = [
     { code: 'en', name: 'English', icon: 'fas fa-flag-usa' },
     { code: 'es', name: 'Español', icon: 'fas fa-flag' },
@@ -39,11 +34,7 @@ export class LanguageSwitcherComponent implements OnInit, OnDestroy {
 
   private langSub?: Subscription;
 
-  constructor(
-    private el: ElementRef<HTMLElement>,
-    private translate: TranslateService,
-    private languageService: LanguageService
-  ) {
+  constructor() {
     this.currentLanguage = this.languageService.getCurrentLanguage();
   }
 

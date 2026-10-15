@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { ToastService } from '../../../services/toast.service';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -9,6 +9,9 @@ import { TranslateService } from '@ngx-translate/core';
     standalone: false
 })
 export class FooterComponent {
+  private toast = inject(ToastService);
+  private translate = inject(TranslateService);
+
   currentYear = new Date().getFullYear();
 
   readonly navItems = [
@@ -23,8 +26,6 @@ export class FooterComponent {
     { icon: 'fab fa-github', url: 'https://github.com/abiidoox', label: 'GitHub' },
     { icon: 'fab fa-linkedin-in', url: 'https://www.linkedin.com/in/abderrazzaq-el-abdouni-28004019a', label: 'LinkedIn' }
   ];
-
-  constructor(private toast: ToastService, private translate: TranslateService) {}
 
   copyEmail(): void {
     const email = 'elabdouni.abderrazzaq@gmail.com';

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnDestroy, ChangeDetectionStrategy, inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import {
@@ -14,6 +14,8 @@ import {
     standalone: false
 })
 export class ResumeComponent implements OnDestroy {
+  private translate = inject(TranslateService);
+
   readonly experience: ExperienceEntry[] = EXPERIENCE;
   readonly education: EducationEntry[] = EDUCATION;
   readonly skillGroups: SkillTagGroup[] = SKILL_GROUPS;
@@ -31,7 +33,7 @@ export class ResumeComponent implements OnDestroy {
 
   error = false;
 
-  constructor(private translate: TranslateService) {
+  constructor() {
     this.resolveTechnologies();
     // Was never unsubscribed: every visit to /resume leaked a subscription and
     // left a language handler running against a destroyed component.

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { Router, ActivatedRoute, NavigationEnd, Data } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -12,14 +12,14 @@ const ALIASES: Record<string, string> = { '': '/', '/about': '/' };
 
 @Injectable({ providedIn: 'root' })
 export class SeoService {
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    private title: Title,
-    private meta: Meta,
-    private translate: TranslateService,
-    private languageService: LanguageService
-  ) {
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+  private title = inject(Title);
+  private meta = inject(Meta);
+  private translate = inject(TranslateService);
+  private languageService = inject(LanguageService);
+
+  constructor() {
     // Route changes and language changes both have to refresh the head tags.
     // onLangChange is used rather than languageService.currentLanguage$ because
     // that stream fires before translate.use() resolves, which would read the

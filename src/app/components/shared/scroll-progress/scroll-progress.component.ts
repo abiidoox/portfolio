@@ -1,4 +1,4 @@
-import { Component, HostListener, NgZone, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, HostListener, NgZone, OnDestroy, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 
 @Component({
     selector: 'app-scroll-progress',
@@ -20,12 +20,12 @@ import { Component, HostListener, NgZone, OnDestroy, OnInit, ChangeDetectionStra
     standalone: false
 })
 export class ScrollProgressComponent implements OnInit, OnDestroy {
+  private zone = inject(NgZone);
+
   private el!: HTMLElement;
   private rafId = 0;
   private target = 0;
   private current = 0;
-
-  constructor(private zone: NgZone) {}
 
   ngOnInit(): void {
     this.el = document.querySelector('.scroll-progress')!;

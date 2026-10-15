@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
+import { Directive, ElementRef, Input, OnChanges, OnDestroy, OnInit, inject } from '@angular/core';
 
 /**
  * Animated counter.
@@ -14,6 +14,8 @@ import { Directive, ElementRef, Input, OnChanges, OnDestroy, OnInit } from '@ang
   standalone: true
 })
 export class CountUpDirective implements OnInit, OnChanges, OnDestroy {
+  private el = inject<ElementRef<HTMLElement>>(ElementRef);
+
   @Input() countTo = 100;
   @Input() duration = 1400;
 
@@ -22,7 +24,7 @@ export class CountUpDirective implements OnInit, OnChanges, OnDestroy {
   private target: HTMLElement;
   private reducedMotion = false;
 
-  constructor(private el: ElementRef<HTMLElement>) {
+  constructor() {
     this.target = this.el.nativeElement;
   }
 

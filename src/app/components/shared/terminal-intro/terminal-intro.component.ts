@@ -1,4 +1,4 @@
-import { Component, NgZone, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, NgZone, OnDestroy, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -121,6 +121,9 @@ import { TranslateService } from '@ngx-translate/core';
     standalone: false
 })
 export class TerminalIntroComponent implements OnInit, OnDestroy {
+  private zone = inject(NgZone);
+  private translate = inject(TranslateService);
+
   visibleLines: Array<{ text: string; success: boolean }> = [];
   progress = 0;
   done = false;
@@ -128,8 +131,6 @@ export class TerminalIntroComponent implements OnInit, OnDestroy {
   private currentLine = 0;
   private lineTimer?: ReturnType<typeof setInterval>;
   private progressTimer?: ReturnType<typeof setInterval>;
-
-  constructor(private zone: NgZone, private translate: TranslateService) {}
 
   ngOnInit(): void {
     this.translate.get([

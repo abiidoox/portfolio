@@ -1,4 +1,4 @@
-import { Component, ElementRef, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ElementRef, ChangeDetectionStrategy, inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastService } from '../../services/toast.service';
 import { PROJECTS } from '../../data/projects.data';
@@ -39,6 +39,10 @@ interface CommitLine {
     standalone: false
 })
 export class AboutComponent {
+  private elRef = inject(ElementRef);
+  private translate = inject(TranslateService);
+  private toast = inject(ToastService);
+
   emailCopied = false;
 
   // Counts are read from the shared data files so they can never drift out of
@@ -77,12 +81,6 @@ export class AboutComponent {
     { hash: 'bd2283c', msg: 'feat: add salary advance module to INRA resume' },
     { hash: 'fe318c9', msg: 'fix: translation bugs, modal visibility, a11y' }
   ];
-
-  constructor(
-    private elRef: ElementRef,
-    private translate: TranslateService,
-    private toast: ToastService
-  ) {}
 
   /** Feeds the pointer-following glow in .lab-glow-hover via --mx/--my. */
   onGlowMove(e: MouseEvent): void {

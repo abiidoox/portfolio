@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { ToastService } from '../../../services/toast.service';
 
 @Component({
@@ -80,7 +80,8 @@ import { ToastService } from '../../../services/toast.service';
     standalone: false
 })
 export class ToastContainerComponent {
-  constructor(public toastService: ToastService) {}
+  toastService = inject(ToastService);
+
 
   getIconClass(type: string): string {
     const icons: Record<string, string> = {
