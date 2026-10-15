@@ -27,7 +27,14 @@
     "THEME_TO_DARK": "Cambiar a tema oscuro",
     "THEME_TO_LIGHT": "Cambiar a tema claro",
     "COPY_EMAIL": "Copiar dirección de correo",
-    "HINTS": "↑↓ navegar · ↵ abrir · esc cerrar"
+    "HINTS": "↑↓ navegar · ↵ abrir · esc cerrar",
+    "GROUP_RECENT": "Recientes",
+    "SHORTCUTS_TITLE": "Atajos de teclado",
+    "SC_OPEN": "Abrir la paleta de comandos",
+    "SC_THEME": "Cambiar el tema",
+    "SC_LANGUAGE": "Cambiar de idioma",
+    "SC_SHORTCUTS": "Mostrar esta lista",
+    "CLOSE": "Cerrar"
   },
   "GITHUB": {
     "TITLE": "En directo desde GitHub",

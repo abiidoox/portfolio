@@ -85,3 +85,59 @@
     </div>
   </div>
 }
+
+<!-- Shortcuts cheatsheet ("?") -->
+@if (palette.isShortcutsOpen()) {
+  <div class="fixed inset-0 z-[3000]">
+    <div class="absolute inset-0 bg-ink-950/70 backdrop-blur-sm"
+         (click)="palette.closeShortcuts()"
+         aria-hidden="true"></div>
+
+    <div class="relative mx-auto mt-[14vh] w-[min(92vw,26rem)]">
+      <div role="dialog"
+           aria-modal="true"
+           aria-labelledby="shortcuts-title"
+           class="lab-panel overflow-hidden rounded-2xl shadow-2xl">
+
+        <div class="flex items-center justify-between border-b border-white/[0.07] px-5 py-4">
+          <h2 id="shortcuts-title"
+              class="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-slate-400">
+            {{ 'PALETTE.SHORTCUTS_TITLE' | translate }}
+          </h2>
+          <button
+            #shortcutsClose
+            type="button"
+            (click)="palette.closeShortcuts()"
+            [attr.aria-label]="'PALETTE.CLOSE' | translate"
+            class="grid h-8 w-8 place-items-center rounded-lg text-slate-500
+                   transition-colors duration-150 hover:bg-white/[0.06] hover:text-white">
+            <i class="fas fa-xmark text-sm" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <dl class="px-5 py-4">
+          <div class="flex items-center justify-between gap-6 py-2.5">
+            <dt class="text-sm text-slate-300">{{ 'PALETTE.SC_OPEN' | translate }}</dt>
+            <dd><kbd class="rounded-md border border-white/10 bg-white/[0.04] px-2 py-1 font-mono text-[0.65rem] text-slate-400">Ctrl K</kbd></dd>
+          </div>
+          <div class="flex items-center justify-between gap-6 py-2.5">
+            <dt class="text-sm text-slate-300">{{ 'PALETTE.SC_THEME' | translate }}</dt>
+            <dd><kbd class="rounded-md border border-white/10 bg-white/[0.04] px-2 py-1 font-mono text-[0.65rem] text-slate-400">T</kbd></dd>
+          </div>
+          <div class="flex items-center justify-between gap-6 py-2.5">
+            <dt class="text-sm text-slate-300">{{ 'PALETTE.SC_LANGUAGE' | translate }}</dt>
+            <dd><kbd class="rounded-md border border-white/10 bg-white/[0.04] px-2 py-1 font-mono text-[0.65rem] text-slate-400">L</kbd></dd>
+          </div>
+          <div class="flex items-center justify-between gap-6 py-2.5">
+            <dt class="text-sm text-slate-300">{{ 'PALETTE.SC_SHORTCUTS' | translate }}</dt>
+            <dd><kbd class="rounded-md border border-white/10 bg-white/[0.04] px-2 py-1 font-mono text-[0.65rem] text-slate-400">?</kbd></dd>
+          </div>
+          <div class="flex items-center justify-between gap-6 py-2.5">
+            <dt class="text-sm text-slate-300">{{ 'PALETTE.CLOSE' | translate }}</dt>
+            <dd><kbd class="rounded-md border border-white/10 bg-white/[0.04] px-2 py-1 font-mono text-[0.65rem] text-slate-400">esc</kbd></dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </div>
+}

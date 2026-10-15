@@ -65,26 +65,46 @@ export class CommandPaletteComponent {
 
   readonly palette = inject(CommandPaletteService);
 
+  /** Recent picks, most recent first; ids stay valid even if items move. */
+  private static readonly RECENT_KEY = 'palette-recent';
+  private static readonly RECENT_LIMIT = 4;
+
   private readonly inputRef = viewChild<ElementRef<HTMLInputElement>>('paletteInput');
+  private readonly shortcutsCloseRef = viewChild<ElementRef<HTMLButtonElement>>('shortcutsClose');
   private previouslyFocused: HTMLElement | null = null;
+  private shortcutsPreviousFocus: HTMLElement | null = null;
 
   readonly query = signal('');
   readonly activeIndex = signal(0);
   private readonly groups = signal<PaletteGroup[]>([]);
+  private readonly recentIds = signal<string[]>(this.readRecentIds());
 
   readonly rows = computed<Row[]>(() => {
     const needle = this.query().trim().toLowerCase();
     const rows: Row[] = [];
     let index = 0;
 
+    const pushGroup = (title: string, items: PaletteItem[]) => {
+      if (items.length === 0) return;
+      rows.push({ header: title, index: -1 });
+      for (const item of items) rows.push({ item, index: index++ });
+    };
+
+    // Recents surface only before typing, and their items step out of their
+    // home groups so no entry is listed twice.
+    const recents = needle ? [] : this.recentItems();
+    const recentIds = new Set(recents.map(item => item.id));
+    pushGroup(this.t('PALETTE.GROUP_RECENT'), recents);
+
     for (const group of this.groups()) {
       const items = needle
-        ? group.items.filter(item => item.keywords.includes(needle))
-        : group.items;
-      if (items.length === 0) continue;
-
-      rows.push({ header: group.title, index: -1 });
-      for (const item of items) rows.push({ item, index: index++ });
+        ? group.items
+            .map(item => ({ item, score: this.fuzzyScore(item.keywords, needle) }))
+            .filter(match => match.score >= 0)
+            .sort((a, b) => b.score - a.score)
+            .map(match => match.item)
+        : group.items.filter(item => !recentIds.has(item.id));
+      pushGroup(group.title, items);
     }
     return rows;
   });
@@ -116,6 +136,19 @@ export class CommandPaletteComponent {
     this.translate.onLangChange.subscribe(() => {
       if (this.palette.isOpen()) this.groups.set(this.buildItems());
     });
+
+    // The shortcuts cheatsheet is a second dialog with its own focus and
+    // scroll bookkeeping; it never stacks on top of the palette.
+    effect(() => {
+      if (this.palette.isShortcutsOpen()) {
+        this.shortcutsPreviousFocus = document.activeElement as HTMLElement | null;
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => this.shortcutsCloseRef()?.nativeElement.focus());
+      } else {
+        this.shortcutsPreviousFocus?.focus?.();
+        if (!this.palette.isOpen()) document.body.style.overflow = '';
+      }
+    });
   }
 
   @HostListener('document:keydown', ['$event'])
@@ -125,10 +158,30 @@ export class CommandPaletteComponent {
       this.palette.toggle();
       return;
     }
-    if (this.palette.isOpen() && event.key === 'Escape') {
-      event.preventDefault();
-      this.palette.close();
+
+    if (event.key === 'Escape') {
+      if (this.palette.isOpen()) {
+        event.preventDefault();
+        this.palette.close();
+      } else if (this.palette.isShortcutsOpen()) {
+        event.preventDefault();
+        this.palette.closeShortcuts();
+      }
+      return;
     }
+
+    // "?" opens the cheatsheet, unless the visitor is typing somewhere.
+    if (event.key === '?' && !this.palette.isShortcutsOpen() && !this.isTypingTarget(event.target)) {
+      event.preventDefault();
+      this.palette.toggleShortcuts();
+    }
+  }
+
+  private isTypingTarget(target: EventTarget | null): boolean {
+    const element = target as HTMLElement | null;
+    if (!element) return false;
+    const tag = element.tagName;
+    return tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || element.isContentEditable;
   }
 
   onInputKeydown(event: KeyboardEvent): void {
@@ -162,6 +215,7 @@ export class CommandPaletteComponent {
   }
 
   run(item: PaletteItem): void {
+    this.pushRecent(item.id);
     this.palette.close();
     item.run();
   }
@@ -185,11 +239,67 @@ export class CommandPaletteComponent {
     if (row?.item) this.run(row.item);
   }
 
+  /** instant() echoes the key back when a translation is missing; hide those. */
+  private t(key: string, params?: object): string {
+    const value = params ? this.translate.instant(key, params) : this.translate.instant(key);
+    return value === key ? '' : value;
+  }
+
+  /**
+   * Subsequence score: every query character must appear in order. Adjacent
+   * hits and word starts score higher, shorter haystacks win ties. Returns -1
+   * when the query does not match at all.
+   */
+  private fuzzyScore(text: string, query: string): number {
+    let score = 0;
+    let cursor = 0;
+
+    for (const char of query) {
+      const found = text.indexOf(char, cursor);
+      if (found === -1) return -1;
+      score += 1;
+      if (found === cursor) score += 2;
+      if (found === 0 || ' -_.'.includes(text[found - 1])) score += 3;
+      cursor = found + 1;
+    }
+
+    return score * 1000 - text.length;
+  }
+
+  private recentItems(): PaletteItem[] {
+    const byId = new Map(this.groups().flatMap(group => group.items).map(item => [item.id, item]));
+    return this.recentIds()
+      .map(id => byId.get(id))
+      .filter((item): item is PaletteItem => !!item);
+  }
+
+  private readRecentIds(): string[] {
+    if (!isPlatformBrowser(this.platformId)) return [];
+    try {
+      const raw = localStorage.getItem(CommandPaletteComponent.RECENT_KEY);
+      const parsed: unknown = raw ? JSON.parse(raw) : [];
+      return Array.isArray(parsed)
+        ? parsed.filter((id): id is string => typeof id === 'string')
+        : [];
+    } catch {
+      return [];
+    }
+  }
+
+  private pushRecent(id: string): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    const next = [id, ...this.recentIds().filter(existing => existing !== id)]
+      .slice(0, CommandPaletteComponent.RECENT_LIMIT);
+    this.recentIds.set(next);
+    try {
+      localStorage.setItem(CommandPaletteComponent.RECENT_KEY, JSON.stringify(next));
+    } catch {
+      // Storage can be blocked or full; recents are a nicety, never required.
+    }
+  }
+
   private buildItems(): PaletteGroup[] {
-    const t = (key: string, params?: object): string => {
-      const value = params ? this.translate.instant(key, params) : this.translate.instant(key);
-      return value === key ? '' : value;
-    };
+    const t = (key: string, params?: object): string => this.t(key, params);
 
     const nav: { key: string; path: string; icon: string; aliases: string }[] = [
       { key: 'header.home', path: '/', icon: 'fas fa-house', aliases: 'home start about main' },

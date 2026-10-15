@@ -27,7 +27,14 @@
     "THEME_TO_DARK": "Switch to dark theme",
     "THEME_TO_LIGHT": "Switch to light theme",
     "COPY_EMAIL": "Copy email address",
-    "HINTS": "↑↓ navigate · ↵ select · esc close"
+    "HINTS": "↑↓ navigate · ↵ select · esc close",
+    "GROUP_RECENT": "Recent",
+    "SHORTCUTS_TITLE": "Keyboard shortcuts",
+    "SC_OPEN": "Open command palette",
+    "SC_THEME": "Toggle theme",
+    "SC_LANGUAGE": "Switch language",
+    "SC_SHORTCUTS": "Show this list",
+    "CLOSE": "Close"
   },
   "GITHUB": {
     "TITLE": "Live from GitHub",
